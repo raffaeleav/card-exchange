@@ -1,4 +1,4 @@
-package com.example.progettois;
+package it.unisa.cardexchange;
 
 import java.io.*;
 

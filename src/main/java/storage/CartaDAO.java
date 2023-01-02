@@ -9,11 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CartaDAO {
-    /**
-     *
-     * @return
-     */
-    public ArrayList<Carta> getAllCarte(){
+    public ArrayList<Carta> getAllCarte(){//Metodo che permette di restituire tutte le carte presenti nel DB
         try(Connection con=ConPool.getConnection()){
             ArrayList<Carta> carte=new ArrayList<Carta>();
             PreparedStatement ps= con.prepareStatement("SELECT * FROM carta;");
@@ -33,10 +29,10 @@ public class CartaDAO {
         }
     }
 
-    public Carta getCartaById(int id){
+    public Carta getCartaById(int idCarta){//Metodo che permette di trovare e restituire una carta presente nel DB tramite id
         try(Connection con= ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("SELECT * FROM carta WHERE idCarta=?");
-            ps.setInt(1,id);
+            ps.setInt(1,idCarta);
             ResultSet rs= ps.executeQuery();
             if(rs.next()){
                 Carta c=new Carta();
@@ -53,20 +49,20 @@ public class CartaDAO {
         }
     }
 
-    public void doUpdate(int idCarta,String nome,String categoria,String rarita){
+    public void doUpdate(int idCarta,String nome,String categoria,String rarita){//Metodo che permette di modificare una carta presente nel DB.
         try (Connection con=ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("UPDATE Carta set nome=?,categoria=?,rarita=? where idCarta=?");
             ps.setString(1,nome);
             ps.setString(2,categoria);
             ps.setString(3,rarita);
+            ps.setInt(4,idCarta);
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-
-    public void doDelete(int idCarta){
+    public void doDelete(int idCarta){//Metodo che permette di eliminare nel DB una carta tramite id
         try (Connection con=ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("DELETE FROM Carta where idCarta=?");
             ps.setInt(1,idCarta);
@@ -79,7 +75,7 @@ public class CartaDAO {
         }
     }
 
-    public void doSave(Carta carta){
+    public void doSave(Carta carta){//Metodo che permette di inserire una nuova carta nel DB
         try(Connection con=ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("INSERT into carta(nome,categoria,rarita) values (?,?,?)");
             ps.setString(1,carta.getNome());

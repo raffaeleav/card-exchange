@@ -14,7 +14,7 @@ public class RegistrazioneDAO {
         conn = ConPool.getConnection();
 
         try {
-            pst = conn.prepareStatement("INSERT INTO Cliente (username, passwordhash, nome, cognome, email) VALUES(?,?,?,?,?)");
+            pst = conn.prepareStatement("INSERT INTO Utente (username, passwordhash, nome, cognome, email) VALUES(?,?,?,?,?)");
 
             pst.setString(1, username);
             pst.setString(2, passwordhash);

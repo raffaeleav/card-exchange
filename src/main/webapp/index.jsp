@@ -1,11 +1,15 @@
-<%@ page import="storage.CartaDAO" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="acquisto.Carta" %>
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
+<%@ page import="registrazione.Registrazione" %>
+<%@ page import="java.sql.SQLException" %><%--
+  Created by IntelliJ IDEA.
+  User: michelemenzione
+  Date: 02/01/23
+  Time: 18:02
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Title</title>
 </head>
 <style>
     *{
@@ -22,17 +26,28 @@
 </style>
 <body>
 <%@include file="header.jsp"%>
-<h1><%= "Hello World!" %></h1>
-<br/>
-<%CartaDAO cartaDAO=new CartaDAO();%>
-<%ArrayList<Carta> carte= new ArrayList<Carta>();%>
-<%carte =cartaDAO.getAllCarte();%>
-<%Carta c1= new Carta();%>
-<%c1=cartaDAO.getCartaById(3);%>
-<h1 style="color: aqua"> <%=c1.getNome()%> </h1>
 
-<% for (Carta c:carte){%>
-Nome: <%=c.getNome()%><br> <%}%>
-<%@include file="footer.jsp"%>
+<%
+    Registrazione r = new Registrazione();
+    int res;
+    try {
+        res = r.registraNuovoUtente("ss3sssd","d3sa","dsa","d3a","dawad");
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+
+    System.out.println(res);
+
+    if(res > 0){
+%>
+<h1>Registrazione effettuata!</h1>
+<%}else if (res == -1){%>
+<h1>Registrazione fallita!, username gia in uso</h1>
+<%}else{%>
+<h1>Registrazione fallita!, Email gia in uso</h1>
+<%}%>
+
+
+
 </body>
 </html>

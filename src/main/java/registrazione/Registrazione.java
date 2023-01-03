@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class Registrazione {
     public Registrazione() {
-        this.utenteDAO = new UtenteDAO();;
+        this.utenteDAO = new UtenteDAO();
     }
 
     private UtenteDAO utenteDAO;

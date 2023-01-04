@@ -1,4 +1,4 @@
-package partecipazione_discussione;
+package partecipazioneDiscussione;
 
 public class PartecipazioneDiscussione {
 }

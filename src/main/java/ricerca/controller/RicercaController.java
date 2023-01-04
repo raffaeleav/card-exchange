@@ -35,11 +35,17 @@ public class RicercaController extends HttpServlet {
         // da rivedere il nome del parametro nel codice html
         String researchText = request.getParameter("carta");
 
+        // se la parola non e' inserita o troppo lunga
+        if (researchText.length() == 0 || researchText.length() > 35){
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/ricerca-input-sbagliato.jsp");
+            dispatcher.forward(request, response);
+        }
+
         // stub del DAO e della classe Carta
         List<CartaStub> matches = new ArrayList<>();
         CartaDAOStub cardDao = new CartaDAOStub();
 
-        for(CartaStub card: cardDao.doRetrieveAll()){
+        for (CartaStub card: cardDao.doRetrieveAll()){
             // eliminazione degli spazi bianchi + nomi in lowercase per evitare di 'perdere'
             // carte per spazi sbagliati ecc..
             String formattedCardName = card.getNome().toLowerCase().trim();
@@ -49,9 +55,15 @@ public class RicercaController extends HttpServlet {
                 matches.add(card);
         }
 
-        request.setAttribute("risultati-ricerca", matches);
+        // se non sono state trovate carte
+        if (matches.size() == 0){
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/ricerca-senza-risultati.jsp");
+            dispatcher.forward(request, response);
+        }
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/risultati-ricerca.jsp");
+        request.setAttribute("card-matches", matches);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/ricerca-risultati.jsp");
         dispatcher.forward(request, response);
     }
 

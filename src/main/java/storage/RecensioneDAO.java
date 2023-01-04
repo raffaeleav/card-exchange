@@ -9,7 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class RecensioneDAO {
-    public ArrayList<Recensione> doRetrieveAll(){//Metodo che permette di restituire tutte le recensioni presenti nel DB
+    //Metodo che permette di restituire tutte le recensioni presenti nel DB
+    public ArrayList<Recensione> doRetrieveAll(){
         try (Connection con=ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("SELECT * FROM Recensione");
             ArrayList<Recensione> recensioni=new ArrayList<>();
@@ -40,8 +41,8 @@ public class RecensioneDAO {
             throw new RuntimeException(e);
         }
     }
-
-    public void doDelete(int idRecensione){//Metodo che permette di eliminare nel DB una carta tramite id
+    //Metodo che permette di eliminare nel DB una recensione tramite id
+    public void doDelete(int idRecensione){
         try (Connection con=ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("DELETE FROM Recensione where idRecensione=?");
             ps.setInt(1,idRecensione);
@@ -52,8 +53,8 @@ public class RecensioneDAO {
             throw new RuntimeException(e);
         }
     }
-
-    public Recensione getRecensioneById(int idRecensione) { //Metodo che permette di trovare e restituire una recensione nel DB  tramite id
+    //Metodo che permette di trovare e restituire una recensione nel DB  tramite id
+    public Recensione getRecensioneById(int idRecensione) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT*FROM Recensione WHERE idRecensione=?");
             ps.setInt(1, idRecensione);
@@ -71,12 +72,14 @@ public class RecensioneDAO {
             throw new RuntimeException(e);
         }
     }
-
-    public void doSave(Recensione r){ //Metodo che permette inserire una recensione nel DB
+    //Metodo che permette inserire una recensione nel DB
+    public void doSave(Recensione r){
         try (Connection con=ConPool.getConnection()){
-            PreparedStatement ps=con.prepareStatement("INSERT into Recensione(valutazione,testo)VALUES(?,?);");
+            PreparedStatement ps=con.prepareStatement("INSERT into Recensione(valutazione,testo,idUtente,idOrdine)VALUES(?,?,?,?);");
             ps.setInt(1,r.getValutazione());
             ps.setString(2,r.getTesto());
+            ps.setInt(3,r.getIdUtente());
+            ps.setInt(4,r.getIdOrdine());
             if(ps.executeUpdate()!=1){
                 throw new RuntimeException("Errore durante l'inserimento della recensione");
             }
@@ -84,7 +87,4 @@ public class RecensioneDAO {
             throw new RuntimeException(e);
         }
     }
-
-
-
     }

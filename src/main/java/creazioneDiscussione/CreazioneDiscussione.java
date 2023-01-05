@@ -1,4 +1,4 @@
-package creazione_discussione;
+package creazioneDiscussione;
 
 public class CreazioneDiscussione {
 }

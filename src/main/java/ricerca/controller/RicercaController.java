@@ -6,13 +6,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import ricerca.CartaDAOStub;
-import ricerca.CartaStub;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 /**
  * La classe permette la ricerca di una carta tramite
@@ -32,22 +28,17 @@ public class RicercaController extends HttpServlet {
      * */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // da rivedere il nome del parametro nel codice html
         String researchText = request.getParameter("carta");
 
-        // se la parola non e' inserita o troppo lunga
         if (researchText.length() == 0 || researchText.length() > 35){
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/ricerca-input-sbagliato.jsp");
             dispatcher.forward(request, response);
         }
 
-        // stub del DAO e della classe Carta
-        List<CartaStub> matches = new ArrayList<>();
-        CartaDAOStub cardDao = new CartaDAOStub();
+        List<Carta> matches = new ArrayList<>();
+        CartaDAO cardDao = new CartaDAO();
 
-        for (CartaStub card: cardDao.doRetrieveAll()){
-            // eliminazione degli spazi bianchi + nomi in lowercase per evitare di 'perdere'
-            // carte per spazi sbagliati ecc..
+        for (Carta card: cardDao.getAllCarte()){
             String formattedCardName = card.getNome().toLowerCase().trim();
             String formattedResearchText = researchText.toLowerCase().trim();
 
@@ -55,7 +46,6 @@ public class RicercaController extends HttpServlet {
                 matches.add(card);
         }
 
-        // se non sono state trovate carte
         if (matches.size() == 0){
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/ricerca-senza-risultati.jsp");
             dispatcher.forward(request, response);

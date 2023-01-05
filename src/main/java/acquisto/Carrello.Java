@@ -1,10 +1,12 @@
+package acquisto;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Carrello {
 
   private int idCarrello;
   private int idUtente;
-  private List<Offerta> offerta;
+  private List<Offerta> offerte;
 
     public Carrello(int idCarrello, int idUtente) {
       this.idCarrello = idCarrello;

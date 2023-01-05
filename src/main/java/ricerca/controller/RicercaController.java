@@ -9,6 +9,10 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
+import acquisto.Carta;
+import storage.CartaDAO;
 
 /**
  * La classe permette la ricerca di una carta tramite

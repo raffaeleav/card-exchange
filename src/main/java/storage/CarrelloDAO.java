@@ -12,6 +12,7 @@ import java.util.List;
 public class CarrelloDAO {
     private static final String INSERT_CARRELLO_QUERY = "INSERT INTO Carrello(idUtente) VALUES (?)";
     private static final String SELECT_CARRELLO_BY_ID_QUERY = "SELECT * FROM Carrello WHERE idCarrello = ?";
+    private static final String SELECT_CARRELLO_BY_ID_UTENTE_QUERY = "SELECT * FROM Carrello WHERE idUtente = ?";
     private static final String SELECT_ALL_CARRELLI_QUERY = "SELECT * FROM Carrello";
     private static final String DELETE_CARRELLO_QUERY = "DELETE FROM Carrello WHERE idCarrello = ?";
 
@@ -41,7 +42,24 @@ public class CarrelloDAO {
         }
         return null;
     }
-
+    
+    // Restituisce il carrello associato all'ID dell'utente specificato, null se non esiste
+    public Carrello getCarrelloByIdUtente(int idUtente) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement statement = con.prepareStatement(SELECT_CARRELLO_BY_ID_UTENTE_QUERY);
+            statement.setInt(1, idUtente);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                int idCarrello = resultSet.getInt("idCarrello");
+                List < Offerta > offerte = offertaDao.getOfferteByIdCarrello(idCarrello);
+                return new Carrello(idCarrello, idUtente, offerte);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
     // Restituisce tutti i carrelli presenti nel database
     public List<Carrello> getAllCarrelli() {
         List<Carrello> carrelli = new ArrayList<>();

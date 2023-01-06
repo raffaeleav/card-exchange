@@ -14,9 +14,11 @@ public class Recensione {
         this.idOrdine = idOrdine;
     }
     //Costruttore per invio recensione
-    public Recensione(int valutazione,String testo){
+    public Recensione(int valutazione,String testo,int idUtente,int idOrdine){
         this.valutazione=valutazione;
         this.testo=testo;
+        this.idUtente=idUtente;
+        this.idOrdine=idOrdine;
     }
     public int getIdUtente() {
         return idUtente;

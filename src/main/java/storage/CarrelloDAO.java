@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CarrelloDAO {
-    private static final String INSERT_CARRELLO_QUERY = "INSERT INTO Carrello(idUtente) VALUES (?)";
+    private static final String INSERT_CARRELLO_QUERY = "INSERT INTO Carrello (idCarrello, idUtente, totale) VALUES (?, ?, ?)";
     private static final String SELECT_CARRELLO_BY_ID_QUERY = "SELECT * FROM Carrello WHERE idCarrello = ?";
     private static final String SELECT_CARRELLO_BY_ID_UTENTE_QUERY = "SELECT * FROM Carrello WHERE idUtente = ?";
     private static final String SELECT_ALL_CARRELLI_QUERY = "SELECT * FROM Carrello";
@@ -20,8 +20,9 @@ public class CarrelloDAO {
     public void addCarrello(Carrello carrello) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(INSERT_CARRELLO_QUERY);
-            statement.setInt(1, carrello.getIdUtente());
-            statement.executeUpdate();
+            stmt.setInt(1, carrello.getIdCarrello());
+            stmt.setInt(2, carrello.getIdUtente());
+            stmt.setInt(3, carrello.getTotale());
         } catch (SQLException e) {
             e.printStackTrace();
         }

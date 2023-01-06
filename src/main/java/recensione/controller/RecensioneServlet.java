@@ -1,16 +1,15 @@
 package recensione.controller;
 
-import jakarta.servlet.annotation.WebServlet;
-import recensione.Recensione;
-import storage.RecensioneDAO;
-import jakarta.servlet.RequestDispatcher;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import recensione.Recensione;
+import storage.RecensioneDAO;
 
+import java.io.IOException;
 
 /**
  * La classe permette l'inserimento di una recensione tramite
@@ -20,7 +19,7 @@ import java.io.IOException;
  */
 
 
-@WebServlet("addRecensione")//aggiunta prodotto al DB
+@WebServlet("/addRecensione")//aggiunta prodotto al DB
 public class RecensioneServlet extends HttpServlet {
 
     @Override
@@ -37,10 +36,10 @@ public class RecensioneServlet extends HttpServlet {
         String testo=req.getParameter("text");
         String strValutazione=req.getParameter("rate");
         int  valutazione=Integer.parseInt(strValutazione);
-        Recensione r=new Recensione(3,55,"ciaone bellone",1,1);//prova
+        Recensione r=new Recensione(valutazione,testo,1,1);// N.B idutente e idOrdine da cambiare
         RecensioneDAO recensioneDAO=new RecensioneDAO();
         recensioneDAO.doSave(r);
-        resp.sendRedirect("index.jsp");
+        resp.sendRedirect("index.jsp"); //rimanda alla homepage (provvisorio)
     }
 
 }

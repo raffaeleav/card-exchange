@@ -20,7 +20,7 @@ import java.io.IOException;
 
 
 @WebServlet("/addRecensione")//aggiunta prodotto al DB
-public class RecensioneServlet extends HttpServlet {
+public class AddRecensioneServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -3,13 +3,14 @@ package acquisto;
 import java.util.ArrayList;
 import java.util.List;
 import acquisto.Offerta;
+import storage.OffertaDAO;
 
 public class Carrello {
 
   private int idCarrello;
   private int idUtente;
   private List<Offerta> offerte;
-  private double totale;
+  private double totale = 0.00;
 
     public Carrello(int idCarrello, int idUtente) {
       this.idCarrello = idCarrello;
@@ -34,11 +35,14 @@ public class Carrello {
       this.idUtente = idUtente;
   }
 
-  public List<Offerta> getOfferte() {
-      return offerte;
-  }
+    public List<Offerta> getOfferte() {
+        // Recupera le offerte presenti nel carrello dal database
+        // utilizzando il metodo getOfferte del DAO OffertaDAO
+        List<Offerta> offerte = OffertaDAO.getOfferteByIdUtente(this.idUtente);
+        return offerte;
+    }
 
-  public void setOfferte(List<Offerta> offerte) {
+    public void setOfferte(List<Offerta> offerte) {
       this.offerte = offerte;
   }
 

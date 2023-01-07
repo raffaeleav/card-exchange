@@ -6,15 +6,15 @@ public class Offerta {
   private double prezzo;
   private int idUtente;
   private int idCarta;
-  private int idOrdine;
 
-  public Offerta(int idOfferta, String condizione, double prezzo, int idUtente, int idCarta, int idOrdine) {
+
+  public Offerta(int idOfferta, String condizione, double prezzo, int idUtente, int idCarta) {
     this.idOfferta = idOfferta;
     this.condizione = condizione;
     this.prezzo = prezzo;
     this.idUtente = idUtente;
     this.idCarta = idCarta;
-    this.idOrdine = idOrdine;
+
   }
 
   public int getIdOfferta() {

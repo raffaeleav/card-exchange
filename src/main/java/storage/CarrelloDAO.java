@@ -18,7 +18,7 @@ public class CarrelloDAO {
     // Inserisce un nuovo carrello nel database
     public void addCarrello(Carrello carrello) {
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement statement = con.prepareStatement(INSERT_CARRELLO_QUERY);
+            PreparedStatement stmt = con.prepareStatement(INSERT_CARRELLO_QUERY);
             stmt.setInt(1, carrello.getIdCarrello());
             stmt.setInt(2, carrello.getIdUtente());
             stmt.setInt(3, carrello.getTotale());

@@ -22,7 +22,7 @@ import storage.CartaDAO;
  */
 
 @WebServlet("/ricerca-servlet")
-public class RicercaController extends HttpServlet {
+public class RicercaServlet extends HttpServlet {
 
     /**
      * Il metodo permette di gestire la richiesta del client tramite una response che contiene una lista

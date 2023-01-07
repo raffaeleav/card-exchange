@@ -26,6 +26,8 @@ public class Messaggio {
         this.idDiscussione = idDiscussione;
     }
 
+    public Messaggio(){}
+
     public int getIdMessaggio() {
         return idMessaggio;
     }

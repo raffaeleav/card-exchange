@@ -24,6 +24,8 @@ public class Discussione {
         this.titolo = titolo;
     }
 
+    public Discussione(){}
+
     public long getIdDiscussione() {
         return idDiscussione;
     }

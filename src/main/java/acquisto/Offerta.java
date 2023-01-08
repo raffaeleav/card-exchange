@@ -1,59 +1,59 @@
 package acquisto;
 
 public class Offerta {
-  private int idOfferta;
-  private String condizione;
-  private double prezzo;
-  private int idUtente;
-  private int idCarta;
-  private int idOrdine;
+    private int idOfferta;
+    private String condizione;
+    private double prezzo;
+    private int idUtente;
+    private int idCarta;
+    private int idOrdine;
 
-  public Offerta(int idOfferta, String condizione, double prezzo, int idUtente, int idCarta, int idOrdine) {
-    this.idOfferta = idOfferta;
-    this.condizione = condizione;
-    this.prezzo = prezzo;
-    this.idUtente = idUtente;
-    this.idCarta = idCarta;
-    this.idOrdine = idOrdine;
-  }
+    public Offerta(int idOfferta, String condizione, double prezzo, int idUtente, int idCarta, int idOrdine) {
+        this.idOfferta = idOfferta;
+        this.condizione = condizione;
+        this.prezzo = prezzo;
+        this.idUtente = idUtente;
+        this.idCarta = idCarta;
+        this.idOrdine = idOrdine;
+    }
 
-  public int getIdOfferta() {
-    return idOfferta;
-  }
+    public int getIdOfferta() {
+        return idOfferta;
+    }
 
-  public void setIdOfferta(int idOfferta) {
-    this.idOfferta = idOfferta;
-  }
+    public void setIdOfferta(int idOfferta) {
+        this.idOfferta = idOfferta;
+    }
 
-  public String getCondizione() {
-    return condizione;
-  }
+    public String getCondizione() {
+        return condizione;
+    }
 
-  public void setCondizione(String condizione) {
-    this.condizione = condizione;
-  }
+    public void setCondizione(String condizione) {
+        this.condizione = condizione;
+    }
 
-  public double getPrezzo() {
-    return prezzo;
-  }
+    public double getPrezzo() {
+        return prezzo;
+    }
 
-  public void setPrezzo(double prezzo) {
-    this.prezzo = prezzo;
-  }
+    public void setPrezzo(double prezzo) {
+        this.prezzo = prezzo;
+    }
 
-  public int getIdUtente() {
-    return idUtente;
-  }
+    public int getIdUtente() {
+        return idUtente;
+    }
 
-  public void setIdUtente(int idUtente) {
-    this.idUtente = idUtente;
-  }
+    public void setIdUtente(int idUtente) {
+        this.idUtente = idUtente;
+    }
 
-  public int getIdCarta() {
-    return idCarta;
-  }
+    public int getIdCarta() {
+        return idCarta;
+    }
 
-  public void setIdCarta(int idCarta) {
-    this.idCarta = idCarta;
-  }
+    public void setIdCarta(int idCarta) {
+        this.idCarta = idCarta;
+    }
 }

@@ -9,14 +9,42 @@ body{
     justify-content: center;
     align-items: center;
 }
+.recensioneContainer{
+    text-align: center;
+    position: relative;
+    margin: auto;
+    padding: 35px 30px;
+    padding-bottom: 10px;
+    margin-top: 30px;
+    margin-bottom: 35px;
+    color: #e79213;
+    background-color: #292929;
+    max-width: 350px;
+    width: 100%;
+    border-radius: 10px;
+}
 .text-form{
+    margin: 10px;
+    border-radius: 10px;
+    text-align: center;
     resize: none;
+    background-color:#D6D6D6 ;
 }
 
 .rate {
-    float: left;
-    height: 46px;
+    max-width: max-content;
+    margin: 0 auto;
     padding: 0 10px;
+}
+
+.submit{
+    border-radius: 5px;
+    padding: 5px;
+    color: #202020;
+    background-color: #D6D6D6;
+}
+.submit:hover{
+    background-color: #FFD100;
 }
 .rate:not(:checked) > input {
     position:absolute;

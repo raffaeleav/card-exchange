@@ -44,7 +44,7 @@ public class AddRecensioneServlet extends HttpServlet {
         int  valutazione=Integer.parseInt(strValutazione);
         Recensione r=new Recensione(valutazione,testo,1,1);// N.B idutente e idOrdine da cambiare
         RecensioneDAO recensioneDAO=new RecensioneDAO();
-            if(!matcher.matches()){
+            if(matcher.matches()!=true){
                 if(testo.length()>=151 || testo.length()<=9){
             throw new IOException("Errore sottomissione recensione!");}
         }

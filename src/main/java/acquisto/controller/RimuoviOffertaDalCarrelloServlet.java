@@ -29,7 +29,7 @@ public class RimuoviOffertaDalCarrelloServlet extends HttpServlet {
         // getCarrelloByIdUtente del DAO CarrelloDAO
         Carrello carrello = CarrelloDAO.getCarrelloByIdUtente(idUtente);
 
-        // Recupera l'offerta da aggiungere al carrello dal database utilizzando il metodo
+        // Recupera l'offerta da rimuovere al carrello dal database utilizzando il metodo
         // getOffertaById del DAO OffertaDAO
         Offerta offerta = OffertaDAO.getOffertaById(idOfferta);
 

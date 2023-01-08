@@ -34,20 +34,14 @@ public class AddRecensioneServlet extends HttpServlet {
          * @param req : oggetto di richiesta HTTP
          * @param resp : oggetto di risposta HTTP
          */
-        String regex="[A-Za-zÀ-ú0-9!. ]*";
-        Pattern pattern=Pattern.compile(regex);
+
         String testo=req.getParameter("text");
-        Matcher matcher=pattern.matcher(testo);
         String strValutazione=req.getParameter("rate");
         //int idUtente=req.getParameter("idUtente");
         //int idOrdine=req.getParameter("idOrdine");
         int  valutazione=Integer.parseInt(strValutazione);
         Recensione r=new Recensione(valutazione,testo,1,1);// N.B idutente e idOrdine da cambiare
         RecensioneDAO recensioneDAO=new RecensioneDAO();
-            if(matcher.matches()!=true){
-                if(testo.length()>=151 || testo.length()<=9){
-            throw new IOException("Errore sottomissione recensione!");}
-        }
         recensioneDAO.doSave(r);
         resp.sendRedirect("index.jsp"); //rimanda alla homepage (provvisorio)
     }

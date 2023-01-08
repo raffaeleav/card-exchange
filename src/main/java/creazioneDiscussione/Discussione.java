@@ -26,7 +26,7 @@ public class Discussione {
 
     public Discussione(){}
 
-    public long getIdDiscussione() {
+    public int getIdDiscussione() {
         return idDiscussione;
     }
 
@@ -34,7 +34,7 @@ public class Discussione {
         this.idDiscussione = idDiscussione;
     }
 
-    public long getIdUtente() {
+    public int getIdUtente() {
         return idUtente;
     }
 

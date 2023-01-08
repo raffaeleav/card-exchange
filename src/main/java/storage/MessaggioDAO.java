@@ -88,22 +88,19 @@ public class MessaggioDAO {
     /**
      * Il metodo permette di memorizzare un oggetto Messaggio
      * nel database
-     * @param oggetto oggetto del messaggio
-     * @param corpo corpo del messaggio
-     * @param idUtente id dell' utente che ha scritto il messaggio
-     * @param idDiscussione id della discussione in cui si sta inviando il messaggio
+     * @param message il messaggio da memorizzare nel database
      * */
-    public void doSave(String oggetto, String corpo, int idUtente, int idDiscussione){
+    public void doSave(Messaggio message){
         try {
             Connection connection = ConPool.getConnection();
             PreparedStatement preparedStatement =
                     connection.prepareStatement(
                             "INSERT INTO Messaggio(oggetto, corpo, idUtente, idDiscussione) VALUES (?, ?, ?, ?)");
 
-            preparedStatement.setString(1, corpo);
-            preparedStatement.setString(2, corpo);
-            preparedStatement.setInt(3, idUtente);
-            preparedStatement.setInt(4, idDiscussione);
+            preparedStatement.setString(1, message.getOggetto());
+            preparedStatement.setString(2, message.getCorpo());
+            preparedStatement.setInt(3, message.getIdUtente());
+            preparedStatement.setInt(4, message.getIdDiscussione());
 
             if(preparedStatement.executeUpdate() != 1){
                 throw new RuntimeException("Errore nel salvataggio del messaggio.");
@@ -119,17 +116,16 @@ public class MessaggioDAO {
     /**
      * Il metodo permette di eliminare un oggetto Messaggio
      * memorizzato nel database
-     * @param idMessaggio id dell' oggetto Messaggio che si vuole
+     * @param messageId id dell' oggetto Messaggio che si vuole
      *                      eliminare dal database
      * */
-    public void doDelete(int idMessaggio, int idUtente){
+    public void doDelete(int messageId){
         try {
             Connection connection = ConPool.getConnection();
             PreparedStatement preparedStatement =
-                    connection.prepareStatement("DELETE FROM Messaggio WHERE idMessaggio = ? AND idUtente = ?;");
+                    connection.prepareStatement("DELETE FROM Messaggio WHERE idMessaggio = ?;");
 
-            preparedStatement.setInt(1, idMessaggio);
-            preparedStatement.setInt(1, idUtente);
+            preparedStatement.setInt(1, messageId);
 
             if(preparedStatement.executeUpdate() != 1){
                 throw new RuntimeException("Errore nell' eliminazione del messaggio.");
@@ -145,14 +141,10 @@ public class MessaggioDAO {
     /**
      * Il metodo permette di modificare un oggetto Messaggio
      * memorizzato nel database
-     * @param idMessaggio id dell' oggetto Messaggio che si vuole
-     *                      modificare dal database
-     * @param oggetto oggetto del messaggio
-     * @param corpo corpo del messaggio
-     * @param idUtente id dell' utente che ha scritto il messaggio
-     * @param idDiscussione id della discussione in cui si trova il messaggio
+     * @param messageId id dell' oggetto Messaggio che si vuole
+     * @param messagge oggetto che contiene i campi da modificare
      * */
-    public void doUpdate(int idMessaggio, String oggetto, String corpo, int idUtente, int idDiscussione){
+    public void doUpdate(int messageId, Messaggio messagge){
         try {
             Connection connection = ConPool.getConnection();
             PreparedStatement preparedStatement =
@@ -161,11 +153,13 @@ public class MessaggioDAO {
                                     "WHERE idMessaggio = ? " +
                                     "AND idUtente = ? and idDiscussione = ?;");
 
-            preparedStatement.setString(1, oggetto);
-            preparedStatement.setString(2, corpo);
-            preparedStatement.setInt(3, idMessaggio);
-            preparedStatement.setInt(4, idUtente);
-            preparedStatement.setInt(5, idDiscussione);
+            Messaggio oldMessage = (Messaggio) new FacadeDAO().doRetrieveById(Messaggio.class, messageId);
+
+            preparedStatement.setString(1, messagge.getOggetto());
+            preparedStatement.setString(2, messagge.getCorpo());
+            preparedStatement.setInt(3, messageId);
+            preparedStatement.setInt(4, oldMessage.getIdUtente());
+            preparedStatement.setInt(5, oldMessage.getIdDiscussione());
 
             if(preparedStatement.executeUpdate() != 1){
                 throw new RuntimeException("Errore nella modifica del messaggio.");

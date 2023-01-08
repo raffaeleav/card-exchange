@@ -51,16 +51,16 @@ public class DiscussioneDAO {
     /**
      * Il metodo permette di ottenere un oggetto Discussione con l'id
      * specificato
-     * @param idDiscussione id dell' oggetto Discussione che si vuole
+     * @param topicId id dell' oggetto Discussione che si vuole
      *                      reperire dal database
      */
-    public Discussione doRetrieveById(int idDiscussione){
+    public Discussione doRetrieveById(int topicId){
         try {
             Connection connection = ConPool.getConnection();
             PreparedStatement preparedStatement =
                     connection.prepareStatement("SELECT * FROM Discussione WHERE idDiscussione = ?;");
 
-            preparedStatement.setInt(1, idDiscussione);
+            preparedStatement.setInt(1, topicId);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
@@ -85,17 +85,16 @@ public class DiscussioneDAO {
     /**
      * Il metodo permette di memorizzare un oggetto Discussione
      * nel database
-     * @param idUtente id dell' utente che ha creato la discussione
-     * @param titolo titolo della discussione
+     * @param topic la discussione da memorizzare nel database
      * */
-    public void doSave(int idUtente, String titolo){
+    public void doSave(Discussione topic){
         try {
             Connection connection = ConPool.getConnection();
             PreparedStatement preparedStatement =
                     connection.prepareStatement("INSERT INTO Discussione(idUtente, titolo) VALUES (?, ?);");
 
-            preparedStatement.setInt(1, idUtente);
-            preparedStatement.setString(2, titolo);
+            preparedStatement.setInt(1, topic.getIdUtente());
+            preparedStatement.setString(2, topic.getTitolo());
 
             if(preparedStatement.executeUpdate() != 1){
                 throw new RuntimeException("Errore nel salvataggio della discussione.");
@@ -111,16 +110,16 @@ public class DiscussioneDAO {
     /**
      * Il metodo permette di eliminare un oggetto Discussione
      * memorizzato nel database
-     * @param idDiscussione id dell' oggetto Discussione che si vuole
+     * @param topicId id dell' oggetto Discussione che si vuole
      *                      eliminare dal database
      * */
-    public void doDelete(int idDiscussione){
+    public void doDelete(int topicId){
         try {
             Connection connection = ConPool.getConnection();
             PreparedStatement preparedStatement =
                     connection.prepareStatement("DELETE FROM Discussione WHERE idDiscussione = ?;");
 
-            preparedStatement.setInt(1, idDiscussione);
+            preparedStatement.setInt(1, topicId);
 
             if(preparedStatement.executeUpdate() != 1){
                 throw new RuntimeException("Errore nell' eliminazione della discussione.");

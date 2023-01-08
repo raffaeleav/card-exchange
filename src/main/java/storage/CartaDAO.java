@@ -12,7 +12,7 @@ import java.util.List;
 public class CartaDAO {
     public List<Carta> doRetrieveAll(){//Metodo che permette di restituire tutte le carte presenti nel DB
         try(Connection con=ConPool.getConnection()){
-            ArrayList<Carta> carte=new ArrayList<>();
+            List<Carta> carte=new ArrayList<>();
             PreparedStatement ps= con.prepareStatement("SELECT * FROM carta;");
             ResultSet rs=ps.executeQuery();
             while(rs.next()){

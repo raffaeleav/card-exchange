@@ -14,18 +14,12 @@ public class FacadeDAO {
         FacadeDAO dao = new FacadeDAO();
         List<Carta> discussiones = (List<Carta>) dao.doRetrieveAll(Carta.class);
 
-        System.out.println(discussiones.get(0).getIdCarta());
+        System.out.println(discussiones.get(0).getNome());
     }
 
     public List<?> doRetrieveAll(Class<?> classe){
         switch(classe.getName()){
-            case "Discussione":
-                return new DiscussioneDAO().doRetrieveAll();
-
-            case "Messaggio":
-                return new MessaggioDAO().doRetrieveAll();
-
-            case "Carta":
+            case "acquisto.Carta":
                 return new CartaDAO().doRetrieveAll();
 
             default:

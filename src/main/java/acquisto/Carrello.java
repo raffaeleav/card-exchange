@@ -63,7 +63,6 @@ public class Carrello {
    Non è necessario implementare un setter per il totale, poiché il totale dovrebbe essere calcolato automaticamente
    a partire dalle offerte presenti nel carrello e non dovrebbe essere modificato direttamente.
   */
-
     public double getTotale() {
         double totale = 0;
         for (Offerta offerta : offerte) {

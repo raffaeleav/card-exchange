@@ -7,7 +7,6 @@ public class Offerta {
   private int idUtente;
   private int idCarta;
 
-
   public Offerta(int idOfferta, String condizione, double prezzo, int idUtente, int idCarta) {
     this.idOfferta = idOfferta;
     this.condizione = condizione;

@@ -53,6 +53,10 @@ public class Carrello {
   public void rimuoviOfferta(Offerta offerta) {
       offerte.remove(offerta);
   }
+    public void svuotaCarrello() {
+        offerte.clear();
+        totale = 0.00;
+    }
   
   /*
    Itera sulla lista delle offerte del carrello e somma i prezzi delle singole offerte. 

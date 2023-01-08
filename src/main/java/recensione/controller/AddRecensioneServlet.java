@@ -30,7 +30,7 @@ public class AddRecensioneServlet extends HttpServlet {
          * Il metodo permette di gestire la richiesta del client,dove il server
          * salva i parametri immessi nel form della pagina di recensione e grazie
          * alla classe recensioneDAO aggiunge la recensione al database e rimanda ad un'altra
-         * pagina a fine compilazione tramite parametro resp .
+         * pagina a fine compilazione tramite parametro resp.
          * @param req : oggetto di richiesta HTTP
          * @param resp : oggetto di risposta HTTP
          */
@@ -39,6 +39,8 @@ public class AddRecensioneServlet extends HttpServlet {
         String testo=req.getParameter("text");
         Matcher matcher=pattern.matcher(testo);
         String strValutazione=req.getParameter("rate");
+        //int idUtente=req.getParameter("idUtente");
+        //int idOrdine=req.getParameter("idOrdine");
         int  valutazione=Integer.parseInt(strValutazione);
         Recensione r=new Recensione(valutazione,testo,1,1);// N.B idutente e idOrdine da cambiare
         RecensioneDAO recensioneDAO=new RecensioneDAO();

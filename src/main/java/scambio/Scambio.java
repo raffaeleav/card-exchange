@@ -3,6 +3,11 @@ package scambio;
 public class Scambio {
     private int idRichiestaScambio, idUtenteMittente, idUtenteDestinatario,idOfferta;
 
+    public Scambio( int idUtenteMittente, int idUtenteDestinatario, int idOfferta) {
+        this.idUtenteMittente = idUtenteMittente;
+        this.idUtenteDestinatario = idUtenteDestinatario;
+        this.idOfferta = idOfferta;
+    }
     public Scambio(int idRichiestaScambio, int idUtenteMittente, int idUtenteDestinatario, int idOfferta) {
         this.idRichiestaScambio = idRichiestaScambio;
         this.idUtenteMittente = idUtenteMittente;

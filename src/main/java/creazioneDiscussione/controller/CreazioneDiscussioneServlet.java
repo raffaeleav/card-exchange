@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import registrazione.Utente;
 import storage.DiscussioneDAO;
+import storage.FacadeDAO;
 
 import java.io.IOException;
 
@@ -35,9 +36,14 @@ public class CreazioneDiscussioneServlet extends HttpServlet {
         HttpSession httpSession = request.getSession();
         Utente user = (Utente) httpSession.getAttribute("Utente");
         String title = request.getParameter("topic-title");
-        DiscussioneDAO topicDAO = new DiscussioneDAO();
 
-        topicDAO.doSave(user.getIdUtente(), title);
+        FacadeDAO facadeDAO = new FacadeDAO();
+
+        Discussione topic = new Discussione();
+        topic.setIdUtente(user.getIdUtente());
+        topic.setTitolo(title);
+
+        facadeDAO.doSave(Discussione.class, topic);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/results/discussione.jsp");
         requestDispatcher.forward(request, response);

@@ -33,6 +33,10 @@ public class UtenteDAO {
         }
     }
 
+    /**
+     * @param email - stringa dell'email
+     * @return
+     */
     //Serve per controllo lato server: VERIFICA se esiste già un utente all interno del db con stessa email.
     public boolean getUtenteByEmail(String email) {
         try (Connection con = ConPool.getConnection()) {
@@ -104,15 +108,19 @@ public class UtenteDAO {
         }
 
     }
+
+    /**
+     * @param user - L'utente che verrà memorizzato all'interno del DB
+     */
     //Metodo che permette di inserire un utente nel DB (registrazione)
-    public void doSave(Utente u){
+    public void doSave(Utente user){
         try (Connection con=ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("INSERT into Utente(username,passwordhash,nome,cognome,email) VALUES (?,?,?,?,?);");
-            ps.setString(1,u.getUsername());
-            ps.setString(2,u.getPassword());
-            ps.setString(3,u.getNome());
-            ps.setString(4,u.getCognome());
-            ps.setString(5,u.getEmail());
+            ps.setString(1,user.getUsername());
+            ps.setString(2,user.getPassword());
+            ps.setString(3,user.getNome());
+            ps.setString(4,user.getCognome());
+            ps.setString(5,user.getEmail());
 
             if(ps.executeUpdate()!=1){
                 throw new RuntimeException("Errore durante l'inserimento dell' utente");
@@ -137,6 +145,12 @@ public class UtenteDAO {
         }
 
     }
+
+    /**
+     * @param username - Oggetto da ricercare all'interno del DB
+     * @return - true se esiste un oggetto uguale nel DB
+     * @return - false se non esiste un oggetto uguale nel DB
+     */
     //Metodo che permette di sapere se un utente è presente nel DB tramite username
     public boolean getUtenteByUsername(String username) {
         try (Connection con = ConPool.getConnection()) {

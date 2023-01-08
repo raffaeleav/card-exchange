@@ -7,16 +7,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class UtenteDAO {
     //Metodo che permette di trovare e restituire dal DB tutti gli utenti presenti
-    public ArrayList<Utente> getAllUtenti(){
-        try(Connection con=ConPool.getConnection()){
-            PreparedStatement ps=con.prepareStatement("SELECT * FROM Utente");
-            ArrayList<Utente> utenti=new ArrayList<>();
+    public List<Utente> doRetrieveAll(){
+        try(Connection con = ConPool.getConnection()){
+            PreparedStatement ps = con.prepareStatement("SELECT * FROM Utente");
+            List<Utente> utenti = new ArrayList<>();
             ResultSet rs= ps.executeQuery();
             while (rs.next()){
-                Utente u=new Utente();
+                Utente u = new Utente();
                 u.setIdUtente(rs.getInt(1));
                 u.setUsername(rs.getString(2));
                 u.setPassword(rs.getString(3));
@@ -74,7 +75,7 @@ public class UtenteDAO {
 
     }
     //Metodo che permette di trovare un utente nel DB tramite id  e lo restituisce
-    public Utente getUtenteById(int idUtente){
+    public Utente doRetrieveById(int idUtente){
         try (Connection con=ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("SELECT * FROM Utente WHERE idUtente=?");
             ps.setInt(1,idUtente);

@@ -22,6 +22,13 @@ import java.io.IOException;
 @WebServlet("/creazione-discussione-servlet")
 public class CreazioneDiscussioneServlet extends HttpServlet {
 
+    /**
+     * Il metodo permette di gestire la richiesta del client tramite una response che
+     * permette la creazione di una discussione tramite la classe DAO relativa alla
+     * classe Discussione
+     * @param request oggetto che modella una richiesta HTTP
+     * @param response oggetto che modella una risposta HTTP
+     * */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession httpSession = request.getSession();

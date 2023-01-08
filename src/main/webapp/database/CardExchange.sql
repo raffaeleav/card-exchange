@@ -58,11 +58,10 @@ CREATE TABLE Offerta (
                          prezzo int not null,
                          idUtente int not null,
                          idCarta int not null,
-                         idOrdine int not null,
 
                          foreign key(idUtente) references Utente(idUtente) on delete cascade on update cascade,
                          foreign key(idCarta) references Carta(idCarta) on delete cascade on update cascade,
-                         foreign key(idOrdine) references Ordine(idOrdine) on delete cascade on update cascade
+                         
 );
 
 CREATE table Carrello(

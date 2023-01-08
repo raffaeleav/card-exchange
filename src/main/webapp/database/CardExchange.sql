@@ -29,6 +29,7 @@ create table Discussione(
                             idDiscussione int not null auto_increment,
                             idUtente int not null,
                             titolo text not null,
+
                             primary key(idDiscussione),
                             foreign key (idUtente) references Utente(idUtente)
 );
@@ -49,6 +50,8 @@ CREATE table Ordine(
                        dataset date not null,
                        indirizzo text not null,
                        idUtente int not null,
+                       totale double not null,
+
                        PRIMARY KEY(idOrdine),
                        FOREIGN KEY (idUtente)  references Utente(idUtente) ON UPDATE CASCADE ON DELETE CASCADE
 );
@@ -69,6 +72,7 @@ CREATE TABLE Offerta (
 CREATE table Carrello(
                          idCarrello int not null AUTO_INCREMENT,
                          idUtente int not null,
+
                          PRIMARY KEY(idCarrello),
                          FOREIGN KEY (idUtente)  references Utente(idUtente) ON UPDATE CASCADE ON DELETE CASCADE
 );
@@ -85,11 +89,15 @@ create table RichiestaDiScambio(
                                    idRichiestaScambio int not null auto_increment,
                                    idUtenteMittente int not null,
                                    idUtenteDestinatario int null,
-                                   idOfferta int not null,
+                                   idOffertaMittente int not null,
+                                   idOffertaDestinatario int not null,
+                                   conguaglio double not null,
+
                                    primary key(idRichiestaScambio) ,
                                    foreign key (idUtenteMittente) references Utente(idUtente),
                                    foreign key (idUtenteDestinatario) references Utente(idUtente),
-                                   foreign key (idOfferta) references Offerta(idOfferta)
+                                   foreign key (idOffertaMittente) references Offerta(idOfferta),
+                                   foreign key (idOffertaDestinatario) references Offerta(idOfferta)
 );
 
 create table  Recensione(
@@ -98,7 +106,6 @@ create table  Recensione(
                             testo text not null,
                             idUtente int not null,
                             idOrdine int not null,
-
 
                             primary key(idRecensione),
                             foreign key(idUtente) references Utente(idUtente),

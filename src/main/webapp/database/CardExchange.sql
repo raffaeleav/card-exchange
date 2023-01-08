@@ -28,6 +28,7 @@ insert into Carta values(default,'Maga nera','Yu-Gi-Oh','Comune');
 create table Discussione(
                             idDiscussione int not null auto_increment,
                             idUtente int not null,
+                            titolo text not null,
                             primary key(idDiscussione),
                             foreign key (idUtente) references Utente(idUtente)
 );
@@ -36,7 +37,6 @@ CREATE TABLE Messaggio (
                            idMessaggio int not null primary key auto_increment,
                            oggetto text not null,
                            corpo text not null,
-                           lunghezzaMassima int,
                            idUtente int not null,
                            idDiscussione int not null,
 

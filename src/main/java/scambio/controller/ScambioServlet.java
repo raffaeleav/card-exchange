@@ -31,13 +31,16 @@ public class ScambioServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         int idUtenteMittente = Integer.parseInt(request.getParameter("idUtenteMittente"));
-        int idOfferta = Integer.parseInt(request.getParameter("idOfferta"));
+        int idOffertaMittente = Integer.parseInt(request.getParameter("idOffertaMittente"));
+        int idOffertDestinatario = Integer.parseInt(request.getParameter("idOffertaDestinatario"));
+        double conguaglio = Double.parseDouble(request.getParameter("conguaglio"));
+
 
         OffertaDAO offertaDAO = new OffertaDAO();
         // Da implementare in offerta
-        //int idUtenteDestinatario = offertaDAO.getUtenteByID();
+        int idUtenteDestinatario = 0;
 
-        Scambio s = new Scambio(idUtenteMittente,idUtenteMittente,idOfferta);
+        Scambio s = new Scambio(idUtenteMittente,idUtenteDestinatario,idOffertaMittente,idOffertDestinatario,conguaglio);
 
         ScambioDAO scambioDAO  = new ScambioDAO();
 

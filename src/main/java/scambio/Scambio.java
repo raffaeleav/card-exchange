@@ -1,23 +1,29 @@
 package scambio;
 
 public class Scambio {
-    private int idRichiestaScambio, idUtenteMittente, idUtenteDestinatario,idOfferta;
+    private int idRichiestaScambio, idUtenteMittente, idUtenteDestinatario, idOffertaMittente,
+    idOffertaDestinatario;
+    double conguaglio;
 
-    public Scambio( int idUtenteMittente, int idUtenteDestinatario, int idOfferta) {
+
+    public Scambio(int idUtenteMittente, int idUtenteDestinatario, int idOffertaMittente, int idOffertaDestinatario, double conguaglio) {
         this.idUtenteMittente = idUtenteMittente;
         this.idUtenteDestinatario = idUtenteDestinatario;
-        this.idOfferta = idOfferta;
+        this.idOffertaMittente = idOffertaMittente;
+        this.idOffertaDestinatario = idOffertaDestinatario;
+        this.conguaglio = conguaglio;
     }
-    public Scambio(int idRichiestaScambio, int idUtenteMittente, int idUtenteDestinatario, int idOfferta) {
+
+    public Scambio(int idRichiestaScambio, int idUtenteMittente, int idUtenteDestinatario, int idOffertaMittente, int idOffertaDestinatario, double conguaglio) {
         this.idRichiestaScambio = idRichiestaScambio;
         this.idUtenteMittente = idUtenteMittente;
         this.idUtenteDestinatario = idUtenteDestinatario;
-        this.idOfferta = idOfferta;
+        this.idOffertaMittente = idOffertaMittente;
+        this.idOffertaDestinatario = idOffertaDestinatario;
+        this.conguaglio = conguaglio;
     }
 
-    public Scambio() {
 
-    }
 
     public int getIdRichiestaScambio() {
         return idRichiestaScambio;
@@ -43,11 +49,32 @@ public class Scambio {
         this.idUtenteDestinatario = idUtenteDestinatario;
     }
 
-    public int getIdOfferta() {
-        return idOfferta;
+    public int getIdOffertaMittente() {
+        return idOffertaMittente;
     }
 
-    public void setIdOfferta(int idOfferta) {
-        this.idOfferta = idOfferta;
+    public void setIdOffertaMittente(int idOffertaMittente) {
+        this.idOffertaMittente = idOffertaMittente;
     }
+
+    public int getIdOffertaDestinatario() {
+        return idOffertaDestinatario;
+    }
+
+    public void setIdOffertaDestinatario(int idOffertaDestinatario) {
+        this.idOffertaDestinatario = idOffertaDestinatario;
+    }
+
+    public double getConguaglio() {
+        return conguaglio;
+    }
+
+    public void setConguaglio(double conguaglio) {
+        this.conguaglio = conguaglio;
+    }
+
+    public Scambio() {
+
+    }
+
 }

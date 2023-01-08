@@ -13,6 +13,7 @@ import java.util.List;
 
 import acquisto.Carta;
 import storage.CartaDAO;
+import storage.FacadeDAO;
 
 /**
  * La classe permette la ricerca di una carta tramite
@@ -34,15 +35,10 @@ public class RicercaServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String researchText = request.getParameter("carta");
 
-        if (researchText.length() == 0 || researchText.length() > 35){
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/ricerca-input-sbagliato.jsp");
-            dispatcher.forward(request, response);
-        }
+        FacadeDAO facadeDAO = new FacadeDAO();
+        List<Carta> cardsList = (List<Carta>) facadeDAO.doRetrieveAll(Carta.class), matches = new ArrayList<>();
 
-        List<Carta> matches = new ArrayList<>();
-        CartaDAO cardDao = new CartaDAO();
-
-        for (Carta card: cardDao.doRetrieveAll()){
+        for (Carta card: cardsList){
             String formattedCardName = card.getNome().toLowerCase().trim();
             String formattedResearchText = researchText.toLowerCase().trim();
 

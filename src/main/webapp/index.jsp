@@ -1,5 +1,4 @@
-<%@ page import="registrazione.Registrazione" %>
-<%@ page import="java.sql.SQLException" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: michelemenzione
   Date: 02/01/23

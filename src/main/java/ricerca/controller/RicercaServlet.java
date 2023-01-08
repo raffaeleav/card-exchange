@@ -17,12 +17,12 @@ import storage.CartaDAO;
 /**
  * La classe permette la ricerca di una carta tramite
  * una servlet che viene richiamata dal bottone della
- * funzione di ricerca.
+ * funzione di ricerca
  * @author Raffaele Aviello
  */
 
-@WebServlet("/ricerca-controller")
-public class RicercaController extends HttpServlet {
+@WebServlet("/ricerca-servlet")
+public class RicercaServlet extends HttpServlet {
 
     /**
      * Il metodo permette di gestire la richiesta del client tramite una response che contiene una lista

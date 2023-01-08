@@ -11,6 +11,7 @@ create table Utente(
                        email text not null,
                        primary key(idUtente)
 );
+insert into Utente values(default,'xFrancesco','Francescopass123!','Francesco','Di Domenico','francesco@email.it');
 
 CREATE table Carta(
                       idCarta int not null AUTO_INCREMENT,
@@ -27,6 +28,7 @@ insert into Carta values(default,'Maga nera','Yu-Gi-Oh','Comune');
 create table Discussione(
                             idDiscussione int not null auto_increment,
                             idUtente int not null,
+                            titolo text not null,
                             primary key(idDiscussione),
                             foreign key (idUtente) references Utente(idUtente)
 );
@@ -35,7 +37,6 @@ CREATE TABLE Messaggio (
                            idMessaggio int not null primary key auto_increment,
                            oggetto text not null,
                            corpo text not null,
-                           lunghezzaMassima int,
                            idUtente int not null,
                            idDiscussione int not null,
 
@@ -45,12 +46,13 @@ CREATE TABLE Messaggio (
 
 CREATE table Ordine(
                        idOrdine int not null AUTO_INCREMENT,
-                       data date not null,
+                       dataset date not null,
                        indirizzo text not null,
                        idUtente int not null,
                        PRIMARY KEY(idOrdine),
                        FOREIGN KEY (idUtente)  references Utente(idUtente) ON UPDATE CASCADE ON DELETE CASCADE
 );
+insert into Ordine values(default,'2017-06-15','via roma 15',1);
 
 CREATE TABLE Offerta (
                          idOfferta int not null primary key auto_increment,

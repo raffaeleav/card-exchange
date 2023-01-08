@@ -1,16 +1,17 @@
 package recensione.controller;
 
-import jakarta.servlet.annotation.WebServlet;
-import recensione.Recensione;
-import storage.RecensioneDAO;
-import jakarta.servlet.RequestDispatcher;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import recensione.Recensione;
+import storage.RecensioneDAO;
 
+import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * La classe permette l'inserimento di una recensione tramite
@@ -20,8 +21,8 @@ import java.io.IOException;
  */
 
 
-@WebServlet("addRecensione")//aggiunta prodotto al DB
-public class RecensioneServlet extends HttpServlet {
+@WebServlet("/addRecensione")//aggiunta prodotto al DB
+public class AddRecensioneServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,18 +30,26 @@ public class RecensioneServlet extends HttpServlet {
          * Il metodo permette di gestire la richiesta del client,dove il server
          * salva i parametri immessi nel form della pagina di recensione e grazie
          * alla classe recensioneDAO aggiunge la recensione al database e rimanda ad un'altra
-         * pagina a fine compilazione tramite parametro resp .
+         * pagina a fine compilazione tramite parametro resp.
          * @param req : oggetto di richiesta HTTP
          * @param resp : oggetto di risposta HTTP
          */
-
+        String regex="[A-Za-zÀ-ú0-9!. ]*";
+        Pattern pattern=Pattern.compile(regex);
         String testo=req.getParameter("text");
+        Matcher matcher=pattern.matcher(testo);
         String strValutazione=req.getParameter("rate");
+        //int idUtente=req.getParameter("idUtente");
+        //int idOrdine=req.getParameter("idOrdine");
         int  valutazione=Integer.parseInt(strValutazione);
-        Recensione r=new Recensione(3,55,"ciaone bellone",1,1);//prova
+        Recensione r=new Recensione(valutazione,testo,1,1);// N.B idutente e idOrdine da cambiare
         RecensioneDAO recensioneDAO=new RecensioneDAO();
+            if(matcher.matches()!=true){
+                if(testo.length()>=151 || testo.length()<=9){
+            throw new IOException("Errore sottomissione recensione!");}
+        }
         recensioneDAO.doSave(r);
-        resp.sendRedirect("index.jsp");
+        resp.sendRedirect("index.jsp"); //rimanda alla homepage (provvisorio)
     }
 
 }

@@ -7,6 +7,13 @@ public class Utente {
     public Utente() {
     }
 
+    public Utente(String username, String password, String nome, String cognome, String email) {
+        this.username = username;
+        this.password = password;
+        this.nome = nome;
+        this.cognome = cognome;
+        this.email = email;
+    }
     public Utente(int idUtente, String username, String password, String nome, String cognome, String email) {
         this.idUtente = idUtente;
         this.username = username;

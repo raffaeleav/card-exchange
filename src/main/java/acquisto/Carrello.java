@@ -36,6 +36,7 @@ public class Carrello {
   }
 
     public List<Offerta> getOfferte() {
+
         // Recupera le offerte presenti nel carrello dal database
         // utilizzando il metodo getOfferte del DAO OffertaDAO
         List<Offerta> offerte = OffertaDAO.getOfferteByIdUtente(this.idUtente);

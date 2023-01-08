@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import registrazione.Utente;
 import storage.DiscussioneDAO;
 
 import java.io.IOException;
@@ -32,11 +33,11 @@ public class CreazioneDiscussioneServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession httpSession = request.getSession();
-        int idUser = (int) httpSession.getAttribute("user-id");
+        Utente user = (Utente) httpSession.getAttribute("Utente");
         String title = request.getParameter("topic-title");
         DiscussioneDAO topicDAO = new DiscussioneDAO();
 
-        topicDAO.doSave(idUser, title);
+        topicDAO.doSave(user.getIdUtente(), title);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/results/discussione.jsp");
         requestDispatcher.forward(request, response);

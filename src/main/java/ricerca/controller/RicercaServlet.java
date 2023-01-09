@@ -42,7 +42,7 @@ public class RicercaServlet extends HttpServlet {
         List<Carta> matches = new ArrayList<>();
         CartaDAO cardDao = new CartaDAO();
 
-        for (Carta card: cardDao.getAllCarte()){
+        for (Carta card: cardDao.doRetrieveAll()){
             String formattedCardName = card.getNome().toLowerCase().trim();
             String formattedResearchText = researchText.toLowerCase().trim();
 

@@ -7,13 +7,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RecensioneDAO {
     //Metodo che permette di restituire tutte le recensioni presenti nel DB
-    public ArrayList<Recensione> doRetrieveAll(){
+    public List<Recensione> doRetrieveAll(){
         try (Connection con=ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("SELECT * FROM Recensione");
-            ArrayList<Recensione> recensioni=new ArrayList<>();
+            List<Recensione> recensioni=new ArrayList<>();
             ResultSet rs=ps.executeQuery();
             while (rs.next()){
                 Recensione r=new Recensione();
@@ -30,11 +31,11 @@ public class RecensioneDAO {
         }
     }
 
-    public void doUpdate(int idRecensione,int valutazione,String testo){
+    public void doUpdate(int idRecensione,Recensione r){
         try(Connection con=ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("UPDATE Recensione set valutazione=?,testo=? where idRecensione=?;");
-            ps.setInt(1, valutazione);
-            ps.setString(2, testo);
+            ps.setInt(1, r.getValutazione());
+            ps.setString(2, r.getTesto());
             ps.setInt(3, idRecensione);
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -54,7 +55,7 @@ public class RecensioneDAO {
         }
     }
     //Metodo che permette di trovare e restituire una recensione nel DB  tramite id
-    public Recensione getRecensioneById(int idRecensione) {
+    public Recensione doRetriveById(int idRecensione) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT*FROM Recensione WHERE idRecensione=?");
             ps.setInt(1, idRecensione);

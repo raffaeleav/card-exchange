@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/WEB-INF/css/recensione.css"/>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/recensione.css"/>
     <title>Title</title>
 </head>
 <body>

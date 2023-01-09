@@ -5,6 +5,7 @@ function researchValidation(){
 
     if(field == "" || field.length > 35) {
         correct = false;
+        alert("Il campo di ricerca non deve essere vuoto o superare i 35 caratteri!");
     }
 
     return correct;

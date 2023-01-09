@@ -14,7 +14,7 @@ import storage.FacadeDAO;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/forum")
+@WebServlet("/forum-servlet")
 public class ForumServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

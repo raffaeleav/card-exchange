@@ -27,20 +27,24 @@ public class RimuoviOffertaDalCarrelloServlet extends HttpServlet {
 
         // Recupera il carrello dell'utente corrente dal database utilizzando il metodo
         // getCarrelloByIdUtente del DAO CarrelloDAO
-        Carrello carrello = CarrelloDAO.getCarrelloByIdUtente(idUtente);
+        CarrelloDAO carrelloDAO = new CarrelloDAO();
+        Carrello carrello = carrelloDAO.getCarrelloByIdUtente(idUtente);
 
         // Recupera l'offerta da rimuovere al carrello dal database utilizzando il metodo
         // getOffertaById del DAO OffertaDAO
-        Offerta offerta = OffertaDAO.getOffertaById(idOfferta);
+        OffertaDAO offertaDAO= new OffertaDAO();
+        Offerta offerta = offertaDAO.doRetrieveById(idOfferta);
 
         // Rimuove l'offerta al carrello dell'utente
         carrello.rimuoviOfferta(offerta);
 
+        carrello.getTotale();
+
         // Aggiorna il carrello nel database
-        CarrelloDAO.updateCarrello(carrello);
+        carrelloDAO.doUpdate(carrello);
 
         // Reindirizza l'utente alla pagina del carrello
-        response.sendRedirect("/WEB-INF/results/carrello.jsp"); //provvisorio
+        request.getRequestDispatcher("/WEB-INF/results/carrello.jsp").forward(request, response);
 
     }
 

@@ -3,7 +3,6 @@ import java.util.Date;
 import java.util.List;
 
 public class Ordine {
-
     private int idOrdine;
     private Date data;
     private String indirizzo;

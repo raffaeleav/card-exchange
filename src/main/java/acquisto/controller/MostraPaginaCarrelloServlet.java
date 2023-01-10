@@ -12,7 +12,6 @@ import storage.CarrelloDAO;
 
 @WebServlet("/mostraPaginaCarrello")
 public class MostraPaginaCarrelloServlet extends HttpServlet {
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -20,9 +19,10 @@ public class MostraPaginaCarrelloServlet extends HttpServlet {
         // Recupera l'id dell'utente corrente dalla sessione
         int idUtente = (int) request.getSession().getAttribute("idUtente");
 
+        CarrelloDAO carrelloDAO = new CarrelloDAO();
         // Recupera il carrello dell'utente corrente dal database utilizzando il metodo
         // getCarrelloByIdUtente del DAO CarrelloDAO
-        Carrello carrello = CarrelloDAO.getCarrelloByIdUtente(idUtente);
+        Carrello carrello = carrelloDAO.getCarrelloByIdUtente(idUtente);
 
         // Imposta il carrello come attributo della request
         request.setAttribute("carrello", carrello);

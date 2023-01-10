@@ -11,6 +11,7 @@ import acquisto.Carrello;
 import acquisto.Offerta;
 import storage.CarrelloDAO;
 import storage.OffertaDAO;
+import storage.FacadeDAO;
 
 @WebServlet("/aggiungiOffertaInCarrello")
 public class AggiungiOffertaInCarrelloServlet extends HttpServlet {
@@ -25,26 +26,28 @@ public class AggiungiOffertaInCarrelloServlet extends HttpServlet {
         // Recupera l'id dell'offerta da aggiungere al carrello dalla request
         int idOfferta = Integer.parseInt(request.getParameter("idOfferta"));
 
+        CarrelloDAO carrelloDAO=new CarrelloDAO();
         // Recupera il carrello dell'utente corrente dal database utilizzando il metodo
         // getCarrelloByIdUtente del DAO CarrelloDAO
-        Carrello carrello = CarrelloDAO.getCarrelloByIdUtente(idUtente);
+        Carrello carrello = carrelloDAO.getCarrelloByIdUtente(idUtente);
 
         // Se il carrello non esiste, lo crea nel database utilizzando il metodo
-        // addCarrello del DAO CarrelloDAO
+        // doSave del DAO CarrelloDAO
         if (carrello == null) {
             carrello = new Carrello(0, idUtente);
-            CarrelloDAO.addCarrello(carrello);
+            carrelloDAO.doSave(carrello);
         }
 
+        OffertaDAO offertaDAO=new OffertaDAO();
         // Recupera l'offerta da aggiungere al carrello dal database utilizzando il metodo
         // getOffertaById del DAO OffertaDAO
-        Offerta offerta = OffertaDAO.getOffertaById(idOfferta);
+        Offerta offerta = offertaDAO.doRetrieveById(idOfferta);
 
         // Aggiunge l'offerta al carrello dell'utente
         carrello.aggiungiOfferta(offerta);
 
         // Aggiorna il carrello nel database
-        CarrelloDAO.updateCarrello(carrello);
+        carrelloDAO.doUpdate(carrello);
 
         // Reindirizza l'utente alla pagina del carrello
         response.sendRedirect("/WEB-INF/results/carrello.jsp"); //provvisorio

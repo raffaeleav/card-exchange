@@ -11,7 +11,6 @@ import acquisto.Carrello;
 import acquisto.Offerta;
 import storage.CarrelloDAO;
 import storage.OffertaDAO;
-import storage.FacadeDAO;
 
 @WebServlet("/aggiungiOffertaInCarrello")
 public class AggiungiOffertaInCarrelloServlet extends HttpServlet {

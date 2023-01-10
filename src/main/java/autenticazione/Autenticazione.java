@@ -18,6 +18,6 @@ public class Autenticazione {
      * */
     public static Utente verifyLogin(String email, String pass){
         FacadeDAO facadeDAO = new FacadeDAO();
-        return facadeDAO.getUtenteByEmailPassword(email, pass);
+        return facadeDAO.getUtenteByEmailPassword(UtenteDAO.class,email, pass);
     }
 }

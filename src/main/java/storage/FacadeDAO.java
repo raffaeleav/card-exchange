@@ -28,8 +28,8 @@ public class FacadeDAO {
             case "acquisto.Offerta":
                 return new OffertaDAO().doRetrieveAll();
 
-            //case "acquisto.Ordine":
-               // return new OrdineDAO().doRetrieveAll();
+            case "acquisto.Ordine":
+               return new OrdineDAO().doRetrieveAll();
 
             case "recensione.Recensione":
                 return new RecensioneDAO().doRetrieveAll();

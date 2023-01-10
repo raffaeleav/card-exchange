@@ -1,6 +1,7 @@
 package autenticazione;
 
 import registrazione.Utente;
+import storage.FacadeDAO;
 import storage.UtenteDAO;
 
 /**
@@ -16,7 +17,7 @@ public class Autenticazione {
      * @param email, oggetto che identifica una credenziale di accesso
      * */
     public static Utente verifyLogin(String email, String pass){
-        UtenteDAO utenteDAO = new UtenteDAO();
-        return utenteDAO.getUtenteByEmailPassword(email, pass);
+        FacadeDAO facadeDAO = new FacadeDAO();
+        return facadeDAO.getUtenteByEmailPassword(email, pass);
     }
 }

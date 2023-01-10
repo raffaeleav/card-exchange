@@ -52,7 +52,7 @@ public class FacadeDAO {
                 return new ScambioDAO().doRetrieveAll();
 
             case "registrazione.Utente":
-                return new UtenteDAO.doRetrieveAll();
+                return new UtenteDAO().doRetrieveAll();
 
             default:
                 return null;
@@ -90,7 +90,7 @@ public class FacadeDAO {
                 return new ScambioDAO().doRetrieveById(entityId);
 
             case "registrazione.Utente":
-                return new UtenteDAO.doRetrieveById(entityId);
+                return new UtenteDAO().doRetrieveById(entityId);
 
             default:
                 return null;
@@ -134,7 +134,7 @@ public class FacadeDAO {
                 break;
 
             case "registrazione.Utente":
-                new UtenteDAO.doSave((Utente) entity);
+                new UtenteDAO().doSave((Utente) entity);
                 break;
 
             default:
@@ -179,7 +179,7 @@ public class FacadeDAO {
                 break;
 
             case "registrazione.Utente":
-                new UtenteDAO.doDelete(entityId);
+                new UtenteDAO().doDelete(entityId);
                 break;
 
             default:

@@ -1,5 +1,6 @@
 package storage;
 
+
 import acquisto.Carta;
 import acquisto.Offerta;
 import acquisto.Ordine;
@@ -184,5 +185,23 @@ public class FacadeDAO {
         }
     }
 
+    public boolean getUtenteByEmail(Class<?> entityClass, String email){
+        if(entityClass.getName().equals("registrazione.Utente"))
+            return new UtenteDAO().getUtenteByEmail(email);
+        return false;
+    }
+
+    public boolean getUtenteByUsername(Class<?> entityClass,String username){
+        if(entityClass.getName().equals("registrazione.Utente"))
+            return new UtenteDAO().getUtenteByUsername(username);
+        return false;
+    }
+
+    public Utente getUtenteByEmailPassword(Class<?> entityClass, String email,String password){
+        if(entityClass.getName().equals("registrazione.Utente")){
+            return new UtenteDAO().getUtenteByEmailPassword(email, password);
+        }
+        return null;
+    }
 
 }

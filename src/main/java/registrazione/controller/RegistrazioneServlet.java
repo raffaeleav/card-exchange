@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import registrazione.Utente;
+import storage.FacadeDAO;
 import storage.UtenteDAO;
 
 import java.io.IOException;
@@ -40,9 +41,9 @@ public class RegistrazioneServlet extends HttpServlet {
 
         //Verifiche
 
-        UtenteDAO utenteDAO = new UtenteDAO();
+        FacadeDAO dao = new FacadeDAO();
 
-        if(utenteDAO.getUtenteByEmail(email)){
+        if(dao.getUtenteByEmail(Utente.class,email)){
             String errore = "Email già utilizzata!";
             request.setAttribute("msg", errore);
             request.getRequestDispatcher("/WEB-INF/results/registrazione.jsp").forward(
@@ -50,7 +51,7 @@ public class RegistrazioneServlet extends HttpServlet {
             return;
         }
 
-        if(utenteDAO.getUtenteByUsername(username)){
+        if(dao.getUtenteByUsername(Utente.class,username)){
             String errore = "Username già utilizzata!";
             request.setAttribute("msg", errore);
             request.getRequestDispatcher("/WEB-INF/results/registrazione.jsp").forward(
@@ -58,41 +59,12 @@ public class RegistrazioneServlet extends HttpServlet {
             return;
         }
 
-        if(!isValidPassword(pass)){
-            String errore = "Formato Password non corretto!";
-            request.setAttribute("msg", errore);
-            request.getRequestDispatcher("/WEB-INF/results/registrazione.jsp").forward(
-                    request, response);
-            return;
-        }
         Utente u = new Utente(username,pass,nome,cognome,email);
-        utenteDAO.doSave(u);
+        dao.doSave(Utente.class,u);
         request.getRequestDispatcher("/WEB-INF/results/login.jsp").forward(
                 request, response);
 
 
 
     }
-
-    /**
-     * @param password - parametro di verifica di correttezza
-     * @return true - Password valida
-     * @return false - Password non valida
-     *
-     */
-        public static boolean isValidPassword(String password) {
-            // La password deve avere almeno 4 caratteri
-            if (password.length() < 4) {
-                return false;
-            }
-
-
-            // La password non deve contenere solo caratteri di spaziatura
-            if (password.trim().length() == 0) {
-                return false;
-            }
-
-            return true;
-        }
-
 }

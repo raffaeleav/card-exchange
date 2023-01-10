@@ -20,7 +20,7 @@ public class CarrelloDAO {
     private static final String DELETE_CARRELLO_QUERY = "DELETE FROM Carrello WHERE idCarrello = ?";
 
     // Inserisce un nuovo carrello nel database
-    public static void addCarrello(Carrello carrello) {
+    public void doSave(Carrello carrello) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(INSERT_CARRELLO_QUERY);
             statement.setInt(1, carrello.getIdCarrello());
@@ -32,7 +32,7 @@ public class CarrelloDAO {
     }
 
     // Restituisce il carrello con l'ID specificato, null se non esiste
-    public Carrello getCarrelloById(int idCarrello) {
+    public Carrello doRetrieveById(int idCarrello) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(SELECT_CARRELLO_BY_ID_QUERY);
             statement.setInt(1, idCarrello);
@@ -56,18 +56,18 @@ public class CarrelloDAO {
     infine viene restituito un oggetto Carrello con l'id del carrello e l'id dell'utente specificati
     Se il carrello non viene trovato, viene restituito null.
      */
-    public static Carrello getCarrelloByIdUtente(int idUtente) {
+    public Carrello getCarrelloByIdUtente(int idUtente) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(SELECT_CARRELLO_BY_ID_UTENTE_QUERY);
             statement.setInt(1, idUtente);
             ResultSet resultSet = statement.executeQuery();
+            OffertaDAO offertaDAO = new OffertaDAO();
             if (resultSet.next()) {
                 int idCarrello = resultSet.getInt("idCarrello");
                 // Recupera le offerte presenti nel carrello dal database
                 // utilizzando il metodo getOfferteByIdUtente del DAO OffertaDAO
-                List < Offerta > offerte = OffertaDAO.getOfferteByIdUtente(idUtente);
+                List < Offerta > offerte = offertaDAO.getOfferteByIdUtente(idUtente);
                 // Crea un oggetto Carrello con l'ID del carrello e l'ID dell'utente
-
                 return new Carrello(idCarrello, idUtente);
             }
         } catch (SQLException e) {
@@ -78,7 +78,7 @@ public class CarrelloDAO {
 
 
     // Restituisce tutti i carrelli presenti nel database
-    public List<Carrello> getAllCarrelli() {
+    public List<Carrello> doRetrieveAll() {
         List<Carrello> carrelli = new ArrayList<>();
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(SELECT_ALL_CARRELLI_QUERY);
@@ -94,9 +94,8 @@ public class CarrelloDAO {
         return carrelli;
     }
 
-
     // Aggiorna il carrello nel database
-    public static void updateCarrello(Carrello carrello) {
+    public void doUpdate(Carrello carrello) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(UPDATE_CARRELLO_QUERY);
             statement.setInt(1, carrello.getIdUtente());
@@ -109,7 +108,7 @@ public class CarrelloDAO {
     }
 
     // Elimina il carrello con l'ID specificato dal database
-    public void deleteCarrello(int idCarrello) {
+    public void doDelete(int idCarrello) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(DELETE_CARRELLO_QUERY);
             statement.setInt(1, idCarrello);

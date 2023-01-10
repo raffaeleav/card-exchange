@@ -18,6 +18,10 @@ public class Carrello {
         this.totale = 0;
     }
 
+    public Carrello() {
+
+    }
+
     public int getIdCarrello() {
         return idCarrello;
     }
@@ -35,10 +39,10 @@ public class Carrello {
     }
 
     public List<Offerta> getOfferte() {
-
         // Recupera le offerte presenti nel carrello dal database
         // utilizzando il metodo getOfferte del DAO OffertaDAO
-        return OffertaDAO.getOfferteByIdUtente(this.idUtente);
+        OffertaDAO offertaDAO = new OffertaDAO();
+        return offertaDAO.getOfferteByIdUtente(this.idUtente);
     }
 
     public void setOfferte(List<Offerta> offerte) {
@@ -63,7 +67,6 @@ public class Carrello {
    Non è necessario implementare un setter per il totale, poiché il totale dovrebbe essere calcolato automaticamente
    a partire dalle offerte presenti nel carrello e non dovrebbe essere modificato direttamente.
   */
-
     public double getTotale() {
         double totale = 0;
         for (Offerta offerta : offerte) {

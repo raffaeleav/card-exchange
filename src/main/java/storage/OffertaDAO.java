@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import acquisto.Offerta;
-import storage.ConPool;
-
 /*
 La classe OffertaDAO rappresenta il Data Access Object (DAO) per le entità Offerta. Si tratta di una classe che definisce i metodi per gestire le operazioni CRUD (create, read, update, delete) sulle offerta nel database.
 
@@ -26,7 +24,7 @@ public class OffertaDAO {
     //elenco delle query
     private static final String INSERT_OFFERTA_QUERY = "INSERT INTO Offerta(condizione, prezzo, idUtente, idCarta) VALUES (?, ?, ?, ?)";
     private static final String SELECT_OFFERTA_BY_ID_QUERY = "SELECT * FROM Offerta WHERE idOfferta = ?";
-
+    private static final String SELECT_OFFERTE_BY_ID_ORDINE_QUERY = "SELECT o.* FROM Offerta o JOIN OrdineContieneOfferte oco ON o.idOfferta = oco.idOfferta WHERE oco.idOrdine = ?";
     /*
     la query seleziona tutte le colonne (*) dalla tabella "Offerta" o,
     che vengono unite alle colonne della tabella "CarrelloContieneOfferta" cco sulla base dell'uguaglianza dell'idOfferta,
@@ -37,9 +35,10 @@ public class OffertaDAO {
             "SELECT * FROM Offerta o\n" +
                     "JOIN CarrelloContieneOfferta cco ON o.idOfferta = cco.idOfferta\n" +
                     "JOIN Carrello c ON cco.idCarrello = c.idCarrello\n" +
-                    "WHERE c.idUtente = ?;";
+                    "WHERE c.idUtente = ?";
     private static final String SELECT_ALL_OFFERTE_QUERY = "SELECT * FROM Offerta";
     //private static final String SELECT_OFFERTE_BY_ID_CARRELLO_QUERY = "SELECT * FROM Offerta o INNER JOIN CarrelloContieneOfferta cco ON o.idOfferta = cco.idOfferta WHERE cco.idCarrello = ?";
+
 
     private static final String DELETE_OFFERTA_QUERY = "DELETE FROM Offerta WHERE idOfferta = ?";
 
@@ -67,7 +66,7 @@ public class OffertaDAO {
     questo metodo prende in input un intero id e restituisce l'offerta presente nel database con quell'id, utilizzando la query 'SELECT_OFFERTA_BY_ID_QUERY'.
     I risultati vengono estratti dal ResultSet e utilizzati per costruire un nuovo oggetto Offerta da restituire.
     */
-    public static Offerta doRetrieveById(int idOfferta) {
+    public Offerta doRetrieveById(int idOfferta) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(SELECT_OFFERTA_BY_ID_QUERY);
             statement.setInt(1, idOfferta);
@@ -110,7 +109,7 @@ public class OffertaDAO {
         return offerte;
     }
 
-    public static List<Offerta> getOfferteByIdUtente(int idUtente) {
+    public List<Offerta> getOfferteByIdUtente(int idUtente) {
         List<Offerta> offerte = new ArrayList<>();
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(SELECT_OFFERTE_BY_ID_UTENTE_QUERY);
@@ -130,18 +129,15 @@ public class OffertaDAO {
         return offerte;
     }
 
-    public static List<Offerta> getOfferteByIdOrdine(int idOrdine) throws SQLException {
+    public List<Offerta> getOfferteByIdOrdine(int idOrdine) throws SQLException {
         // Crea una lista vuota di offerte
         List<Offerta> offerte = new ArrayList<>();
 
         // Apre una connessione al database
         Connection conn = ConPool.getConnection();
 
-        // Crea una stringa con la query SQL per recuperare le offerte di un ordine specifico utilizzando una JOIN con la tabella OrdineContieneOfferte
-        String query = "SELECT o.* FROM Offerta o JOIN OrdineContieneOfferte oco ON o.idOfferta = oco.idOfferta WHERE oco.idOrdine = ?";
-
         // Crea un PreparedStatement utilizzando la query creata in precedenza
-        PreparedStatement stmt = conn.prepareStatement(query);
+        PreparedStatement stmt = conn.prepareStatement(SELECT_OFFERTE_BY_ID_ORDINE_QUERY);
 
         // Imposta il parametro della query con l'id dell'ordine passato come argomento
         stmt.setInt(1, idOrdine);
@@ -178,8 +174,6 @@ public class OffertaDAO {
             e.printStackTrace();
         }
     }
-
-
 
 
 

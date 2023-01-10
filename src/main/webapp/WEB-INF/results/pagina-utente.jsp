@@ -36,6 +36,9 @@
     <form id="logOut" action="LogOut" method="post">
         <button class="submitExit" type="submit" value="gestisci">Log-out<i class="fa-solid fa-arrow-right-from-bracket"></i></button><br>
     </form>
+    <form id="elimina" action="eliminaAccount" method="post">
+        <button class="submitExit" type="submit" value="Elimina">Elimina</button><br>
+    </form>
 </div>
 
 </body>

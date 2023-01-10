@@ -54,11 +54,8 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
 
         String indirizzoCompleto= nome.trim()+" "+" "+ cognome.trim()+"\n"+indirizzo.trim()+" "+numeroCivico.trim()+"\n"+cap.trim()+" "+citta.trim()+" "+paese.trim();
 
-        // Recupera le offerte presenti nel carrello dell'utente dal database
-        List<Offerta> offerte = offertaDAO.getOfferteByIdUtente(idUtente);
-
         // Crea un nuovo oggetto Ordine con le offerte recuperate dal carrello
-        Ordine ordine = new Ordine(0, data, indirizzoCompleto, idUtente, offerte, totale);
+        Ordine ordine = new Ordine(0, data, indirizzoCompleto, idUtente,totale);
 
         // Aggiunge l'ordine al database
         ordineDAO.doSave(ordine);

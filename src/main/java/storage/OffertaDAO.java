@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import acquisto.Offerta;
+import acquisto.Ordine;
 /*
 La classe OffertaDAO rappresenta il Data Access Object (DAO) per le entità Offerta. Si tratta di una classe che definisce i metodi per gestire le operazioni CRUD (create, read, update, delete) sulle offerta nel database.
 
@@ -39,7 +40,7 @@ public class OffertaDAO {
     private static final String SELECT_ALL_OFFERTE_QUERY = "SELECT * FROM Offerta";
     //private static final String SELECT_OFFERTE_BY_ID_CARRELLO_QUERY = "SELECT * FROM Offerta o INNER JOIN CarrelloContieneOfferta cco ON o.idOfferta = cco.idOfferta WHERE cco.idCarrello = ?";
 
-
+    private static final String UPDATE_OFFERTA_QUERY = "UPDATE Offerta SET condizione = ?, prezzo = ?, idUtente = ?, idCarta = ? WHERE idOfferta = ?";
     private static final String DELETE_OFFERTA_QUERY = "DELETE FROM Offerta WHERE idOfferta = ?";
 
     /*
@@ -159,6 +160,21 @@ public class OffertaDAO {
         }
 
         return offerte;
+    }
+
+    public void doUpdate(int idOfferta, Offerta offerta){
+            try (Connection con = ConPool.getConnection()) {
+                PreparedStatement statement = con.prepareStatement(UPDATE_OFFERTA_QUERY);
+                statement.setInt(1,  offerta.getIdOfferta());
+                statement.setString(2, offerta.getCondizione());
+                statement.setDouble(3, offerta.getPrezzo());
+                statement.setInt(4, offerta.getIdUtente());
+                statement.setDouble(5, offerta.getIdCarta());
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
     }
 
     /*

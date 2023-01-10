@@ -7,17 +7,13 @@ public class Ordine {
     private Date data;
     private String indirizzo;
     private int idUtente;
-    private List<Offerta> offerte;
     private double totale;
 
-
-
-    public Ordine(int idOrdine, Date data, String indirizzo, int idUtente, List<Offerta> offerte, double totale) {
+    public Ordine(int idOrdine, Date data, String indirizzo, int idUtente,  double totale) {
         this.idOrdine = idOrdine;
         this.data = data;
         this.indirizzo = indirizzo;
         this.idUtente = idUtente;
-        this.offerte = offerte;
         this.totale = totale;
     }
 
@@ -51,14 +47,6 @@ public class Ordine {
 
     public void setIdUtente(int idUtente) {
         this.idUtente = idUtente;
-    }
-
-    public List<Offerta> getOfferte() {
-        return offerte;
-    }
-
-    public void setOfferte(List<Offerta> offerte) {
-        this.offerte = offerte;
     }
 
     public double getTotale(){

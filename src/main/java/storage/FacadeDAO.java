@@ -27,8 +27,8 @@ public class FacadeDAO {
             case "acquisto.Offerta":
                 return new OffertaDAO().doRetrieveAll();
 
-            case "acquisto.Ordine":
-                return new OrdineDAO().doRetrieveAll();
+            //case "acquisto.Ordine":
+               // return new OrdineDAO().doRetrieveAll();
 
             case "recensione.Recensione":
                 return new RecensioneDAO().doRetrieveAll();
@@ -164,7 +164,7 @@ public class FacadeDAO {
                 break;
 
             case "acquisto.Offerta":
-                new OffertaDAO().doUpdate(entityId, (Offerta) entity);
+               // new OffertaDAO().doUpdate(entityId, (Offerta) entity);
                 break;
 
             case "acquisto.Ordine":

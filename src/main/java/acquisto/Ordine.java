@@ -11,6 +11,8 @@ public class Ordine {
     private List<Offerta> offerte;
     private double totale;
 
+
+
     public Ordine(int idOrdine, Date data, String indirizzo, int idUtente, List<Offerta> offerte, double totale) {
         this.idOrdine = idOrdine;
         this.data = data;

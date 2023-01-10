@@ -48,7 +48,7 @@ public class OffertaDAO {
     questo metodo prende in input un oggetto di tipo Offerta e lo inserisce nel database, utilizzando la query 'INSERT_OFFERTA_QUERY'.
     I valori dei campi vengono impostati utilizzando i metodi get dell'oggetto Offerta.
     */
-    public void addOfferta(Offerta offerta) {
+    public void doSave(Offerta offerta) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(INSERT_OFFERTA_QUERY);
             statement.setString(1, offerta.getCondizione());
@@ -67,7 +67,7 @@ public class OffertaDAO {
     questo metodo prende in input un intero id e restituisce l'offerta presente nel database con quell'id, utilizzando la query 'SELECT_OFFERTA_BY_ID_QUERY'.
     I risultati vengono estratti dal ResultSet e utilizzati per costruire un nuovo oggetto Offerta da restituire.
     */
-    public static Offerta getOffertaById(int idOfferta) {
+    public static Offerta doRetrieveById(int idOfferta) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(SELECT_OFFERTA_BY_ID_QUERY);
             statement.setInt(1, idOfferta);
@@ -90,7 +90,7 @@ public class OffertaDAO {
     questo metodo restituisce la lista di tutte le offerte presenti nel database, utilizzando la query 'SELECT_ALL_OFFERTE_QUERY'.
     I risultati vengono estratti dal ResultSet e utilizzati per costruire una lista di oggetti Offerta da restituire.
     */
-    public List < Offerta > getAllOfferte() {
+    public List < Offerta > doRetrieveAll() {
         List < Offerta > offerte = new ArrayList < > ();
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(SELECT_ALL_OFFERTE_QUERY);
@@ -169,7 +169,7 @@ public class OffertaDAO {
     deleteOfferta(int id): elimina un'offerta dal database in base all'id specificato.
     questo metodo prende in input un intero id e cancella dal database l'offerta con quell'id, utilizzando la query 'DELETE_OFFERTA_QUERY'.
     */
-    public void deleteOfferta(int idOfferta) {
+    public void doDelete(int idOfferta) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(DELETE_OFFERTA_QUERY);
             statement.setInt(1, idOfferta);
@@ -178,6 +178,8 @@ public class OffertaDAO {
             e.printStackTrace();
         }
     }
+
+
 
 
 

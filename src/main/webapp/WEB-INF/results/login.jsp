@@ -11,7 +11,7 @@
 <head>
   <link rel="icon" href="${pageContext.request.contextPath}/imgs/icons/card.svg">
   <title>CardXchange | Login </title>
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/Login.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/login.css">
 </head>
 
 <body>

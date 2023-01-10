@@ -21,6 +21,7 @@ public class CartaDAO {
                 c.setNome(rs.getString(2));
                 c.setCategoria(rs.getString(3));
                 c.setRarita(rs.getString(4));
+                c.setImmagine(rs.getString(5));
                 carte.add(c);
             }
             con.close();
@@ -41,6 +42,8 @@ public class CartaDAO {
                 c.setNome(rs.getString(2));
                 c.setCategoria(rs.getString(3));
                 c.setRarita(rs.getString(4));
+                c.setImmagine(rs.getString(5));
+
                 return c;
             }
             con.close();
@@ -52,11 +55,12 @@ public class CartaDAO {
 
     public void doUpdate(int idCarta,Carta carta){//Metodo che permette di modificare una carta presente nel DB.
         try (Connection con=ConPool.getConnection()){
-            PreparedStatement ps=con.prepareStatement("UPDATE Carta set nome=?,categoria=?,rarita=? where idCarta=?");
+            PreparedStatement ps=con.prepareStatement("UPDATE Carta set nome=?, categoria=?, rarita=?, immagine=? where idCarta=?");
             ps.setString(1, carta.getNome());
             ps.setString(2, carta.getCategoria());
             ps.setString(3, carta.getRarita());
             ps.setInt(4,idCarta);
+            ps.setString(5, carta.getImmagine());
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -78,10 +82,11 @@ public class CartaDAO {
 
     public void doSave(Carta carta){//Metodo che permette di inserire una nuova carta nel DB
         try(Connection con=ConPool.getConnection()){
-            PreparedStatement ps=con.prepareStatement("INSERT into carta(nome,categoria,rarita) values (?,?,?)");
-            ps.setString(1,carta.getNome());
+            PreparedStatement ps=con.prepareStatement("INSERT into carta(nome,categoria,rarita,immagine) values (?,?,?,?)");
+            ps.setString(1, carta.getNome());
             ps.setString(2, carta.getCategoria());
-            ps.setString(3,carta.getRarita());
+            ps.setString(3, carta.getRarita());
+            ps.setString(4, carta.getImmagine());
             if (ps.executeUpdate() != 1) {
                 throw new RuntimeException("Errore nell'inserimento");
             }

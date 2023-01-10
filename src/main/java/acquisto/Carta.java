@@ -17,6 +17,14 @@ public class Carta {
         this.rarita = rarita;
     }
 
+    public Carta(int idCarta, String nome, String categoria, String rarita, String immagine) {
+        this.idCarta = idCarta;
+        this.nome = nome;
+        this.categoria = categoria;
+        this.rarita = rarita;
+        this.immagine = immagine;
+    }
+
     public int getIdCarta() {
         return idCarta;
     }

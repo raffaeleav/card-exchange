@@ -22,6 +22,7 @@ CREATE table Carta(
 
                       PRIMARY KEY(idCarta)
 );
+
 insert into Carta values(default,'Drago bianco occhi blu','Yu-Gi-Oh','Comune');
 insert into Carta values(default,'Mago nero','Yu-Gi-Oh','Rara');
 insert into Carta values(default,'Pikachu','Pokemon','Ultra rara');

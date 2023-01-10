@@ -8,7 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Pagina Utente</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/paginaUtente.css">
 </head>
 <body>
 <% Utente utente = (Utente) session.getAttribute("Utente");%>

@@ -1,0 +1,62 @@
+*{
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+}
+.titolo{
+    text-align: center;
+}
+
+.utentePanel{
+    text-align: center;
+    margin: auto;
+    max-width: max-content;
+    padding: 60px;
+    background:#e49314;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+button{
+    padding: 5px;
+    margin: 5px;
+    border-radius: 7px;
+    text-align: center;
+}
+.btn{
+    border-color: #e49314;
+    color: #FFFFFF;
+    background-color: #292929;
+}
+.btn:hover{
+    color: #e79213;
+}
+
+
+.submit{
+    margin: 10px;
+    border-color: #e49314;
+    color: #FFFFFF;
+    background-color: #292929;
+}
+.submit:hover{
+    color: #e79213;
+}
+.submitExit{
+    margin: 10px;
+    border-color: #e49314;
+    color: #FFFFFF;
+    background-color: #292929;
+}
+.submitExit:hover{
+    color: #c80009;
+}
+i{
+    margin: 5px;
+}
+@media (max-width: 400px){
+    body{
+        background-color: #1A1A1A;
+        color: #e49314;
+    }
+
+}

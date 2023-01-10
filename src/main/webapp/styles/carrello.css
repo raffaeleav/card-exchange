@@ -1,0 +1,107 @@
+/* Imposta il font e i colori di base */
+body {
+    font-family: 'Helvetica Neue', sans-serif;
+    color: #333;
+    background-color: #333533;
+}
+
+/* Formatta i titoli */
+h1, h2, h3 {
+    font-weight: 600;
+    color: #fafafa;
+}
+
+/* Formatta i paragrafi */
+p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0 0 10px 0;
+}
+
+/* Formatta il contenitore principale */
+.container {
+    width: 960px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Formatta i pulsanti */
+button, input[type="submit"] {
+    background-color: #FFD100;
+    border: none;
+    color: #202020;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #fafafa;
+}
+
+/* Formatta gli elementi di input */
+input[type="text"] {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+}
+
+/* Formatta le tabelle */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+/* Formatta le celle delle tabelle */
+td, th {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Formatta le intestazioni delle tabelle */
+th {
+    background-color: #eee;
+    font-weight: 600;
+}
+
+/* Formatta i link */
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Formatta le sezioni */
+section {
+    margin: 40px 0;
+}
+
+/* Formatta le intestazioni delle sezioni */
+section h2 {
+    font-size: 24px;
+    margin: 0 0 20px 0;
+}
+
+/* Formatta i sottotitoli delle sezioni */
+section h3 {
+    font-size: 18px;
+    margin: 0 0 10px 0;
+}
+
+/* Formatta le liste */
+ul, ol {
+    margin: 0 0 20px 20px;
+    padding: 0;
+}
+
+li {
+    margin: 0 0 10px 0;
+    padding: 0;
+}

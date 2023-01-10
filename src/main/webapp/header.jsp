@@ -9,7 +9,7 @@
         <div id="header">
             <ul id="top-navbar">
                 <li> <a href="index.jsp">Home</a> </li>
-                <li> <a href="">Account</a> </li>
+                <li> <a href="mostraPaginaLogin">Account</a> </li>
                 <li> <a href="">In vendita</a> </li>
                 <li> <a href="">Vendi</a> </li>
                 <li> <a href="">Ordini effettuati</a> </li>

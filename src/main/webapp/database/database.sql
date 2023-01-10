@@ -11,7 +11,7 @@ create table Utente(
                        email text not null,
                        primary key(idUtente)
 );
-insert into Utente values(default,'xFrancesco','Francescopass123!','Francesco','Di Domenico','francesco@email.it');
+insert into Utente values(default, 'Admin','admin123!','Francesco','Di Domenico','admin@support.cardexchange.it');
 
 CREATE table Carta(
                       idCarta int not null AUTO_INCREMENT,

@@ -1,15 +1,20 @@
+<%@ page import="registrazione.Utente" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="it-IT">
     <head>
 
     </head>
-
+<%Utente utenteLoggato=(Utente) session.getAttribute("Utente");
+%>
     <body>
         <div id="header">
             <ul id="top-navbar">
                 <li> <a href="index.jsp">Home</a> </li>
-                <li> <a href="mostraPaginaLogin">Account</a> </li>
+                <%if (utenteLoggato==null){%>
+                <li> <a href="mostraPaginaLogin">Account</a></li><%}%>
+                <%if (utenteLoggato!=null){%>
+                <li> <a href="mostraPaginaUtente">Account</a></li><%}%>
                 <li> <a href="">In vendita</a> </li>
                 <li> <a href="">Vendi</a> </li>
                 <li> <a href="">Ordini effettuati</a> </li>

@@ -30,7 +30,7 @@ public class CartaDAO {
         }
     }
 
-    public Carta getCartaById(int idCarta){//Metodo che permette di trovare e restituire una carta presente nel DB tramite id
+    public Carta doRetrieveById(int idCarta){//Metodo che permette di trovare e restituire una carta presente nel DB tramite id
         try(Connection con= ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("SELECT * FROM carta WHERE idCarta=?");
             ps.setInt(1,idCarta);
@@ -50,12 +50,12 @@ public class CartaDAO {
         }
     }
 
-    public void doUpdate(int idCarta,String nome,String categoria,String rarita){//Metodo che permette di modificare una carta presente nel DB.
+    public void doUpdate(int idCarta,Carta carta){//Metodo che permette di modificare una carta presente nel DB.
         try (Connection con=ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("UPDATE Carta set nome=?,categoria=?,rarita=? where idCarta=?");
-            ps.setString(1,nome);
-            ps.setString(2,categoria);
-            ps.setString(3,rarita);
+            ps.setString(1, carta.getNome());
+            ps.setString(2, carta.getCategoria());
+            ps.setString(3, carta.getRarita());
             ps.setInt(4,idCarta);
             ps.executeUpdate();
         } catch (SQLException e) {

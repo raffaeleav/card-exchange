@@ -5,6 +5,7 @@ public class Carta {
     private String nome;
     private String categoria;
     private String rarita;
+    private  String immagine;  //serve per il datapath dell immagine.
 
     public Carta() {
     }
@@ -46,5 +47,13 @@ public class Carta {
 
     public void setRarita(String rarita) {
         this.rarita = rarita;
+    }
+
+    public String getImmagine() {
+        return immagine;
+    }
+
+    public void setImmagine(String immagine) {
+        this.immagine = immagine;
     }
 }

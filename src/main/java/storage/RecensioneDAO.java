@@ -55,7 +55,7 @@ public class RecensioneDAO {
         }
     }
     //Metodo che permette di trovare e restituire una recensione nel DB  tramite id
-    public Recensione doRetriveById(int idRecensione) {
+    public Recensione doRetrieveById(int idRecensione) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT*FROM Recensione WHERE idRecensione=?");
             ps.setInt(1, idRecensione);

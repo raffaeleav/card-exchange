@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
+import recensione.Recensione;
 import storage.ConPool;
 import acquisto.Ordine;
 import acquisto.Offerta;
@@ -18,7 +19,7 @@ public class OrdineDAO {
     private static final String DELETE_ORDINE_QUERY = "DELETE FROM Ordine WHERE idOrdine = ?";
     private static final String UPDATE_ORDINECONTIENEOFFERTA_QUERY= "INSERT INTO OrdineContieneOfferta (idOrdine, idOfferta) VALUES (?, ?)";
 
-    public static void addOrdine(Ordine ordine) {
+    public static void doSave(Ordine ordine) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(INSERT_ORDINE_QUERY);
             statement.setDate(1, (java.sql.Date) ordine.getData());
@@ -30,7 +31,29 @@ public class OrdineDAO {
         }
     }
 
-    public Ordine getOrdineById(int idOrdine) {
+   /* public List<Ordine> doRetrieveAll(){
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement("SELECT*FROM Ordine");
+            List<Ordine> ordini=new ArrayList<>();
+            ResultSet rs=ps.executeQuery();
+            while (rs.next()){
+               Ordine o=new Ordine(0,new Date(),"",0, );
+                o.setIdOrdine(rs.getInt(1));
+                o.setData(rs.getDate(2));
+                o.setIndirizzo(rs.getString(3));
+                o.setIdUtente(rs.getInt(4));
+                o.setTotale(rs.getInt(5));
+
+
+                ordini.add(o);
+            }
+            con.close();
+            return ordini;
+        } catch (SQLException ex) {
+            throw new RuntimeException(ex);
+        }}*/
+
+        public Ordine doRetrieveById(int idOrdine) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(SELECT_ORDINE_BY_ID_QUERY);
             statement.setInt(1, idOrdine);
@@ -72,7 +95,7 @@ public class OrdineDAO {
     }
 
 
-    public static void updateOrdine(Ordine ordine) {
+    public static void doUpdate(int idOrdine,Ordine ordine) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(UPDATE_ORDINE_QUERY);
             statement.setDate(1, (java.sql.Date) ordine.getData());
@@ -104,7 +127,7 @@ public class OrdineDAO {
         }
     }
 
-        public static void deleteOrdine(int idOrdine) {
+        public static void doDelete(int idOrdine) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(DELETE_ORDINE_QUERY);
             statement.setInt(1, idOrdine);

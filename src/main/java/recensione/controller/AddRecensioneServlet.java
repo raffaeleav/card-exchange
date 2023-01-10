@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import recensione.Recensione;
+import storage.FacadeDAO;
 import storage.RecensioneDAO;
 
 import java.io.IOException;
@@ -34,15 +35,14 @@ public class AddRecensioneServlet extends HttpServlet {
          * @param req : oggetto di richiesta HTTP
          * @param resp : oggetto di risposta HTTP
          */
-
+        FacadeDAO facadeDAO=new FacadeDAO();
         String testo=req.getParameter("text");
         String strValutazione=req.getParameter("rate");
         //int idUtente=req.getParameter("idUtente");
         //int idOrdine=req.getParameter("idOrdine");
         int  valutazione=Integer.parseInt(strValutazione);
         Recensione r=new Recensione(valutazione,testo,1,1);// N.B idutente e idOrdine da cambiare
-        RecensioneDAO recensioneDAO=new RecensioneDAO();
-        recensioneDAO.doSave(r);
+        facadeDAO.doSave(Recensione.class,r);
         resp.sendRedirect("index.jsp"); //rimanda alla homepage (provvisorio)
     }
 

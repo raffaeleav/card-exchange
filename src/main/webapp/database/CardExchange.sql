@@ -18,6 +18,7 @@ CREATE table Carta(
                       nome text not null,
                       categoria text not null,
                       rarità text not null,
+                      immagine
                       PRIMARY KEY(idCarta)
 );
 insert into Carta values(default,'Drago bianco occhi blu','Yu-Gi-Oh','Comune');

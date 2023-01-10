@@ -1,6 +1,5 @@
 package storage;
 
-
 import acquisto.Carta;
 import acquisto.Offerta;
 import acquisto.Ordine;
@@ -12,8 +11,23 @@ import scambio.Scambio;
 
 import java.util.List;
 
+/**
+ * La classe realizza il design pattern Facade,
+ * garantendo l' accesso alle classi del sottosistema
+ * storage con quest' unica interfaccia
+ * @author Raffaele Aviello
+ * */
+
 public class FacadeDAO {
 
+    /**
+     * Il metodo permette di ottenere tutte le istanze degli oggetti
+     * memorizzate nel database
+     * @param entityClass la classe dell' oggetto di cui si vuole
+     *                    recuperare tutte le istanze
+     * @return una lista qualsiasi di oggetti che estendono la
+     *                    classe Object
+     * */
     public List<?> doRetrieveAll(Class<?> entityClass){
         switch(entityClass.getName()){
             case "acquisto.Carta":
@@ -29,7 +43,7 @@ public class FacadeDAO {
                 return new OffertaDAO().doRetrieveAll();
 
             case "acquisto.Ordine":
-               return new OrdineDAO().doRetrieveAll();
+                return new OrdineDAO().doRetrieveAll();
 
             case "recensione.Recensione":
                 return new RecensioneDAO().doRetrieveAll();
@@ -38,13 +52,20 @@ public class FacadeDAO {
                 return new ScambioDAO().doRetrieveAll();
 
             case "registrazione.Utente":
-                return new UtenteDAO().doRetrieveAll();
+                return new UtenteDAO.doRetrieveAll();
 
             default:
                 return null;
         }
     }
 
+    /**
+     * Il metodo permette di ottenere un oggetto memorizzato nel database
+     * grazie al suo id
+     * @param entityClass la classe dell' oggetto che si vuole recuperare
+     * @param entityId id dell' oggetto che si vuole recuperare
+     * @return un oggetto di tipo Object che rappresenta l' istanza recuperata
+     * */
     public Object doRetrieveById(Class<?> entityClass, int entityId){
         switch(entityClass.getName()){
             case "acquisto.Carta":
@@ -69,13 +90,19 @@ public class FacadeDAO {
                 return new ScambioDAO().doRetrieveById(entityId);
 
             case "registrazione.Utente":
-                return new UtenteDAO().doRetrieveById(entityId);
+                return new UtenteDAO.doRetrieveById(entityId);
 
             default:
                 return null;
         }
     }
 
+    /**
+     * Il metodo permette di memorizzare un oggetto nel database
+     * grazie alla sua istanza
+     * @param entityClass la classe dell' oggetto che si vuole memorizzare
+     * @param entity istanza oggetto che si vuole memorizzare
+     * */
     public void doSave(Class<?> entityClass, Object entity){
         switch(entityClass.getName()){
             case "acquisto.Carta":
@@ -107,7 +134,7 @@ public class FacadeDAO {
                 break;
 
             case "registrazione.Utente":
-                new UtenteDAO().doSave((Utente) entity);
+                new UtenteDAO.doSave((Utente) entity);
                 break;
 
             default:
@@ -115,6 +142,12 @@ public class FacadeDAO {
         }
     }
 
+    /**
+     * Il metodo permette di eliminare un oggetto memorizzato nel database
+     * grazie al suo id
+     * @param entityClass la classe dell' oggetto che si vuole recuperare
+     * @param entityId id dell' oggetto che si vuole recuperare
+     * */
     public void doDelete(Class<?> entityClass, int entityId){
         switch(entityClass.getName()){
             case "acquisto.Carta":
@@ -146,7 +179,7 @@ public class FacadeDAO {
                 break;
 
             case "registrazione.Utente":
-                new UtenteDAO().doDelete(entityId);
+                new UtenteDAO.doDelete(entityId);
                 break;
 
             default:
@@ -154,6 +187,13 @@ public class FacadeDAO {
         }
     }
 
+    /**
+     * Il metodo permette di modificare un oggetto memorizzato nel database
+     * grazie al suo id
+     * @param entityClass la classe dell' oggetto che si vuole modificare
+     * @param entityId id dell' oggetto che si vuole modificare
+     * @param entity istanza dell' oggetto che contiene i nuovi campi da modificare
+     * */
     public void doUpdate(Class<?> entityClass, int entityId, Object entity){
         switch(entityClass.getName()){
             case "acquisto.Carta":
@@ -183,25 +223,6 @@ public class FacadeDAO {
             default:
                 break;
         }
-    }
-
-    public boolean getUtenteByEmail(Class<?> entityClass, String email){
-        if(entityClass.getName().equals("registrazione.Utente"))
-            return new UtenteDAO().getUtenteByEmail(email);
-        return false;
-    }
-
-    public boolean getUtenteByUsername(Class<?> entityClass,String username){
-        if(entityClass.getName().equals("registrazione.Utente"))
-            return new UtenteDAO().getUtenteByUsername(username);
-        return false;
-    }
-
-    public Utente getUtenteByEmailPassword(Class<?> entityClass, String email,String password){
-        if(entityClass.getName().equals("registrazione.Utente")){
-            return new UtenteDAO().getUtenteByEmailPassword(email, password);
-        }
-        return null;
     }
 
 }

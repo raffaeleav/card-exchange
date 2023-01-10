@@ -1,0 +1,28 @@
+/*impostazione dei div e dell'header*/
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 1em;
+    font-family: "Courier New", sans-serif;
+}
+
+/*impostazione contenuto: catalogo(abbigliamento, footwear, accessori)*/
+
+#grid-container ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    list-style-type: none;
+}
+
+#grid-container ul li {
+    margin: 20px;
+    padding: 10px 10px;
+    font-size: medium;
+    text-align: center;
+    color: white;
+    background-color: rgba(0,0,0,0.8);
+}

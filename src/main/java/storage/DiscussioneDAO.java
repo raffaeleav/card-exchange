@@ -20,6 +20,8 @@ public class DiscussioneDAO {
     /**
      * Il metodo permette di ottenere tutti gli oggetti Discussione
      * memorizzati nel database
+     * @return Una lista di oggetti Discussione che contiene tutte
+     *                      le istanze di oggetti Discussione nel database
      */
     public List<Discussione> doRetrieveAll(){
         try {
@@ -53,6 +55,8 @@ public class DiscussioneDAO {
      * specificato
      * @param topicId id dell' oggetto Discussione che si vuole
      *                      reperire dal database
+     * @return un oggetto Discussione il cui id coincide con quello specificato
+     *                      come parametro
      */
     public Discussione doRetrieveById(int topicId){
         try {

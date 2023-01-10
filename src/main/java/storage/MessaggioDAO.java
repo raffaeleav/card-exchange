@@ -20,6 +20,8 @@ public class MessaggioDAO {
     /**
      * Il metodo permette di ottenere tutti gli oggetti Messaggio
      * memorizzati nel database
+     * @return Una lista di oggetti Messaggio che contiene tutte
+     *                      le istanze di oggetti Messaggio nel database
      */
     public List<Messaggio> doRetrieveAll(){
         try {
@@ -55,6 +57,8 @@ public class MessaggioDAO {
      * specificato
      * @param idMessaggio id dell' oggetto Messaggio che si vuole
      *                      reperire dal database
+     * @return un oggetto Messaggio il cui id coincide con quello specificato
+     *                      come parametro
      */
     public Messaggio doRetrieveById(int idMessaggio){
         try {

@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Raffaele Aviello
-  Date: 08/01/2023
-  Time: 05:30
+  Date: 09/01/2023
+  Time: 03:59
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -18,10 +18,10 @@
         <div id="content">
             <div id="grid-container">
                 <ul>
-                    <c:forEach items="${card-matches}" var="card">
+                    <c:forEach items="${topics-list}" var="topic">
                         <li>
                             <br><br>
-                                ${card.nome} ${card.categoria} ${card.rarita}
+                                ${topic.titolo}
                             <br><br>
                         </li>
                     </c:forEach>

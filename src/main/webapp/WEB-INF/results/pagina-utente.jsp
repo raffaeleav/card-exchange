@@ -32,7 +32,7 @@
     </form>
     <%}%>
     <%if(utente.getIdUtente()==1){%> <!-- Nel pannello compare un href al pannello admin se l utente che accede è un admin-->
-    <button class="btn"><a href="admin.jsp" style="text-decoration: none;color: #e49314"> Admin Console </a></button><%}%>
+    <button class="btn"><a href="/WEB-INF/results/admin.jsp" style="text-decoration: none;color: #e49314"> Admin Console </a></button><%}%>
     <form id="logOut" action="LogOut" method="post">
         <button class="submitExit" type="submit" value="gestisci">Log-out<i class="fa-solid fa-arrow-right-from-bracket"></i></button><br>
     </form>

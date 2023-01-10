@@ -11,7 +11,7 @@ create table Utente(
                        email text not null,
                        primary key(idUtente)
 );
-insert into Utente values(default, 'Admin','admin123!','Francesco','Di Domenico','admin@support.cardexchange.it');
+insert into Utente values(default, 'Admin','admin123!','Francesco','Di Domenico','admin@email.it');
 
 CREATE table Carta(
                       idCarta int not null AUTO_INCREMENT,
@@ -23,10 +23,10 @@ CREATE table Carta(
                       PRIMARY KEY(idCarta)
 );
 
-insert into Carta values(default,'Drago bianco occhi blu','Yu-Gi-Oh','Comune');
+/*insert into Carta values(default,'Drago bianco occhi blu','Yu-Gi-Oh','Comune');
 insert into Carta values(default,'Mago nero','Yu-Gi-Oh','Rara');
 insert into Carta values(default,'Pikachu','Pokemon','Ultra rara');
-insert into Carta values(default,'Maga nera','Yu-Gi-Oh','Comune');
+insert into Carta values(default,'Maga nera','Yu-Gi-Oh','Comune');*/
 
 create table Discussione(
                             idDiscussione int not null auto_increment,
@@ -58,7 +58,7 @@ CREATE table Ordine(
                        PRIMARY KEY(idOrdine),
                        FOREIGN KEY (idUtente)  references Utente(idUtente) ON UPDATE CASCADE ON DELETE CASCADE
 );
-insert into Ordine values(default,'2017-06-15','via roma 15',1);
+/*insert into Ordine values(default,'2017-06-15','via roma 15',1);*/
 
 CREATE TABLE Offerta (
                          idOfferta int not null primary key auto_increment,
@@ -68,7 +68,7 @@ CREATE TABLE Offerta (
                          idCarta int not null,
 
                          foreign key(idUtente) references Utente(idUtente) on delete cascade on update cascade,
-                         foreign key(idCarta) references Carta(idCarta) on delete cascade on update cascade,
+                         foreign key(idCarta) references Carta(idCarta) on delete cascade on update cascade
                          
 );
 

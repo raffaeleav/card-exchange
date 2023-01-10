@@ -1,4 +1,4 @@
-package autenticazione.controller;
+package registrazione.controller;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -17,7 +17,7 @@ import java.io.IOException;
  * il facadeDAO.
  * @author Francesco Di Domenico
  */
-@WebServlet("/eliminaAccount")
+@WebServlet("/eliminaUtente")
 public class EliminaUtenteServlet extends HttpServlet {
 
     /**
@@ -33,6 +33,6 @@ public class EliminaUtenteServlet extends HttpServlet {
         int idUtente=Integer.parseInt(req.getParameter("idUtente"));
         FacadeDAO facadeDAO=new FacadeDAO();
         facadeDAO.doDelete(Utente.class,idUtente);
-        RequestDispatcher requestDispatcher= req.getRequestDispatcher("index.jsp");//reindirizza alla pagina index (da cambiare)
+        req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
 }

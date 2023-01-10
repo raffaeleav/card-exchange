@@ -10,6 +10,7 @@
 <head>
     <title>Pagina Utente</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/paginaUtente.css">
+    <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <% Utente utente = (Utente) session.getAttribute("Utente");%>
@@ -22,22 +23,20 @@
         <tr><td>Username: <%=utente.getUsername()%></td></tr>
         <tr><td>Password: <%=utente.getPassword()%></td></tr>
     </table>
-    <%if(utente.getIdUtente()>=2){%> <!--Utente normale puo cambiare i propri dati.   -->
-    <form id="updt" method="post" action="GestioneUtenteServlet?id=<%=utente.getIdUtente()%>">
+    <form id="updt" method="post" action="modificaAccount?id=<%=utente.getIdUtente()%>">
         <input type="text" name="cambiaNome" id="cambiaNome" value="<%=utente.getNome()%>" placeholder="modifica nome" required="required"> <br>
         <input type="text" name="cambiaCognome" id="cambiaCognome" value="<%=utente.getCognome()%>" placeholder="modifica cognome" required="required"> <br>
         <input type="text" name="cambiaUsername" id="cambiaUsername" value="<%=utente.getUsername()%>" placeholder="modifica username" required="required"> <br>
         <input type="password" name="cambiaPass" id="cambiaPass" value="<%=utente.getPassword()%>" placeholder="modifica password" required="required"> <br>
         <button class="submit" type="submit">Modifica<i class="fa-solid fa-wrench"></i></button>
     </form>
-    <%}%>
     <%if(utente.getIdUtente()==1){%> <!-- Nel pannello compare un href al pannello admin se l utente che accede è un admin-->
-    <button class="btn"><a href="/WEB-INF/results/admin.jsp" style="text-decoration: none;color: #e49314"> Admin Console </a></button><%}%>
+    <button class="btn"><a href="admin.jsp" style="text-decoration: none;color: #e49314"> Admin Console </a></button><%}%>
     <form id="logOut" action="LogOut" method="post">
         <button class="submitExit" type="submit" value="gestisci">Log-out<i class="fa-solid fa-arrow-right-from-bracket"></i></button><br>
     </form>
-    <form id="elimina" action="eliminaAccount" method="post">
-        <button class="submitExit" type="submit" value="Elimina">Elimina</button><br>
+    <form method="post" action="eliminaUtente?idUtente=<%=utente.getIdUtente()%>">
+        <button class="submitExit" type="submit" value="Elimina account">Elimina Account <i class="fa-solid fa-trash"></i></button><br>
     </form>
 </div>
 

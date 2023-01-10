@@ -165,7 +165,7 @@ public class FacadeDAO {
                 break;
 
             case "acquisto.Offerta":
-               // new OffertaDAO().doUpdate(entityId, (Offerta) entity);
+                new OffertaDAO().doUpdate(entityId, (Offerta) entity);
                 break;
 
             case "acquisto.Ordine":

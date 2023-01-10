@@ -1,0 +1,43 @@
+/*CSS admin.jsp*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* body{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 700px;
+ }*/
+.admin_panel{
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    color: #e79213;
+    background-color: #292929;
+    text-align: center;
+    max-width: max-content;
+    padding: 25px 30px;
+    border-radius: 15px;
+    position: relative;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.submit{
+    margin: 10px;
+    border-color: #e49314;
+    color: #FFFFFF;
+    background-color: #292929;
+}
+.submit:hover{
+    color: #e79213;
+}
+.admin_panel button{
+    padding: 5px;
+    margin: 5px;
+    border-radius: 7px;
+    text-align: center;
+}
+i{
+    margin: 5px;
+}

@@ -1,4 +1,4 @@
-package autenticazione.controller;
+package storage;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;

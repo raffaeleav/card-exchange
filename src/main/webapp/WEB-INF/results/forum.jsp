@@ -38,7 +38,7 @@
                         <br><br>
 
                         <form action="">
-                            <input type="button" id="offer-button" value="Vedi offerte">
+                            <input type="button" id="offer-button" value="Partecipa alla discussione">
                         </form>
                     </li>
                     <%}%>

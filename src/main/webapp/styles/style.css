@@ -11,7 +11,7 @@ body {
 /* navigation bar */
 
 #top-navbar{
-    margin: 0;
+    margin: 20px;
     padding: 0;
     overflow: hidden;
     list-style-type: none;
@@ -34,21 +34,23 @@ body {
 }
 
 #bottom-navbar{
-    margin: 0;
+    margin: 20px;
     padding: 0;
+    display: flex;
     overflow: hidden;
     list-style-type: none;
     background-color: #FFD100;
+    justify-content: space-around;
 }
 
 #bottom-navbar a:link, a:visited, a:hover, a:active{
-    color: black;
+    color: #FFD100;
     text-decoration: none;
 }
 
 #bottom-navbar li{
     padding: 14px 16px;
-    display: block;
+    display: list-item;
     float: left;
     font-size: medium;
     text-align: center;
@@ -56,7 +58,52 @@ body {
     color: white;
 }
 
-/* ricerca */
+#search text{
+    border-style: none;
+    border-color: rgba(0,0,0,0);
+}
+
+#search-button{
+    background-color: rgba(0,0,0,0);
+    border-color: rgba(0,0,0,0);
+    cursor: pointer;
+}
+
+.fa-search {
+    font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #1a1a1a;
+}
+
+/* footer */
+
+#footer-navbar{
+    margin: 20px;
+    padding: 0;
+    overflow: hidden;
+    list-style-type: none;
+    background-color: rgba(0,0,0,0);
+}
+
+#footer-navbar a:link, a:visited, a:hover, a:active{
+    color: #FFD100;
+    text-decoration: none;
+}
+
+#footer-navbar li{
+    padding: 14px 16px;
+    display: block;
+    float: left;
+    font-size: medium;
+    text-align: center;
+    text-decoration: none;
+    color: #FFD100;
+}
+
+.fa-brands {
+    font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* ricerca (in generale liste) */
 
 #grid-container ul {
     margin: 0;
@@ -74,4 +121,16 @@ body {
     text-align: center;
     color: black;
     background-color: #FFD100;
+}
+
+#grid-container ul li img {
+    margin: 0;
+    height: 218px;
+    width: 150px;
+    object-fit: cover;
+}
+
+#grid-container ul li label {
+    padding: 10px 10px;
+    color: white;
 }

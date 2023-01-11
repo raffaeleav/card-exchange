@@ -4,6 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <script src="script/research-form-validation.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
     <body>
@@ -23,7 +24,9 @@
                     <form id="search-form" name="search-form" action="search-servlet"
                           onsubmit="return searchValidation()" method="get">
                         <input id="search-text" name="search-text" type="text">
-                        <input id="search-button" type="submit" value="Cerca">
+                        <button id="search-button" type="submit">
+                            <i class="fas fa-search fa-lg"></i>
+                        </button>
                     </form>
                 </li>
             </ul>

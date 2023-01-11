@@ -32,7 +32,7 @@
             <input type="text" name="cambiaEmail" id="cambiaEmail" value="${utente.email}" placeholder="modifica email" required="required"> <br>
             <button class="submit" type="submit">Modifica<i class="fa-solid fa-wrench"></i></button>
         </form>
-        <form method="post" action="eliminaUtente?idUtente=<%=listutenti.getIdUtente()%>">
+        <form method="post" action="EliminaUtente?idUtente=<%=listutenti.getIdUtente()%>">
                 <button class="submitExit" type="submit" value="Elimina account">Elimina Account <i class="fa-solid fa-trash"></i></button><br>
             </form>
 

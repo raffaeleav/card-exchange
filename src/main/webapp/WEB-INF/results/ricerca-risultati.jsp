@@ -9,7 +9,8 @@
 <html>
     <head>
         <title>Card eXchange</title>
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css"/>
+        <script src="${pageContext.request.contextPath}/script/search-form-validation.js"></script>
     </head>
 
     <body>

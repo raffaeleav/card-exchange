@@ -2,7 +2,10 @@
 <!DOCTYPE html>
 <html lang="it-IT">
     <head>
+        <meta charset="UTF-8">
         <title>Card eXchange</title>
+        <link rel="stylesheet" type="text/css" href="styles/style.css">
+        <script src="script/search-validation.js"></script>
     </head>
 
     <body>

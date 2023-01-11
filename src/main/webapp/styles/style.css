@@ -5,9 +5,58 @@ body {
     padding: 0;
     font-size: 1em;
     font-family: "Courier New", sans-serif;
+    background-color: #1a1a1a;
 }
 
-/*impostazione contenuto: catalogo(abbigliamento, footwear, accessori)*/
+/* navigation bar */
+
+#top-navbar{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    list-style-type: none;
+    background-color: rgba(0,0,0,0);
+}
+
+#top-navbar a:link, a:visited, a:hover, a:active{
+    color: #FFD100;
+    text-decoration: none;
+}
+
+#top-navbar li{
+    padding: 14px 16px;
+    display: block;
+    float: left;
+    font-size: medium;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+#bottom-navbar{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    list-style-type: none;
+    background-color: #FFD100;
+}
+
+#bottom-navbar a:link, a:visited, a:hover, a:active{
+    color: black;
+    text-decoration: none;
+}
+
+#bottom-navbar li{
+    padding: 14px 16px;
+    display: block;
+    float: left;
+    font-size: medium;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+/* ricerca */
 
 #grid-container ul {
     margin: 0;
@@ -23,6 +72,6 @@ body {
     padding: 10px 10px;
     font-size: medium;
     text-align: center;
-    color: white;
-    background-color: rgba(0,0,0,0.8);
+    color: black;
+    background-color: #FFD100;
 }

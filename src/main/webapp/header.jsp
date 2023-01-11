@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html lang="it-IT">
     <head>
-
+        <meta charset="UTF-8">
+        <script src="script/research-form-validation.js"></script>
     </head>
 
     <body>
@@ -19,8 +20,8 @@
 
             <ul id="bottom-navbar">
                 <li id="search-bar">
-                    <form id="search-form" name="search-form" action="ricerca-servlet"
-                          onsubmit="return researchValidation()" method="get">
+                    <form id="search-form" name="search-form" action="search-servlet"
+                          onsubmit="return searchValidation()" method="get">
                         <input id="search-text" name="search-text" type="text">
                         <input id="search-button" type="submit" value="Cerca">
                     </form>

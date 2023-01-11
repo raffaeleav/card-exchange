@@ -2,9 +2,8 @@
 <!DOCTYPE html>
 <html lang="it-IT">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
-        <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous"></script>
+        <script src="script/research-form-validation.js"></script>
     </head>
 
     <body>

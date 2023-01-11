@@ -4,28 +4,32 @@
     <head>
         <meta charset="UTF-8">
         <script src="script/research-form-validation.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
     <body>
         <div id="footer">
-            <div class="social">
-                <a id="twitter" href=""><i class="fa-brands fa-twitter"></i> </a>
-                <a id="facebook" href=""><i class="fa-brands fa-facebook-f"></i></a>
-                <a id="instagram" href=""><i class="fa-brands fa-instagram"></i></a>
-            </div>
-
-            <ul class="lista">
+            <ul id="footer-navbar">
                 <li>
-                    <div class="chiSiamo">
-                        <a href="#">About us</a>
-                    </div>
+                    <a id="twitter" href=""><i class="fa-brands fa-twitter"></i> </a>
+                </li>
+
+                <li>
+                    <a id="facebook" href=""><i class="fa-brands fa-facebook-f"></i></a>
+                </li>
+
+                <li>
+                    <a id="instagram" href=""><i class="fa-brands fa-instagram"></i></a>
+                </li>
+
+                <li>
+                    <a href="#">About us</a>
+                </li>
+
+                <li>
+                    <a>Copyright 2022 CardEXchange - All rights reserved</a>
                 </li>
             </ul>
-
-            <div class="copyright">
-                <i class="fa-solid fa-copyright"></i>
-                <a>Copyright 2022 CardEXchange - All rights reserved</a>
-            </div>
         </div>
     </body>
 </html>

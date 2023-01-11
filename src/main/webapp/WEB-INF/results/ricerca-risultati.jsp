@@ -28,7 +28,7 @@
                             <br><br>
                                 <%=card.getNome()%> <%=card.getCategoria()%>
                             <br><br>
-                            <img src="<%=card.getImmagine()%>">
+                            <img src="${pageContext.request.contextPath}<%=card.getImmagine()%>">
 
                             <form id="offer-form" action="">
                                 <input type="submit" id="offer-button" value="Vedi offerte">

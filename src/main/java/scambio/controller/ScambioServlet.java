@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import scambio.Scambio;
+import storage.FacadeDAO;
 import storage.OffertaDAO;
 import storage.ScambioDAO;
 
@@ -32,19 +33,18 @@ public class ScambioServlet extends HttpServlet {
 
         int idUtenteMittente = Integer.parseInt(request.getParameter("idUtenteMittente"));
         int idOffertaMittente = Integer.parseInt(request.getParameter("idOffertaMittente"));
-        int idOffertDestinatario = Integer.parseInt(request.getParameter("idOffertaDestinatario"));
+        int idOffertaDestinatario = Integer.parseInt(request.getParameter("idOffertaDestinatario"));
         double conguaglio = Double.parseDouble(request.getParameter("conguaglio"));
 
-
-        OffertaDAO offertaDAO = new OffertaDAO();
+        //Design Pattern
+        FacadeDAO dao  = new FacadeDAO();
         // Da implementare in offerta
         int idUtenteDestinatario = 0;
 
-        Scambio s = new Scambio(idUtenteMittente,idUtenteDestinatario,idOffertaMittente,idOffertDestinatario,conguaglio);
+        Scambio s = new Scambio(idUtenteMittente,idUtenteDestinatario,idOffertaMittente,idOffertaDestinatario,conguaglio);
 
-        ScambioDAO scambioDAO  = new ScambioDAO();
 
-        scambioDAO.doSave(s);
+        dao.doSave(Scambio.class,s);
         //Notifica?
 
         request.getRequestDispatcher("index.jsp").forward(

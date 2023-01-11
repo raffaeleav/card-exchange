@@ -27,14 +27,14 @@
                     <input id="topic-text" name="topic-text" type="text">
                     <input id="topic-button" type="submit" value="Crea">
                 </form>
-            </div>>
+            </div>
 
             <div id="grid-container">
                 <ul>
                     <%for(Discussione topic : topics){%>
                     <li>
                         <br><br>
-                        <%=topic.getTitolo()%>
+                            <%=topic.getTitolo()%>
                         <br><br>
 
                         <form action="">

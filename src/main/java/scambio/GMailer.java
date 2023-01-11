@@ -57,12 +57,12 @@ public class GMailer {
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
     }
 
-    public void sendMail(String subject, String message) throws Exception {
+    public void sendMail(String emailDestinatario,String subject, String message) throws Exception {
         Properties props = new Properties();
         Session session = Session.getDefaultInstance(props, null);
         MimeMessage email = new MimeMessage(session);
         email.setFrom(new InternetAddress(TEST_EMAIL));
-        email.addRecipient(TO, new InternetAddress(TEST_EMAIL));
+        email.addRecipient(TO, new InternetAddress(emailDestinatario));
         email.setSubject(subject);
         email.setText(message);
 
@@ -86,18 +86,4 @@ public class GMailer {
             }
         }
     }
-
-    public static void main(String[] args) throws Exception {
-        GMailer s = new GMailer();
-
-                s.sendMail("A new message", """
-                Dear reader,
-                                
-                Hello world.
-                                
-                Best regards,
-                myself
-                """);
-    }
-
 }

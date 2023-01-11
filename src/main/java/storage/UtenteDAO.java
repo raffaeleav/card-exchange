@@ -131,15 +131,16 @@ public class UtenteDAO {
         }
     }
     //Metodo che permette di modificare i dati di un utente
-    public void doUpdate(int idUtente,String username,String passwordhash,String nome,String cognome,String email){
+    public void doUpdate(int idUtente,Utente utente){
         try(Connection con=ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("UPDATE Utente set username=?,passwordhash=?,nome=?,cognome=?,email=? where idUtente=?;");
-            ps.setString(1,username);
-            ps.setString(2,passwordhash);
-            ps.setString(3,nome);
-            ps.setString(4,cognome);
-            ps.setString(5,email);
+            ps.setString(1,utente.getUsername());
+            ps.setString(2,utente.getPassword());
+            ps.setString(3,utente.getNome());
+            ps.setString(4,utente.getCognome());
+            ps.setString(5,utente.getEmail());
             ps.setInt(6,idUtente);
+            ps.executeUpdate();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

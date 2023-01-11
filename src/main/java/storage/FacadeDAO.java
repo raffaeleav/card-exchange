@@ -215,6 +215,9 @@ public class FacadeDAO {
             case "recensione.Recensione":
                 new RecensioneDAO().doUpdate(entityId, (Recensione) entity);
                 break;
+            case "registrazione.Utente":
+                new UtenteDAO().doUpdate(entityId, (Utente) entity);
+                break;
 
             case "scambio.Scambio":
                 new ScambioDAO().doUpdate(entityId, (Scambio) entity);

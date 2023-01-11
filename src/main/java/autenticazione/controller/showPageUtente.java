@@ -13,7 +13,7 @@ import java.io.IOException;
  * @author Francesco Di Domenico
  */
 
-@WebServlet("/mostraPaginaUtente")
+@WebServlet("/MostraPaginaUtente")
     public class showPageUtente extends HttpServlet {
 
     /**

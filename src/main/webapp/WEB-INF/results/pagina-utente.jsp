@@ -23,19 +23,20 @@
         <tr><td>Username: <%=utente.getUsername()%></td></tr>
         <tr><td>Password: <%=utente.getPassword()%></td></tr>
     </table>
-    <form id="updt" method="post" action="modificaAccount?id=<%=utente.getIdUtente()%>">
+    <form id="updt" method="post" action="ModificaUtenteServlet?idUtente=<%=utente.getIdUtente()%>">
         <input type="text" name="cambiaNome" id="cambiaNome" value="<%=utente.getNome()%>" placeholder="modifica nome" required="required"> <br>
         <input type="text" name="cambiaCognome" id="cambiaCognome" value="<%=utente.getCognome()%>" placeholder="modifica cognome" required="required"> <br>
-        <input type="text" name="cambiaUsername" id="cambiaUsername" value="<%=utente.getUsername()%>" placeholder="modifica username" required="required"> <br>
+        <input type="text" name="cambiaUsername" id="cambiaUsername" value="<%=utente.getUsername()%>" placeholder="modifica username" required="required"><br>
         <input type="password" name="cambiaPass" id="cambiaPass" value="<%=utente.getPassword()%>" placeholder="modifica password" required="required"> <br>
+        <input type="text" name="cambiaEmail" id="cambiaEmail" value="<%=utente.getEmail()%>" placeholder="modifica email" required="required"> <br>
         <button class="submit" type="submit">Modifica<i class="fa-solid fa-wrench"></i></button>
     </form>
     <%if(utente.getIdUtente()==1){%> <!-- Nel pannello compare un href al pannello admin se l utente che accede è un admin-->
-    <button class="btn"><a href="admin.jsp" style="text-decoration: none;color: #e49314"> Admin Console </a></button><%}%>
+    <form id="adminPanel"  method="post" action="PannelloAdmin?Utente=<%=utente%>" ><button class="btn" type="submit">Pannello Admin</button></form><%}%>
     <form id="logOut" action="LogOut" method="post">
         <button class="submitExit" type="submit" value="gestisci">Log-out<i class="fa-solid fa-arrow-right-from-bracket"></i></button><br>
     </form>
-    <form method="post" action="eliminaUtente?idUtente=<%=utente.getIdUtente()%>">
+    <form method="post" action="EliminaUtente?idUtente=<%=utente.getIdUtente()%>">
         <button class="submitExit" type="submit" value="Elimina account">Elimina Account <i class="fa-solid fa-trash"></i></button><br>
     </form>
 </div>

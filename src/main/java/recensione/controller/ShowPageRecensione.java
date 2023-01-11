@@ -15,7 +15,7 @@ import java.io.IOException;
  * @author Francesco Di Domenico
  */
 
-@WebServlet("/showPageRecensione")
+@WebServlet("/MostraPaginaRecensione")
 public class ShowPageRecensione extends HttpServlet {
 
     /**
@@ -27,7 +27,7 @@ public class ShowPageRecensione extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher=req.getRequestDispatcher("recensione.jsp");
+        RequestDispatcher dispatcher=req.getRequestDispatcher("/WEB-INF/results/recensione.jsp");
         dispatcher.forward(req,resp);
     }
 }

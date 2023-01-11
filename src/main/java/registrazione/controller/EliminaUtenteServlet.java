@@ -33,6 +33,7 @@ public class EliminaUtenteServlet extends HttpServlet {
         int idUtente=Integer.parseInt(req.getParameter("idUtente"));
         FacadeDAO facadeDAO=new FacadeDAO();
         facadeDAO.doDelete(Utente.class,idUtente);
-        req.getRequestDispatcher("index.jsp").forward(req, resp);
+        String previousPage = req.getHeader("Referer");
+        resp.sendRedirect(previousPage);
     }
 }

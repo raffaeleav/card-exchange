@@ -3,10 +3,10 @@
 <head>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/recensione.css"/>
     <title>Title</title>
+
 </head>
 <body>
-<script src="WEB-INF/script/validate_recensione.js"></script>
-
+<script src="${pageContext.request.contextPath}/script/validate_recensione.js"></script>
 <div class="recensioneContainer">
     <form method="post" action="addRecensione">
         <div class="rate">
@@ -21,8 +21,9 @@
             <input type="radio" id="star1" name="rate" value="1" />
             <label for="star1" title="text"></label>
         </div><br>
-        <textarea class="text-form" id="testo" name="text" rows="3" placeholder="Inserisci testo" oninput="validaTesto()"></textarea><br>
-        <input id="submit"class="submit" type="submit" value="Invia" disabled>
+
+        <textarea class="text" id="text" name="text" rows="3" placeholder="Inserisci testo" oninput="validaTesto()"></textarea><br>
+        <input id="submit" class="submit" type="submit" value="Invia" >
     </form>
 </div>
 

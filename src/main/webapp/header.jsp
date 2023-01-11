@@ -14,12 +14,15 @@
                 <%if (utenteLoggato==null){%>
                 <li> <a href="mostraPaginaLogin">Account</a></li><%}%>
                 <%if (utenteLoggato!=null){%>
-                <li> <a href="mostraPaginaUtente">Account</a></li><%}%>
+                <li> <a href="MostraPaginaUtente">Account</a></li><%}%>
                 <li> <a href="">In vendita</a> </li>
                 <li> <a href="">Vendi</a> </li>
                 <li> <a href="">Ordini effettuati</a> </li>
                 <li> <a href="forum-servlet">Forum</a> </li>
                 <li> <a href="">Carrello</a> </li>
+                <li> <a href="MostraPaginaRecensione">Recensione</a> </li>
+
+
             </ul>
 
             <ul id="bottom-navbar">

@@ -1,4 +1,4 @@
-<%--
+<%@ page import="registrazione.Utente" %><%--
   Created by IntelliJ IDEA.
   User: elomi
   Date: 10/01/2023
@@ -7,15 +7,14 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<link rel="stylesheet">
 <head>
   <title>admin console</title>
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/admin.css">
 </head>
 
 <body>
-
-
+<% Utente utente = (Utente) session.getAttribute("Utente");%>
+<%if(utente.getIdUtente()==1){%>
 <div class="admin_panel">
   <h3>ADMIN CONSOLE</h3><hr><br>
   <div class="forms">
@@ -27,7 +26,7 @@
       <p>Categorie </p>
       <button class="submit" type="submit" value="gestisci">Gestisci <i class="fa-solid fa-wrench"></i></button> <br>
     </form>
-    <form method="post" action="gestioneUtentiServlet">
+    <form method="post" action="AdminUtentiServlet">
       <p>Utenti </p>
       <button class="submit" type="submit" value="gestisci">Gestisci<i class="fa-solid fa-wrench"></i></button><br>
     </form>
@@ -38,7 +37,11 @@
 
   </div>
 
-</div>
+</div><%}%><%if(utente.getIdUtente()!=1){%>
+<div class="forUser">
+  <h2>Non dovresti essere in questa pagina.</h2><hr>  <br>
+  <a href="../../index.jsp">Clicca per tornare alla homepage</a>
+</div><%}%>
 
 </body>
 </html>

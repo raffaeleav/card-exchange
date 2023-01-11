@@ -29,19 +29,14 @@
             <input type="text" name="cambiaCognome" id="cambiaCognome" value="<%=listutenti.getCognome()%>" placeholder="modifica cognome" required="required"> <br>
             <input type="text" name="cambiaUsername" id="cambiaUsername" value="<%=listutenti.getUsername()%>" placeholder="modifica username" required="required"> <br>
             <input type="password" name="cambiaPass" id="cambiaPass" value="<%=listutenti.getPassword()%>" placeholder="modifica password" required="required"> <br>
-            <input type="text" name="cambiaEmail" id="cambiaEmail" value="${utente.email}" placeholder="modifica email" required="required"> <br>
+            <input type="text" name="cambiaEmail" id="cambiaEmail" value="<%=listutenti.getEmail()%>" placeholder="modifica email" required="required"> <br>
             <button class="submit" type="submit">Modifica<i class="fa-solid fa-wrench"></i></button>
         </form>
         <form method="post" action="EliminaUtente?idUtente=<%=listutenti.getIdUtente()%>">
                 <button class="submitExit" type="submit" value="Elimina account">Elimina Account <i class="fa-solid fa-trash"></i></button><br>
             </form>
-
     </div>
     <%}%>
-
-
 </div>
-
-
 </body>
 </html>

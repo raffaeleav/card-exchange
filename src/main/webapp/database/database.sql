@@ -12,6 +12,8 @@ create table Utente(
                        primary key(idUtente)
 );
 insert into Utente values(default, 'Admin','admin123!','Francesco','Di Domenico','admin@email.it');
+insert into Utente values(default, 'utente','utente123!','Francesco','Di Domenico','utente@email.it');
+insert into Utente values(default, 'Admin','admin123!','Francesco','Di Domenico','admin@email.it');
 
 CREATE table Carta(
                       idCarta int not null AUTO_INCREMENT,
@@ -58,7 +60,7 @@ CREATE table Ordine(
                        PRIMARY KEY(idOrdine),
                        FOREIGN KEY (idUtente)  references Utente(idUtente) ON UPDATE CASCADE ON DELETE CASCADE
 );
-/*insert into Ordine values(default,'2017-06-15','via roma 15',1);*/
+insert into Ordine values(default,'2017-06-15','via roma 15',1,55.20);
 
 CREATE TABLE Offerta (
                          idOfferta int not null primary key auto_increment,

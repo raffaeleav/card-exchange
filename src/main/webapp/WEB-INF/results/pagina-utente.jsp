@@ -23,6 +23,7 @@
         <tr><td>Username: <%=utente.getUsername()%></td></tr>
         <tr><td>Password: <%=utente.getPassword()%></td></tr>
     </table>
+    <%if(utente.getIdUtente()>=2){%> <!-- Nel pannello utente appare un form di modifica credenziali se l utente non è un admin-->
     <form id="updt" method="post" action="ModificaUtenteServlet?idUtente=<%=utente.getIdUtente()%>">
         <input type="text" name="cambiaNome" id="cambiaNome" value="<%=utente.getNome()%>" placeholder="modifica nome" required="required"> <br>
         <input type="text" name="cambiaCognome" id="cambiaCognome" value="<%=utente.getCognome()%>" placeholder="modifica cognome" required="required"> <br>
@@ -30,7 +31,8 @@
         <input type="password" name="cambiaPass" id="cambiaPass" value="<%=utente.getPassword()%>" placeholder="modifica password" required="required"> <br>
         <input type="text" name="cambiaEmail" id="cambiaEmail" value="<%=utente.getEmail()%>" placeholder="modifica email" required="required"> <br>
         <button class="submit" type="submit">Modifica<i class="fa-solid fa-wrench"></i></button>
-    </form>
+        <h6 style="color: red">N.B le modifiche apportate ai tuoi dati saranno visibili al prossimo accesso.</h6>
+    </form><%}%>
     <%if(utente.getIdUtente()==1){%> <!-- Nel pannello compare un href al pannello admin se l utente che accede è un admin-->
     <form id="adminPanel"  method="post" action="PannelloAdmin?Utente=<%=utente%>" ><button class="btn" type="submit">Pannello Admin</button></form><%}%>
     <form id="logOut" action="LogOut" method="post">

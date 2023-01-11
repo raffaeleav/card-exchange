@@ -6,6 +6,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import registrazione.Utente;
 
 import java.io.IOException;
 /**
@@ -25,6 +27,9 @@ import java.io.IOException;
      */
         @Override
         protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+            HttpSession session= req.getSession();
+            Utente utenteLoggato=(Utente)session.getAttribute("Utente");
+            req.setAttribute("Utente",utenteLoggato);
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/results/pagina-utente.jsp");
             requestDispatcher.forward(req, resp);
         }

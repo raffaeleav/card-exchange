@@ -6,15 +6,15 @@ var testoOK=false;
 
 
 function validaTesto(){
-    var reg= /[A-Za-zÀ-ú0-9!?. ]/;
+    var text=document.getElementsByClassName("text").value;
     var testo=document.getElementById("testo").value;
 
-    if(reg.test(testo)===false){
-        document.forms['testo'].style.border=borderNO;
+    if(text.length<10||text.length>=150){
+        document.forms['text'].style.border=borderNO;
         testoOK=false;
     }
     else {
-        document.forms['testo'].style.border=borderOK;
+        document.forms['text'].style.border=borderOK;
         testoOK=true;}
     abilitaInvioRecensione();
 

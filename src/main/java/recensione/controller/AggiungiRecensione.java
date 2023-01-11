@@ -8,11 +8,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import recensione.Recensione;
 import storage.FacadeDAO;
-import storage.RecensioneDAO;
 
 import java.io.IOException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * La classe permette l'inserimento di una recensione tramite
@@ -22,8 +19,8 @@ import java.util.regex.Pattern;
  */
 
 
-@WebServlet("/addRecensione")//aggiunta prodotto al DB
-public class AddRecensioneServlet extends HttpServlet {
+@WebServlet("/AggiungiRecensione")//aggiunta prodotto al DB
+public class AggiungiRecensione extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -8,7 +8,7 @@
 <body>
 <script src="${pageContext.request.contextPath}/script/validate_recensione.js"></script>
 <div class="recensioneContainer">
-    <form method="post" action="addRecensione">
+    <form method="post" action="AggiungiRecensione">
         <div class="rate">
             <input type="radio" id="star5" name="rate" value="5" />
             <label for="star5" title="text"></label>

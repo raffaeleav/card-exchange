@@ -17,7 +17,7 @@ import java.io.IOException;
  * il facadeDAO.
  * @author Francesco Di Domenico
  */
-@WebServlet("/removeRecensione")
+@WebServlet("/EliminaRecensione")
 public class EliminaRecensioneServlet extends HttpServlet {
 
     /**

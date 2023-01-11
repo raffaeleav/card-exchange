@@ -1,4 +1,4 @@
-package registrazione.controller;
+package autenticazione.controller;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;

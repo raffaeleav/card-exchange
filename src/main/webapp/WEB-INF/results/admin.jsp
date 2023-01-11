@@ -18,13 +18,13 @@
 <div class="admin_panel">
   <h3>ADMIN CONSOLE</h3><hr><br>
   <div class="forms">
-    <form method="post" action="gestioneCarteServlet">
+    <form method="post" action="AdminCarteServlet">
       <p>Carte </p>
-      <button class="submit" type="submit" value="gestisci">Gestisci <i class="fa-solid fa-wrench"></i></button>
+      <button class="submit" type="submit" value="gestisci" disabled>Gestisci <i class="fa-solid fa-wrench"></i></button>
     </form>
-    <form method="post" action="gestioneOfferteServlet">
-      <p>Categorie </p>
-      <button class="submit" type="submit" value="gestisci">Gestisci <i class="fa-solid fa-wrench"></i></button> <br>
+    <form method="post" action="AdminOfferteServlet">
+      <p>Offerte </p>
+      <button class="submit" type="submit" value="gestisci"disabled>Gestisci <i class="fa-solid fa-wrench"></i></button> <br>
     </form>
     <form method="post" action="AdminUtentiServlet">
       <p>Utenti </p>
@@ -33,6 +33,10 @@
     <form method="post" action="AdminRecensioniServlet">
       <p>Recensioni </p>
       <button class="submit" type="submit" value="gestisci">Gestisci<i class="fa-solid fa-wrench"></i></button><br>
+    </form>
+    <form method="post" action="AdminDiscussioniServlet">
+      <p>Discussioni </p>
+      <button class="submit" type="submit" value="gestisci" disabled>Gestisci<i class="fa-solid fa-wrench"></i></button><br>
     </form>
 
   </div>

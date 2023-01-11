@@ -11,8 +11,8 @@ import java.io.IOException;
  * La classe permette l'indirizzamento verso la pagina del pannello admin.
  * @author Francesco Di Domenico
  */
-@WebServlet("/PannelloAdmin")
-public class ShowPannelloAdmin extends HttpServlet {
+@WebServlet("/MostraPannelloAdmin")
+public class MostraPannelloAdmin extends HttpServlet {
 
     /**
      * Il metodo permette di  rimandare alla pagina pannello dell'admin per gestire gli utenti tramite parametro req.

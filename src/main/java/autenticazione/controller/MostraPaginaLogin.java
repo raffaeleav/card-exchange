@@ -15,8 +15,8 @@ import java.io.IOException;
  * @author Francesco Di Domenico
  */
 
-@WebServlet("/mostraPaginaLogin")
-public class showPageLogin extends HttpServlet {
+@WebServlet("/MostraPaginaLogin")
+public class MostraPaginaLogin extends HttpServlet {
 
     /**
      * Il metodo permette di gestire la richiesta del client,dove il server

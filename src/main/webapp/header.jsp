@@ -12,7 +12,7 @@
             <ul id="top-navbar">
                 <li> <a href="index.jsp">Home</a> </li>
                 <%if (utenteLoggato==null){%>
-                <li> <a href="mostraPaginaLogin">Account</a></li><%}%>
+                <li> <a href="MostraPaginaLogin">Account</a></li><%}%>
                 <%if (utenteLoggato!=null){%>
                 <li> <a href="MostraPaginaUtente">Account</a></li><%}%>
                 <li> <a href="">In vendita</a> </li>

@@ -42,9 +42,9 @@ public class EliminaUtenteServlet extends HttpServlet {
         facadeDAO.doDelete(Utente.class, idUtente);
 
         if (utenteLoggato.getIdUtente() == 1) {
-            resp.sendRedirect("PannelloAdmin");
+            resp.sendRedirect("MostraPannelloAdmin");
         } else {
-            resp.sendRedirect("Log-out");
+            resp.sendRedirect("LogOut");
         }
 
     }

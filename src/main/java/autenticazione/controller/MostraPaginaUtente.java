@@ -16,7 +16,7 @@ import java.io.IOException;
  */
 
 @WebServlet("/MostraPaginaUtente")
-    public class showPageUtente extends HttpServlet {
+    public class MostraPaginaUtente extends HttpServlet {
 
     /**
      * Il metodo permette di gestire la richiesta del client,dove il server
@@ -29,7 +29,7 @@ import java.io.IOException;
             HttpSession session= req.getSession();
             Utente utenteLoggato=(Utente)session.getAttribute("Utente");
             req.setAttribute("Utente",utenteLoggato);
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/results/pagina-utente.jsp");
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/results/paginaUtente.jsp");
             requestDispatcher.forward(req, resp);
         }
     }

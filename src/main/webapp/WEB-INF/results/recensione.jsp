@@ -26,6 +26,5 @@
         <input id="submit" class="submit" type="submit" value="Invia" >
     </form>
 </div>
-
 </body>
 </html>

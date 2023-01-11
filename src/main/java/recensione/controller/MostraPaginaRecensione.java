@@ -1,4 +1,4 @@
-package chat.controller;
+package recensione.controller;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -10,22 +10,23 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * La classe permette l'indirizzamento verso la pagina di chat.
+ * La classe permette l'indirizzamento verso la pagina di compilazione
+ * form della recensione.
  * @author Francesco Di Domenico
  */
 
-@WebServlet("/showPageChat")
-public class ShowPageChat extends HttpServlet {
+@WebServlet("/MostraPaginaRecensione")
+public class MostraPaginaRecensione extends HttpServlet {
+
     /**
      * Il metodo permette di gestire la richiesta del client,dove il server
-     * rimanda ad un'altra
-     * pagina a fine tramite parametro RequestDispatcher .
+     * rimanda alla pagina recensione parametro RequestDispatcher .
      * @param req : oggetto di richiesta HTTP
      * @param resp : oggetto di risposta HTTP
      */
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher= req.getRequestDispatcher("chat.jsp");
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher dispatcher=req.getRequestDispatcher("/WEB-INF/results/recensione.jsp");
         dispatcher.forward(req,resp);
     }
 }

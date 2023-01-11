@@ -5,15 +5,17 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import registrazione.Utente;
+import scambio.GMailer;
 import scambio.Scambio;
 import storage.FacadeDAO;
-import storage.OffertaDAO;
-import storage.ScambioDAO;
 
 import java.io.IOException;
 
+
 /**
  * Questa servlet viene acceduta quando si esegue una richiesta di scambio, la quale permette il salvataggio nel DB
+ * e l'invio di una notifica
  */
 @WebServlet(name = "ScambioServlet", value = "/ScambioServlet")
 public class ScambioServlet extends HttpServlet {
@@ -46,6 +48,15 @@ public class ScambioServlet extends HttpServlet {
 
         dao.doSave(Scambio.class,s);
         //Notifica?
+        Utente destinatario = (Utente) new FacadeDAO().doRetrieveById(Utente.class,idUtenteDestinatario);
+        Utente mittente = (Utente) new FacadeDAO().doRetrieveById(Utente.class,idUtenteMittente);
+        try {
+            GMailer gMailer = new GMailer();
+            gMailer.sendMail(destinatario.getEmail(),"Richiesta Di Scambio","Hai ricevuto una richiesta di scambio di carte da parte dell'utente" + mittente.getEmail() + "." +
+                    "La sua carta 'A' per la tua carta 'B'. Utilizza il pulsante 'Accetta' o 'Rifiuta' per rispondere alla richiesta.");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         request.getRequestDispatcher("index.jsp").forward(
                 request, response);

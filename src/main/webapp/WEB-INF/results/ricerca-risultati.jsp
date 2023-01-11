@@ -26,12 +26,11 @@
                     <%for(Carta card : cards){%>
                         <li>
                             <br><br>
-                                <%=card.getNome()%> <%=card.getCategoria()%> <%=card.getRarita()%>
+                                <%=card.getNome()%> <%=card.getCategoria()%>
                             <br><br>
-                            <img src="<%=card.getImmagine()%>" alt="<%=card.getNome()%>">
+                            <img src="<%=card.getImmagine()%>">
 
                             <form id="offer-form" action="">
-                                <input type="text">
                                 <input type="submit" id="offer-button" value="Vedi offerte">
                             </form>
                         </li>

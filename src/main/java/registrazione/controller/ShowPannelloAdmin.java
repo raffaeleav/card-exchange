@@ -7,9 +7,18 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-
+/**
+ * La classe permette l'indirizzamento verso la pagina del pannello admin.
+ * @author Francesco Di Domenico
+ */
 @WebServlet("/PannelloAdmin")
 public class ShowPannelloAdmin extends HttpServlet {
+
+    /**
+     * Il metodo permette di  rimandare alla pagina pannello dell'admin per gestire gli utenti tramite parametro req.
+     * @param req : oggetto di richiesta HTTP
+     * @param resp : oggetto di risposta HTTP
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getParameter("Utente");

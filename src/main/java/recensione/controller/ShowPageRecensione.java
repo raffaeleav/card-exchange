@@ -20,8 +20,7 @@ public class ShowPageRecensione extends HttpServlet {
 
     /**
      * Il metodo permette di gestire la richiesta del client,dove il server
-     * rimanda ad un'altra
-     * pagina a fine tramite parametro RequestDispatcher .
+     * rimanda alla pagina recensione parametro RequestDispatcher .
      * @param req : oggetto di richiesta HTTP
      * @param resp : oggetto di risposta HTTP
      */

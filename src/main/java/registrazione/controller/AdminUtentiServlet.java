@@ -24,10 +24,9 @@ import java.util.List;
 public class AdminUtentiServlet extends HttpServlet {
 
     /**
-     * Il metodo permette di gestire la richiesta del client,dove il server
-     * salva i parametri immessi nel form della pagina di recensione e grazie
-     * alla classe recensioneDAO aggiunge la recensione al database e rimanda ad un'altra
-     * pagina a fine compilazione tramite parametro resp.
+     * Il metodo permette di ottenere dal database tramite il facadeDAO
+     * la lista degli utenti,setta la lista come parametro nella request
+     * e rimanda alla pagina dell admin per gestire gli utenti tramite parametro req.
      * @param req : oggetto di richiesta HTTP
      * @param resp : oggetto di risposta HTTP
      */

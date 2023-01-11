@@ -23,7 +23,11 @@ public class EliminaUtenteServlet extends HttpServlet {
 
     /**
      * Il metodo permette di gestire la richiesta del client,dove il server
-     * prende il parametro idutente ed elimina l'utente nel DB.
+     * prende il parametro idutente e attraverso la session conosce il tipo
+     * di utente loggato che sta svolgendo l azione di eliminare l'utente nel DB.
+     * Successivamente:
+     * se l utente è l admin rendirizza tramite parametro resp alla servlet PannelloAdmin dopo aver cancellato l utente.
+     * se l utente non è l admin reindirizza tramite parametro resp alla sevlet di log out dopo aver cancellato l utente.
      * Il dispatcher reindirizza poi ad un altra pagina.
      *
      * @param req  : oggetto di richiesta HTTP

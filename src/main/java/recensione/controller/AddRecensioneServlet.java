@@ -38,8 +38,8 @@ public class AddRecensioneServlet extends HttpServlet {
         FacadeDAO facadeDAO=new FacadeDAO();
         String testo=req.getParameter("text");
         String strValutazione=req.getParameter("rate");
-        //int idUtente=req.getParameter("idUtente");
-        //int idOrdine=req.getParameter("idOrdine");
+        //int idUtente=req.getParameter("idUtente"); ancora da settare
+        //int idOrdine=req.getParameter("idOrdine");ancora da settare
         int  valutazione=Integer.parseInt(strValutazione);
         Recensione r=new Recensione(valutazione,testo,1,1);// N.B idutente e idOrdine da cambiare
         facadeDAO.doSave(Recensione.class,r);

@@ -50,4 +50,3 @@ out/
 .idea/
 
 # secret file
-*.json

@@ -3,7 +3,6 @@
 <html lang="it-IT">
     <head>
         <meta charset="UTF-8">
-        <script src="script/research-form-validation.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 

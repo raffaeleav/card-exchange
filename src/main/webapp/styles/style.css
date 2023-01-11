@@ -13,9 +13,11 @@ body {
 #top-navbar{
     margin: 20px;
     padding: 0;
+    display: flex;
     overflow: hidden;
     list-style-type: none;
     background-color: rgba(0,0,0,0);
+    justify-content: center;
 }
 
 #top-navbar a:link, a:visited, a:hover, a:active{
@@ -24,7 +26,7 @@ body {
 }
 
 #top-navbar li{
-    padding: 14px 16px;
+    padding: 14px 14px;
     display: block;
     float: left;
     font-size: medium;
@@ -49,7 +51,7 @@ body {
 }
 
 #bottom-navbar li{
-    padding: 14px 16px;
+    padding: 14px 14px;
     display: list-item;
     float: left;
     font-size: medium;
@@ -69,6 +71,11 @@ body {
     cursor: pointer;
 }
 
+.fa-user, .fa-list, .fa-cart-shopping {
+    font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #FFD100;
+}
+
 .fa-search {
     font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #1a1a1a;
@@ -79,9 +86,11 @@ body {
 #footer-navbar{
     margin: 20px;
     padding: 0;
+    display: flex;
     overflow: hidden;
     list-style-type: none;
     background-color: rgba(0,0,0,0);
+    justify-content: center;
 }
 
 #footer-navbar a:link, a:visited, a:hover, a:active{
@@ -90,7 +99,7 @@ body {
 }
 
 #footer-navbar li{
-    padding: 14px 16px;
+    padding: 14px 14px;
     display: block;
     float: left;
     font-size: medium;
@@ -106,21 +115,22 @@ body {
 /* ricerca (in generale liste) */
 
 #grid-container ul {
-    margin: 0;
+    margin: 20px;
     padding: 0;
     display: flex;
     flex-wrap: wrap;
     overflow: hidden;
     list-style-type: none;
+    background-color: #FFD100;
 }
 
 #grid-container ul li {
     margin: 20px;
-    padding: 10px 10px;
+    padding: 14px 14px;
     font-size: medium;
     text-align: center;
     color: black;
-    background-color: #FFD100;
+    background-color: #d6d6d6;
 }
 
 #grid-container ul li img {
@@ -131,6 +141,22 @@ body {
 }
 
 #grid-container ul li label {
-    padding: 10px 10px;
+    padding: 14px 14px;
     color: white;
+}
+
+/* forum */
+
+#create-topic {
+    margin: 20px;
+    background-color: #FFD100;
+    padding: 10px;
+}
+
+/* content */
+
+p{
+    margin: 20px;
+    padding: 10px;
+    background-color: #FFD100;
 }

@@ -3,7 +3,7 @@
 <html lang="it-IT">
     <head>
         <meta charset="UTF-8">
-        <script src="script/research-form-validation.js"></script>
+        <script src="script/search-validation.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
@@ -11,12 +11,18 @@
         <div id="header">
             <ul id="top-navbar">
                 <li> <a href="index.jsp">Home</a> </li>
-                <li> <a href="">Account</a> </li>
-                <li> <a href="">In vendita</a> </li>
-                <li> <a href="">Vendi</a> </li>
-                <li> <a href="">Ordini effettuati</a> </li>
-                <li> <a href="forum-servlet">Forum</a> </li>
-                <li> <a href="">Carrello</a> </li>
+                <!-- Utente -->
+                <li> <a href=""> <i class="fa-solid fa-user fa-lg"></i> </a> </li>
+                <!-- Carte in vendita -->
+                <li> <a href=""> <i class="fa-solid fa-list fa-lg"></i> </a> </li>
+                <!-- Vendi carta -->
+                <li> <a href=""> <i class="fa-solid fa-bag-shopping fa-lg"></i> </a> </li>
+                <!-- Ordini effettuati -->
+                <li> <a href=""></a> </li>
+                <!-- Forum -->
+                <li> <a href="forum-servlet"> <i class="fa-solid fa-message fa-lg"></i> </a> </li>
+                <!-- Carrello -->
+                <li> <a href=""> <i class="fa-solid fa-cart-shopping"></i> </a> </li>
             </ul>
 
             <ul id="bottom-navbar">

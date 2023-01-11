@@ -33,6 +33,6 @@ public class EliminaRecensioneServlet extends HttpServlet {
         int idRecensione= Integer.parseInt(req.getParameter("idRecensione"));
         FacadeDAO facadeDAO=new FacadeDAO();
         facadeDAO.doDelete(Recensione.class,idRecensione);//Elimina recensione dal DB in base al tipo di classe passata e idRecensione.
-        req.getRequestDispatcher("index.jsp");//reindirizza alla pagina index (da cambiare)
+        resp.sendRedirect("MostraPannelloAdmin");//reindirizza alla pagina pannello admin
     }
 }

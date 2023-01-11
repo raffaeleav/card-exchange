@@ -10,19 +10,20 @@
     <body>
         <div id="header">
             <ul id="top-navbar">
-                <li> <a href="index.jsp">Home</a> </li>
+                <!-- Home -->
+                <li> <a href="index.jsp"> Card eXchange </a> </li>
                 <!-- Utente -->
                 <li> <a href=""> <i class="fa-solid fa-user fa-lg"></i> </a> </li>
                 <!-- Carte in vendita -->
                 <li> <a href=""> <i class="fa-solid fa-list fa-lg"></i> </a> </li>
                 <!-- Vendi carta -->
-                <li> <a href=""> <i class="fa-solid fa-bag-shopping fa-lg"></i> </a> </li>
+                <li> <a href=""> <i class="fa-solid fa-lock fa-lg"></i> </a> </li>
                 <!-- Ordini effettuati -->
-                <li> <a href=""></a> </li>
+                <li> <a href=""> <i class="fa-solid fa-clipboard fa-lg"></i> </a> </li>
                 <!-- Forum -->
-                <li> <a href="forum-servlet"> <i class="fa-solid fa-message fa-lg"></i> </a> </li>
+                <li> <a href="forum-servlet"> <i class="fa-solid fa-comment fa-lg"></i> </a> </li>
                 <!-- Carrello -->
-                <li> <a href=""> <i class="fa-solid fa-cart-shopping"></i> </a> </li>
+                <li> <a href=""> <i class="fa-solid fa-cart-arrow-down fa-lg"></i> </a> </li>
             </ul>
 
             <ul id="bottom-navbar">

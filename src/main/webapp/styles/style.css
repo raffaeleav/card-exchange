@@ -71,8 +71,8 @@ body {
     cursor: pointer;
 }
 
-.fa-user, .fa-list, .fa-cart-shopping {
-    font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+.fa-globe, .fa-user, .fa-list, .fa-lock, .fa-clipboard, .fa-comment, .fa-cart-arrow-down {
+    font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, serif;
     color: #FFD100;
 }
 

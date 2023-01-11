@@ -30,8 +30,9 @@
                             <br><br>
                             <img src="<%=card.getImmagine()%>" alt="<%=card.getNome()%>">
 
-                            <form action="">
-                                <input type="button" id="offer-button" value="Vedi offerte">
+                            <form id="offer-form" action="">
+                                <input type="text">
+                                <input type="submit" id="offer-button" value="Vedi offerte">
                             </form>
                         </li>
                     <%}%>

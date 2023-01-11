@@ -17,7 +17,7 @@
         <%@include file="../../header.jsp"%>
 
         <div id="content">
-            Non sono stati trovati risultati.
+            <p>Non sono stati trovati risultati.</p>
         </div>
 
         <%@include file="../../footer.jsp"%>

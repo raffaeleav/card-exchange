@@ -37,6 +37,11 @@ public class CreazioneDiscussioneServlet extends HttpServlet {
         Utente user = (Utente) httpSession.getAttribute("Utente");
         String title = request.getParameter("topic-title");
 
+        if(user == null){
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/results/discussione-senza-login.jsp");
+            requestDispatcher.forward(request, response);
+        }
+
         FacadeDAO facadeDAO = new FacadeDAO();
 
         Discussione topic = new Discussione();

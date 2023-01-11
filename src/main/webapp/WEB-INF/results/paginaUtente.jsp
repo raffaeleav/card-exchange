@@ -34,13 +34,14 @@
         <h6 style="color: red">N.B le modifiche apportate ai tuoi dati saranno visibili al prossimo accesso.</h6>
     </form><%}%>
     <%if(utente.getIdUtente()==1){%> <!-- Nel pannello compare un href al pannello admin se l utente che accede è un admin-->
-    <form id="adminPanel"  method="post" action="PannelloAdmin?Utente=<%=utente%>" ><button class="btn" type="submit">Pannello Admin</button></form><%}%>
+    <form id="adminPanel"  method="post" action="MostraPannelloAdmin?Utente=<%=utente%>" ><button class="btn" type="submit">Pannello Admin</button></form><%}%>
     <form id="logOut" action="LogOut" method="post">
         <button class="submitExit" type="submit" value="gestisci">Log-out<i class="fa-solid fa-arrow-right-from-bracket"></i></button><br>
     </form>
+    <%if(utente.getIdUtente()>=2){%><!--Se elimini l admin sei un tacchino-->
     <form method="post" action="EliminaUtente?idUtente=<%=utente.getIdUtente()%>">
         <button class="submitExit" type="submit" value="Elimina account">Elimina Account <i class="fa-solid fa-trash"></i></button><br>
-    </form>
+    </form><%}%>
 </div>
 
 </body>

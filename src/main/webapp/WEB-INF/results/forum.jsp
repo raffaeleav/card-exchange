@@ -1,6 +1,8 @@
 <%@ page import="creazioneDiscussione.Discussione" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
+<%@ page import="registrazione.Utente" %>
+<%@ page import="storage.FacadeDAO" %>
 <%--
   Created by IntelliJ IDEA.
   User: Raffaele Aviello
@@ -38,10 +40,24 @@
                         <br><br>
 
                         <form action="">
-                            <input type="submit" id="offer-button" value="Partecipa alla discussione">
+                            <input type="submit" id="join-topic" value="Partecipa alla discussione">
                         </form>
+
+                        <%
+                            Utente user = (Utente) session.getAttribute("Utente");
+                            if(topic.getIdUtente() == user.getIdUtente() || user.getIdUtente() == 1){
+                        %>
+                        <form action="">
+                            <input type="submit" id="delete-topic" value="Elimina discussione">
+                            <input type="hidden" id="topic-id" value="<%=topic.getIdDiscussione()%>">
+                        </form>
+                        <%
+                            }
+                        %>
                     </li>
-                    <%}%>
+                    <%
+                        }
+                    %>
                 </ul>
             </div>
         </div>

@@ -47,14 +47,14 @@
 
                     <%
                         Utente user = (Utente) session.getAttribute("Utente");
-                        if(! (user == null)){
+                        if( (user.getIdUtente() == message.getIdUtente() || user.getIdUtente() == 1) ){
                     %>
-                        <form>
+                        <form action="" method="get">
                             <label for="modify-message-button"></label>
                             <input type="submit" id="modify-message-button" value="Modifica messaggio">
                         </form>
 
-                        <form>
+                        <form action="" method="get">
                             <label for="modify-message-button"></label>
                             <input type="submit" id="delete-message-button" value="Elimina messaggio">
                         </form>

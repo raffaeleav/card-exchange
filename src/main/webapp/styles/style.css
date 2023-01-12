@@ -12,12 +12,12 @@ body {
 
 #top-navbar{
     margin: 20px;
-    padding: 0;
+    border-radius: 10px;
     display: flex;
+    justify-content: center;
     overflow: hidden;
     list-style-type: none;
     background-color: rgba(0,0,0,0);
-    justify-content: center;
 }
 
 #top-navbar a:link, a:visited, a:hover, a:active{
@@ -37,12 +37,12 @@ body {
 
 #bottom-navbar{
     margin: 20px;
-    padding: 0;
+    border-radius: 10px;
     display: flex;
+    justify-content: center;
     overflow: hidden;
     list-style-type: none;
     background-color: #FFD100;
-    justify-content: center;
 }
 
 #bottom-navbar a:link, a:visited, a:hover, a:active{
@@ -52,7 +52,7 @@ body {
 
 #bottom-navbar li{
     padding: 14px 14px;
-    display: list-item;
+    display: block;
     float: left;
     font-size: medium;
     text-align: center;
@@ -60,9 +60,14 @@ body {
     color: white;
 }
 
-#search text{
+#search-text{
     border-style: none;
     border-color: rgba(0,0,0,0);
+    border-radius: 5px;
+}
+
+#search-form{
+    margin: 0;
 }
 
 #search-button{
@@ -122,6 +127,7 @@ body {
     overflow: hidden;
     list-style-type: none;
     background-color: #FFD100;
+    border-radius: 10px;
 }
 
 #grid-container ul li {
@@ -131,6 +137,7 @@ body {
     text-align: center;
     color: black;
     background-color: #d6d6d6;
+    border-radius: 10px;
 }
 
 #grid-container ul li img {
@@ -138,6 +145,7 @@ body {
     height: 218px;
     width: 150px;
     object-fit: cover;
+    border-radius: 10px;
 }
 
 #grid-container ul li label {
@@ -151,12 +159,14 @@ body {
     margin: 20px;
     background-color: #FFD100;
     padding: 10px;
+    border-radius: 10px;
 }
 
 #topic-form {
     margin: 10px;
     padding: 10px;
     background-color: #d6d6d6;
+    border-radius: 10px;
 }
 
 input[type=submit]{
@@ -166,6 +176,7 @@ input[type=submit]{
     padding: 10px;
     text-decoration: none;
     cursor: pointer;
+    border-radius: 10px;
 }
 
 #grid-container-topic ul {
@@ -177,6 +188,7 @@ input[type=submit]{
     list-style-type: none;
     background-color: #FFD100;
     justify-content: center;
+    border-radius: 10px;
 }
 
 #grid-container-topic ul li {
@@ -186,7 +198,7 @@ input[type=submit]{
     text-align: left;
     color: black;
     background-color: #d6d6d6;
-
+    border-radius: 10px;
 }
 
 /* content */
@@ -195,4 +207,5 @@ p{
     margin: 20px;
     padding: 10px;
     background-color: #FFD100;
+    border-radius: 10px;
 }

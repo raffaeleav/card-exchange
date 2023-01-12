@@ -26,6 +26,13 @@ public class Messaggio {
         this.idDiscussione = idDiscussione;
     }
 
+    public Messaggio(String oggetto, String corpo, int idUtente, int idDiscussione) {
+        this.oggetto = oggetto;
+        this.corpo = corpo;
+        this.idUtente = idUtente;
+        this.idDiscussione = idDiscussione;
+    }
+
     public Messaggio(){}
 
     public int getIdMessaggio() {

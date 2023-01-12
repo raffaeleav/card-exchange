@@ -3,8 +3,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="creazioneDiscussione.Messaggio" %>
 <%@ page import="registrazione.Utente" %>
-<%@ page import="java.util.Collection" %>
-<%@ page import="java.util.Collections" %><%--
+<%@ page import="java.util.Collections" %>
+<%--
   Created by IntelliJ IDEA.
   User: Raffaele Aviello
   Date: 09/01/2023
@@ -22,19 +22,38 @@
     <%
         FacadeDAO facadeDAO = new FacadeDAO();
         List<Discussione> topics = (List<Discussione>) facadeDAO.doRetrieveAll(Discussione.class);
-        int topicId = 1;
+        int topicId = 0;
+        String topicTitle = null;
 
         for(Discussione topic : topics)
-            if(topic.getTitolo().equals(request.getParameter("topic-title")) )
+            if(topic.getTitolo().equals(request.getParameter("topic-title")) ) {
                 topicId = topic.getIdDiscussione();
+                topicTitle = topic.getTitolo();
+            }
 
         List<Messaggio> messages = facadeDAO.doRetrieveMessageListByTopicId(topicId);
+
+        Utente user = (Utente) session.getAttribute("Utente");
     %>
 
     <body>
     <%@include file="../../header.jsp"%>
 
     <div id="content">
+        <div id="add-message">
+            <form id="message-form" action="invia-messaggio-servlet" method="get">
+
+                <label for="message-text-object">Oggetto:</label>
+                <input id="message-text-object" name="message-text-object" type="text">
+
+                <label for="message-text-body">Corpo:</label>
+                <input id="message-text-body" name="message-text-body" type="text">
+
+                <input type="hidden" id="topicTitle" value="<%=topicTitle%>">
+                <input id="message-button" type="submit" value="Invia">
+            </form>
+        </div>
+
         <div id="grid-container">
             <ul>
                 <%
@@ -50,8 +69,6 @@
                     </p>
 
                     <%
-                        Utente user = (Utente) session.getAttribute("Utente");
-
                         if( user != null && (user.getIdUtente() == message.getIdUtente() || user.getIdUtente() == 1) ){
                     %>
                         <form action="" method="get">

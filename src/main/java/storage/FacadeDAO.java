@@ -257,10 +257,16 @@ public class FacadeDAO {
      * @autor Francesco Di Domenico
      */
     public List<Recensione> getRecensioneByIdUtente(Class<?> entityClass,int idUtente){
-        if(entityClass.getName().equals("recensione.Recensione")){
+        if(entityClass.getName().equals("acquisto.Ordine")){
             return new RecensioneDAO().getRecensioneByIdUtente(idUtente);
         }
     return null;
     }
 
+    public List<Ordine> getOrdiniByIdUtente(Class<Ordine> entityClass, int idUtente) {
+        if(entityClass.getName().equals("recensione.Recensione")){
+            return new OrdineDAO().doRetrieveByIdUtente(idUtente);
+        }
+        return null;
+    }
 }

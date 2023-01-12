@@ -50,6 +50,8 @@ public class CreazioneDiscussioneServlet extends HttpServlet {
 
         facadeDAO.doSave(Discussione.class, topic);
 
+        request.setAttribute("topic-title", title);
+
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/results/discussione.jsp");
         requestDispatcher.forward(request, response);
     }

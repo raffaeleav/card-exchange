@@ -1,4 +1,8 @@
-<%--
+<%@ page import="storage.FacadeDAO" %>
+<%@ page import="creazioneDiscussione.Discussione" %>
+<%@ page import="java.util.List" %>
+<%@ page import="creazioneDiscussione.Messaggio" %>
+<%@ page import="registrazione.Utente" %><%--
   Created by IntelliJ IDEA.
   User: Raffaele Aviello
   Date: 09/01/2023
@@ -10,8 +14,20 @@
     <head>
         <title>Card eXchange</title>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css"/>
-        <script src="${pageContext.request.contextPath}/script/search-form-validation.js"></script>
+        <script src="${pageContext.request.contextPath}/script/search-validation.js"></script>
     </head>
+
+    <%
+        FacadeDAO facadeDAO = new FacadeDAO();
+        List<Discussione> topics = (List<Discussione>) facadeDAO.doRetrieveAll(Discussione.class);
+        int topicId = 1;
+
+        for(Discussione topic : topics)
+            if(topic.getTitolo().equals(request.getParameter("topic-title")) )
+                topicId = topic.getIdDiscussione();
+
+        List<Messaggio> messages = facadeDAO.doRetrieveMessageListByTopicId(topicId);
+    %>
 
     <body>
     <%@include file="../../header.jsp"%>
@@ -19,14 +35,34 @@
     <div id="content">
         <div id="grid-container">
             <ul>
-                <!-- quando fai partecipazioneDiscussione aggiungere qui la lista dei messaggi -->
-                <c:forEach items="${topics-list}" var="topic">
-                    <li>
-                        <br><br>
-                            ${topic.titolo}
-                        <br><br>
-                    </li>
-                </c:forEach>
+                <%for(Messaggio message : messages){%>
+                <li>
+                    <h3>
+                        <%=message.getOggetto()%>
+                    </h3>
+
+                    <p>
+                        <%=message.getCorpo()%>
+                    </p>
+
+                    <%
+                        Utente user = (Utente) session.getAttribute("Utente");
+                        if(! (user == null)){
+                    %>
+                        <form>
+                            <label for="modify-message-button"></label>
+                            <input type="submit" id="modify-message-button" value="Modifica messaggio">
+                        </form>
+
+                        <form>
+                            <label for="modify-message-button"></label>
+                            <input type="submit" id="delete-message-button" value="Elimina messaggio">
+                        </form>
+                    <%
+                        }
+                    %>
+                </li>
+                <%}%>
             </ul>
         </div>
     </div>

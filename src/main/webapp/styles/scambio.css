@@ -1,0 +1,120 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+body {
+    /* Full screen width and height */
+    width: 100%;
+    min-height: 100vh;
+
+    /* Centers the container in the middle of the screen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0;
+    background-color: #202020;
+}
+
+.description{
+    color: white;
+    margin-left: 10px;
+    font-family: "Roboto", Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.inner {
+    margin-right: 2px;
+    width: 250px;
+    height: 35em;
+    border-radius: 10px;
+    background-color: #FFD100;
+    transition: transform 0.5s;
+    -webkit-transition: transform 0.5s;
+    -moz-transition: transform 0.5s;
+    -o-transition: transform 0.5s;
+}
+
+.img{
+
+    display: block;
+    width: 200px;
+    height: auto;
+    margin: auto;
+}
+h2{
+    font-weight: bold;
+    padding-top: 10px;
+    padding-left: 20px;
+    color: #202020;
+    text-align: left;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.custom-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 57px;
+    padding: 10px 38px 10px 16px;
+    background: #fff url("select-arrows.svg") no-repeat right 16px center;
+    background-size: 10px;
+    transition: border-color .1s ease-in-out,box-shadow .1s ease-in-out;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+.custom-select:hover {
+    border: 1px solid #999;
+}
+.custom-select:focus {
+    border: 1px solid #999;
+    box-shadow: 0 3px 5px 0 rgba(0,0,0,.2);
+    outline: none;
+}
+/* remove default arrow in IE */
+select::-ms-expand {
+    display:none;
+}
+
+
+.custom-select {
+    margin-top: 20px;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 10px;
+}
+
+.wrap {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button {
+    margin-top: 20px;
+    width: 140px;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.button:hover {
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+.results{
+    color: #202020;
+    font-weight: bolder;
+    font-size: 20px;
+    font-family: "Roboto", Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}

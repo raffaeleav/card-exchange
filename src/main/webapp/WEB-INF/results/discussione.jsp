@@ -73,6 +73,7 @@
                     %>
                         <form action="" method="get">
                             <label for="modify-message-button"></label>
+                            <input type="hidden" id="topic-title-modify" value="<%=topicTitle%>">
                             <input type="submit" id="modify-message-button" value="Modifica messaggio">
                         </form>
 

@@ -21,7 +21,7 @@
   ID recensione:<%=listrecensioni.getIdRecensione()%><br>
   Valutazione:<%=listrecensioni.getValutazione()%><br>
   Testo:<%=listrecensioni.getTesto()%><br>
-  ID utente:<%=listrecensioni.getIdOrdine()%><br>
+  ID ordine:<%=listrecensioni.getIdOrdine()%><br>
   ID utente:<%=listrecensioni.getIdUtente()%><br>
     <form method="post" action="EliminaRecensione?idRecensione=<%=listrecensioni.getIdRecensione()%>">
       <button class="submitExit" type="submit" value="Elimina recensione">Elimina Recensione <i class="fa-solid fa-trash"></i></button><br>

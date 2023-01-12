@@ -124,3 +124,4 @@ create table OrdineComprendeOfferta(
                                        foreign key(idOrdine) references Ordine(idOrdine),
                                        foreign key(idOfferta) references Offerta(idOfferta)
 );
+select * from recensione;

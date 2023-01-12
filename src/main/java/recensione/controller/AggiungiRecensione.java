@@ -38,7 +38,7 @@ public class AggiungiRecensione extends HttpServlet {
         //int idUtente=req.getParameter("idUtente"); ancora da settare
         //int idOrdine=req.getParameter("idOrdine");ancora da settare
         int  valutazione=Integer.parseInt(strValutazione);
-        Recensione r=new Recensione(valutazione,testo,1,1);// N.B idutente e idOrdine da cambiare
+        Recensione r=new Recensione(valutazione,testo,2,1);// N.B idutente e idOrdine da cambiare
         facadeDAO.doSave(Recensione.class,r);
         resp.sendRedirect("index.jsp"); //rimanda alla homepage (provvisorio)
     }

@@ -26,8 +26,7 @@ public class CreazioneDiscussioneServlet extends HttpServlet {
 
     /**
      * Il metodo permette di gestire la richiesta del client tramite una response che
-     * permette la creazione di una discussione tramite la classe DAO relativa alla
-     * classe Discussione
+     * permette la creazione di una discussione tramite la classe FacadeDAO
      * @param request oggetto che modella una richiesta HTTP
      * @param response oggetto che modella una risposta HTTP
      * */

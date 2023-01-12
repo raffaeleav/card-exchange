@@ -50,7 +50,9 @@
     </div>
     <label>
         <select id="offerte" class="custom-select">
-            <option>Scegli un offerta</option>
+            <option img="${pageContext.request.contextPath}/imgs/pages/card-dummy.jpg"
+                    value="" categoria="" rarity="" condizione="" prezzo=""
+                    idOfferta=""> Scegli un offerta</option>
             <%for(Offerta o:offerteUtente ){
                 Carta c = (Carta) dao.doRetrieveById(Carta.class,o.getIdCarta());
             %>

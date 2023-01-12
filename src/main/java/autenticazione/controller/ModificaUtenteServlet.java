@@ -46,7 +46,7 @@ public class ModificaUtenteServlet extends HttpServlet {
         facadeDAO.doUpdate(Utente.class,idUtente,utenteModificato);
 
         if(utenteLoggato.getIdUtente()==1){
-       resp.sendRedirect("PannelloAdmin");}
+       resp.sendRedirect("MostraPannelloAdmin");}
         else {resp.sendRedirect("index.jsp");}
     }
 }

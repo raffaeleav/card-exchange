@@ -1,4 +1,4 @@
-package creazioneDiscussione.controller;
+package creazioneDiscussione.service;
 
 import creazioneDiscussione.Discussione;
 import jakarta.servlet.RequestDispatcher;

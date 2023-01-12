@@ -17,7 +17,7 @@
     <%@include file="../../header.jsp"%>
 
     <div id="content">
-      Per creare una discussione devi aver effettuato il login!
+      <p>Per creare una discussione devi aver effettuato il login!</p>
     </div>
 
     <%@include file="../../footer.jsp"%>

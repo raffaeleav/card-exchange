@@ -17,7 +17,7 @@
                 <li> <a href="MostraPaginaUtente">Account</a></li><%}%>
                 <li> <a href="">In vendita</a> </li>
                 <li> <a href="">Vendi</a> </li>
-                <li> <a href="">Ordini effettuati</a> </li>
+                <li> <a href="MostraOrdini">Ordini effettuati</a> </li>
                 <li> <a href="forum-servlet">Forum</a> </li>
                 <li> <a href="">Carrello</a> </li>
                 <li> <a href="MostraPaginaRecensione">Recensione</a> </li>

@@ -32,6 +32,9 @@ public class OffertaDAO {
     che a sua volta vengono unite alle colonne della tabella "Carrello" c sulla base dell'uguaglianza dell'idCarrello.
     Infine, la query filtra i risultati utilizzando il parametro idUtente fornito.
      */
+
+    private static final String SELECT_OFFERTE_BY_ID_UTENTE =
+            "SELECT idOfferta,condizione,prezzo,o.idUtente,idCarta FROM Offerta o,Utente u WHERE u.idUtente = o.idUtente and o.idUtente=?";
     private static final String SELECT_OFFERTE_BY_ID_UTENTE_QUERY =
             "SELECT * FROM Offerta o\n" +
                     "JOIN CarrelloContieneOfferta cco ON o.idOfferta = cco.idOfferta\n" +
@@ -113,7 +116,7 @@ public class OffertaDAO {
     public List<Offerta> getOfferteByIdUtente(int idUtente) {
         List<Offerta> offerte = new ArrayList<>();
         try (Connection con = ConPool.getConnection()) {
-            PreparedStatement statement = con.prepareStatement(SELECT_OFFERTE_BY_ID_UTENTE_QUERY);
+            PreparedStatement statement = con.prepareStatement(SELECT_OFFERTE_BY_ID_UTENTE);
             statement.setInt(1, idUtente);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {

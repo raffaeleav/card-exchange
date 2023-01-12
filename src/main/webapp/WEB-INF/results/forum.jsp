@@ -23,7 +23,7 @@
 
         <div id="content">
             <div id="create-topic">
-                <form id="topic-form" action="creazione-discussione-servlet">
+                <form id="topic-form" action="creazione-discussione-servlet" method="get">
                     <label>Crea una discussione:</label>
 
                     <input id="topic-text" name="topic-text" type="text">

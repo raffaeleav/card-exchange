@@ -245,9 +245,22 @@ public class FacadeDAO {
     public Utente getUtenteByEmailPassword(Class<?> entityClass, String email,String password){
         if(entityClass.getName().equals("registrazione.Utente")){
             return new UtenteDAO().getUtenteByEmailPassword(email, password);
-
         }
         return null;
+    }
+
+    /**
+     * Il metodo restituisce una lista di recensioni filtrate per l'ID utente.
+     * @param entityClass classe dell oggetto che si vuole cercare.
+     * @param idUtente id dell utente che ha effettuato la recensione.
+     * @return una lista di recensioni per l'id utente.
+     * @autor Francesco Di Domenico
+     */
+    public List<Recensione> getRecensioneByIdUtente(Class<?> entityClass,int idUtente){
+        if(entityClass.getName().equals("recensione.Recensione")){
+            return new RecensioneDAO().getRecensioneByIdUtente(idUtente);
+        }
+    return null;
     }
 
 }

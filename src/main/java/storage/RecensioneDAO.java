@@ -31,7 +31,29 @@ public class RecensioneDAO {
         }
     }
 
-    public void doUpdate(int idRecensione,Recensione r){
+    //Metodo che permette di restituire tutte le recensioni presenti nel DB fatte da un utente.
+    public List<Recensione> getRecensioneByIdUtente(int idUtente){
+        try (Connection con=ConPool.getConnection()){
+            PreparedStatement ps=con.prepareStatement("SELECT * FROM Recensione where idUtente=?");
+            ps.setInt(1,idUtente);
+            ResultSet rs=ps.executeQuery();
+            List<Recensione> recensioni=new ArrayList<>();
+            if(rs.next()){
+                Recensione r=new Recensione();
+                r.setIdRecensione(rs.getInt(1));
+                r.setValutazione(rs.getInt(2));
+                r.setTesto(rs.getString(3));
+                recensioni.add(r);
+            }
+            con.close();
+            return recensioni;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+        public void doUpdate(int idRecensione,Recensione r){
         try(Connection con=ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("UPDATE Recensione set valutazione=?,testo=? where idRecensione=?;");
             ps.setInt(1, r.getValutazione());

@@ -49,7 +49,7 @@
                 <label for="message-text-body">Corpo:</label>
                 <input id="message-text-body" name="message-text-body" type="text">
 
-                <input type="hidden" id="topicTitle" value="<%=topicTitle%>">
+                <input type="hidden" id="topic-title" value="<%=topicTitle%>">
                 <input id="message-button" type="submit" value="Invia">
             </form>
         </div>
@@ -76,9 +76,11 @@
                             <input type="submit" id="modify-message-button" value="Modifica messaggio">
                         </form>
 
-                        <form action="" method="get">
-                            <label for="modify-message-button"></label>
+                        <form action="elimina-messaggio-servlet" method="get">
+                            <label for="delete-message-button"></label>
                             <input type="submit" id="delete-message-button" value="Elimina messaggio">
+                            <input type="hidden" id="topic-title-delete" value="<%=topicTitle%>">
+                            <input type="hidden" id="message-id" value="<%=message.getIdMessaggio()%>">
                         </form>
                     <%
                         }

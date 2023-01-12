@@ -12,27 +12,31 @@ import storage.FacadeDAO;
 import java.io.IOException;
 
 /**
- * La classe permette l'eliminazione di un messaggio in una discussione
+ * La classe permette la modifica di un messaggio in una discussione
  * tramite una servlet che viene richiamata dal bottone della
- * funzione di eliminazione di un messaggio
+ * funzione di modifca di un messaggio
  * @author Raffaele Aviello
  */
-@WebServlet("/elimina-messaggio-servlet")
-public class EliminaMessaggioServlet extends HttpServlet {
+@WebServlet("/modifica-messaggio-servlet")
+public class ModificaMessaggioServlet extends HttpServlet {
 
     /**
      * Il metodo permette di gestire la richiesta del client tramite una response che
-     * permette l'eliminazione di un messaggio in una discussione tramite la classe FacadeDAO
+     * permette la modifica di un messaggio in una discussione tramite la classe FacadeDAO
      * @param request oggetto che modella una richiesta HTTP
      * @param response oggetto che modella una risposta HTTP
      * */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int messageId = Integer.parseInt(request.getParameter("message-id"));
-        String topicTitle = request.getParameter("topic-title-delete");
+        int messageId = Integer.parseInt(request.getParameter("message-id-modify"));
+        String topicTitle = request.getParameter("topic-title-delete"),
+                body = request.getParameter("modify-message-text");
         FacadeDAO facadeDAO = new FacadeDAO();
 
-        facadeDAO.doDelete(Messaggio.class, messageId);
+        Messaggio message = (Messaggio) facadeDAO.doRetrieveById(Messaggio.class, messageId);
+        message.setOggetto(body);
+
+        facadeDAO.doUpdate(Messaggio.class, messageId, message);
 
         request.setAttribute("topic-title", topicTitle);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/results/discussione.jsp");

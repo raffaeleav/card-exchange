@@ -71,18 +71,21 @@
                     <%
                         if( user != null && (user.getIdUtente() == message.getIdUtente() || user.getIdUtente() == 1) ){
                     %>
-                        <form action="" method="get">
-                            <label for="modify-message-button"></label>
+                        <form action="modifica-messaggio-servlet" method="get">
                             <input type="hidden" id="topic-title-modify" value="<%=topicTitle%>">
+                            <input type="hidden" id="message-id-modify" value="<%=message.getIdMessaggio()%>">
+
+                            <label for="modify-message-text">Corpo del messaggio:</label>
                             <input type="text" id="modify-message-text">
+
                             <input type="submit" id="modify-message-button" value="Modifica messaggio">
                         </form>
 
                         <form action="elimina-messaggio-servlet" method="get">
-                            <label for="delete-message-button"></label>
-                            <input type="submit" id="delete-message-button" value="Elimina messaggio">
                             <input type="hidden" id="topic-title-delete" value="<%=topicTitle%>">
                             <input type="hidden" id="message-id" value="<%=message.getIdMessaggio()%>">
+
+                            <input type="submit" id="delete-message-button" value="Elimina messaggio">
                         </form>
                     <%
                         }

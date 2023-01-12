@@ -29,7 +29,7 @@ public class EliminaMessaggioServlet extends HttpServlet {
      * */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int messageId = Integer.parseInt(request.getParameter("messagge-id"));
+        int messageId = Integer.parseInt(request.getParameter("message-id"));
         String topicTitle = request.getParameter("topic-title-delete");
         FacadeDAO facadeDAO = new FacadeDAO();
 

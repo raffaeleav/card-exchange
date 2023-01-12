@@ -2,7 +2,9 @@
 <%@ page import="creazioneDiscussione.Discussione" %>
 <%@ page import="java.util.List" %>
 <%@ page import="creazioneDiscussione.Messaggio" %>
-<%@ page import="registrazione.Utente" %><%--
+<%@ page import="registrazione.Utente" %>
+<%@ page import="java.util.Collection" %>
+<%@ page import="java.util.Collections" %><%--
   Created by IntelliJ IDEA.
   User: Raffaele Aviello
   Date: 09/01/2023
@@ -35,7 +37,9 @@
     <div id="content">
         <div id="grid-container">
             <ul>
-                <%for(Messaggio message : messages){%>
+                <%
+                    Collections.reverse(messages);
+                    for(Messaggio message : messages){%>
                 <li>
                     <h3>
                         <%=message.getOggetto()%>

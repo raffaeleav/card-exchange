@@ -47,7 +47,8 @@
 
                     <%
                         Utente user = (Utente) session.getAttribute("Utente");
-                        if( (user.getIdUtente() == message.getIdUtente() || user.getIdUtente() == 1) ){
+
+                        if( user != null && (user.getIdUtente() == message.getIdUtente() || user.getIdUtente() == 1) ){
                     %>
                         <form action="" method="get">
                             <label for="modify-message-button"></label>

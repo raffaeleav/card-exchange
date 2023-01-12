@@ -45,7 +45,7 @@
 
                         <%
                             Utente user = (Utente) session.getAttribute("Utente");
-                            if(topic.getIdUtente() == user.getIdUtente() || user.getIdUtente() == 1){
+                            if(user != null && (topic.getIdUtente() == user.getIdUtente() || user.getIdUtente() == 1) ){
                         %>
                         <form action="">
                             <input type="submit" id="delete-topic" value="Elimina discussione">

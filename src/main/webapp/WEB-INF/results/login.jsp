@@ -21,7 +21,7 @@
       <input name="email" type="text" placeholder="E-mail"/>
       <input name="password" type="password" placeholder="Password"/>
       <button>login</button>
-      <p class="message">Non sei registrato? <a href="WEB-INF/results/registrazione.jsp">Crea un Account</a></p>
+      <p class="message">Non sei registrato? <a href="ShowRegistrazioneServlet">Crea un Account</a></p>
       <%
         if (request.getAttribute("msg") != null) {
           String error = (String) request.getAttribute("msg");

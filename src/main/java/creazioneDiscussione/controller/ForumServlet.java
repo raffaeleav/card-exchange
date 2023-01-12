@@ -14,8 +14,22 @@ import storage.FacadeDAO;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * La classe permette l' accesso alla sezione del sito
+ * riguardante il Forum prelevando tutte le istanze di Discussione per
+ * mostrarle nella jsp a cui il metodo doGet reindirizza
+ * @author Raffaele Aviello
+ */
+
 @WebServlet("/forum-servlet")
 public class ForumServlet extends HttpServlet {
+
+    /**
+     * Il metodo permette di gestire la richiesta del client tramite una response che
+     * permette di mostrare le discussioni della sezione Forum
+     * @param request oggetto che modella una richiesta HTTP
+     * @param response oggetto che modella una risposta HTTP
+     * */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         FacadeDAO facadeDAO = new FacadeDAO();

@@ -39,6 +39,7 @@ public class ScambioServlet extends HttpServlet {
         idOffertaMittente = Integer.parseInt(request.getParameter("idOffertaMittente")),
         idOffertaDestinatario = Integer.parseInt(request.getParameter("idOffertaDestinatario")),conguaglio = 0;
 
+        // @TODO CONTROLLI SULL'INPUT
         if( request.getParameter("conguaglio").length() > 0)
                 conguaglio = Integer.parseInt(request.getParameter("conguaglio"));
 

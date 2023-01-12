@@ -41,7 +41,7 @@
 
     <div class="inner">
         <h2>Carta Proposta </h2>
-        <img class="img image-swap" src="https://images.pokemontcg.io/base1/1_hires.png" alt="" srcset="">
+        <img class="img image-swap" src="${pageContext.request.contextPath}/imgs/pages/card-dummy.jpg" alt="" srcset="">
         <p class="description">Nome: <span id="nome" class="results"></span></p>
         <p class="description">Categoria: <span class="results categoria"></span></p>
         <p class="description">Rarità: <span id="rarity" class="results"></span></p>

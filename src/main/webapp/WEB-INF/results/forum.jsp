@@ -39,7 +39,7 @@
                             <%=topic.getTitolo()%>
                         <br><br>
 
-                        <form action="">
+                        <form action="" method="get">
                             <input type="submit" id="join-topic" value="Partecipa alla discussione">
                         </form>
 
@@ -47,7 +47,7 @@
                             Utente user = (Utente) session.getAttribute("Utente");
                             if(user != null && (topic.getIdUtente() == user.getIdUtente() || user.getIdUtente() == 1) ){
                         %>
-                        <form action="">
+                        <form action="elimina-discussione-servlet" method="get">
                             <input type="submit" id="delete-topic" value="Elimina discussione">
                             <input type="hidden" id="topic-id" value="<%=topic.getIdDiscussione()%>">
                         </form>

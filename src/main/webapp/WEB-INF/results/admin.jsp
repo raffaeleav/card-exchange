@@ -9,6 +9,7 @@
 <html>
 <head>
   <title>admin console</title>
+  <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/admin.css">
 </head>
 

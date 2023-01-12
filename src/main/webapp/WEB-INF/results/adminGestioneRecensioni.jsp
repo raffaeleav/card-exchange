@@ -10,6 +10,7 @@
 <html>
 <head>
     <title>Title</title>
+  <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <%ArrayList<Recensione> recensioni = (ArrayList<Recensione>) request.getAttribute("listrecensioni");%>

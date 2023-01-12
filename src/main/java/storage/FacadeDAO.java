@@ -255,11 +255,15 @@ public class FacadeDAO {
      * @return un oggetto List contenente i messaggi appartenenti alla discussione
      *                      con idDiscussione = topicID
      * */
-    public List<Messaggio> doRetrieveMessageListByTopicId(int topicId){
-        DiscussioneDAO topicDAO = new DiscussioneDAO();
-        List<Messaggio> messages = topicDAO.doRetrieveMessageListByTopicId(topicId);
+    public List<Messaggio> doRetrieveMessageListByTopicId(Class<?> entityClass, int topicId){
+        if(entityClass.getName().equals("creazioneDiscussione.Discussione")) {
+            DiscussioneDAO topicDAO = new DiscussioneDAO();
+            List<Messaggio> messages = topicDAO.doRetrieveMessageListByTopicId(topicId);
 
-        return messages;
+            return messages;
+        }
+
+        else return null;
     }
 
 }

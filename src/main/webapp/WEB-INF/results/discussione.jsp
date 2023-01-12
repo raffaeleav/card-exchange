@@ -31,7 +31,7 @@
                 topicTitle = topic.getTitolo();
             }
 
-        List<Messaggio> messages = facadeDAO.doRetrieveMessageListByTopicId(topicId);
+        List<Messaggio> messages = facadeDAO.doRetrieveMessageListByTopicId(Discussione.class, topicId);
 
         Utente user = (Utente) session.getAttribute("Utente");
     %>

@@ -26,7 +26,7 @@
                 </li>
 
                 <li>
-                    <a> © 2023, Card eXchange©</a>
+                    <a> © 2023, Card eXchange</a>
                 </li>
             </ul>
         </div>

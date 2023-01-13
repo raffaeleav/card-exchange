@@ -1,0 +1,119 @@
+body {
+    font-family: Arial, sans-serif;
+    color: #202020;
+    background-color: #d6d6d6;
+}
+
+h1 {
+    font-size: 2em;
+    margin: 1em 0;
+}
+
+img {
+    width: 300px;
+    height: auto;
+    margin: 1em 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #333533;
+    padding: 0.5em;
+    text-align: left;
+}
+
+th {
+    background-color: #333533;
+    color: #fff;
+}
+
+#tabellaOfferte {
+    margin-top: 1em;
+}
+
+#tabellaOfferte th, #tabellaOfferte td {
+    text-align: center;
+}
+
+#tabellaOfferte th:nth-child(4), #tabellaOfferte td:nth-child(4) {
+    text-align: right;
+}
+
+#tabellaOfferte td:nth-child(5) {
+    text-align: center;
+}
+
+#tabellaOfferte td form {
+    display: inline-block;
+    margin-right: 0.5em;
+}
+
+#tabellaOfferte td input[type="submit"]:hover {
+    background-color: #ffd100;
+}
+
+#tabellaOfferte td form:last-child {
+    margin-right: 0;
+}
+
+#tabellaOfferte tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.padding {
+    padding: 1em;
+}
+
+.margin {
+    margin: 1em;
+}
+
+.border {
+    border: 1px solid #333533;
+}
+
+.display-none {
+    display: none;
+}
+
+.display-block {
+    display: block;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}

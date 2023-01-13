@@ -30,7 +30,8 @@
                             <br><br>
                             <img src="${pageContext.request.contextPath}<%=card.getImmagine()%>">
 
-                            <form id="offer-form" action="">
+                            <form id="offer-form" action="mostra-pagina-carta-servlet" method="get">
+                                <input type="hidden" name="id-carta" value="<%=card.getIdCarta()%>">
                                 <input type="submit" id="offer-button" value="Vedi offerte">
                             </form>
                         </li>

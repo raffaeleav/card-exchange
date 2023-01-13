@@ -87,6 +87,14 @@ body {
     color: #FFD100;
 }
 
+#top-navbar li a i:hover{
+    color: #75630f;
+}
+
+#top-navbar li a i:active{
+    color: #75630f;
+}
+
 .fa-search {
     font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #1a1a1a;
@@ -129,6 +137,14 @@ body {
 
 .fa-brands {
     font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#footer-navbar li a i:hover{
+    color: #75630f;
+}
+
+#footer-navbar li a i:active{
+    color: #75630f;
 }
 
 /* ricerca (in generale liste) */

@@ -22,11 +22,11 @@
                 </li>
 
                 <li>
-                    <a href="#">About us</a>
+                    <a>About us</a>
                 </li>
 
                 <li>
-                    <a>Copyright 2022 CardEXchange - All rights reserved</a>
+                    <a> © 2023, Card eXchange©</a>
                 </li>
             </ul>
         </div>

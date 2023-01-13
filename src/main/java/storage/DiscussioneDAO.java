@@ -1,6 +1,7 @@
 package storage;
 
 import creazioneDiscussione.Discussione;
+import creazioneDiscussione.Messaggio;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -135,4 +136,45 @@ public class DiscussioneDAO {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Il metodo permette di recuperare tutti i messaggi che sono
+     *                      appartengono ad una discussione
+     * @param topicId id della discussione di cui si vogliono recuperare
+     *                      messaggi
+     * @return un oggetto List contenente i messaggi appartenenti alla discussione
+     *                      con idDiscussione = topicID
+     * */
+    public List<Messaggio> doRetrieveMessageListByTopicId(int topicId){
+        try {
+            Connection connection = ConPool.getConnection();
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement("SELECT * FROM Messaggio m WHERE m.idDiscussione = ?;");
+
+            preparedStatement.setInt(1, topicId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            List<Messaggio> messages = new ArrayList<>();
+
+            while(resultSet.next()){
+                Messaggio messaggio = new Messaggio();
+
+                messaggio.setIdMessaggio(resultSet.getInt(1));
+                messaggio.setOggetto(resultSet.getString(2));
+                messaggio.setCorpo(resultSet.getString(3));
+                messaggio.setIdUtente(resultSet.getInt(4));
+                messaggio.setIdDiscussione(resultSet.getInt(5));
+
+                messages.add(messaggio);
+            }
+
+            return messages;
+        }
+
+        catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+
 }

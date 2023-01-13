@@ -1,3 +1,6 @@
+<%@ page import="acquisto.Carta" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
 <%--
   Created by IntelliJ IDEA.
   User: Raffaele Aviello
@@ -9,22 +12,29 @@
 <html>
     <head>
         <title>Card eXchange</title>
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css"/>
+        <script src="${pageContext.request.contextPath}/script/search-form-validation.js"></script>
     </head>
 
+    <%List<Carta> cards = (ArrayList<Carta>) request.getAttribute("card-matches");%>
     <body>
         <%@include file="../../header.jsp"%>
 
         <div id="content">
             <div id="grid-container">
                 <ul>
-                    <c:forEach items="${card-matches}" var="card">
+                    <%for(Carta card : cards){%>
                         <li>
                             <br><br>
-                                ${card.nome} ${card.categoria} ${card.rarita}
+                                <%=card.getNome()%>
                             <br><br>
+                            <img src="${pageContext.request.contextPath}<%=card.getImmagine()%>">
+
+                            <form id="offer-form" action="">
+                                <input type="submit" id="offer-button" value="Vedi offerte">
+                            </form>
                         </li>
-                    </c:forEach>
+                    <%}%>
                 </ul>
             </div>
         </div>

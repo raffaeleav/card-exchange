@@ -1,4 +1,4 @@
-package creazioneDiscussione.controller;
+package creazioneDiscussione.service;
 
 import creazioneDiscussione.Discussione;
 import jakarta.servlet.RequestDispatcher;
@@ -7,32 +7,33 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
-import registrazione.Utente;
+import storage.DiscussioneDAO;
 import storage.FacadeDAO;
 
 import java.io.IOException;
 import java.util.List;
 
 /**
- * La classe permette l' accesso alla sezione del sito
- * riguardante il Forum prelevando tutte le istanze di Discussione per
- * mostrarle nella jsp a cui il metodo doGet reindirizza
+ * La classe permette l' eliminazione di una discussione tramite
+ * una servlet che viene richiamata dal bottone della
+ * funzione di eliminazione discussione
  * @author Raffaele Aviello
  */
 
-@WebServlet("/forum-servlet")
-public class ForumServlet extends HttpServlet {
+@WebServlet("/elimina-discussione-servlet")
+public class EliminazioneDiscussioneServlet extends HttpServlet {
 
     /**
      * Il metodo permette di gestire la richiesta del client tramite una response che
-     * permette di mostrare le discussioni della sezione Forum
+     * permette l' eliminazione di una discussione tramite la classe FacadeDAO
      * @param request oggetto che modella una richiesta HTTP
      * @param response oggetto che modella una risposta HTTP
      * */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int topicId = Integer.parseInt(request.getParameter("topic-id"));
         FacadeDAO facadeDAO = new FacadeDAO();
+        facadeDAO.doDelete(DiscussioneDAO.class, topicId);
 
         List<Discussione> topics = (List<Discussione>) facadeDAO.doRetrieveAll(Discussione.class);
         request.setAttribute("topics-list", topics);

@@ -9,14 +9,17 @@
 <html>
     <head>
         <title>Card eXchange</title>
-        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css"/>
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css"/>
+        <script src="${pageContext.request.contextPath}/script/search-form-validation.js"></script>
     </head>
 
     <body>
         <%@include file="../../header.jsp"%>
 
         <div id="content">
-            Non sono stati trovati risultati.
+            <div id="content-text">
+                <p>Non sono stati trovati risultati.</p>
+            </div>
         </div>
 
         <%@include file="../../footer.jsp"%>

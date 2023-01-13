@@ -2,31 +2,33 @@
 <!DOCTYPE html>
 <html lang="it-IT">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
-        <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
     <body>
         <div id="footer">
-            <div class="social">
-                <a id="twitter" href=""><i class="fa-brands fa-twitter"></i> </a>
-                <a id="facebook" href=""><i class="fa-brands fa-facebook-f"></i></a>
-                <a id="instagram" href=""><i class="fa-brands fa-instagram"></i></a>
-            </div>
-
-            <ul class="lista">
+            <ul id="footer-navbar">
                 <li>
-                    <div class="chiSiamo">
-                        <a href="#">About us</a>
-                    </div>
+                    <a id="twitter" href=""><i class="fa-brands fa-twitter fa-lg"></i> </a>
+                </li>
+
+                <li>
+                    <a id="facebook" href=""><i class="fa-brands fa-facebook-f fa-lg"></i></a>
+                </li>
+
+                <li>
+                    <a id="instagram" href=""><i class="fa-brands fa-instagram fa-lg"></i></a>
+                </li>
+
+                <li>
+                    <a>About us</a>
+                </li>
+
+                <li>
+                    <a>© 2023, Card eXchange</a>
                 </li>
             </ul>
-
-            <div class="copyright">
-                <i class="fa-solid fa-copyright"></i>
-                <a>Copyright 2022 CardEXchange - All rights reserved</a>
-            </div>
         </div>
     </body>
 </html>

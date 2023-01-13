@@ -22,7 +22,7 @@ import storage.FacadeDAO;
  * @author Raffaele Aviello
  */
 
-@WebServlet("/ricerca-servlet")
+@WebServlet("/search-servlet")
 public class RicercaServlet extends HttpServlet {
 
     /**
@@ -33,10 +33,11 @@ public class RicercaServlet extends HttpServlet {
      * */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String researchText = request.getParameter("carta");
+        String researchText = request.getParameter("search-text");
 
         FacadeDAO facadeDAO = new FacadeDAO();
-        List<Carta> cardsList = (List<Carta>) facadeDAO.doRetrieveAll(Carta.class), matches = new ArrayList<>();
+        List<Carta> cardsList = (List<Carta>) facadeDAO.doRetrieveAll(Carta.class);
+        List<Carta> matches = new ArrayList<>();
 
         for (Carta card: cardsList){
             String formattedCardName = card.getNome().toLowerCase().trim();
@@ -46,7 +47,7 @@ public class RicercaServlet extends HttpServlet {
                 matches.add(card);
         }
 
-        if (matches.size() == 0){
+        if (matches.isEmpty()){
             RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/ricerca-senza-risultati.jsp");
             dispatcher.forward(request, response);
         }

@@ -30,7 +30,7 @@
 
             <!-- Add a submit button to the form -->
             <button>Invia</button>
-            <p class="message">Sei registrato? <a href="WEB-INF/results/login.jsp">Esegui il login</a></p>
+            <p class="message">Sei registrato? <a href="ShowLoginServlet">Esegui il login</a></p>
             <%
                 if (request.getAttribute("msg") != null) {
                     String error = (String) request.getAttribute("msg");
@@ -40,6 +40,7 @@
             <% }%>
         </form>
     </div>
+    <img class="img" src="${pageContext.request.contextPath}/imgs/pages/registerImg.png" alt="">
 </div>
 
 

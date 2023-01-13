@@ -26,6 +26,11 @@ public class RegistrazioneServlet extends HttpServlet {
     }
 
     /**
+     * Il metodo verifica se parametri inseriti dall'utenti se sono già
+     * utilizzati da altri utenti, in caso positivo lo reindirizza alla
+     * pagina di registrazione con un messaggio di errore relativo
+     * al problema di unicità.
+     *
      * @param request  an {@link HttpServletRequest} object that contains the request the client has made of the servlet
      * @param response an {@link HttpServletResponse} object that contains the response the servlet sends to the client
      * @throws ServletException

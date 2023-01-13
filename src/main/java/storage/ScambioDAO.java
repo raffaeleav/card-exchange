@@ -57,7 +57,7 @@ public class ScambioDAO {
      * @return una lista con tutte le proposte di scambio ricevute per l'offerta
      */
     // Permette di recuperare tutte le richieste di scambio per una determinata offerta
-    public ArrayList<Scambio> getAllScambiByIdOfferta(int idOfferta){
+    public List<Scambio> getAllScambiByIdOfferta(int idOfferta){
         try(Connection con = ConPool.getConnection()){
 
             //Preparo la query
@@ -65,7 +65,7 @@ public class ScambioDAO {
             ps.setString(1, String.valueOf(idOfferta));
 
             // Inizializzo l'ArrayList che conterrà tutte le richieste di scambio
-            ArrayList<Scambio> scambio = new ArrayList<>();
+            List<Scambio> scambio = new ArrayList<>();
 
 
             //Eseguo la query sul DB
@@ -92,7 +92,7 @@ public class ScambioDAO {
      * @return Tutte le richieste di scambio effettuate
      */
     // Permette di recuperare tutte le richieste scambio effettuate da un utente
-    public ArrayList<Scambio> getAllScambiByIdMittente(int idUtenteMittente){
+    public List<Scambio> getAllScambiByIdMittente(int idUtenteMittente){
         try(Connection con = ConPool.getConnection()){
 
             //Preparo la query
@@ -100,7 +100,7 @@ public class ScambioDAO {
             ps.setInt(1, idUtenteMittente);
 
             // Inizializzo l'ArrayList che conterrà tutte le richieste di scambio
-            ArrayList<Scambio> scambio = new ArrayList<>();
+            List<Scambio> scambio = new ArrayList<>();
 
 
             //Eseguo la query sul DB
@@ -127,7 +127,7 @@ public class ScambioDAO {
      * @return tutte le richieste di scambio ricevute
      */
     // Permette di recuperare tutte le richieste scambio ricevute da un utente
-    public ArrayList<Scambio> getAllScambiByIdDestinatario(int idUtenteDestinatario){
+    public List<Scambio> getAllScambiByIdDestinatario(int idUtenteDestinatario){
         try(Connection con = ConPool.getConnection()){
 
             //Preparo la query
@@ -135,7 +135,7 @@ public class ScambioDAO {
             ps.setInt(1, idUtenteDestinatario);
 
             // Inizializzo l'ArrayList che conterrà tutte le richieste di scambio
-            ArrayList<Scambio> scambio = new ArrayList<>();
+            List<Scambio> scambio = new ArrayList<>();
 
 
             //Eseguo la query sul DB

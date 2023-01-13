@@ -12,6 +12,7 @@ body {
 
 #top-navbar{
     margin: 20px;
+    padding: 0;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -82,7 +83,6 @@ body {
 }
 
 #top-navbar li a i {
-    font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, serif;
     color: #FFD100;
 }
 
@@ -95,7 +95,6 @@ body {
 }
 
 .fa-search {
-    font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #1a1a1a;
 }
 
@@ -140,10 +139,6 @@ body {
     text-align: center;
     text-decoration: none;
     color: #FFD100;
-}
-
-.fa-brands {
-    font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 #footer-navbar li a i:hover{

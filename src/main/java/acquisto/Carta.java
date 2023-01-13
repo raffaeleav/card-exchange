@@ -1,7 +1,7 @@
 package acquisto;
 
 /**
- * La classe modella il concetto di Carrello
+ * La classe modella il concetto di carta
  * @author Francesco Di Domenico
  */
 public class Carta {

@@ -7,7 +7,7 @@ function checkPurchasingParams(nome, cognome, indirizzo) {
 
 
     // Check the integrity of textual parameter
-    const isNameValid = regex.test(nome);
+    const isNomeValid = regex.test(nome);
     const isCognomeValid = regex.test(cognome);
 
     // Check the integrity of address using OpenCage Data APIs
@@ -17,19 +17,19 @@ function checkPurchasingParams(nome, cognome, indirizzo) {
     .then(data => {
         if(data.results.length > 0) {
             //indirizzo valido
-            isAddressValid = 1;
+            isAddressValid = Boolean(1);
 
         } else {
             //indirizzo non valido
-            isAddressValid = 0;
+            isAddressValid = Boolean(0);
         }
         });
 
 
-                // Return the result as an object
+     // Return the result as an object
     return {
-        isUsernameValid,
-        isNameValid,
+        isNomeValid,
+        isCognomeValid,
         isAddressValid
     };
 }

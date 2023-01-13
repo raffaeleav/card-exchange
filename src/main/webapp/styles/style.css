@@ -37,6 +37,7 @@ body {
 
 #bottom-navbar{
     margin: 20px;
+    padding: 0;
     border-radius: 10px;
     display: flex;
     justify-content: center;

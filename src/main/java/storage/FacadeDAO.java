@@ -9,6 +9,7 @@ import recensione.Recensione;
 import registrazione.Utente;
 import scambio.Scambio;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -272,7 +273,7 @@ public class FacadeDAO {
      */
     public List<Ordine> getOrdiniByIdUtente(Class<Ordine> entityClass, int idUtente) {
         if(entityClass.getName().equals("acquisto.Ordine")){
-            return new OrdineDAO().doRetrieveByIdUtente(idUtente);
+            return new OrdineDAO().getOrdiniByIdUtente(idUtente);
         }
         return null;
     }
@@ -298,5 +299,69 @@ public class FacadeDAO {
             return new ScambioDAO().getAllScambiByIdDestinatario(idUtenteDestinatario);
         }
         return null;
+    }
+
+
+    public Object doRetrieveByIdUtente(Class<?> entityClass,int idUtente){
+        if(entityClass.getName().equals("acquisto.Carrello")){
+            return new CarrelloDAO().doRetrieveById(idUtente);
+        }
+        return null;
+    }
+
+    public void addOffertaInCarrello(Class<?> entityClass, Object entity, int idCarrello){
+        if(entityClass.getName().equals("acquisto.Carrello")){
+            new CarrelloDAO().aggiungiOfferta((Offerta) entity, idCarrello);
+        }
+    }
+
+    public void removeOffertaFromCarrello(Class<?> entityClass, Object entity, int idCarrello){
+        if(entityClass.getName().equals("acquisto.Carrello")){
+            new CarrelloDAO().rimuoviOfferta((Offerta) entity, idCarrello);
+        }
+    }
+    public double calculateTotaleInCarrello(Class<?> entityClass,int idCarrello) {
+        double totale = 0.00;
+        if(entityClass.getName().equals("acquisto.Carrello")){
+            return totale = new CarrelloDAO().calcolaTotale(idCarrello);
+        }
+        return totale;
+    }
+
+    public void svuotaCarrello(Class<?> entityClass, Object entity, int idCarrello) {
+        if(entityClass.getName().equals("acquisto.Carrello")){
+            new CarrelloDAO().svuotaCarrello(idCarrello);
+
+        }
+    }
+
+    public List<?> doRetrieveAllByIdUtente(Class<?> entityClass, int idUtente) throws SQLException {
+        switch (entityClass.getName()) {
+            case "acquisto.Offerta":
+                return new OffertaDAO().getOfferteByIdUtente(idUtente);
+
+            case "acquisto.Ordine":
+                return new OrdineDAO().getOrdiniByIdUtente(idUtente);
+
+            default:
+                return null;
+        }
+    }
+
+    public List<?> doRetrieveAllByIdOrdine(Class<?> entityClass, int idOrdine) throws SQLException {
+        if(entityClass.getName().equals("acquisto.Offerta")){
+            return new OffertaDAO().getOfferteByIdOrdine(idOrdine);
+        }
+
+        return null;
+    }
+
+    public List<?> doRetrieveAllByIdCarta(Class<?> entityClass, int idCarta) {
+        if (entityClass.getName().equals("acquisto.Offerta")) {
+            return new OffertaDAO().getOfferteByIdCarta(idCarta);
+        }
+
+        return null;
+
     }
 }

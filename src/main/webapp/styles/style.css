@@ -28,7 +28,6 @@ body {
 #top-navbar li{
     padding: 14px 14px;
     display: block;
-    float: left;
     font-size: medium;
     text-align: center;
     text-decoration: none;
@@ -106,6 +105,14 @@ body {
 
 .fa-search:active{
     color: #75630f;
+}
+
+#logo {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    height: fit-content;
 }
 
 /* footer */

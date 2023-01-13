@@ -38,10 +38,10 @@ function check(){
     // Get the values of the input fields
     const nome = document.getElementById('nome').value;
     const cognome = document.getElementById('cognome').value;
-    const indirizzo = document.getElementById('indirizzoCompleto').value;
+    const indirizzoCompleto= document.getElementById('indirizzo').value.trim()+" "+document.getElementById('numeroCivico').trim()+" "+document.getElementById('cap').trim()+" "+document.getElementById('citta').trim()+" "+document.getElementById('provincia').trim();
 
     // Check the integrity of the registration parameters
-    const result = checkRegistrationParams(nome,cognome,indirizzo);
+    const result = checkRegistrationParams(nome,cognome,indirizzoCompleto);
 
     // If one of the parameters is invalid, show an error message and clear the input fields
     if (!result.isNomeValid) {

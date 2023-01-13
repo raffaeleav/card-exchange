@@ -35,7 +35,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
         String numeroCivico = request.getParameter("numeroCivico");
         String cap = request.getParameter("cap");
         String citta = request.getParameter("citta");
-        String paese = request.getParameter("paese");
+        String provincia = request.getParameter("paese");
         String tipoSpedizione = request.getParameter("tipoSpedizione");
         String metodoPagamento = request.getParameter("metodoPagamento");
 
@@ -47,7 +47,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
         // Calcola la data attuale
         Date data = new java.util.Date();
 
-        String indirizzoCompleto= nome.trim()+" "+" "+ cognome.trim()+"\n"+indirizzo.trim()+" "+numeroCivico.trim()+"\n"+cap.trim()+" "+citta.trim()+" "+paese.trim();
+        String indirizzoCompleto= nome.trim()+" "+" "+ cognome.trim()+"\n"+indirizzo.trim()+" "+numeroCivico.trim()+"\n"+cap.trim()+" "+citta.trim()+" "+provincia.trim();
 
         // Crea un nuovo oggetto Ordine con le offerte recuperate dal carrello
         Ordine ordine = new Ordine(0, data, indirizzoCompleto, idUtente,totale);

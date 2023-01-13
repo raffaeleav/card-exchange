@@ -82,7 +82,7 @@
             <label for="citta">Città:</label>
             <input type="text" id="citta" name="citta" required>
             <br>
-            <label for="paese">Provincia:</label>
+            <label for="provincia">Provincia:</label>
             <input type="text" id="paese" name="paese" required>
             <br>
             <label for="tipoSpedizione">Tipo di spedizione:</label>

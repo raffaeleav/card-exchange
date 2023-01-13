@@ -39,7 +39,7 @@ public class OffertaDAO {
                     "WHERE c.idUtente = ?";
     private static final String SELECT_ALL_OFFERTE_QUERY = "SELECT * FROM Offerta";
     //private static final String SELECT_OFFERTE_BY_ID_CARRELLO_QUERY = "SELECT * FROM Offerta o INNER JOIN CarrelloContieneOfferta cco ON o.idOfferta = cco.idOfferta WHERE cco.idCarrello = ?";
-
+    private static final String SELECT_OFFERTE_BY_ID_CARTA_QUERY = "SELECT * FROM Offerta WHERE idCarta = ?";
     private static final String UPDATE_OFFERTA_QUERY = "UPDATE Offerta SET condizione = ?, prezzo = ?, idUtente = ?, idCarta = ? WHERE idOfferta = ?";
     private static final String DELETE_OFFERTA_QUERY = "DELETE FROM Offerta WHERE idOfferta = ?";
 
@@ -161,6 +161,27 @@ public class OffertaDAO {
 
         return offerte;
     }
+
+    public List<Offerta> getOfferteByIdCarta(int idCarta) {
+        List<Offerta> offerte = new ArrayList<>();
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement statement = con.prepareStatement(SELECT_OFFERTE_BY_ID_CARTA_QUERY);
+            statement.setInt(1, idCarta);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int idOfferta = resultSet.getInt("idOfferta");
+                int idUtente = resultSet.getInt("idUtente");
+                String condizione = resultSet.getString("condizione");
+                double prezzo = resultSet.getDouble("prezzo");
+                Offerta offerta = new Offerta(idOfferta, condizione, prezzo, idUtente, idCarta);
+                offerte.add(offerta);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return offerte;
+    }
+
 
     public void doUpdate(int idOfferta, Offerta offerta){
             try (Connection con = ConPool.getConnection()) {

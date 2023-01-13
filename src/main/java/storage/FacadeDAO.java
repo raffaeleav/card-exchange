@@ -277,10 +277,6 @@ public class FacadeDAO {
     }
 
     public List<?> doRetrieveAllByIdUtente(Class<?> entityClass, int idUtente) throws SQLException {
-        if (entityClass.getName().equals("acquisto.Offerta")) {
-            return new OffertaDAO().getOfferteByIdUtente(idUtente);
-        }
-
         switch (entityClass.getName()) {
             case "acquisto.Offerta":
                 return new OffertaDAO().getOfferteByIdUtente(idUtente);
@@ -301,11 +297,12 @@ public class FacadeDAO {
         return null;
     }
 
+    public List<?> doRetrieveAllByIdCarta(Class<?> entityClass, int idCarta) {
+        if (entityClass.getName().equals("acquisto.Offerta")) {
+            return new OffertaDAO().getOfferteByIdCarta(idCarta);
+        }
 
+        return null;
 
-
-
-
-
-
+    }
 }

@@ -16,6 +16,10 @@ public class Offerta {
 
   }
 
+    public Offerta() {
+
+    }
+
   public int getIdOfferta() {
     return idOfferta;
   }

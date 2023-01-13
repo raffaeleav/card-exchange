@@ -6,7 +6,6 @@
 <%@ page import="registrazione.*" %>
 <%@ page import="storage.FacadeDAO" %>
 
-
 <!DOCTYPE html>
 <html>
 <head>

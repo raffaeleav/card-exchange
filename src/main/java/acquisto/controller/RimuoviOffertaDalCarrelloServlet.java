@@ -12,9 +12,20 @@ import acquisto.Offerta;
 import registrazione.Utente;
 import storage.FacadeDAO;
 
+/**
+ * La classe permette la rimozione di un'offerta dal carrello tramite
+ * una servlet che viene richiamata dal bottone della
+ * funzione di acquisto
+ * @author Salvatore Sautariello
+ */
 @WebServlet("/rimuoviOffertaDalCarrello")
 public class RimuoviOffertaDalCarrelloServlet extends HttpServlet {
-
+    /**
+     * Il metodo permette di gestire la richiesta del client tramite una response che contiene un'offerta,
+     * i cui attributi combaciano con i parametri dell'offerta selezionata nel carrello.
+     * @param request oggetto che modella una richiesta HTTP
+     * @param response oggetto che modella una risposta HTTP
+     * */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

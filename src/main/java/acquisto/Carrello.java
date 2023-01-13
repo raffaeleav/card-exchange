@@ -1,25 +1,27 @@
 package acquisto;
 
-import java.util.ArrayList;
-import java.util.List;
-import storage.OffertaDAO;
-
+/**
+ * La classe modella il concetto di Carrello
+ * @author Salvatore Sautariello
+ */
 public class Carrello {
-
     private int idCarrello;
     private int idUtente;
     private double totale;
 
+    /**
+     * Costruttore della classe Carrello
+     * @param idCarrello id del carrello
+     * @param idUtente id dell' utente della sessione corrente
+     * */
     public Carrello(int idCarrello, int idUtente) {
         this.idCarrello = idCarrello;
         this.idUtente = idUtente;
         this.totale = 0;
     }
-
     public Carrello() {
 
     }
-
     public int getIdCarrello() {
         return idCarrello;
     }

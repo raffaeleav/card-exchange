@@ -11,8 +11,20 @@ import java.io.IOException;
 import registrazione.Utente;
 import storage.FacadeDAO;
 
+/**
+ * La classe permette di svuotare il carrello dalle sue offerte tramite
+ * una servlet che viene richiamata dal bottone della
+ * funzione di acquisto
+ * @author Salvatore Sautariello
+ */
 @WebServlet("/svuotaCarrello")
 public class SvuotaCarrelloServlet extends HttpServlet {
+    /**
+     * Il metodo permette di gestire la richiesta del client tramite una response che contiene un carrello,
+     * i cui attributi combaciano con i parametri de carrello dell'utente della sessione corrente.
+     * @param request oggetto che modella una richiesta HTTP
+     * @param response oggetto che modella una risposta HTTP
+     * */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

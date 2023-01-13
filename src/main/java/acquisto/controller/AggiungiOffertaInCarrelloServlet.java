@@ -11,12 +11,26 @@ import acquisto.Offerta;
 import registrazione.Utente;
 import storage.FacadeDAO;
 
+
+/**
+ * La classe permette l'aggiunta di un'offerta al carrello tramite
+ * una servlet che viene richiamata dal bottone della
+ * funzione di acquisto
+ * @author Salvatore Sautariello
+ */
 @WebServlet("/aggiungiOffertaInCarrello")
 public class AggiungiOffertaInCarrelloServlet extends HttpServlet {
 
+    /**
+     * Il metodo permette di gestire la richiesta del client tramite una response che contiene un'offerta,
+     * i cui attributi combaciano con i parametri dell'offerta selezionata nel form della carta.jsp.
+     * @param request oggetto che modella una richiesta HTTP
+     * @param response oggetto che modella una risposta HTTP
+     * */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
+
 
         // Recupera l'id dell'utente corrente dalla sessione
         Utente user = (Utente) request.getSession().getAttribute("Utente");

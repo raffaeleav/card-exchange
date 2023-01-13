@@ -13,8 +13,20 @@ import acquisto.*;
 import registrazione.Utente;
 import storage.FacadeDAO;
 
+/**
+ * La classe permette il checkout del carrello tramite
+ * una servlet che viene richiamata dal bottone della
+ * funzione di acquisto
+ * @author Salvatore Sautariello
+ */
 @WebServlet("/checkout")
 public class CheckoutServlet extends HttpServlet {
+/**
+ * Il metodo permette di gestire la richiesta del client tramite una response che contiene un carrello,
+ * i cui attributi combaciano con i parametri del carrello dell'utente della sessione corrente.
+ * @param request oggetto che modella una richiesta HTTP
+ * @param response oggetto che modella una risposta HTTP
+ * */
 @Override
 protected void doPost(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {

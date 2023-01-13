@@ -362,6 +362,24 @@ public class FacadeDAO {
         }
 
         return null;
+    }
 
+    /**
+     * Il metodo permette di recuperare tutti i messaggi che sono
+     *                      appartengono ad una discussione
+     * @param topicId id della discussione di cui si vogliono recuperare
+     *                      messaggi
+     * @return un oggetto List contenente i messaggi appartenenti alla discussione
+     *                      con idDiscussione = topicID
+     * */
+    public List<Messaggio> doRetrieveMessageListByTopicId(Class<?> entityClass, int topicId){
+        if(entityClass.getName().equals("creazioneDiscussione.Discussione")) {
+            DiscussioneDAO topicDAO = new DiscussioneDAO();
+            List<Messaggio> messages = topicDAO.doRetrieveMessageListByTopicId(topicId);
+
+            return messages;
+        }
+
+        else return null;
     }
 }

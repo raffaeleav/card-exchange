@@ -39,7 +39,7 @@
                 <button class="submitExit" type="submit" value="Elimina account">Elimina Account <i class="fa-solid fa-trash"></i></button><br>
             </form>
         <form method="post" action="AdminRecensioniServlet?idUtente=<%=listutenti.getIdUtente()%>">
-            <button class="submitExit" type="submit" value="Recensioni effettuate">Recensioni effettuate <i class="fa-solid fa-trash"></i></button><br>
+            <button class="submitExit" type="submit" value="Recensioni effettuate">Recensioni effettuate </button><br>
         </form>
         <%}%>
     </div>

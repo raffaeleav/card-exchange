@@ -28,6 +28,11 @@ import java.util.Set;
 
 import static com.google.api.services.gmail.GmailScopes.GMAIL_SEND;
 import static javax.mail.Message.RecipientType.TO;
+/**
+ * La classe permette la procedura d'invio notifica tramite l'utilizzo
+ * di GMAIL API.
+ * @author Michele Menzione
+ */
 
 
 public class GMailer {
@@ -58,6 +63,13 @@ public class GMailer {
         return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
     }
 
+    /**
+     * Metodo che permette l'invio dell'email
+     * @param emailDestinatario - email a cui si deve inviare email
+     * @param subject - Oggetto del messaggio
+     * @param message - Corpo del messaggio
+     * @throws Exception
+     */
     public void sendMail(String emailDestinatario, String subject, String message) throws Exception {
         Properties props = new Properties();
         Session session = Session.getDefaultInstance(props, null);

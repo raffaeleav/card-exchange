@@ -5,14 +5,14 @@ import storage.FacadeDAO;
 import storage.UtenteDAO;
 
 /**
- * La classe permette la ricerca di una carta tramite
- * una servlet che viene richiamata dal bottone della
- * funzione di ricerca.
+ * La classe permette la verifica dell'operazione di login
+ * tramite l'utilizzo del design pattern
  * @author Michele Menzione
  */
 public class Autenticazione {
     /**
-     * Il metodo permette di verificare se l'utente è registrato al sito. In caso positivo restituisce tutte le sue informazioni
+     * Il metodo permette di verificare se l'utente è registrato al sito.
+     * In caso positivo restituisce tutte le sue informazioni
      * @param pass, oggetto che identifica una credenziale di accesso
      * @param email, oggetto che identifica una credenziale di accesso
      * */

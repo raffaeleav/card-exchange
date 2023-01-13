@@ -13,8 +13,22 @@ import storage.OffertaDAO;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * La classe permette la visualizzazione della procedura di Scambio di un utente tramite
+ * una servlet che viene richiamata dal bottone di visualizza scambio.
+ * @author Michele Menzione
+ */
+
 @WebServlet(name = "ShowScambioServlet", value = "/ShowScambioServlet")
 public class ShowScambioServlet extends HttpServlet {
+    /**
+     * Il metodo permette la visualizzazione della richiesta di scambio per l'offerta selezionata,
+     * settando i vari parametri necessari per lo scambio
+     * @param request  an {@link HttpServletRequest} object that contains the request the client has made of the servlet
+     * @param response an {@link HttpServletResponse} object that contains the response the servlet sends to the client
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String offertaRichiesta = request.getParameter("offerta");

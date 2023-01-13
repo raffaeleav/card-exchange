@@ -1,5 +1,11 @@
 package registrazione;
 
+/**
+ * La classe Utente rappresenta un utente nel sistema di Card eXchange,
+ * contiene informazioni come il nome dell'utente, la password, email, nome e cognome.
+ * Include metodi di getter e setter, utilizzati per visualizzare e/o settare parametri dell'istanza.
+ * @author Michele Menzione
+ */
 public class Utente {
     private int idUtente;
     private String username,password,nome,cognome,email;

@@ -6,6 +6,12 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
+/**
+ * La classe permette la procedura di login, tramite una servlet
+ * invocata con il bottone di login
+ * @author Michele Menzione
+ */
+
 @WebServlet(name = "ShowLoginServlet", value = "/ShowLoginServlet")
 public class ShowLoginServlet extends HttpServlet {
     @Override

@@ -16,8 +16,9 @@ import java.io.IOException;
 
 
 /**
- * Questa servlet viene acceduta quando si esegue una richiesta di scambio, la quale permette il salvataggio nel DB
- * e l'invio di una notifica
+ * La classe permette la procedura di Scambio di un utente tramite
+ * una servlet che viene richiamata dal bottone di scambio.
+ * @author Michele Menzione
  */
 @WebServlet(name = "ScambioServlet", value = "/ScambioServlet")
 public class ScambioServlet extends HttpServlet {
@@ -27,6 +28,10 @@ public class ScambioServlet extends HttpServlet {
     }
 
     /**
+     * Il metodo implementa la verifica la correttezza dei parametri inseriti dall'utente;
+     * In caso Negativo viene reindirizzato in una pagina di errore.
+     * In caso Positivo esegue la procedura di scambio con la memorizzazione all'interno del DB e
+     * l'invio di notifica tramite e-mail al mittente (Richiesta di Scambio - Inviato) e al destinatario (Richiesta di Scambio - Ricevuta)
      * @param request  an {@link HttpServletRequest} object that contains the request the client has made of the servlet
      * @param response an {@link HttpServletResponse} object that contains the response the servlet sends to the client
      * @throws ServletException

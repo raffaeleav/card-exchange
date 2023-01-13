@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #202020; /* fallback for old browsers */
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.title{
+    padding: 10px;
+    text-align: center;
+    color: #202020;
+}
+.showUtenti{
+    margin: 10px;
+    padding: 25px;
+    background: #FFD100;
+    border-radius: 10px;
+    color: #202020;
+}

@@ -1,4 +1,4 @@
-package ricerca.controller;
+package ricerca.service;
 
 import acquisto.Offerta;
 import jakarta.servlet.RequestDispatcher;

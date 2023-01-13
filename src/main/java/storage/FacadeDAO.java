@@ -304,7 +304,7 @@ public class FacadeDAO {
 
     public Object doRetrieveByIdUtente(Class<?> entityClass,int idUtente){
         if(entityClass.getName().equals("acquisto.Carrello")){
-            return new CarrelloDAO().doRetrieveById(idUtente);
+            return new CarrelloDAO().getCarrelloByIdUtente(idUtente);
         }
         return null;
     }

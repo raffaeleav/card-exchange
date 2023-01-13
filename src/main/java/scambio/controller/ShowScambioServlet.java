@@ -11,6 +11,7 @@ import storage.FacadeDAO;
 import storage.OffertaDAO;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -35,11 +36,19 @@ public class ShowScambioServlet extends HttpServlet {
 
         Utente utente = (Utente) request.getSession().getAttribute("Utente");
 
-        OffertaDAO offertaDAO = new OffertaDAO();
         FacadeDAO DAO = new FacadeDAO();
 
         //Lista delle offerte dell'utente richiedente
-        List <Offerta> offerte = offertaDAO.getOfferteByIdUtente(utente.getIdUtente());
+        List <Offerta> offerte = null;
+
+        try {
+            offerte = (List<Offerta>) DAO.doRetrieveAllByIdUtente(Offerta.class, utente.getIdUtente());
+        }
+
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
         // Offerta selezionata allo scambio
         Offerta richiesta = (Offerta) DAO.doRetrieveById(Offerta.class,Integer.parseInt(offertaRichiesta));

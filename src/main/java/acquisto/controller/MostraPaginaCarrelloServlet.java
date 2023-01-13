@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import acquisto.Carrello;
+import registrazione.Utente;
 import storage.FacadeDAO;
 
 /**
@@ -29,7 +30,8 @@ public class MostraPaginaCarrelloServlet extends HttpServlet {
             throws ServletException, IOException {
 
         // Recupera l'id dell'utente corrente dalla sessione
-        int idUtente = (int) request.getSession().getAttribute("idUtente");
+        Utente utente = (Utente) request.getSession().getAttribute("Utente");
+        int idUtente = utente.getIdUtente();
 
         FacadeDAO facadeDAO = new FacadeDAO();
         // Recupera il carrello dell'utente corrente dal database utilizzando il metodo

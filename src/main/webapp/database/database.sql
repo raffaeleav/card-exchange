@@ -11,9 +11,6 @@ create table Utente(
                        email text not null,
                        primary key(idUtente)
 );
-insert into Utente values(default, 'Admin','admin123!','Francesco','Di Domenico','admin@email.it');
-insert into Utente values(default, 'utente','utente123!','Francesco','Di Domenico','utente@email.it');
-insert into Utente values(default, 'Admin','admin123!','Francesco','Di Domenico','admin@email.it');
 
 CREATE table Carta(
                       idCarta int not null AUTO_INCREMENT,
@@ -24,11 +21,6 @@ CREATE table Carta(
 
                       PRIMARY KEY(idCarta)
 );
-
-/*insert into Carta values(default,'Drago bianco occhi blu','Yu-Gi-Oh','Comune');
-insert into Carta values(default,'Mago nero','Yu-Gi-Oh','Rara');
-insert into Carta values(default,'Pikachu','Pokemon','Ultra rara');
-insert into Carta values(default,'Maga nera','Yu-Gi-Oh','Comune');*/
 
 create table Discussione(
                             idDiscussione int not null auto_increment,
@@ -124,4 +116,3 @@ create table OrdineComprendeOfferta(
                                        foreign key(idOrdine) references Ordine(idOrdine),
                                        foreign key(idOfferta) references Offerta(idOfferta)
 );
-select * from recensione;

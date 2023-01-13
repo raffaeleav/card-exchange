@@ -35,13 +35,10 @@ public class AutenticazioneServlet extends HttpServlet {
         String username = request.getParameter("email");
         String pass = request.getParameter("password");
 
-        // @TODO Utilizzare design pattern
-        CarrelloDAO dao = new CarrelloDAO();
         Utente validate  = Autenticazione.verifyLogin(username, pass);
 
         if(validate != null) {
             request.getSession().setAttribute("Utente", validate);
-            request.getSession().setAttribute("Carrello",dao.getCarrelloByIdUtente(validate.getIdUtente()));
             request.getRequestDispatcher("index.jsp").forward(
                     request, response);
         }else {

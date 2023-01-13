@@ -16,8 +16,5 @@
     </div>
 
     <%@include file="footer.jsp"%>
-    <a href="ShowScambioServlet?offerta=1">Scambio</a>
-    <a href="ShowLoginServlet">Login</a>
-    <a href="ShowRegistrazioneServlet">Registrati</a>
     </body>
 </html>

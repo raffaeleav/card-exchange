@@ -46,7 +46,7 @@
         <p class="description">Categoria: <span class="results categoria"></span></p>
         <p class="description">Rarità: <span id="rarity" class="results"></span></p>
         <p class="description">Condizione: <span class="results condizione"></span></p>
-        <p class="description">Prezzo: <span class="results prezzo"></span></p>
+        <p class="description">Prezzo: <span class="results prezzo"></span>€</p>
     </div>
     <label>
         <select id="offerte" class="custom-select">

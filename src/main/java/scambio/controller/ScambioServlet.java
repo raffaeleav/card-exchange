@@ -35,15 +35,27 @@ public class ScambioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        int idUtenteMittente = Integer.parseInt(request.getParameter("idUtenteMittente")),
-        idOffertaMittente = Integer.parseInt(request.getParameter("idOffertaMittente")),
-        idOffertaDestinatario = Integer.parseInt(request.getParameter("idOffertaDestinatario")),conguaglio = 0;
+        int conguaglio = 0;
 
         // @TODO CONTROLLI SULL'INPUT
-        if( request.getParameter("conguaglio").length() > 0)
-                conguaglio = Integer.parseInt(request.getParameter("conguaglio"));
+        if(request.getParameter("idOffertaMittente").isBlank() || request.getParameter("idOffertaDestinatario").isBlank()){
+            request.getRequestDispatcher("/WEB-INF/error/somethingWentWrong.jsp").forward(
+                    request, response);
+            return;
+        }
+        if(this.isNumeric(request.getParameter("conguaglio"))){
+            conguaglio = Integer.parseInt(request.getParameter("conguaglio"));
+            if(conguaglio < 0)
+                conguaglio = 0;
+        }
 
-        System.out.println(idUtenteMittente);
+        // Controlli Passati!
+        int idUtenteMittente = Integer.parseInt(request.getParameter("idUtenteMittente"));
+        int idOffertaDestinatario = Integer.parseInt(request.getParameter("idOffertaDestinatario"));
+        int idOffertaMittente = Integer.parseInt(request.getParameter("idOffertaMittente"));
+
+
+
 
 
         //Design Pattern
@@ -71,8 +83,8 @@ public class ScambioServlet extends HttpServlet {
                     " " +cartaUtenteMittente.getNome()+ ".\n Visualizza il sito per 'Accettare' o 'Rifiutare' alla richiesta.");
 
             gMailer.sendMail(mittente.getEmail(),"Richiesta Di Scambio - Inviata","Hai effettuato con successo una richiesta di scambio"+ ".\n" +
-                    "La tua carta "+cartaUtenteDestinatario.getNome() + " per la sua carta" +
-                    " " +cartaUtenteMittente.getNome()+ ".\n Visualizza il sito per verificare lo stato della richiesta.");
+                    "La tua carta "+cartaUtenteMittente.getNome() + " per la sua carta" +
+                    " " +cartaUtenteDestinatario.getNome()+ ".\n Visualizza il sito per verificare lo stato della richiesta.");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -81,5 +93,14 @@ public class ScambioServlet extends HttpServlet {
                 request, response);
 
 
+    }
+
+    private boolean isNumeric(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch(NumberFormatException e){
+            return false;
+        }
     }
 }

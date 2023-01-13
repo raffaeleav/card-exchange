@@ -276,4 +276,27 @@ public class FacadeDAO {
         }
         return null;
     }
+
+    public List<?> getAllScambiByIdOfferta(Class<?> entityClass,int idOfferta){
+        if(entityClass.getName().equals("scambio.Scambio")){
+            return new ScambioDAO().getAllScambiByIdOfferta(idOfferta);
+        }
+        return null;
+
+    }
+
+    public List<?> getAllScambiByIdMittente(Class<?> entityClass,int idUtenteMittente){
+        if(entityClass.getName().equals("scambio.Scambio")){
+            return new ScambioDAO().getAllScambiByIdMittente(idUtenteMittente);
+        }
+        return null;
+
+    }
+
+    public List<?> getAllScambiByIdDestinatario(Class<?> entityClass,int idUtenteDestinatario){
+        if(entityClass.getName().equals("scambio.Scambio")){
+            return new ScambioDAO().getAllScambiByIdDestinatario(idUtenteDestinatario);
+        }
+        return null;
+    }
 }

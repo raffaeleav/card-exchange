@@ -82,7 +82,7 @@ body {
     cursor: pointer;
 }
 
-.fa-globe, .fa-user, .fa-list, .fa-lock, .fa-clipboard, .fa-comment, .fa-cart-arrow-down {
+#top-navbar li a i {
     font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, serif;
     color: #FFD100;
 }

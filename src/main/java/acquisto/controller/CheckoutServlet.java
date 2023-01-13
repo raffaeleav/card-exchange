@@ -47,7 +47,7 @@ protected void doPost(HttpServletRequest request, HttpServletResponse response)
         String numeroCivico = request.getParameter("numeroCivico");
         String cap = request.getParameter("cap");
         String citta = request.getParameter("citta");
-        String provincia = request.getParameter("paese");
+        String provincia = request.getParameter("provincia");
         String tipoSpedizione = request.getParameter("tipoSpedizione");
         String metodoPagamento = request.getParameter("metodoPagamento");
 

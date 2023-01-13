@@ -282,7 +282,7 @@ public class FacadeDAO {
                 return new OffertaDAO().getOfferteByIdUtente(idUtente);
 
             case "acquisto.Ordine":
-                return new OrdineDAO().getOfferteByIdUtente(idUtente);
+                return new OrdineDAO().getOrdiniByIdUtente(idUtente);
 
             default:
                 return null;

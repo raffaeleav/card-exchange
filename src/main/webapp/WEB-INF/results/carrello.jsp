@@ -83,7 +83,7 @@
             <input type="text" id="citta" name="citta" required>
             <br>
             <label for="provincia">Provincia:</label>
-            <input type="text" id="paese" name="paese" required>
+            <input type="text" id="provincia" name="provincia" required>
             <br>
             <label for="tipoSpedizione">Tipo di spedizione:</label>
             <select id="tipoSpedizione" name="tipoSpedizione" required>

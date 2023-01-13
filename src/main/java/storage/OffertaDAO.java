@@ -7,18 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import acquisto.Offerta;
-import acquisto.Ordine;
-/*
-La classe OffertaDAO rappresenta il Data Access Object (DAO) per le entità Offerta. Si tratta di una classe che definisce i metodi per gestire le operazioni CRUD (create, read, update, delete) sulle offerta nel database.
+import acquisto.*;
 
-In particolare, la classe include i seguenti metodi:
-addOfferta
-getOffertaById
-getAllOfferte
-deleteOfferta
-Per la connessione al database viene utilizzata la classe ConPool.
-*/
+/**
+ * La classe permette le operazioni riguardanti gli oggetti Offerta
+ * in relazione al DBMS MySQL
+ * @author Salvatore Sautariello
+ */
 
 public class OffertaDAO {
 
@@ -43,11 +38,11 @@ public class OffertaDAO {
     private static final String UPDATE_OFFERTA_QUERY = "UPDATE Offerta SET condizione = ?, prezzo = ?, idUtente = ?, idCarta = ? WHERE idOfferta = ?";
     private static final String DELETE_OFFERTA_QUERY = "DELETE FROM Offerta WHERE idOfferta = ?";
 
-    /*
-    addOfferta(Offerta offerta): inserisce una nuova offerta nel database
-    questo metodo prende in input un oggetto di tipo Offerta e lo inserisce nel database, utilizzando la query 'INSERT_OFFERTA_QUERY'.
-    I valori dei campi vengono impostati utilizzando i metodi get dell'oggetto Offerta.
-    */
+    /**
+     * Il metodo permette di memorizzare un oggetto Offerta
+     * nel database
+     * @param offerta l'offerta da memorizzare nel database
+     * */
     public void doSave(Offerta offerta) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(INSERT_OFFERTA_QUERY);
@@ -62,11 +57,14 @@ public class OffertaDAO {
         }
     }
 
-    /*
-    getOffertaById(int id): recupera un'offerta dal database in base all'id specificato
-    questo metodo prende in input un intero id e restituisce l'offerta presente nel database con quell'id, utilizzando la query 'SELECT_OFFERTA_BY_ID_QUERY'.
-    I risultati vengono estratti dal ResultSet e utilizzati per costruire un nuovo oggetto Offerta da restituire.
-    */
+    /**
+     * Il metodo permette di ottenere un oggetto Offerta con l'id
+     * specificato
+     * @param idOfferta id dell' oggetto Offerta che si vuole
+     *                      reperire dal database
+     * @return un oggetto Offerta il cui id coincide con quello specificato
+     *                      come parametro
+     */
     public Offerta doRetrieveById(int idOfferta) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(SELECT_OFFERTA_BY_ID_QUERY);
@@ -85,11 +83,12 @@ public class OffertaDAO {
         return null;
     }
 
-    /*
-    getAllOfferte(): recupera tutte le offerta presenti nel database.
-    questo metodo restituisce la lista di tutte le offerte presenti nel database, utilizzando la query 'SELECT_ALL_OFFERTE_QUERY'.
-    I risultati vengono estratti dal ResultSet e utilizzati per costruire una lista di oggetti Offerta da restituire.
-    */
+    /**
+     * Il metodo permette di ottenere tutti gli oggetti Offerta
+     * memorizzati nel database
+     * @return Una lista di oggetti Offerta che contiene tutte
+     *                      le istanze di oggetti Offerta nel database
+     */
     public List < Offerta > doRetrieveAll() {
         List < Offerta > offerte = new ArrayList < > ();
         try (Connection con = ConPool.getConnection()) {
@@ -110,6 +109,14 @@ public class OffertaDAO {
         return offerte;
     }
 
+    /**
+     * Il metodo permette di ottenere un oggetto Offerta con l'idUtente
+     * specificato
+     * @param idUtente idUtente della lista di oggetto Offerta che si vuole
+     *                      reperire dal database
+     * @return Una lista di oggetti Offerta che contiene le istanze di
+     *                      oggetti Offerta con l'idUtente specificato nel database
+     */
     public List<Offerta> getOfferteByIdUtente(int idUtente) throws SQLException{
         List<Offerta> offerte = new ArrayList<>();
         try (Connection con = ConPool.getConnection()) {
@@ -130,6 +137,13 @@ public class OffertaDAO {
         return offerte;
     }
 
+    /**
+     * Il metodo permette di ottenere un oggetto Offerta con l'idUtente
+     * specificato
+     * @param idOrdine idOrdine dell'oggetto Ordine cui si vuole repererire la lista di oggetti Offerta
+     * @return Una lista di oggetti Offerta che contiene le istanze di
+     *                      oggetti Offerta con l'idOrdine specificato nel database
+     */
     public List<Offerta> getOfferteByIdOrdine(int idOrdine) throws SQLException {
         // Crea una lista vuota di offerte
         List<Offerta> offerte = new ArrayList<>();
@@ -162,6 +176,14 @@ public class OffertaDAO {
         return offerte;
     }
 
+    /**
+     * Il metodo permette di ottenere un oggetto Offerta con l'idUtente
+     * specificato
+     * @param idCarta idCarta della lista di oggetto Offerta che si vuole
+     *      *                      reperire dal database
+     * @return Una lista di oggetti Offerta che contiene le istanze di
+     *                      oggetti Offerta con l'idCarta specificato nel database
+     */
     public List<Offerta> getOfferteByIdCarta(int idCarta) {
         List<Offerta> offerte = new ArrayList<>();
         try (Connection con = ConPool.getConnection()) {
@@ -182,11 +204,16 @@ public class OffertaDAO {
         return offerte;
     }
 
-
+    /**
+     * Il metodo permette di modificare un oggetto Offerta
+     * memorizzato nel database
+     * @param idOfferta id dell' oggetto Offerta che si vuole
+     * @param offerta oggetto che contiene i campi da modificare
+     * */
     public void doUpdate(int idOfferta, Offerta offerta){
             try (Connection con = ConPool.getConnection()) {
                 PreparedStatement statement = con.prepareStatement(UPDATE_OFFERTA_QUERY);
-                statement.setInt(1,  offerta.getIdOfferta());
+                statement.setInt(1,  idOfferta);
                 statement.setString(2, offerta.getCondizione());
                 statement.setDouble(3, offerta.getPrezzo());
                 statement.setInt(4, offerta.getIdUtente());
@@ -198,10 +225,12 @@ public class OffertaDAO {
 
     }
 
-    /*
-    deleteOfferta(int id): elimina un'offerta dal database in base all'id specificato.
-    questo metodo prende in input un intero id e cancella dal database l'offerta con quell'id, utilizzando la query 'DELETE_OFFERTA_QUERY'.
-    */
+    /**
+     * Il metodo permette di eliminare un oggetto Offerta
+     * memorizzato nel database
+     * @param idOfferta id dell' oggetto Offerta che si vuole
+     *                      eliminare dal database
+     * */
     public void doDelete(int idOfferta) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(DELETE_OFFERTA_QUERY);

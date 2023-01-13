@@ -26,7 +26,7 @@
                     <%for(Carta card : cards){%>
                         <li>
                             <br><br>
-                                <%=card.getNome()%> <%=card.getCategoria()%>
+                                <%=card.getNome()%>
                             <br><br>
                             <img src="${pageContext.request.contextPath}<%=card.getImmagine()%>">
 

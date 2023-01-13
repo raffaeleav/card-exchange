@@ -65,8 +65,6 @@ body {
 }
 
 #search-text{
-    border-style: none;
-    border-color: rgba(0,0,0,0);
     border-radius: 5px;
     border-top: none;
     border-right: 4px solid #7a7878;
@@ -92,6 +90,14 @@ body {
 .fa-search {
     font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #1a1a1a;
+}
+
+.fa-search:hover{
+    color: #75630f;
+}
+
+.fa-search:active{
+    color: #75630f;
 }
 
 /* footer */
@@ -193,8 +199,6 @@ body {
 }
 
 #topic-text{
-    border-style: none;
-    border-color: rgba(0,0,0,0);
     border-radius: 5px;
     border-top: none;
     border-right: 4px solid #7a7878;
@@ -213,6 +217,14 @@ input[type=submit]{
     border-left: none;
     border-bottom: 3px solid #7a7878;
     cursor: pointer;
+}
+
+input[type=submit]:hover{
+    background-color: black;
+}
+
+input[type=submit]:active{
+    background-color: black;
 }
 
 #grid-container-topic ul {

@@ -40,6 +40,7 @@
             <% }%>
         </form>
     </div>
+    <img class="img" src="${pageContext.request.contextPath}/imgs/pages/registerImg.png" alt="">
 </div>
 
 

@@ -18,7 +18,7 @@
 
     <div id="content">
       <div id="content-text">
-        <p>Per creare una discussione devi aver effettuato il login!</p>
+        <p>Per creare o partecipare ad una discussione devi aver effettuato il login!</p>
       </div>
     </div>
 

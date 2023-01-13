@@ -1,5 +1,10 @@
 package acquisto;
 
+
+/**
+ * La classe modella il concetto di Offerta
+ * @author Salvatore Sautariello
+ */
 public class Offerta {
   private int idOfferta;
   private String condizione;
@@ -7,6 +12,14 @@ public class Offerta {
   private int idUtente;
   private int idCarta;
 
+  /**
+   * Costruttore della classe Offerta
+   * @param idOfferta id dell'offerta
+   * @param condizione condizione della carta dell'offerta
+   * @param prezzo prezzo dell'offerta
+   * @param idUtente id dell'utente che ha pubblicato l'offerta
+   * @param idCarta id della Carta cui si rifersice l'offerta
+   * */
   public Offerta(int idOfferta, String condizione, double prezzo, int idUtente, int idCarta) {
     this.idOfferta = idOfferta;
     this.condizione = condizione;
@@ -15,6 +28,10 @@ public class Offerta {
     this.idCarta = idCarta;
 
   }
+
+    public Offerta() {
+
+    }
 
   public int getIdOfferta() {
     return idOfferta;

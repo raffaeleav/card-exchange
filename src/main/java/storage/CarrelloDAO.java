@@ -1,8 +1,7 @@
 package storage;
-import storage.ConPool;
+
 import acquisto.Carrello;
 import acquisto.Offerta;
-import storage.OffertaDAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,6 +10,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * La classe permette le operazioni riguardanti gli oggetti Carrello
+ * in relazione al DBMS MySQL
+ * @author Salvatore
+ */
 public class CarrelloDAO {
     private static final String INSERT_CARRELLO_QUERY = "INSERT INTO Carrello (idCarrello, idUtente, totale) VALUES (?, ?, ?)";
     private static final String SELECT_CARRELLO_BY_ID_QUERY = "SELECT * FROM Carrello WHERE idCarrello = ?";
@@ -18,8 +22,23 @@ public class CarrelloDAO {
     private static final String SELECT_ALL_CARRELLI_QUERY = "SELECT * FROM Carrello";
     private static final String UPDATE_CARRELLO_QUERY ="UPDATE Carrello SET id Carrello=?, idUtente=?, totale=? WHERE idCarrello=? ";
     private static final String DELETE_CARRELLO_QUERY = "DELETE FROM Carrello WHERE idCarrello = ?";
+    private static final String INSERT_INTO_CARRELLOCONTIENEOFFERTA_QUERY = "INSERT INTO CarrelloContieneOfferta (idCarrello, idOfferta) VALUES (?, ?)";
+    private static final String DELETE_FROM_CARRELLOCONTIENEOFFERTA_QUERY = "DELETE FROM CarrelloContieneOfferta WHERE idCarrello = ? and idOfferta = ?";
+    private static final String DELETE_OFFERTE_FROM_CARRELLO_QUERY = "DELETE FROM CarrelloContieneOfferta WHERE idCarrello = ?";
 
-    // Inserisce un nuovo carrello nel database
+    private static final String SELECT_TOTALE_BY_ID_CARRELLO_QUERY = "SELECT SUM(Offerta.prezzo) as prezzo FROM CarrelloContieneOfferta " +
+            "JOIN Offerta ON CarrelloContieneOfferta.idOfferta = Offerta.idOfferta" +
+            "WHERE CarrelloContieneOfferta.idCarrello = ?;";
+
+    private static final String UPDATE_TOTALE_CARRELLO_QUERY = "UPDATE Carrello SET totale = ? WHERE idCarrello = ?";
+
+
+
+    /**
+     * Il metodo permette di memorizzare un oggetto Carrello
+     * nel database
+     * @param carrello il carrello da memorizzare nel database
+     * */
     public void doSave(Carrello carrello) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(INSERT_CARRELLO_QUERY);
@@ -31,7 +50,14 @@ public class CarrelloDAO {
         }
     }
 
-    // Restituisce il carrello con l'ID specificato, null se non esiste
+    /**
+     * Il metodo permette di ottenere un oggetto Carrello con l'id
+     * specificato
+     * @param idCarrello id dell' oggetto Carrello che si vuole
+     *                      reperire dal database
+     * @return un oggetto Carrello il cui id coincide con quello specificato
+     *                      come parametro
+     */
     public Carrello doRetrieveById(int idCarrello) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(SELECT_CARRELLO_BY_ID_QUERY);
@@ -47,26 +73,22 @@ public class CarrelloDAO {
         return null;
     }
     
-    /*
-    Restituisce il carrello associato all'ID dell'utente specificato, null se non esiste
-    Questo metodo recupera il carrello dell'utente dal database utilizzando l'id dell'utente come parametro
-    e utilizzando la stringa di query SELECT_CARRELLO_BY_ID_UTENTE_QUERY
-    Una volta recuperato il carrello, viene chiamato il metodo getOfferteByIdUtente del DAO OffertaDAO
-    per recuperare le offerte presenti nel carrello dell'utente
-    infine viene restituito un oggetto Carrello con l'id del carrello e l'id dell'utente specificati
-    Se il carrello non viene trovato, viene restituito null.
+
+    /**
+     * Il metodo permette di ottenere un oggetto Carrello con l'id dell'Utente
+     * specificato
+     * @param idUtente id dell' oggetto Utente che si vuole
+     *                      reperire dal database
+     * @return un oggetto Carrello il cui idUtente coincide con quello specificato
+     *                      come parametro
      */
     public Carrello getCarrelloByIdUtente(int idUtente) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(SELECT_CARRELLO_BY_ID_UTENTE_QUERY);
             statement.setInt(1, idUtente);
             ResultSet resultSet = statement.executeQuery();
-            OffertaDAO offertaDAO = new OffertaDAO();
             if (resultSet.next()) {
                 int idCarrello = resultSet.getInt("idCarrello");
-                // Recupera le offerte presenti nel carrello dal database
-                // utilizzando il metodo getOfferteByIdUtente del DAO OffertaDAO
-                List < Offerta > offerte = offertaDAO.getOfferteByIdUtente(idUtente);
                 // Crea un oggetto Carrello con l'ID del carrello e l'ID dell'utente
                 return new Carrello(idCarrello, idUtente);
             }
@@ -76,8 +98,12 @@ public class CarrelloDAO {
         return null;
     }
 
-
-    // Restituisce tutti i carrelli presenti nel database
+    /**
+     * Il metodo permette di ottenere tutti gli oggetti Carrello
+     * memorizzati nel database
+     * @return Una lista di oggetti Carrello che contiene tutte
+     *                      le istanze di oggetti Carrello nel database
+     */
     public List<Carrello> doRetrieveAll() {
         List<Carrello> carrelli = new ArrayList<>();
         try (Connection con = ConPool.getConnection()) {
@@ -94,20 +120,113 @@ public class CarrelloDAO {
         return carrelli;
     }
 
-    // Aggiorna il carrello nel database
-    public void doUpdate(Carrello carrello) {
+    /**
+     * Il metodo permette di modificare un oggetto Carrello
+     * memorizzato nel database
+     * @param idCarrello id dell' oggetto Carrello che si vuole
+     * @param carrello oggetto che contiene i campi da modificare
+     * */
+    public void doUpdate(int idCarrello,Carrello carrello) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(UPDATE_CARRELLO_QUERY);
             statement.setInt(1, carrello.getIdUtente());
-            statement.setDouble(2, carrello.getTotale());
-            statement.setInt(3, carrello.getIdCarrello());
+            statement.setInt(2, idCarrello);
+            statement.setDouble(3, carrello.getTotale());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    // Elimina il carrello con l'ID specificato dal database
+    /**
+     * Il metodo permette di aggiungere un oggetto Offerta al Carrello salvando nella table CarrelloContieneOfferta
+     * memorizzato nel database
+     * @param offerta oggetto che contiene i campi dell'offerta da aggiungere alla table
+     * @param idCarrello id dell'oggetto Carrello al quale aggiungere l'offerta nella table CarrelloContieneOfferta
+     * */
+    public void aggiungiOfferta(Offerta offerta, int idCarrello) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement statement = con.prepareStatement(INSERT_INTO_CARRELLOCONTIENEOFFERTA_QUERY);
+            statement.setInt(1, idCarrello);
+            statement.setInt(2, offerta.getIdOfferta());
+            statement.executeUpdate();
+            Carrello carrello = new Carrello();
+            carrello.setIdCarrello(idCarrello);
+            carrello.setTotale(calcolaTotale(idCarrello));
+            doUpdate(idCarrello,carrello);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    /**
+     * Il metodo permette di rimuovere un oggetto Offerta dal Carrello e dalla table CarrelloContieneOfferta
+     * memorizzato nel database
+     * @param offerta oggetto che contiene i campi dell'offerta da rimuovere dalla table
+     * @param idCarrello id dell'oggetto carrello al quale rimuovere l'offerta nella table CarrelloContieneOfferta
+     * */
+    public void rimuoviOfferta(Offerta offerta, int idCarrello) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement statement = con.prepareStatement(DELETE_FROM_CARRELLOCONTIENEOFFERTA_QUERY);
+            statement.setInt(1, idCarrello);
+            statement.setInt(2, offerta.getIdOfferta());
+            statement.executeUpdate();
+            Carrello carrello = new Carrello();
+            carrello.setIdCarrello(idCarrello);
+            carrello.setTotale(calcolaTotale(idCarrello));
+            doUpdate(idCarrello,carrello);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Il metodo permette di calcolare l'attributo totale del Carrello dell' id corrispondente
+     * sommando il prezzo delle offerte associate nella table CarrelloContieneOfferte
+     * @param idCarrello id dell'oggetto Carrello al quale si vuole calcolare il totale
+     * */
+
+    public double calcolaTotale(int idCarrello) {
+        double totale = 0.0;
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement statement = con.prepareStatement(SELECT_TOTALE_BY_ID_CARRELLO_QUERY);
+            statement.setInt(1, idCarrello);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                totale += resultSet.getDouble("prezzo");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return totale;
+    }
+
+    /**
+     * Il metodo permette di svuotare un oggetto Carrello da tutte le sue offerte  dalla table CarrelloContieneOfferta
+     * memorizzato nel database
+     * @param idCarrello id dell'oggetto Carrello da svuotare
+     * */
+    public void svuotaCarrello(int idCarrello) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement statement = con.prepareStatement(DELETE_OFFERTE_FROM_CARRELLO_QUERY);
+            statement.setInt(1, idCarrello);
+            statement.executeUpdate();
+            statement = con.prepareStatement(UPDATE_TOTALE_CARRELLO_QUERY);
+            statement.setDouble(1, 0.0);
+            statement.setInt(2, idCarrello);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+    /**
+     * Il metodo permette di eliminare un oggetto Carrello
+     * memorizzato nel database
+     * @param idCarrello id dell' oggetto Carrello che si vuole
+     *                      eliminare dal database
+     * */
     public void doDelete(int idCarrello) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(DELETE_CARRELLO_QUERY);

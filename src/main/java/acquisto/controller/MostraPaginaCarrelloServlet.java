@@ -8,10 +8,22 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import acquisto.Carrello;
-import storage.CarrelloDAO;
+import storage.FacadeDAO;
 
+/**
+ * La classe permette la visualizzazione della pagina carrello tramite
+ * una servlet che viene richiamata dal bottone della
+ * funzione di acquisto
+ * @author Salvatore Sautariello
+ */
 @WebServlet("/mostraPaginaCarrello")
 public class MostraPaginaCarrelloServlet extends HttpServlet {
+    /**
+     * Il metodo permette di gestire la richiesta del client tramite una response che contiene un carrello,
+     * i cui attributi combaciano con i parametri del carrello dell'utente della sessione corrente.
+     * @param request oggetto che modella una richiesta HTTP
+     * @param response oggetto che modella una risposta HTTP
+     * */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -19,10 +31,10 @@ public class MostraPaginaCarrelloServlet extends HttpServlet {
         // Recupera l'id dell'utente corrente dalla sessione
         int idUtente = (int) request.getSession().getAttribute("idUtente");
 
-        CarrelloDAO carrelloDAO = new CarrelloDAO();
+        FacadeDAO facadeDAO = new FacadeDAO();
         // Recupera il carrello dell'utente corrente dal database utilizzando il metodo
         // getCarrelloByIdUtente del DAO CarrelloDAO
-        Carrello carrello = carrelloDAO.getCarrelloByIdUtente(idUtente);
+        Carrello carrello = (Carrello) facadeDAO.doRetrieveByIdUtente(Carrello.class,idUtente);
 
         // Imposta il carrello come attributo della request
         request.setAttribute("carrello", carrello);

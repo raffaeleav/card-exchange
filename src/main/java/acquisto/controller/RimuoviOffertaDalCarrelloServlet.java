@@ -9,42 +9,48 @@ import java.io.IOException;
 
 import acquisto.Carrello;
 import acquisto.Offerta;
-import storage.CarrelloDAO;
-import storage.OffertaDAO;
+import registrazione.Utente;
+import storage.FacadeDAO;
 
+/**
+ * La classe permette la rimozione di un'offerta dal carrello tramite
+ * una servlet che viene richiamata dal bottone della
+ * funzione di acquisto
+ * @author Salvatore Sautariello
+ */
 @WebServlet("/rimuoviOffertaDalCarrello")
 public class RimuoviOffertaDalCarrelloServlet extends HttpServlet {
-
+    /**
+     * Il metodo permette di gestire la richiesta del client tramite una response che contiene un'offerta,
+     * i cui attributi combaciano con i parametri dell'offerta selezionata nel carrello.
+     * @param request oggetto che modella una richiesta HTTP
+     * @param response oggetto che modella una risposta HTTP
+     * */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         // Recupera l'id dell'utente corrente dalla sessione
-        int idUtente = (int) request.getSession().getAttribute("idUtente");
+        Utente user = (Utente) request.getSession().getAttribute("Utente");
+        int idUtente = user.getIdUtente();
 
-        // Recupera l'id dell'offerta da rimuovere dal carrello dalla request
+        // Recupera l'id dell'offerta da aggiungere al carrello dalla request
         int idOfferta = Integer.parseInt(request.getParameter("idOfferta"));
 
-        // Recupera il carrello dell'utente corrente dal database utilizzando il metodo
-        // getCarrelloByIdUtente del DAO CarrelloDAO
-        CarrelloDAO carrelloDAO = new CarrelloDAO();
-        Carrello carrello = carrelloDAO.getCarrelloByIdUtente(idUtente);
+        FacadeDAO facadeDAO = new FacadeDAO();
+        // Recupera il carrello dell'utente corrente dal database
+        Carrello carrello = (Carrello) facadeDAO.doRetrieveByIdUtente(Carrello.class,idUtente);
 
-        // Recupera l'offerta da rimuovere al carrello dal database utilizzando il metodo
-        // getOffertaById del DAO OffertaDAO
-        OffertaDAO offertaDAO= new OffertaDAO();
-        Offerta offerta = offertaDAO.doRetrieveById(idOfferta);
+        // Recupera l'offerta da rimuovere dal carrello dal database
+        Offerta offerta = (Offerta) facadeDAO.doRetrieveById(Offerta.class, idOfferta);
 
         // Rimuove l'offerta al carrello dell'utente
-        carrello.rimuoviOfferta(offerta);
-
-        carrello.getTotale();
+        facadeDAO.removeOffertaFromCarrello(Carrello.class,offerta, carrello.getIdCarrello());
 
         // Aggiorna il carrello nel database
-        carrelloDAO.doUpdate(carrello);
+        facadeDAO.doUpdate(Carrello.class,carrello.getIdCarrello(),carrello);
 
         // Reindirizza l'utente alla pagina del carrello
-        request.getRequestDispatcher("/WEB-INF/results/carrello.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/results/carrello.jsp").forward(request, response); //provvisorio
 
     }
 

@@ -1,5 +1,9 @@
 package acquisto;
 
+/**
+ * La classe modella il concetto di Carrello
+ * @author Francesco Di Domenico
+ */
 public class Carta {
     private int idCarta;
     private String nome;
@@ -16,7 +20,14 @@ public class Carta {
         this.categoria = categoria;
         this.rarita = rarita;
     }
-
+    /**
+     * Costruttore della classe Carta
+     * @param idCarta id della carta
+     * @param nome  nome della carta;
+     * @param categoria  categoria della carta;
+     * @param rarita rarita della carta;
+     * @param immagine url immagine della carta;
+     * */
     public Carta(int idCarta, String nome, String categoria, String rarita, String immagine) {
         this.idCarta = idCarta;
         this.nome = nome;

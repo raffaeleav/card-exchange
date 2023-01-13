@@ -10,15 +10,15 @@
         <div id="footer">
             <ul id="footer-navbar">
                 <li>
-                    <a id="twitter" href=""><i class="fa-brands fa-twitter"></i> </a>
+                    <a id="twitter" href=""><i class="fa-brands fa-twitter fa-lg"></i> </a>
                 </li>
 
                 <li>
-                    <a id="facebook" href=""><i class="fa-brands fa-facebook-f"></i></a>
+                    <a id="facebook" href=""><i class="fa-brands fa-facebook-f fa-lg"></i></a>
                 </li>
 
                 <li>
-                    <a id="instagram" href=""><i class="fa-brands fa-instagram"></i></a>
+                    <a id="instagram" href=""><i class="fa-brands fa-instagram fa-lg"></i></a>
                 </li>
 
                 <li>

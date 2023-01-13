@@ -263,6 +263,13 @@ public class FacadeDAO {
     return null;
     }
 
+    /**
+     * Il metodo restituisce una lista di ordini filtrate per l'ID utente.
+     * @param entityClass classe dell oggetto che si vuole cercare.
+     * @param idUtente id dell utente che ha effettuato la recensione.
+     * @return una lista di ordini per l'id utente.
+     * @autor Francesco Di Domenico
+     */
     public List<Ordine> getOrdiniByIdUtente(Class<Ordine> entityClass, int idUtente) {
         if(entityClass.getName().equals("acquisto.Ordine")){
             return new OrdineDAO().doRetrieveByIdUtente(idUtente);

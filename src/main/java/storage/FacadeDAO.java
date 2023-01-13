@@ -1,14 +1,13 @@
 package storage;
 
-import acquisto.Carta;
-import acquisto.Offerta;
-import acquisto.Ordine;
+import acquisto.*;
 import creazioneDiscussione.Discussione;
 import creazioneDiscussione.Messaggio;
 import recensione.Recensione;
 import registrazione.Utente;
 import scambio.Scambio;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -228,23 +227,85 @@ public class FacadeDAO {
     public boolean getUtenteByEmail(Class<?> entityClass, String email){
         if(entityClass.getName().equals("registrazione.Utente"))
             return new UtenteDAO().getUtenteByEmail(email);
-
         return false;
     }
 
     public boolean getUtenteByUsername(Class<?> entityClass,String username){
         if(entityClass.getName().equals("registrazione.Utente"))
             return new UtenteDAO().getUtenteByUsername(username);
-
         return false;
     }
 
     public Utente getUtenteByEmailPassword(Class<?> entityClass, String email,String password){
         if(entityClass.getName().equals("registrazione.Utente")){
             return new UtenteDAO().getUtenteByEmailPassword(email, password);
-
         }
         return null;
     }
+
+    public Object doRetrieveByIdUtente(Class<?> entityClass,int idUtente){
+        if(entityClass.getName().equals("acquisto.Carrello")){
+            return new CarrelloDAO().doRetrieveById(idUtente);
+        }
+        return null;
+    }
+
+    public void addOffertaInCarrello(Class<?> entityClass, Object entity, int idCarrello){
+        if(entityClass.getName().equals("acquisto.Carrello")){
+            new CarrelloDAO().aggiungiOfferta((Offerta) entity, idCarrello);
+        }
+    }
+
+    public void removeOffertaFromCarrello(Class<?> entityClass, Object entity, int idCarrello){
+        if(entityClass.getName().equals("acquisto.Carrello")){
+            new CarrelloDAO().rimuoviOfferta((Offerta) entity, idCarrello);
+        }
+    }
+    public double calculateTotaleInCarrello(Class<?> entityClass,int idCarrello) {
+        double totale = 0.00;
+        if(entityClass.getName().equals("acquisto.Carrello")){
+            return totale = new CarrelloDAO().calcolaTotale(idCarrello);
+        }
+        return totale;
+    }
+
+    public void svuotaCarrello(Class<?> entityClass, Object entity, int idCarrello) {
+        if(entityClass.getName().equals("acquisto.Carrello")){
+            new CarrelloDAO().svuotaCarrello(idCarrello);
+
+        }
+    }
+
+    public List<?> doRetrieveAllByIdUtente(Class<?> entityClass, int idUtente) throws SQLException {
+        if (entityClass.getName().equals("acquisto.Offerta")) {
+            return new OffertaDAO().getOfferteByIdUtente(idUtente);
+        }
+
+        switch (entityClass.getName()) {
+            case "acquisto.Offerta":
+                return new OffertaDAO().getOfferteByIdUtente(idUtente);
+
+            case "acquisto.Ordine":
+                return new OrdineDAO().getOfferteByIdUtente(idUtente);
+
+            default:
+                return null;
+        }
+    }
+
+    public List<?> doRetrieveAllByIdOrdine(Class<?> entityClass, int idOrdine) throws SQLException {
+        if(entityClass.getName().equals("acquisto.Offerta")){
+            return new OffertaDAO().getOfferteByIdOrdine(idOrdine);
+        }
+
+        return null;
+    }
+
+
+
+
+
+
+
 
 }

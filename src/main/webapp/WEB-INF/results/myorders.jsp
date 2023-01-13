@@ -3,7 +3,9 @@
 <%@ page import="jakarta.servlet.* "%>
 <%@ page import="java.util.*" %>
 <%@ page import="acquisto.*" %>
-<%@ page import="storage.*" %>
+<%@ page import="registrazione.*" %>
+<%@ page import="storage.FacadeDAO" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -34,8 +36,8 @@
 <%
   // Recupera l'id dell'ordine dalla sessione
   int idUtente = (int) session.getAttribute("idUtente");
-  OrdineDAO ordineDAO = new OrdineDAO();
-  List<Ordine> ordini = ordineDAO.doRetrieveByIdUtente(idUtente);
+  FacadeDAO facadeDAO = new FacadeDAO();
+  List<Ordine> ordini = (List<Ordine>) facadeDAO.doRetrieveAllByIdUtente(Ordine.class, idUtente);
   for (Ordine ordine : ordini) {
 %>
 <h2>Ordine #<%= ordine.getIdOrdine() %></h2>
@@ -54,20 +56,19 @@
       </tr>
 
       <%
-        OffertaDAO offertaDAO = new OffertaDAO();
-        List<Offerta> offerte = offertaDAO.getOfferteByIdOrdine(ordine.getIdOrdine());
+
+        List<Offerta> offerte = (List<Offerta>) facadeDAO.doRetrieveAllByIdOrdine(Ordine.class,ordine.getIdOrdine());
         for (Offerta offerta : offerte) {
       %>
       <tr>
         <td><%= offerta.getIdOfferta() %></td>
         <td><%= offerta.getIdCarta() %></td>
-        <% CartaDAO cartaDAO = new CartaDAO();
-          // Recupero il nome della carta tramite il metodo getCartaById del DAO CartaDAO
-          Carta carta = cartaDAO.getCartaById(offerta.getIdCarta());
+        <%
+          // Recupero il nome della carta
+          Carta carta = (Carta) facadeDAO.doRetrieveById(Carta.class,offerta.getIdCarta());
           String nomeCarta = carta.getNome();
-          // Recupero il nome dell'utente tramite il metodo getUtenteById del DAO UtenteDAO
-          UtenteDAO utenteDAO = new UtenteDAO();
-          registrazione.Utente utente = utenteDAO.getUtenteById(ordine.getIdUtente());
+          // Recupero il nome dell'utente
+          Utente utente = (Utente) facadeDAO.doRetrieveById(Utente.class,ordine.getIdUtente());
           String venditore = utente.getNome();
         %>
         <td><%= nomeCarta%></td>
@@ -79,7 +80,7 @@
       %>
   </table>
 
-<td><%= ordine.getTotale() %></td>
+
 
 <%
   }

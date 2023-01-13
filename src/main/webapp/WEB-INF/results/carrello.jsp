@@ -6,6 +6,8 @@
 <%@ page import="storage.OffertaDAO" %>
 <%@ page import="java.sql.SQLException" %>
 <%@ page import="acquisto.Carrello" %>
+<%@ page import="storage.FacadeDAO" %>
+<%@ page import="registrazione.Utente" %>
 
 <!DOCTYPE html>
 <html>
@@ -23,11 +25,18 @@
     </tr>
     <%
         // Recupera l'id dell'utente dalla sessione
-        int idUtente = (int) session.getAttribute("idUtente");
-        // Recupera le offerte del carrello utilizzando il metodo getOfferteByIdUtente del DAO OffertaDAO
-        OffertaDAO offertaDAO = new OffertaDAO();
+        Utente user = (Utente) request.getSession().getAttribute("Utente");
+        int idUtente = user.getIdUtente();
+
+        // Recupera le offerte del carrello
+        FacadeDAO facadeDAO = new FacadeDAO();
         List<Offerta> offerte;
-        offerte = offertaDAO.getOfferteByIdUtente(idUtente);
+        try {
+            offerte = (List<Offerta>) facadeDAO.doRetrieveAllByIdUtente(Offerta.class,idUtente);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
         // Itera sulla lista delle offerte e visualizza le informazioni in una tabella
         for (Offerta offerta : offerte) {
     %>
@@ -86,14 +95,14 @@
     </select>
     <br>
     <%// Crea un oggetto Carrello e imposta le offerte del carrello
-    Carrello carrello = new Carrello();
-    carrello.setOfferte(offerte);
+    Carrello carrello = (Carrello) facadeDAO.doRetrieveByIdUtente(Carrello.class, idUtente);
     // Recupera il totale del carrello utilizzando il metodo getTotaleCarrello
-    double totale = carrello.getTotale();
+
+    carrello.setTotale(facadeDAO.calculateTotaleInCarrello(Carrello.class, carrello.getIdCarrello()));
     %>
 
     <!-- Visualizza il totale del carrello -->
-    <p>Totale: <%= totale %> €</p>
+    <p>Totale: <%= carrello.getTotale() %> €</p>
 
         <input type="submit" value="Concludi il checkout">
 

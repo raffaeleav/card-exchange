@@ -1,6 +1,5 @@
 package acquisto.controller;
 
-import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -9,44 +8,43 @@ import java.io.IOException;
 
 import acquisto.Carrello;
 import acquisto.Offerta;
-import storage.CarrelloDAO;
-import storage.OffertaDAO;
+import registrazione.Utente;
+import storage.FacadeDAO;
 
 @WebServlet("/aggiungiOffertaInCarrello")
 public class AggiungiOffertaInCarrelloServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
 
         // Recupera l'id dell'utente corrente dalla sessione
-        int idUtente = (int) request.getSession().getAttribute("idUtente");
+        Utente user = (Utente) request.getSession().getAttribute("Utente");
+        int idUtente = user.getIdUtente();
 
         // Recupera l'id dell'offerta da aggiungere al carrello dalla request
         int idOfferta = Integer.parseInt(request.getParameter("idOfferta"));
 
-        CarrelloDAO carrelloDAO=new CarrelloDAO();
-        // Recupera il carrello dell'utente corrente dal database utilizzando il metodo
-        // getCarrelloByIdUtente del DAO CarrelloDAO
-        Carrello carrello = carrelloDAO.getCarrelloByIdUtente(idUtente);
+        FacadeDAO facadeDAO = new FacadeDAO();
+        // Recupera il carrello dell'utente corrente dal database
+        Carrello carrello = (Carrello) facadeDAO.doRetrieveByIdUtente(Carrello.class,idUtente);
 
         // Se il carrello non esiste, lo crea nel database utilizzando il metodo
         // doSave del DAO CarrelloDAO
         if (carrello == null) {
             carrello = new Carrello(0, idUtente);
-            carrelloDAO.doSave(carrello);
+            facadeDAO.doSave(Carrello.class,carrello);
         }
 
-        OffertaDAO offertaDAO=new OffertaDAO();
-        // Recupera l'offerta da aggiungere al carrello dal database utilizzando il metodo
-        // getOffertaById del DAO OffertaDAO
-        Offerta offerta = offertaDAO.doRetrieveById(idOfferta);
+
+        // Recupera l'offerta da aggiungere al carrello dal database
+        Offerta offerta = (Offerta) facadeDAO.doRetrieveById(Offerta.class, idOfferta);
 
         // Aggiunge l'offerta al carrello dell'utente
-        carrello.aggiungiOfferta(offerta);
+        facadeDAO.addOffertaInCarrello(Carrello.class,offerta, carrello.getIdCarrello());
 
         // Aggiorna il carrello nel database
-        carrelloDAO.doUpdate(carrello);
+        facadeDAO.doUpdate(Carrello.class,carrello.getIdCarrello(),carrello);
 
         // Reindirizza l'utente alla pagina del carrello
         response.sendRedirect("/WEB-INF/results/carrello.jsp"); //provvisorio

@@ -110,7 +110,7 @@ public class OffertaDAO {
         return offerte;
     }
 
-    public List<Offerta> getOfferteByIdUtente(int idUtente) {
+    public List<Offerta> getOfferteByIdUtente(int idUtente) throws SQLException{
         List<Offerta> offerte = new ArrayList<>();
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(SELECT_OFFERTE_BY_ID_UTENTE_QUERY);

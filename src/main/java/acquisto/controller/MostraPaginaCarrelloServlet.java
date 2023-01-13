@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import acquisto.Carrello;
-import storage.CarrelloDAO;
+import storage.FacadeDAO;
 
 @WebServlet("/mostraPaginaCarrello")
 public class MostraPaginaCarrelloServlet extends HttpServlet {
@@ -19,10 +19,10 @@ public class MostraPaginaCarrelloServlet extends HttpServlet {
         // Recupera l'id dell'utente corrente dalla sessione
         int idUtente = (int) request.getSession().getAttribute("idUtente");
 
-        CarrelloDAO carrelloDAO = new CarrelloDAO();
+        FacadeDAO facadeDAO = new FacadeDAO();
         // Recupera il carrello dell'utente corrente dal database utilizzando il metodo
         // getCarrelloByIdUtente del DAO CarrelloDAO
-        Carrello carrello = carrelloDAO.getCarrelloByIdUtente(idUtente);
+        Carrello carrello = (Carrello) facadeDAO.doRetrieveByIdUtente(Carrello.class,idUtente);
 
         // Imposta il carrello come attributo della request
         request.setAttribute("carrello", carrello);

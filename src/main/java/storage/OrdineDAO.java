@@ -50,7 +50,7 @@ public class OrdineDAO {
         }
         return null;
     }
-    public List<Ordine> doRetrieveByIdUtente(int idUtente) {
+    public List<Ordine> getOfferteByIdUtente(int idUtente) {
         List<Ordine> ordini = new ArrayList<>();
         try (Connection conn = ConPool.getConnection();
              PreparedStatement stmt = conn.prepareStatement(SELECT_ORDINI_BY_ID_UTENTE_QUERY)) {

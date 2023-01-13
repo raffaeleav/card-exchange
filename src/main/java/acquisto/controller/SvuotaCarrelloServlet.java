@@ -8,7 +8,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import storage.CarrelloDAO;
+import registrazione.Utente;
+import storage.FacadeDAO;
 
 @WebServlet("/svuotaCarrello")
 public class SvuotaCarrelloServlet extends HttpServlet {
@@ -17,15 +18,15 @@ public class SvuotaCarrelloServlet extends HttpServlet {
             throws ServletException, IOException {
 
         // Recupera l'id dell'utente corrente dalla sessione
-        int idUtente = (int) request.getSession().getAttribute("idUtente");
+        Utente user = (Utente) request.getSession().getAttribute("Utente");
+        int idUtente = user.getIdUtente();
 
-        CarrelloDAO carrelloDAO = new CarrelloDAO();
-        // Recupera il carrello dell'utente corrente dal database utilizzando il metodo
-        // getCarrelloByIdUtente del DAO CarrelloDAO
-        Carrello carrello = carrelloDAO.getCarrelloByIdUtente(idUtente);
+        FacadeDAO facadeDAO = new FacadeDAO();
+        // Recupera il carrello dell'utente corrente dal database
+        Carrello carrello = (Carrello) facadeDAO.doRetrieveByIdUtente(Carrello.class,idUtente);
 
         //Svuota il carrello delle sue offerte utilizzando il metodo svuotaCarrello della classe Carrello.
-        carrello.svuotaCarrello();
+        facadeDAO.svuotaCarrello(Carrello.class, carrello, carrello.getIdCarrello());
 
         // Reindirizza l'utente alla pagina del carrello
         request.getRequestDispatcher("/WEB-INF/results/carrello.jsp").forward(request, response);

@@ -1,8 +1,7 @@
 package storage;
-import storage.ConPool;
+
 import acquisto.Carrello;
 import acquisto.Offerta;
-import storage.OffertaDAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,6 +17,17 @@ public class CarrelloDAO {
     private static final String SELECT_ALL_CARRELLI_QUERY = "SELECT * FROM Carrello";
     private static final String UPDATE_CARRELLO_QUERY ="UPDATE Carrello SET id Carrello=?, idUtente=?, totale=? WHERE idCarrello=? ";
     private static final String DELETE_CARRELLO_QUERY = "DELETE FROM Carrello WHERE idCarrello = ?";
+    private static final String INSERT_INTO_CARRELLOCONTIENEOFFERTA_QUERY = "INSERT INTO CarrelloContieneOfferta (idCarrello, idOfferta) VALUES (?, ?)";
+    private static final String DELETE_FROM_CARRELLOCONTIENEOFFERTA_QUERY = "DELETE FROM CarrelloContieneOfferta WHERE idCarrello = ? and idOfferta = ?";
+    private static final String DELETE_OFFERTE_FROM_CARRELLO_QUERY = "DELETE FROM CarrelloContieneOfferta WHERE idCarrello = ?";
+
+    private static final String SELECT_TOTALE_BY_ID_CARRELLO_QUERY = "SELECT SUM(Offerta.prezzo) as prezzo FROM CarrelloContieneOfferta " +
+            "JOIN Offerta ON CarrelloContieneOfferta.idOfferta = Offerta.idOfferta" +
+            "WHERE CarrelloContieneOfferta.idCarrello = ?;";
+
+    private static final String UPDATE_TOTALE_CARRELLO_QUERY = "UPDATE Carrello SET totale = ? WHERE idCarrello = ?";
+
+
 
     // Inserisce un nuovo carrello nel database
     public void doSave(Carrello carrello) {
@@ -76,7 +86,6 @@ public class CarrelloDAO {
         return null;
     }
 
-
     // Restituisce tutti i carrelli presenti nel database
     public List<Carrello> doRetrieveAll() {
         List<Carrello> carrelli = new ArrayList<>();
@@ -106,6 +115,66 @@ public class CarrelloDAO {
             e.printStackTrace();
         }
     }
+    public void aggiungiOfferta(Offerta offerta, int idCarrello) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement statement = con.prepareStatement(INSERT_INTO_CARRELLOCONTIENEOFFERTA_QUERY);
+            statement.setInt(1, idCarrello);
+            statement.setInt(2, offerta.getIdOfferta());
+            statement.executeUpdate();
+            Carrello carrello = new Carrello();
+            carrello.setIdCarrello(idCarrello);
+            carrello.setTotale(calcolaTotale(idCarrello));
+            //doUpdate(carrello);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void rimuoviOfferta(Offerta offerta, int idCarrello) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement statement = con.prepareStatement(DELETE_FROM_CARRELLOCONTIENEOFFERTA_QUERY);
+            statement.setInt(1, idCarrello);
+            statement.setInt(2, offerta.getIdOfferta());
+            statement.executeUpdate();
+            Carrello carrello = new Carrello();
+            carrello.setIdCarrello(idCarrello);
+            carrello.setTotale(calcolaTotale(idCarrello));
+            //doUpdate(carrello);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public double calcolaTotale(int idCarrello) {
+        double totale = 0.0;
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement statement = con.prepareStatement(SELECT_TOTALE_BY_ID_CARRELLO_QUERY);
+            statement.setInt(1, idCarrello);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                totale += resultSet.getDouble("prezzo");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return totale;
+    }
+
+    public void svuotaCarrello(int idCarrello) {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement statement = con.prepareStatement(DELETE_OFFERTE_FROM_CARRELLO_QUERY);
+            statement.setInt(1, idCarrello);
+            statement.executeUpdate();
+            statement = con.prepareStatement(UPDATE_TOTALE_CARRELLO_QUERY);
+            statement.setDouble(1, 0.0);
+            statement.setInt(2, idCarrello);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     // Elimina il carrello con l'ID specificato dal database
     public void doDelete(int idCarrello) {

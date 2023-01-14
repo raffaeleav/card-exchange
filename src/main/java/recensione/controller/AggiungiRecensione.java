@@ -27,8 +27,8 @@ public class AggiungiRecensione extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         /**
          * Il metodo permette di gestire la richiesta del client,dove il server
-         * salva i parametri immessi nel form della pagina di recensione e grazie
-         * alla classe recensioneDAO aggiunge la recensione al database e rimanda ad un'altra
+         * salva i parametri immessi nel form della pagina di recensione,prende idOrdine ed idUtente
+         * e grazie alla classe facadeDAO aggiunge la recensione al database e rimanda ad un'altra
          * pagina a fine compilazione tramite parametro resp.
          * @param req : oggetto di richiesta HTTP
          * @param resp : oggetto di risposta HTTP

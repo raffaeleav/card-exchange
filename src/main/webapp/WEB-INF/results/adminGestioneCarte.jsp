@@ -19,7 +19,7 @@
 
 <div id="content">
     <div class="addCard" style="text-align: center">
-    <form method="post" action="AggiungiCarta">
+    <form method="post" action="MostraPaginaAggiuntaCarta">
         <input type="submit" value="Aggiungi Carta" style="background-color:#FFD100;color:#202020;">
     </form></div>
     <div id="grid-container">

@@ -29,7 +29,16 @@
                 Categoria: <%=carta.getCategoria()%>
                 <br><br>
                 <img src="${pageContext.request.contextPath}<%=carta.getImmagine()%>">
-            </li>
+
+            <form id="updt" method="post" action="ModificaCartaServlet?idCarta=<%=carta.getIdCarta()%>">
+                <input type="text" name="cambiaNome" id="cambiaNome" value="<%=carta.getNome()%>" placeholder="modifica nome" required="required"> <br>
+                <input type="text" name="cambiaRarita" id="cambiaRarita" value="<%=carta.getRarita()%>" placeholder="modifica rarità" required="required"> <br>
+                <input type="text" name="cambiaCategoria" id="cambiaCategoria" value="<%=carta.getCategoria()%>" placeholder="modifica categoria" required="required"> <br>
+                <button class="submit" type="submit">Modifica<i class="fa-solid fa-wrench"></i></button>
+            </form>
+            <form method="post" action="EliminaCarta?idCarta=<%=carta.getIdCarta()%>">
+                <button class="submitExit" type="submit" value="Elimina carta">Elimina Carta <i class="fa-solid fa-trash"></i></button><br>
+            </form></li>
             <%}%>
         </ul>
     </div>

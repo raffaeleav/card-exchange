@@ -6,8 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import recensione.Recensione;
-import storage.FacadeDAO;
+import storage.service.FacadeDAO;
 
 import java.io.IOException;
 

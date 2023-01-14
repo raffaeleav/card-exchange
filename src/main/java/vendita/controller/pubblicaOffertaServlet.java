@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import acquisto.*;
 import registrazione.Utente;
-import storage.FacadeDAO;
+import storage.service.FacadeDAO;
 
 /**
  * La classe permette la pubblicazione di un'offerta tramite

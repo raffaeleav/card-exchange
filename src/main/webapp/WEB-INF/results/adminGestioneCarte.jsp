@@ -38,7 +38,7 @@
                 <input type="text" name="cambiaNome"  value="<%=carta.getNome()%>" placeholder="modifica nome" required="required"> <br>
                 <input type="text" name="cambiaRarita"  value="<%=carta.getRarita()%>" placeholder="modifica rarità" required="required"> <br>
                 <input type="text" name="cambiaCategoria"  value="<%=carta.getCategoria()%>" placeholder="modifica categoria" required="required"> <br>
-                <input type="hidden" name="cambiaImmagine"  value="<%=carta.getImmagine()%>">
+                <input type="hidden" name="immagine">
                 <input type="submit" value="Modifica">
             </form>
             <form method="post" action="EliminaCarta?idCarta=<%=carta.getIdCarta()%>">

@@ -1,4 +1,4 @@
-package storage;
+package storage.service;
 
 import recensione.Recensione;
 import storage.controller.ConPool;

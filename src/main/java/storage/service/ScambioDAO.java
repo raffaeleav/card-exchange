@@ -1,4 +1,4 @@
-package storage;
+package storage.service;
 
 import scambio.Scambio;
 import storage.controller.ConPool;

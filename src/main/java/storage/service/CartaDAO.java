@@ -1,4 +1,4 @@
-package storage;
+package storage.service;
 
 import acquisto.Carta;
 import storage.controller.ConPool;

@@ -1,4 +1,4 @@
-package storage;
+package storage.service;
 
 import creazioneDiscussione.Messaggio;
 import storage.controller.ConPool;

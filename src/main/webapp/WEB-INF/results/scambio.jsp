@@ -1,8 +1,8 @@
 <%@ page import="acquisto.Offerta" %>
-<%@ page import="storage.CartaDAO" %>
+<%@ page import="storage.service.CartaDAO" %>
 <%@ page import="acquisto.Carta" %>
 <%@ page import="java.util.List" %>
-<%@ page import="storage.FacadeDAO" %>
+<%@ page import="storage.service.FacadeDAO" %>
 <%@ page import="registrazione.Utente" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 

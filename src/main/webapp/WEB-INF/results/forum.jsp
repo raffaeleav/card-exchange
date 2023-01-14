@@ -2,7 +2,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 <%@ page import="registrazione.Utente" %>
-<%@ page import="storage.FacadeDAO" %>
+<%@ page import="storage.service.FacadeDAO" %>
 <%--
   Created by IntelliJ IDEA.
   User: Raffaele Aviello

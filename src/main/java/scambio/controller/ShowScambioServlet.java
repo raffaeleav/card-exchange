@@ -6,9 +6,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import registrazione.Utente;
-import storage.CartaDAO;
-import storage.FacadeDAO;
-import storage.OffertaDAO;
+import storage.service.FacadeDAO;
 
 import java.io.IOException;
 import java.sql.SQLException;

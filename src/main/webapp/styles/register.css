@@ -1,17 +1,18 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 .register-page {
-    width: 1200px;
+    display: flex;
+    width: 100%;
     margin: auto;
 }
 .form {
-    display: inline-block;
-    position: relative;
+    position: relative ;
     z-index: 1;
     background: #ffd043;
-    max-width: 800px;
-    margin: 0 auto 15px;
+    width: 20%;
+    margin: 0;
     padding: 100px;
+    flex: left;
     text-align: left;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -102,10 +103,9 @@ body {
 }
 
 .img{
-    width: 907px;
+    position: absolute ;
+    width: 63%;
+    right: 0;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    position: absolute;
-    top: 78px;
-    right:80px ;
 }

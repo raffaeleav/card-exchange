@@ -6,8 +6,9 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import storage.FacadeDAO;
+import storage.service.FacadeDAO;
 
+import java.io.File;
 import java.io.IOException;
 /**
  * La classe permette di modificare una carta tramite id della carta,attraverso
@@ -29,12 +30,24 @@ public class ModificaCartaServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       int idCarta=Integer.parseInt(req.getParameter("idCarta"));
+        File immaginePKM= new File("/imgs/cards/pokemon/pokemon.png");
+        File immagineYGO= new File("/imgs/cards/yugioh/yugioh.png");
+        File immagineMGC= new File("/imgs/cards/magic/magic.jpg");
+
+        int idCarta=Integer.parseInt(req.getParameter("idCarta"));
        String newNome=req.getParameter("cambiaNome");
        String newRarita=req.getParameter("cambiaRarita");
        String newCategoria=req.getParameter("cambiaCategoria");
-        String newImmagine=req.getParameter("cambiaImmagine");
-       Carta cartaModificata=new Carta(idCarta,newNome,newCategoria,newRarita,newImmagine);
+        String immagine="";
+        if(newCategoria.equalsIgnoreCase("Pokemon")){
+            immagine=immaginePKM.getPath();
+        }
+        if(newCategoria.equalsIgnoreCase("Yu-Gi-Oh")){
+            immagine=immagineYGO.getPath();
+        }  if(newCategoria.equalsIgnoreCase("Magic")){
+            immagine=immagineMGC.getPath();
+        }
+       Carta cartaModificata=new Carta(idCarta,newNome,newCategoria,newRarita,immagine);
        FacadeDAO facadeDAO=new FacadeDAO();
        facadeDAO.doUpdate(Carta.class,idCarta,cartaModificata);
         resp.sendRedirect("MostraPannelloAdmin");}

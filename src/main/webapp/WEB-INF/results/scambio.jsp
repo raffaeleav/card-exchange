@@ -73,7 +73,7 @@
             <input type="hidden" name="idUtenteMittente" value="<%=u.getIdUtente()%>">
             <input  id="offertaScelta" type="hidden" name="idOffertaMittente" value="">
             <input type="hidden" name="idOffertaDestinatario" value="<%=offertaRichiesta.getIdOfferta()%>">
-                <input type="number" name="conguaglio"><br>
+                <input type="number" name="conguaglio" value="0"><br>
             <button class="button">Scambia</button></form>
     </div>
 </div>

@@ -1,4 +1,4 @@
-package storage;
+package storage.controller;
 
 import acquisto.Carta;
 import jakarta.servlet.ServletException;
@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import storage.FacadeDAO;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,7 +32,7 @@ public class AggiungiCarta extends HttpServlet {
         FacadeDAO facadeDAO=new FacadeDAO();
         File immaginePKM= new File("/imgs/cards/pokemon/pokemon.png");
         File immagineYGO= new File("/imgs/cards/yugioh/yugioh.png");
-        File immagineMGC= new File("/imgs/cards/magic/magic.png");
+        File immagineMGC= new File("/imgs/cards/magic/magic.jpg");
         String nome=req.getParameter("nome");
         String rarita=req.getParameter("rarita");
         String categoria=req.getParameter("categoria");

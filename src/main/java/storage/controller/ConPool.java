@@ -1,4 +1,4 @@
-package storage;
+package storage.controller;
 
 import org.apache.tomcat.jdbc.pool.PoolProperties;
 import org.apache.tomcat.jdbc.pool.DataSource;

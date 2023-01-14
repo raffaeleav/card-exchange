@@ -1,4 +1,4 @@
-package storage;
+package storage.controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

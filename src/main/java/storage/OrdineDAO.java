@@ -6,9 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
-import storage.ConPool;
+import storage.controller.ConPool;
 import acquisto.Ordine;
-import acquisto.Offerta;
 
 /**
  * La classe permette le operazioni riguardanti gli oggetti Ordine

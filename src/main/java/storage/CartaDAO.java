@@ -1,6 +1,7 @@
 package storage;
 
 import acquisto.Carta;
+import storage.controller.ConPool;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,7 +19,7 @@ public class CartaDAO {
      *                      le istanze di oggetti Carta nel database
      */
     public List<Carta> doRetrieveAll(){//Metodo che permette di restituire tutte le carte presenti nel DB
-        try(Connection con=ConPool.getConnection()){
+        try(Connection con= ConPool.getConnection()){
             List<Carta> carte=new ArrayList<>();
             PreparedStatement ps= con.prepareStatement("SELECT * FROM carta;");
             ResultSet rs=ps.executeQuery();

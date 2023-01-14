@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import recensione.Recensione;
 import storage.FacadeDAO;
 
@@ -32,6 +33,7 @@ public class AggiungiRecensione extends HttpServlet {
          * @param req : oggetto di richiesta HTTP
          * @param resp : oggetto di risposta HTTP
          */
+        HttpSession session;
         FacadeDAO facadeDAO=new FacadeDAO();
         String testo=req.getParameter("text");
         String strValutazione=req.getParameter("rate");

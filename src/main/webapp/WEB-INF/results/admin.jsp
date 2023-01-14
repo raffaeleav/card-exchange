@@ -14,6 +14,7 @@
 </head>
 
 <body>
+<%@include file="../../header.jsp"%>
 <% Utente utente = (Utente) session.getAttribute("Utente");%>
 <%if(utente.getIdUtente()==1){%>
 <div class="admin_panel">
@@ -21,7 +22,7 @@
   <div class="forms">
     <form method="post" action="AdminCarteServlet">
       <p>Carte </p>
-      <button class="submit" type="submit" value="gestisci" disabled>Gestisci <i class="fa-solid fa-wrench"></i></button>
+      <button class="submit" type="submit" value="gestisci" >Gestisci <i class="fa-solid fa-wrench"></i></button>
     </form>
     <form method="post" action="AdminOfferteServlet">
       <p>Offerte </p>
@@ -47,7 +48,7 @@
   <h2>Non dovresti essere in questa pagina.</h2><hr>  <br>
   <a href="../../index.jsp">Clicca per tornare alla homepage</a>
 </div><%}%>
-
+<%@include file="../../footer.jsp"%>
 </body>
 </html>
 

@@ -18,6 +18,10 @@
 <%@include file="../../header.jsp"%>
 
 <div id="content">
+    <div class="addCard" style="text-align: center">
+    <form method="post" action="AggiungiCarta">
+        <input type="submit" value="Aggiungi Carta" style="background-color:#FFD100;color:#202020;">
+    </form></div>
     <div id="grid-container">
         <ul>
             <%for(Carta carta : listcarte){%>
@@ -31,14 +35,15 @@
                 <img src="${pageContext.request.contextPath}<%=carta.getImmagine()%>">
 
             <form id="updt" method="post" action="ModificaCartaServlet?idCarta=<%=carta.getIdCarta()%>">
-                <input type="text" name="cambiaNome" id="cambiaNome" value="<%=carta.getNome()%>" placeholder="modifica nome" required="required"> <br>
-                <input type="text" name="cambiaRarita" id="cambiaRarita" value="<%=carta.getRarita()%>" placeholder="modifica rarità" required="required"> <br>
-                <input type="text" name="cambiaCategoria" id="cambiaCategoria" value="<%=carta.getCategoria()%>" placeholder="modifica categoria" required="required"> <br>
-                <button class="submit" type="submit">Modifica<i class="fa-solid fa-wrench"></i></button>
+                <input type="text" name="cambiaNome"  value="<%=carta.getNome()%>" placeholder="modifica nome" required="required"> <br>
+                <input type="text" name="cambiaRarita"  value="<%=carta.getRarita()%>" placeholder="modifica rarità" required="required"> <br>
+                <input type="text" name="cambiaCategoria"  value="<%=carta.getCategoria()%>" placeholder="modifica categoria" required="required"> <br>
+                <input type="hidden" name="cambiaImmagine"  value="<%=carta.getImmagine()%>">
+                <input type="submit" value="Modifica">
             </form>
             <form method="post" action="EliminaCarta?idCarta=<%=carta.getIdCarta()%>">
-                <button class="submitExit" type="submit" value="Elimina carta">Elimina Carta <i class="fa-solid fa-trash"></i></button><br>
-            </form></li>
+                <input type="submit" value="Elimina Carta">
+          </form></li>
             <%}%>
         </ul>
     </div>

@@ -36,14 +36,14 @@
                     <input type="text" name="cambiaUsername" id="cambiaUsername" value="<%=listutenti.getUsername()%>" placeholder="modifica username" required="required"> <br>
                     <input type="password" name="cambiaPass" id="cambiaPass" value="<%=listutenti.getPassword()%>" placeholder="modifica password" required="required"> <br>
                     <input type="text" name="cambiaEmail" id="cambiaEmail" value="<%=listutenti.getEmail()%>" placeholder="modifica email" required="required"> <br>
-                    <button class="submit" type="submit">Modifica<i class="fa-solid fa-wrench"></i></button>
+                    <input type="submit" value="Modifica utente">
                 </form>
                 <%if (listutenti.getIdUtente()>=2){%>
                 <form method="post" action="EliminaUtente?idUtente=<%=listutenti.getIdUtente()%>">
-                    <button class="submitExit" type="submit" value="Elimina account">Elimina Account <i class="fa-solid fa-trash"></i></button><br>
+                    <input type="submit" value="Elimina Account">
                 </form>
                 <form method="post" action="AdminRecensioniServlet?idUtente=<%=listutenti.getIdUtente()%>">
-                    <button class="submitExit" type="submit" value="Recensioni effettuate">Recensioni effettuate </button><br>
+                    <input type="submit" value="Recensioni utente">
                 </form> <%}%>
             </li>
 

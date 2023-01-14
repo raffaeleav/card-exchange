@@ -24,7 +24,7 @@
   ID ordine:<%=listrecensioni.getIdOrdine()%><br>
   ID utente:<%=listrecensioni.getIdUtente()%><br>
     <form method="post" action="EliminaRecensione?idRecensione=<%=listrecensioni.getIdRecensione()%>">
-      <button class="submitExit" type="submit" value="Elimina recensione">Elimina Recensione <i class="fa-solid fa-trash"></i></button><br>
+      <input type="submit" value="Elimina Recensione">
     </form>
   </div>
   <%}%>

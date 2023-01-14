@@ -33,14 +33,14 @@ public class AggiungiRecensione extends HttpServlet {
          * @param req : oggetto di richiesta HTTP
          * @param resp : oggetto di risposta HTTP
          */
-        HttpSession session;
+
         FacadeDAO facadeDAO=new FacadeDAO();
         String testo=req.getParameter("text");
         String strValutazione=req.getParameter("rate");
-        //int idUtente=req.getParameter("idUtente"); ancora da settare
-        //int idOrdine=req.getParameter("idOrdine");ancora da settare
+        int idUtente= Integer.parseInt(req.getParameter("idUtente"));
+        int idOrdine= Integer.parseInt(req.getParameter("idOrdine"));
         int  valutazione=Integer.parseInt(strValutazione);
-        Recensione r=new Recensione(valutazione,testo,2,1);// N.B idutente e idOrdine da cambiare
+        Recensione r=new Recensione(valutazione,testo,idUtente,idOrdine);
         facadeDAO.doSave(Recensione.class,r);
         resp.sendRedirect("index.jsp"); //rimanda alla homepage (provvisorio)
     }

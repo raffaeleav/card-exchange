@@ -26,6 +26,10 @@ public class MostraPaginaRecensione extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int idOrdine= Integer.parseInt(req.getParameter("idOrdine"));
+        int idUtente= Integer.parseInt(req.getParameter("idUtente"));
+        req.setAttribute("idOrdine",idOrdine);
+        req.setAttribute("idUtente",idUtente);
         RequestDispatcher dispatcher=req.getRequestDispatcher("/WEB-INF/results/recensione.jsp");
         dispatcher.forward(req,resp);
     }

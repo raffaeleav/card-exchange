@@ -6,6 +6,8 @@
     <script src="${pageContext.request.contextPath}/script/checkRecensione.js"></script>
 </head>
 <body>
+<% int idOrdine= (int) request.getAttribute("idOrdine");%>
+<% int idUtente= (int) request.getAttribute("idUtente");%>
 <div class="recensioneContainer">
     <form method="post" action="AggiungiRecensione" onsubmit="return validateReviewForm()">
         <div class="rate">
@@ -22,6 +24,8 @@
         </div><br>
 
         <textarea class="text" id="text" name="text" rows="3" placeholder="Inserisci testo"></textarea><br>
+        <input type="hidden" value="<%=idOrdine%>" name="idOrdine">
+        <input type="hidden" value="<%=idUtente%>" name="idUtente">
         <input id="submit" class="submit" type="submit" value="Invia" >
     </form>
 </div>

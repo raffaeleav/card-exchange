@@ -28,7 +28,7 @@
                             <br><br>
                                 <%=card.getNome()%>
                             <br><br>
-                            <img src="${pageContext.request.contextPath}<%=card.getImmagine()%>">
+                            <img src="<%=card.getImmagine()%>">
 
                             <form id="offer-form" action="mostra-pagina-carta-servlet" method="get">
                                 <input type="hidden" name="id-carta" value="<%=card.getIdCarta()%>">

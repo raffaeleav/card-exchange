@@ -1,7 +1,6 @@
 package storage;
 
 import acquisto.Carta;
-import storage.controller.ConPool;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

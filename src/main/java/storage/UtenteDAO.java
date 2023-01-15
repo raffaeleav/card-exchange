@@ -1,7 +1,6 @@
 package storage;
 
 import registrazione.Utente;
-import storage.controller.ConPool;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

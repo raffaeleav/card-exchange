@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import acquisto.*;
-import storage.controller.ConPool;
 
 /**
  * La classe permette le operazioni riguardanti gli oggetti Offerta

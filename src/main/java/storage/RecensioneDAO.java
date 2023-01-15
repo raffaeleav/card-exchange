@@ -1,7 +1,6 @@
 package storage;
 
 import recensione.Recensione;
-import storage.controller.ConPool;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

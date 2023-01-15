@@ -2,7 +2,6 @@ package storage;
 
 import creazioneDiscussione.Discussione;
 import creazioneDiscussione.Messaggio;
-import storage.controller.ConPool;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

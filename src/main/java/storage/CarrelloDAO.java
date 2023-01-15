@@ -2,7 +2,6 @@ package storage;
 
 import acquisto.Carrello;
 import acquisto.Offerta;
-import storage.controller.ConPool;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

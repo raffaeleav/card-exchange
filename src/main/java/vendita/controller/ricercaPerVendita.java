@@ -12,8 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import acquisto.Carta;
-import storage.CartaDAO;
-import storage.FacadeDAO;
+import storage.service.FacadeDAO;
 
 /**
  * La classe permette la ricerca di una carta tramite

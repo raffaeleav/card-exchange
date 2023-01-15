@@ -32,14 +32,7 @@
       <p>Utenti </p>
       <button class="submit" type="submit" value="gestisci">Gestisci<i class="fa-solid fa-wrench"></i></button><br>
     </form>
-    <!--<form method="post" action="AdminRecensioniServlet">
-      <p>Recensioni </p>
-      <button class="submit" type="submit" value="gestisci">Gestisci<i class="fa-solid fa-wrench"></i></button><br>
-    </form>-->
-    <form method="post" action="AdminDiscussioniServlet">
-      <p>Discussioni </p>
-      <button class="submit" type="submit" value="gestisci" disabled>Gestisci<i class="fa-solid fa-wrench"></i></button><br>
-    </form>
+
 
   </div>
 

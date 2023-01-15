@@ -15,19 +15,19 @@
 
             <ul id="top-navbar">
                 <!-- Home -->
-                <li> <a href="index.jsp"> <i class="fa-solid fa-house fa-lg"></i> </a> </li>
+                <li title="Home"> <a href="index.jsp"> <i class="fa-solid fa-house fa-lg"></i> </a> </li>
                 <!-- Utente -->
-                <li> <a href="MostraPaginaLogin"> <i class="fa-solid fa-user fa-lg"></i> </a> </li>
+                <li title="Area utente"> <a href="MostraPaginaLogin"> <i class="fa-solid fa-user fa-lg"></i> </a> </li>
                 <!-- Carte in vendita -->
-                <li> <a href=""> <i class="fa-solid fa-list fa-lg"></i> </a> </li>
+                <li title="Carte in vendita"> <a href=""> <i class="fa-solid fa-list fa-lg"></i> </a> </li>
                 <!-- Vendi carta -->
-                <li> <a href=""> <i class="fa-solid fa-money-bill fa-lg"></i> </a> </li>
+                <li title="Vendi carta"> <a href=""> <i class="fa-solid fa-money-bill fa-lg"></i> </a> </li>
                 <!-- Ordini effettuati -->
-                <li> <a href="MostraOrdini"> <i class="fa-solid fa-receipt fa-lg"></i> </a> </li>
+                <li title="Ordini effettuati"> <a href="MostraOrdini"> <i class="fa-solid fa-receipt fa-lg"></i> </a> </li>
                 <!-- Forum -->
-                <li> <a href="forum-servlet"> <i class="fa-solid fa-message fa-lg"></i> </a> </li>
+                <li title="Forum"> <a href="forum-servlet"> <i class="fa-solid fa-message fa-lg"></i> </a> </li>
                 <!-- Carrello -->
-                <li> <a href="mostraPaginaCarrello"> <i class="fa-solid fa-cart-shopping fa-lg"></i> </a> </li>
+                <li title="Carrello"> <a href="mostraPaginaCarrello"> <i class="fa-solid fa-cart-shopping fa-lg"></i> </a> </li>
             </ul>
 
             <ul id="bottom-navbar">

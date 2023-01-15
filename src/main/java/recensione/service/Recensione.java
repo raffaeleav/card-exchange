@@ -1,11 +1,26 @@
 package recensione.service;
 
+/**
+ * La classe modella il concetto di Recensione
+ * @author Salvatore Sautariello
+ */
+
 public class Recensione {
     private int idRecensione;
     private int valutazione;
     private String testo;
     private int idUtente;
     private int idOrdine;
+
+    /**
+     *    Costruttore completo della classe recensione
+     * @param idRecensione id della recensione
+     * @param idOrdine id dell ordine recensito
+     * @param idUtente id dell utente che effettua la recensione
+     * @param testo testo nel form della recensione
+     * @param valutazione intero valutazione stelle
+     * @author Francesco Di Domenico
+     */
     public Recensione(int idRecensione,int valutazione,String testo,int idUtente,int idOrdine){
         this.idRecensione=idRecensione;
         this.valutazione=valutazione;
@@ -13,7 +28,16 @@ public class Recensione {
         this.idUtente = idUtente;
         this.idOrdine = idOrdine;
     }
-    //Costruttore per invio recensione
+
+    /**
+     *    Costruttore della classe recensione per AggiungiRecensione (Servlet)
+     * @param idOrdine id dell ordine recensito
+     * @param idUtente id dell utente che effettua la recensione
+     * @param testo testo nel form della recensione
+     * @param valutazione intero valutazione stelle
+     * @author Francesco Di Domenico
+     */
+
     public Recensione(int valutazione,String testo,int idUtente,int idOrdine){
         this.valutazione=valutazione;
         this.testo=testo;

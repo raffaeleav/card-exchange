@@ -13,7 +13,7 @@ import java.io.IOException;
 
 /**
  * La classe permette la partecipazione ad una discussione tramite
- * una servlet che viene richiamata dal bottone della
+ * una servlet che viene richiamata dal comando della
  * funzione di partecipazione discussione
  * @author Raffaele Aviello
  */

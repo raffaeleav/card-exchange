@@ -15,7 +15,7 @@ import java.io.IOException;
 
 /**
  * La classe permette l'invio di un messaggio in una discussione
- * tramite una servlet che viene richiamata dal bottone della
+ * tramite una servlet che viene richiamata dal comando della
  * funzione di invio messaggio
  * @author Raffaele Aviello
  */

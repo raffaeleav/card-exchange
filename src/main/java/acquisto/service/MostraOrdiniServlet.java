@@ -1,4 +1,4 @@
-package acquisto.controller;
+package acquisto.service;
 
 
 import acquisto.Ordine;

@@ -1,4 +1,4 @@
-package registrazione.controller;
+package registrazione.service;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

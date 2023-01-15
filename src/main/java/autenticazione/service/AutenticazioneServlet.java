@@ -1,4 +1,4 @@
-package autenticazione.controller;
+package autenticazione.service;
 
 import acquisto.Carrello;
 import autenticazione.Autenticazione;

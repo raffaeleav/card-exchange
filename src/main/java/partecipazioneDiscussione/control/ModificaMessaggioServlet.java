@@ -13,7 +13,7 @@ import java.io.IOException;
 
 /**
  * La classe permette la modifica di un messaggio in una discussione
- * tramite una servlet che viene richiamata dal bottone della
+ * tramite una servlet che viene richiamata dal comando della
  * funzione di modifca di un messaggio
  * @author Raffaele Aviello
  */

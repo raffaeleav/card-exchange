@@ -1,4 +1,4 @@
-package storage.service;
+package storage;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

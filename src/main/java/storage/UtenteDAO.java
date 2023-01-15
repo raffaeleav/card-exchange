@@ -1,4 +1,4 @@
-package storage.service;
+package storage;
 
 import registrazione.Utente;
 import storage.controller.ConPool;

@@ -1,4 +1,4 @@
-package storage.service;
+package storage;
 
 import scambio.Scambio;
 import storage.controller.ConPool;
@@ -206,7 +206,7 @@ public class ScambioDAO {
 
     }
 
-    void doUpdate (int idScambio,Scambio richiestaDiScambio){
+    public void  doUpdate (int idScambio,Scambio richiestaDiScambio){
         try (Connection con = ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("UPDATE richiestaDiScambio set IdUtenteMittente=?,IdUtenteDestinatario=?,IdOffertaMittente=?, " +
                     "IdOffertaDestinatario=?, conguaglio=? where idRichiestaDiScambio=?");

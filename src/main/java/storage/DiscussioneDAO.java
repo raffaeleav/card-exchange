@@ -1,4 +1,4 @@
-package storage.service;
+package storage;
 
 import creazioneDiscussione.Discussione;
 import creazioneDiscussione.Messaggio;

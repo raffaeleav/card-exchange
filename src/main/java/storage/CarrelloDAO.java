@@ -1,4 +1,4 @@
-package storage.service;
+package storage;
 
 import acquisto.Carrello;
 import acquisto.Offerta;

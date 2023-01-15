@@ -1,5 +1,5 @@
 <%@ page import="acquisto.Offerta" %>
-<%@ page import="storage.service.CartaDAO" %>
+<%@ page import="storage.CartaDAO" %>
 <%@ page import="acquisto.Carta" %>
 <%@ page import="java.util.List" %>
 <%@ page import="storage.service.FacadeDAO" %>

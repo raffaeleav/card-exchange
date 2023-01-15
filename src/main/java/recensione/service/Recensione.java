@@ -1,4 +1,4 @@
-package recensione;
+package recensione.service;
 
 public class Recensione {
     private int idRecensione;

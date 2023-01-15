@@ -1,4 +1,4 @@
-<%@ page import="recensione.Recensione" %>
+<%@ page import="recensione.service.Recensione" %>
 <%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: elomi

@@ -1,6 +1,6 @@
 package storage.service;
 
-import recensione.Recensione;
+import recensione.service.Recensione;
 import storage.controller.ConPool;
 
 import java.sql.Connection;

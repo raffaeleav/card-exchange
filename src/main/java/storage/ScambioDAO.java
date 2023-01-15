@@ -1,7 +1,5 @@
 package storage;
 
-import acquisto.Carta;
-import registrazione.Utente;
 import scambio.Scambio;
 
 import java.sql.Connection;

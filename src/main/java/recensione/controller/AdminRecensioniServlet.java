@@ -35,7 +35,7 @@ public class AdminRecensioniServlet extends HttpServlet {
         List<Recensione> listrecensioni=new ArrayList<>();
         FacadeDAO facadeDAO=new FacadeDAO();
         int idUtente= Integer.parseInt(req.getParameter("idUtente"));
-        listrecensioni= (List<Recensione>) facadeDAO.getRecensioneByIdUtente(Recensione.class,idUtente);
+        listrecensioni= facadeDAO.getRecensioneByIdUtente(Recensione.class,idUtente);
         req.setAttribute("listrecensioni",listrecensioni);
         req.getRequestDispatcher("/WEB-INF/results/adminGestioneRecensioni.jsp").forward(
                 req, resp);

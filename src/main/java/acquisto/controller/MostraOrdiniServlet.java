@@ -31,6 +31,6 @@ public class MostraOrdiniServlet extends HttpServlet {
         List<Ordine> listordini=new ArrayList<>();
         FacadeDAO facadeDAO=new FacadeDAO();
         int idUtente= Integer.parseInt(req.getParameter("idUtente"));
-        listordini=(List<Ordine>)facadeDAO.getOrdiniByIdUtente(Ordine.class,idUtente);
+        listordini= facadeDAO.getOrdiniByIdUtente(Ordine.class,idUtente);
     }
 }

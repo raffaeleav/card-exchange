@@ -10,19 +10,21 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * La classe permette l'invalidazione della sessione,con successivo reindirizzamento alla homepage.
- * @author Francesco Di Domenico
+ * La classe LogOutServlet gestisce la procedura di logout del sistema, invalidando la sessione corrente
+ * e reindirizzando l'utente alla pagina index.
+ *
+ * @author Michele Menzione
  */
+
 
 @WebServlet("/LogOut")
 public class LogOutServlet extends HttpServlet {
 
 
     /**
-     * Il metodo permette di gestire la richiesta del client,dove il server
-     * prende attraverso la richiesta,ottiene la session e successivamente
-     * la invalida,infine reindirizza tramite resp alla jsp index.
-     *
+     * Il metodo gestisce la richiesta del client per il logout, ottenendo la sessione corrente tramite
+     * HttpServletRequest, invalidandola e successivamente reindirizzando l'utente alla pagina index tramite
+     * HttpServletResponse.
      * @param req  : oggetto di richiesta HTTP
      * @param resp : oggetto di risposta HTTP
      */

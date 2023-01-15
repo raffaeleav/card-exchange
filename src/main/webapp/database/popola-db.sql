@@ -13,24 +13,25 @@ insert into Ordine values(default,'2017-06-15','via roma 15',1,55.20);
 INSERT INTO Offerta (condizione, prezzo, idUtente, idCarta) VALUES ('Nuova', 5, 1, 4);
 
 
-INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Pessime","110","1","67");
-INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Ottime","191","1","118");
-INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Usata","193","2","1");
-INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Pessime","123","3","112");
-INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Buona","8","2","172");
-INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Pessime","182","3","7");
-INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Pessime","45","2","69");
-INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Buona","189","2","15");
-INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Buona","100","3","223");
-INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Buona","181","3","50");
-INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Pessime","182","1","272");
-INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Usata","154","3","344");
-INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Buona","185","2","314");
-INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Buona","156","2","22");
-INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Pessime","67","1","322");
-INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Buona","174","2","335");
-INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Ottime","81","1","6");
-INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Pessime","1","1","266");
-INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Buona","193","2","369");
-INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Pessime","143","3","372");
+INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Pessime","10.66","2","349");
+INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Usata","120.94","3","183");
+INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Usata","14.01","2","109");
+INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Buona","62.05","2","329");
+INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Ottime","163.01","2","195");
+INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Ottime","37.95","2","130");
+INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Buona","68.6","1","15");
+INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Buona","65.65","1","91");
+INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Ottime","10.1","1","343");
+INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Usata","124.63","3","240");
+INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Usata","84.61","3","102");
+INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Usata","120.07","1","75");
+INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Pessime","67.35","1","197");
+INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Usata","132.29","3","314");
+INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Buona","100.32","3","289");
+INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Buona","55.25","2","122");
+INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Usata","9.11","3","238");
+INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Pessime","113.89","3","118");
+INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Pessime","129.66","3","219");
+INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Buona","188.64","2","287");
+
 

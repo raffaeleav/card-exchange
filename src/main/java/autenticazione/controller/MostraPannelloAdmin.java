@@ -21,7 +21,6 @@ public class MostraPannelloAdmin extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getParameter("Utente");
         req.getRequestDispatcher("/WEB-INF/results/admin.jsp").forward(req,resp);
     }
 

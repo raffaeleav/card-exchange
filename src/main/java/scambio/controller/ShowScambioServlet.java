@@ -9,7 +9,6 @@ import registrazione.Utente;
 import storage.service.FacadeDAO;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 /**

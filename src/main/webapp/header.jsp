@@ -3,6 +3,7 @@
 <html lang="it-IT">
     <head>
         <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="styles/style.css">
         <script src="script/search-validation.js"></script>
         <script src="https://kit.fontawesome.com/a250a51d87.js" crossorigin="anonymous"></script>
     </head>

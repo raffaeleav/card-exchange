@@ -37,6 +37,7 @@
     <script src="${pageContext.request.contextPath}/script/changeCard.js"></script>
 </head>
 <body>
+<%@include file="../../header.jsp"%>
 <div class="container">
 
     <div class="inner">
@@ -89,5 +90,6 @@
         <p class="description">Prezzo: <span class="results"><%=offertaRichiesta.getPrezzo() + "€"%></span></p>
     </div>
 </div>
+<%@include file="../../footer.jsp"%>
 </body>
 </html>

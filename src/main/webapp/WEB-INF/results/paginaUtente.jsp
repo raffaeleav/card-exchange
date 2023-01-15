@@ -13,6 +13,7 @@
     <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous"></script>
 </head>
 <body>
+<%@include file="../../header.jsp"%>
 <% Utente utente = (Utente) session.getAttribute("Utente");%>
 <div class="utentePanel">
     <h2 class="titolo">User panel</h2><hr> <!--Dati dell utente-->
@@ -42,6 +43,6 @@
         <button class="submitExit" type="submit" value="Elimina account">Elimina Account <i class="fa-solid fa-trash"></i></button><br>
     </form><%}%>
 </div>
-
+<%@include file="../../footer.jsp"%>
 </body>
 </html>

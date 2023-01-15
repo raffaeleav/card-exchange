@@ -7,10 +7,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import acquisto.Carrello;
-import registrazione.Utente;
-import storage.service.FacadeDAO;
-
 /**
  * La classe permette la visualizzazione della pagina carrello tramite
  * una servlet che viene richiamata dal bottone della

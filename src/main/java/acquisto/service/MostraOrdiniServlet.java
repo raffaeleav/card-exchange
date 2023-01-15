@@ -2,8 +2,6 @@ package acquisto.service;
 
 
 import acquisto.Ordine;
-import jakarta.servlet.ServletContext;
-import jakarta.servlet.http.HttpSession;
 import registrazione.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,7 +11,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import storage.service.FacadeDAO;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 /**

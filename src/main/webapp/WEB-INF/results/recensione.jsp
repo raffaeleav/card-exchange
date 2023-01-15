@@ -6,6 +6,7 @@
     <script src="${pageContext.request.contextPath}/script/checkRecensione.js"></script>
 </head>
 <body>
+<%@include file="../../header.jsp"%>
 <% int idOrdine= (int) request.getAttribute("idOrdine");%>
 <% int idUtente= (int) request.getAttribute("idUtente");%>
 <div class="recensioneContainer">
@@ -29,5 +30,6 @@
         <input id="submit" class="submit" type="submit" value="Invia" >
     </form>
 </div>
+<%@include file="../../footer.jsp"%>
 </body>
 </html>

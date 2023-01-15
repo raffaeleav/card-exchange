@@ -40,7 +40,7 @@ public class AutenticazioneServlet extends HttpServlet {
         String pass = request.getParameter("password");
 
         FacadeDAO facadeDAO = new FacadeDAO();
-        Utente validate  = Autenticazione.verifyLogin(username, pass);
+        Utente validate = Autenticazione.verifyLogin(username, pass);
 
 
         if(validate != null) {

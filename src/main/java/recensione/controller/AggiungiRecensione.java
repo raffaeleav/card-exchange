@@ -42,7 +42,7 @@ public class AggiungiRecensione extends HttpServlet {
         int  valutazione=Integer.parseInt(strValutazione);
         Recensione r=new Recensione(valutazione,testo,idUtente,idOrdine);
         facadeDAO.doSave(Recensione.class,r);
-        resp.sendRedirect("index.jsp"); //rimanda alla homepage (provvisorio)
+        resp.sendRedirect("index.jsp");
     }
 
 }

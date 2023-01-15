@@ -1,4 +1,4 @@
-package recensione.service;
+package recensione;
 
 /**
  * La classe modella il concetto di Recensione

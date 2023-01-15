@@ -5,7 +5,7 @@ import acquisto.Offerta;
 import acquisto.Ordine;
 import creazioneDiscussione.Discussione;
 import creazioneDiscussione.Messaggio;
-import recensione.service.Recensione;
+import recensione.Recensione;
 import registrazione.Utente;
 import scambio.Scambio;
 
@@ -46,7 +46,7 @@ public class FacadeDAO {
             case "acquisto.Ordine":
                 return new OrdineDAO().doRetrieveAll();
 
-            case "recensione.service.Recensione":
+            case "recensione.Recensione":
                 return new RecensioneDAO().doRetrieveAll();
 
             case "scambio.Scambio":
@@ -84,7 +84,7 @@ public class FacadeDAO {
             case "acquisto.Ordine":
                 return new OrdineDAO().doRetrieveById(entityId);
 
-            case "recensione.service.Recensione":
+            case "recensione.Recensione":
                 return new RecensioneDAO().doRetrieveById(entityId);
 
             case "scambio.Scambio":
@@ -126,7 +126,7 @@ public class FacadeDAO {
                 new OrdineDAO().doSave((Ordine) entity);
                 break;
 
-            case "recensione.service.Recensione":
+            case "recensione.Recensione":
                 new RecensioneDAO().doSave((Recensione) entity);
                 break;
 
@@ -171,7 +171,7 @@ public class FacadeDAO {
                 new OrdineDAO().doDelete(entityId);
                 break;
 
-            case "recensione.service.Recensione":
+            case "recensione.Recensione":
                 new RecensioneDAO().doDelete(entityId);
                 break;
 
@@ -213,7 +213,7 @@ public class FacadeDAO {
                 new OrdineDAO().doUpdate(entityId, (Ordine) entity);
                 break;
 
-            case "recensione.service.Recensione":
+            case "recensione.Recensione":
                 new RecensioneDAO().doUpdate(entityId, (Recensione) entity);
                 break;
             case "registrazione.Utente":
@@ -258,7 +258,7 @@ public class FacadeDAO {
      * @autor Francesco Di Domenico
      */
     public List<Recensione> getRecensioneByIdUtente(Class<?> entityClass,int idUtente){
-        if(entityClass.getName().equals("recensione.service.Recensione")){
+        if(entityClass.getName().equals("recensione.Recensione")){
             return new RecensioneDAO().getRecensioneByIdUtente(idUtente);
         }
     return null;

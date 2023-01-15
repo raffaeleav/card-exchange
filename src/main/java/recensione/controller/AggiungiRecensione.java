@@ -6,7 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import recensione.service.Recensione;
+import recensione.Recensione;
 import storage.service.FacadeDAO;
 
 import java.io.IOException;
@@ -21,17 +21,17 @@ import java.io.IOException;
 
 @WebServlet("/AggiungiRecensione")//aggiunta prodotto al DB
 public class AggiungiRecensione extends HttpServlet {
-
+    /**
+     * Il metodo permette di gestire la richiesta del client,dove il server
+     * salva i parametri immessi nel form della pagina di recensione,prende idOrdine ed idUtente
+     * e grazie alla classe facadeDAO aggiunge la recensione al database e rimanda ad un'altra
+     * pagina a fine compilazione tramite parametro resp.
+     * @param req : oggetto di richiesta HTTP
+     * @param resp : oggetto di risposta HTTP
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        /**
-         * Il metodo permette di gestire la richiesta del client,dove il server
-         * salva i parametri immessi nel form della pagina di recensione,prende idOrdine ed idUtente
-         * e grazie alla classe facadeDAO aggiunge la recensione al database e rimanda ad un'altra
-         * pagina a fine compilazione tramite parametro resp.
-         * @param req : oggetto di richiesta HTTP
-         * @param resp : oggetto di risposta HTTP
-         */
+
 
         FacadeDAO facadeDAO=new FacadeDAO();
         String testo=req.getParameter("text");

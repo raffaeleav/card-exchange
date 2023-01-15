@@ -21,7 +21,7 @@
                 <!-- Carte in vendita -->
                 <li> <a href=""> <i class="fa-solid fa-list fa-lg"></i> </a> </li>
                 <!-- Vendi carta -->
-                <li> <a href=""> <i class="fa-solid fa-money-bill fa-lg"></i> </a> </li>
+                <li> <a href="mostraPaginaVenditaServlet"> <i class="fa-solid fa-money-bill fa-lg"></i> </a> </li>
                 <!-- Ordini effettuati -->
                 <li> <a href="MostraOrdini"> <i class="fa-solid fa-receipt fa-lg"></i> </a> </li>
                 <!-- Forum -->

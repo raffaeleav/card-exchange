@@ -44,7 +44,7 @@ CREATE TABLE Messaggio (
 
 CREATE table Ordine(
                        idOrdine int not null AUTO_INCREMENT,
-                       dataset date not null,
+                       dataset text not null,
                        indirizzo text not null,
                        idUtente int not null,
                        totale double not null,
@@ -68,6 +68,7 @@ CREATE TABLE Offerta (
 CREATE table Carrello(
                          idCarrello int not null AUTO_INCREMENT,
                          idUtente int not null,
+                         totale double not null,
 
                          PRIMARY KEY(idCarrello),
                          FOREIGN KEY (idUtente)  references Utente(idUtente) ON UPDATE CASCADE ON DELETE CASCADE

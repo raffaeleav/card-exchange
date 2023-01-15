@@ -1,11 +1,13 @@
 package vendita.controller;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 import acquisto.*;
 import registrazione.Utente;
@@ -29,7 +31,7 @@ public class pubblicaOffertaServlet extends HttpServlet {
 
     FacadeDAO facadeDAO = new FacadeDAO();
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // Recupera l'id dell'utente corrente dalla sessione
         Utente user = (Utente) request.getSession().getAttribute("Utente");
@@ -37,7 +39,7 @@ public class pubblicaOffertaServlet extends HttpServlet {
         // Recupera i parametri dalla richiesta
         String condizione = request.getParameter("condizione");
         double prezzo = Double.parseDouble(request.getParameter("prezzo"));
-        int idCarta = Integer.parseInt(request.getParameter("idCarta"));
+        int idCarta = Integer.parseInt(request.getParameter("id-carta"));
 
         // Crea un'istanza di Offerta
         Offerta offerta = new Offerta();
@@ -50,6 +52,9 @@ public class pubblicaOffertaServlet extends HttpServlet {
         facadeDAO.doSave(Offerta.class,offerta);
 
         // Reindirizza alla pagina della carta con l'elenco delle offerte
-        response.sendRedirect("carta.jsp"); //provvisorio
+        List<Offerta> offersList = (List<Offerta>) facadeDAO.doRetrieveAllByIdCarta(Offerta.class, idCarta);
+        request.setAttribute("lista-offerte", offersList);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/carta.jsp");
+        dispatcher.forward(request, response);
     }
 }

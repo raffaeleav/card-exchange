@@ -6,7 +6,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import registrazione.Utente;
-import storage.service.FacadeDAO;
+import acquisto.Carrello;
+import storage.FacadeDAO;
 
 import java.io.IOException;
 
@@ -65,6 +66,9 @@ public class RegistrazioneServlet extends HttpServlet {
 
         Utente u = new Utente(username,pass,nome,cognome,email);
         dao.doSave(Utente.class,u);
+        Carrello carrello = new Carrello(u.getIdUtente(),0);
+        dao.doSave(Carrello.class,carrello);
+
         request.getRequestDispatcher("/WEB-INF/results/login.jsp").forward(
                 request, response);
 

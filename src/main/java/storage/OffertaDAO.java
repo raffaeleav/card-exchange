@@ -21,7 +21,7 @@ public class OffertaDAO {
     //elenco delle query
     private static final String INSERT_OFFERTA_QUERY = "INSERT INTO Offerta(condizione, prezzo, idUtente, idCarta) VALUES (?, ?, ?, ?)";
     private static final String SELECT_OFFERTA_BY_ID_QUERY = "SELECT * FROM Offerta WHERE idOfferta = ?";
-    private static final String SELECT_OFFERTE_BY_ID_ORDINE_QUERY = "SELECT o.* FROM Offerta o JOIN OrdineContieneOfferte oco ON o.idOfferta = oco.idOfferta WHERE oco.idOrdine = ?";
+    private static final String SELECT_OFFERTE_BY_ID_ORDINE_QUERY = "SELECT o.* FROM Offerta o JOIN ordinecomprendeofferta oco ON o.idOfferta = oco.idOfferta WHERE oco.idOrdine = ?";
     /*
     la query seleziona tutte le colonne (*) dalla tabella "Offerta" o,
     che vengono unite alle colonne della tabella "CarrelloContieneOfferta" cco sulla base dell'uguaglianza dell'idOfferta,
@@ -31,11 +31,8 @@ public class OffertaDAO {
 
     private static final String SELECT_OFFERTE_BY_ID_UTENTE =
             "SELECT idOfferta,condizione,prezzo,o.idUtente,idCarta FROM Offerta o,Utente u WHERE u.idUtente = o.idUtente and o.idUtente=?";
-    private static final String SELECT_OFFERTE_BY_ID_UTENTE_QUERY =
-            "SELECT * FROM Offerta o\n" +
-                    "JOIN CarrelloContieneOfferta cco ON o.idOfferta = cco.idOfferta\n" +
-                    "JOIN Carrello c ON cco.idCarrello = c.idCarrello\n" +
-                    "WHERE c.idUtente = ?";
+    private static final String SELECT_OFFERTE_BY_ID_UTENTE_CARRELLO_QUERY =
+            "SELECT * FROM Offerta o JOIN carrellocontieneofferta cco ON o.idOfferta = cco.idOfferta JOIN Carrello c ON cco.idCarrello = c.idCarrello WHERE c.idUtente = ?";
     private static final String SELECT_ALL_OFFERTE_QUERY = "SELECT * FROM Offerta";
     //private static final String SELECT_OFFERTE_BY_ID_CARRELLO_QUERY = "SELECT * FROM Offerta o INNER JOIN CarrelloContieneOfferta cco ON o.idOfferta = cco.idOfferta WHERE cco.idCarrello = ?";
     private static final String SELECT_OFFERTE_BY_ID_CARTA_QUERY = "SELECT * FROM Offerta WHERE idCarta = ?";
@@ -159,7 +156,7 @@ public class OffertaDAO {
         PreparedStatement stmt = conn.prepareStatement(SELECT_OFFERTE_BY_ID_ORDINE_QUERY);
 
         // Imposta il parametro della query con l'id dell'ordine passato come argomento
-        stmt.setInt(1, idOrdine);
+        stmt.setString(1, String.valueOf(idOrdine));
 
         // Esegue la query e ottiene il risultato
         ResultSet rs = stmt.executeQuery();
@@ -179,6 +176,7 @@ public class OffertaDAO {
 
         return offerte;
     }
+
 
     /**
      * Il metodo permette di ottenere un oggetto Offerta con l'idUtente
@@ -207,6 +205,30 @@ public class OffertaDAO {
         }
         return offerte;
     }
+
+    public List<Offerta> getOfferteByIdUtenteCarrello(int idUtente)
+    {
+        List<Offerta> offerte = new ArrayList<>();
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement statement = con.prepareStatement(SELECT_OFFERTE_BY_ID_UTENTE_CARRELLO_QUERY);
+            statement.setInt(1, idUtente);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int idOfferta = resultSet.getInt("idOfferta");
+                int vend = resultSet.getInt("idUtente");
+                String condizione = resultSet.getString("condizione");
+                double prezzo = resultSet.getDouble("prezzo");
+                int idCarta = resultSet.getInt("idCarta");
+                Offerta offerta = new Offerta(idOfferta, condizione, prezzo, vend, idCarta);
+                offerte.add(offerta);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return offerte;
+    }
+
+
 
     /**
      * Il metodo permette di modificare un oggetto Offerta

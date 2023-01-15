@@ -34,7 +34,8 @@ public class RimuoviOffertaDalCarrelloServlet extends HttpServlet {
         int idUtente = user.getIdUtente();
 
         // Recupera l'id dell'offerta da aggiungere al carrello dalla request
-        int idOfferta = Integer.parseInt(request.getParameter("idOfferta"));
+        String offertas = request.getParameter("offerta");
+        int idOfferta = Integer.parseInt(offertas);
 
         FacadeDAO facadeDAO = new FacadeDAO();
         // Recupera il carrello dell'utente corrente dal database

@@ -31,7 +31,6 @@
         <input type="password" name="cambiaPass" id="cambiaPass" value="<%=utente.getPassword()%>" placeholder="modifica password" required="required"> <br>
         <input type="text" name="cambiaEmail" id="cambiaEmail" value="<%=utente.getEmail()%>" placeholder="modifica email" required="required"> <br>
         <button class="submit" type="submit">Modifica<i class="fa-solid fa-wrench"></i></button>
-        <h6 style="color: red">N.B le modifiche apportate ai tuoi dati saranno visibili al prossimo accesso.</h6>
     </form><%}%>
     <%if(utente.getIdUtente()==1){%> <!-- Nel pannello compare un href al pannello admin se l utente che accede è un admin-->
     <form id="adminPanel"  method="post" action="MostraPannelloAdmin?Utente=<%=utente%>" ><button class="btn" type="submit">Pannello Admin</button></form><%}%>

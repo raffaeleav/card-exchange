@@ -1,4 +1,4 @@
-<%@ page import="storage.FacadeDAO" %>
+<%@ page import="storage.service.FacadeDAO" %>
 <%@ page import="creazioneDiscussione.Discussione" %>
 <%@ page import="java.util.List" %>
 <%@ page import="creazioneDiscussione.Messaggio" %>

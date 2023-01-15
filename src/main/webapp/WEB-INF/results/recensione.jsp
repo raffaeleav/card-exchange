@@ -3,12 +3,13 @@
 <head>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/recensione.css"/>
     <title>Title</title>
-
+    <script src="${pageContext.request.contextPath}/script/checkRecensione.js"></script>
 </head>
 <body>
-<script src="${pageContext.request.contextPath}/script/validate_recensione.js"></script>
+<% int idOrdine= (int) request.getAttribute("idOrdine");%>
+<% int idUtente= (int) request.getAttribute("idUtente");%>
 <div class="recensioneContainer">
-    <form method="post" action="AggiungiRecensione">
+    <form method="post" action="AggiungiRecensione" onsubmit="return validateReviewForm()">
         <div class="rate">
             <input type="radio" id="star5" name="rate" value="5" />
             <label for="star5" title="text"></label>
@@ -22,7 +23,9 @@
             <label for="star1" title="text"></label>
         </div><br>
 
-        <textarea class="text" id="text" name="text" rows="3" placeholder="Inserisci testo" oninput="validaTesto()"></textarea><br>
+        <textarea class="text" id="text" name="text" rows="3" placeholder="Inserisci testo"></textarea><br>
+        <input type="hidden" value="<%=idOrdine%>" name="idOrdine">
+        <input type="hidden" value="<%=idUtente%>" name="idUtente">
         <input id="submit" class="submit" type="submit" value="Invia" >
     </form>
 </div>

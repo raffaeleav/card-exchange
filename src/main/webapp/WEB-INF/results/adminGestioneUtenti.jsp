@@ -12,38 +12,43 @@
 <head>
     <title>Title</title>
     <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/adminUtenti.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css">
 </head>
 <%ArrayList<Utente> utenti = (ArrayList<Utente>) request.getAttribute("listutenti");%>
-<div class="showUtenti">
-    <h2 class="title">Utenti nel database:</h2><hr>
-    <%for(Utente listutenti:utenti){%>
-    <p>Dettagli utente:</p>
-    ID:<%=listutenti.getIdUtente()%><br>
-    Nome:<%=listutenti.getNome()%><br>
-    Cognome:<%=listutenti.getCognome()%><br>
-    E-mail:<%=listutenti.getEmail()%><br>
-    password:<%=listutenti.getPassword()%><br>
-    <div class="formContainer">
-        <p>Modifica con :</p>
-        <form id="updt" method="post" action="ModificaUtenteServlet?idUtente=<%=listutenti.getIdUtente()%>">
-            <input type="text" name="cambiaNome" id="cambiaNome" value="<%=listutenti.getNome()%>" placeholder="modifica nome" required="required"> <br>
-            <input type="text" name="cambiaCognome" id="cambiaCognome" value="<%=listutenti.getCognome()%>" placeholder="modifica cognome" required="required"> <br>
-            <input type="text" name="cambiaUsername" id="cambiaUsername" value="<%=listutenti.getUsername()%>" placeholder="modifica username" required="required"> <br>
-            <input type="password" name="cambiaPass" id="cambiaPass" value="<%=listutenti.getPassword()%>" placeholder="modifica password" required="required"> <br>
-            <input type="text" name="cambiaEmail" id="cambiaEmail" value="<%=listutenti.getEmail()%>" placeholder="modifica email" required="required"> <br>
-            <button class="submit" type="submit">Modifica<i class="fa-solid fa-wrench"></i></button>
-        </form>
-        <%if (listutenti.getIdUtente()>=2){%>
-        <form method="post" action="EliminaUtente?idUtente=<%=listutenti.getIdUtente()%>">
-                <button class="submitExit" type="submit" value="Elimina account">Elimina Account <i class="fa-solid fa-trash"></i></button><br>
-            </form>
-        <form method="post" action="AdminRecensioniServlet?idUtente=<%=listutenti.getIdUtente()%>">
-            <button class="submitExit" type="submit" value="Recensioni effettuate">Recensioni effettuate </button><br>
-        </form>
-        <%}%>
-    </div>
-    <%}%>
+<div id="content">
+    <div id="grid-container">
+
+        <ul>
+            <%for(Utente listutenti:utenti){%>
+            <li>
+                <br><br>
+                <p>Dettagli utente:</p>
+                ID:<%=listutenti.getIdUtente()%><br>
+                Nome:<%=listutenti.getNome()%><br>
+                Cognome:<%=listutenti.getCognome()%><br>
+                E-mail:<%=listutenti.getEmail()%><br>
+                password:<%=listutenti.getPassword()%><br>
+                <br><br>
+
+                <form id="updt" method="post" action="ModificaUtenteServlet?idUtente=<%=listutenti.getIdUtente()%>">
+                    <input type="text" name="cambiaNome" id="cambiaNome" value="<%=listutenti.getNome()%>" placeholder="modifica nome" required="required"> <br>
+                    <input type="text" name="cambiaCognome" id="cambiaCognome" value="<%=listutenti.getCognome()%>" placeholder="modifica cognome" required="required"> <br>
+                    <input type="text" name="cambiaUsername" id="cambiaUsername" value="<%=listutenti.getUsername()%>" placeholder="modifica username" required="required"> <br>
+                    <input type="password" name="cambiaPass" id="cambiaPass" value="<%=listutenti.getPassword()%>" placeholder="modifica password" required="required"> <br>
+                    <input type="text" name="cambiaEmail" id="cambiaEmail" value="<%=listutenti.getEmail()%>" placeholder="modifica email" required="required"> <br>
+                    <input type="submit" value="Modifica utente">
+                </form>
+                <%if (listutenti.getIdUtente()>=2){%>
+                <form method="post" action="EliminaUtente?idUtente=<%=listutenti.getIdUtente()%>">
+                    <input type="submit" value="Elimina Account">
+                </form>
+                <form method="post" action="AdminRecensioniServlet?idUtente=<%=listutenti.getIdUtente()%>">
+                    <input type="submit" value="Recensioni utente">
+                </form> <%}%>
+            </li>
+
+            <%}%> </ul>
+         </div>
 </div>
 </body>
 </html>

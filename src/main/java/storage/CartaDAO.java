@@ -1,6 +1,7 @@
 package storage;
 
 import acquisto.Carta;
+import storage.controller.ConPool;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,7 +19,7 @@ public class CartaDAO {
      *                      le istanze di oggetti Carta nel database
      */
     public List<Carta> doRetrieveAll(){//Metodo che permette di restituire tutte le carte presenti nel DB
-        try(Connection con=ConPool.getConnection()){
+        try(Connection con= ConPool.getConnection()){
             List<Carta> carte=new ArrayList<>();
             PreparedStatement ps= con.prepareStatement("SELECT * FROM carta;");
             ResultSet rs=ps.executeQuery();
@@ -77,12 +78,12 @@ public class CartaDAO {
      * */
     public void doUpdate(int idCarta,Carta carta){//Metodo che permette di modificare una carta presente nel DB.
         try (Connection con=ConPool.getConnection()){
-            PreparedStatement ps=con.prepareStatement("UPDATE Carta set nome=?, categoria=?, rarita=?, immagine=? where idCarta=?");
+            PreparedStatement ps=con.prepareStatement("UPDATE Carta set nome=?, categoria=?, rarità=?, immagine=? where idCarta=?");
             ps.setString(1, carta.getNome());
             ps.setString(2, carta.getCategoria());
             ps.setString(3, carta.getRarita());
-            ps.setInt(4,idCarta);
-            ps.setString(5, carta.getImmagine());
+            ps.setString(4, carta.getImmagine());
+            ps.setInt(5,idCarta);
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -114,7 +115,7 @@ public class CartaDAO {
      * */
     public void doSave(Carta carta){//Metodo che permette di inserire una nuova carta nel DB
         try(Connection con=ConPool.getConnection()){
-            PreparedStatement ps=con.prepareStatement("INSERT into carta(nome,categoria,rarita,immagine) values (?,?,?,?)");
+            PreparedStatement ps=con.prepareStatement("INSERT into carta(nome,categoria,rarità,immagine) values (?,?,?,?)");
             ps.setString(1, carta.getNome());
             ps.setString(2, carta.getCategoria());
             ps.setString(3, carta.getRarita());

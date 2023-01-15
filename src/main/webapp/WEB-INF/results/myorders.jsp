@@ -4,7 +4,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="acquisto.*" %>
 <%@ page import="registrazione.*" %>
-<%@ page import="storage.FacadeDAO" %>
+<%@ page import="storage.service.FacadeDAO" %>
 
 <!DOCTYPE html>
 <html>

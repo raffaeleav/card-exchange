@@ -5,8 +5,6 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import registrazione.Utente;
-import storage.CarrelloDAO;
-import storage.FacadeDAO;
 
 import java.io.IOException;
 /**

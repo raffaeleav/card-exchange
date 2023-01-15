@@ -14,7 +14,8 @@ import java.util.List;
 
 /**
  * La classe permette di settare come attributo nella request la lista di tutti gli utenti
- * presenti nel database,tramite il facadeDAO.Una volta settata la lista degli utenti,
+ * presenti nel database, tramite il facadeDAO.
+ * Una volta settata la lista degli utenti,
  * richiede il dispatcher alla pagina adminGestioneUtenti.
  * @author Francesco Di Domenico
  */
@@ -24,7 +25,7 @@ public class AdminUtentiServlet extends HttpServlet {
 
     /**
      * Il metodo permette di ottenere dal database tramite il facadeDAO
-     * la lista degli utenti,setta la lista come parametro nella request
+     * la lista degli utenti, setta la lista come parametro nella request
      * e rimanda alla pagina dell admin per gestire gli utenti tramite parametro req.
      * @param req : oggetto di richiesta HTTP
      * @param resp : oggetto di risposta HTTP

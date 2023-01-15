@@ -12,9 +12,10 @@ import storage.service.FacadeDAO;
 
 import java.io.IOException;
 /**
- * La classe permette di modificare un utente tramite id della utente,attraverso
- * il facadeDAO.
- * @author Francesco Di Domenico
+
+ La classe ModificaUtenteServlet permette di modificare un utente presente
+ nel database tramite l'utilizzo del facadeDAO.
+ @author Francesco Di Domenico
  */
 @WebServlet("/ModificaUtenteServlet")
 public class ModificaUtenteServlet extends HttpServlet {

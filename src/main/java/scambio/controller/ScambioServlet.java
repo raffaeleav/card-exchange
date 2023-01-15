@@ -13,6 +13,8 @@ import scambio.Scambio;
 import storage.service.FacadeDAO;
 
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
@@ -39,22 +41,21 @@ public class ScambioServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         int conguaglio = 0;
 
-        // @TODO CONTROLLI SULL'INPUT
-        if(request.getParameter("idOffertaMittente").isBlank() || request.getParameter("idOffertaDestinatario").isBlank()){
+        // Controlli input
+        if(request.getParameter("idOffertaMittente").isBlank() || request.getParameter("idOffertaDestinatario").isBlank()
+        || !this.isNumeric(request.getParameter("conguaglio"))){
             request.getRequestDispatcher("/WEB-INF/error/somethingWentWrong.jsp").forward(
                     request, response);
             return;
         }
-        if(this.isNumeric(request.getParameter("conguaglio"))){
-            conguaglio = Integer.parseInt(request.getParameter("conguaglio"));
-            if(conguaglio < 0)
-                conguaglio = 0;
-        }
+
 
         // Controlli Passati!
+
+        conguaglio = Integer.parseInt(request.getParameter("conguaglio"));
+
         int idUtenteMittente = Integer.parseInt(request.getParameter("idUtenteMittente"));
         int idOffertaDestinatario = Integer.parseInt(request.getParameter("idOffertaDestinatario"));
         int idOffertaMittente = Integer.parseInt(request.getParameter("idOffertaMittente"));
@@ -78,9 +79,11 @@ public class ScambioServlet extends HttpServlet {
 
 
         dao.doSave(Scambio.class,s);
-        //Notifica?
+
         Utente destinatario = (Utente) new FacadeDAO().doRetrieveById(Utente.class,UtenteDestinatario.getIdUtente());
         Utente mittente = (Utente) new FacadeDAO().doRetrieveById(Utente.class,idUtenteMittente);
+
+        // Processo di notifica
         try {
             GMailer gMailer = new GMailer();
             gMailer.sendMail(destinatario.getEmail(),"Richiesta Di Scambio - Ricevuta","Hai ricevuto una richiesta di scambio di carte da parte dell'utente " + mittente.getEmail() + ".\n" +
@@ -100,12 +103,19 @@ public class ScambioServlet extends HttpServlet {
 
     }
 
+    /**
+     * Questo metodo permette di testare se una stringa è conforme
+     * al pattern regex (n > 0)
+     * @param str - parametro da verificare
+     * @return true/false in base all'esito del test
+     */
     private boolean isNumeric(String str) {
-        try {
-            Double.parseDouble(str);
-            return true;
-        } catch(NumberFormatException e){
-            return false;
-        }
+        // Regex presente nel TS
+        String regex = "^(\\d*\\.)?\\d+$";
+
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(str);
+
+        return matcher.matches();
     }
 }

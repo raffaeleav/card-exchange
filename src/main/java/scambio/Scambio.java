@@ -1,9 +1,13 @@
 package scambio;
+
 /**
- * La classe Scambio rappresenta una RichiestaDiScambio nel sistema di Card eXchange,
- * contiene informazioni come idUtenteMittente, idUtenteDestinatario, idOffertaMittente.
- * Include metodi di getter e setter, utilizzati per visualizzare e/o settare parametri dell'istanza.
- * @author Michele Menzione
+
+ La classe Scambio rappresenta una RichiestaDiScambio nel sistema di Card eXchange,
+ contiene informazioni come idUtenteMittente, idUtenteDestinatario, idOffertaMittente.
+ Include metodi di getter e setter per visualizzare e/o impostare i parametri dell'istanza.
+ Includi anche due costruttori, uno senza parametri e uno con parametri per creare una nuova istanza di Scambio.
+ @author Michele Menzione
+ @version 1.0
  */
 
 public class Scambio {

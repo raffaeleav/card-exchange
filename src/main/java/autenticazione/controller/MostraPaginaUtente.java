@@ -11,24 +11,22 @@ import registrazione.Utente;
 
 import java.io.IOException;
 /**
- * La classe permette l'indirizzamento verso la pagina dell'utente.
- * @author Francesco Di Domenico
+ * La classe MostraPaginaUtente permette di mostrare la pagina del profilo utente.
+ * @author Michele Menzione
+ *
  */
 
 @WebServlet("/MostraPaginaUtente")
     public class MostraPaginaUtente extends HttpServlet {
 
     /**
-     * Il metodo permette di gestire la richiesta del client,dove il server
-     * rimanda alla pagina utente tramite parametro RequestDispatcher .
+     Il metodo utilizza l'oggetto RequestDispatcher per inoltrare la richiesta alla pagina "paginaUtente.jsp",
+     all'interno della quale verranno visualizzate le informazioni dell'utente attualmente loggato.
      * @param req : oggetto di richiesta HTTP
      * @param resp : oggetto di risposta HTTP
      */
         @Override
         protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-            HttpSession session= req.getSession();
-            Utente utenteLoggato=(Utente)session.getAttribute("Utente");
-            req.setAttribute("Utente",utenteLoggato);
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/results/paginaUtente.jsp");
             requestDispatcher.forward(req, resp);
         }

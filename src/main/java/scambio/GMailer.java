@@ -29,17 +29,31 @@ import java.util.Set;
 import static com.google.api.services.gmail.GmailScopes.GMAIL_SEND;
 import static javax.mail.Message.RecipientType.TO;
 /**
- * La classe permette la procedura d'invio notifica tramite l'utilizzo
- * di GMAIL API.
+ * /**
+ * GMailer è una classe che consente l'invio di e-mail utilizzando l'API di Gmail.
+ * Include un costruttore che configura il servizio Gmail e un metodo
+ * per inviare e-mail, chiamato sendMail.
  * @author Michele Menzione
  */
 
 
 public class GMailer {
-
+    /**
+     L'indirizzo email che verrà utilizzato come mittente per tutte le e-mail inviate utilizzando questa classe.
+     */
     private static final String TEST_EMAIL = "CardeXchange2023@gmail.com";
+
+    /**
+     Il servizio Gmail utilizzato per inviare e-mail.
+     */
     private final Gmail service;
 
+
+    /**
+     Costruttore per la classe GMailer. Imposta il servizio Gmail creando un nuovo trasporto affidabile e
+     una nuova istanza di Gmail utilizzando i segreti del client e le credenziali.
+     @throws Exception se si verifica un errore durante l'impostazione del servizio Gmail.
+     */
     public GMailer() throws Exception {
         NetHttpTransport httpTransport = GoogleNetHttpTransport.newTrustedTransport();
         GsonFactory jsonFactory = GsonFactory.getDefaultInstance();
@@ -48,6 +62,14 @@ public class GMailer {
                 .build();
     }
 
+
+    /**
+     Un metodo helper per ottenere le credenziali necessarie per accedere all'API di Gmail.
+     @param httpTransport il NetHttpTransport utilizzato per il servizio Gmail
+     @param jsonFactory la GsonFactory utilizzata per il servizio Gmail
+     @return le credenziali necessarie per accedere all'API di Gmail
+     @throws IOException se si verifica un errore durante l'ottenimento delle credenziali
+     */
     private static Credential getCredentials(final NetHttpTransport httpTransport, GsonFactory jsonFactory)
             throws IOException {
         // Da cambiare con la posizione del file secret.json

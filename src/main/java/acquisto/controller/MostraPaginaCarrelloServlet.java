@@ -28,19 +28,11 @@ public class MostraPaginaCarrelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //controlla se l'utente è loggato
+        if(request.getSession().getAttribute("Utente") == null){
+            request.getRequestDispatcher("/WEB-INF/results/login.jsp").forward(request, response);
 
-        // Recupera l'id dell'utente corrente dalla sessione
-        Utente utente = (Utente) request.getSession().getAttribute("Utente");
-        int idUtente = utente.getIdUtente();
-
-        FacadeDAO facadeDAO = new FacadeDAO();
-        // Recupera il carrello dell'utente corrente dal database utilizzando il metodo
-        // getCarrelloByIdUtente del DAO CarrelloDAO
-        Carrello carrello = (Carrello) facadeDAO.doRetrieveByIdUtente(Carrello.class,idUtente);
-
-        // Imposta il carrello come attributo della request
-        request.setAttribute("carrello", carrello);
-
+        }
         // Reindirizza l'utente alla pagina del carrello
         request.getRequestDispatcher("/WEB-INF/results/carrello.jsp").forward(request, response);
     }

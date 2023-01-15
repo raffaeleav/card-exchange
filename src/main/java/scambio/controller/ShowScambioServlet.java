@@ -46,13 +46,7 @@ public class ShowScambioServlet extends HttpServlet {
         //Lista delle offerte dell'utente richiedente
         List <Offerta> offerte = null;
 
-        try {
-            offerte = (List<Offerta>) DAO.doRetrieveAllByIdUtente(Offerta.class, utente.getIdUtente());
-        }
-
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
+        offerte = (List<Offerta>) DAO.doRetrieveAllByIdUtente(Offerta.class, utente.getIdUtente());
 
 
         // Offerta selezionata allo scambio

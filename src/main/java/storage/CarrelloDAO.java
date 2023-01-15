@@ -16,19 +16,17 @@ import java.util.List;
  * @author Salvatore
  */
 public class CarrelloDAO {
-    private static final String INSERT_CARRELLO_QUERY = "INSERT INTO Carrello (idCarrello, idUtente, totale) VALUES (?, ?, ?)";
+    private static final String INSERT_CARRELLO_QUERY = "INSERT INTO Carrello (idutente,totale) VALUES (?, ?)";
     private static final String SELECT_CARRELLO_BY_ID_QUERY = "SELECT * FROM Carrello WHERE idCarrello = ?";
     private static final String SELECT_CARRELLO_BY_ID_UTENTE_QUERY = "SELECT * FROM Carrello WHERE idUtente = ?";
     private static final String SELECT_ALL_CARRELLI_QUERY = "SELECT * FROM Carrello";
-    private static final String UPDATE_CARRELLO_QUERY ="UPDATE Carrello SET id Carrello=?, idUtente=?, totale=? WHERE idCarrello=? ";
+    private static final String UPDATE_CARRELLO_QUERY ="UPDATE Carrello SET idCarrello=?, idUtente=? WHERE idCarrello=? ";
     private static final String DELETE_CARRELLO_QUERY = "DELETE FROM Carrello WHERE idCarrello = ?";
     private static final String INSERT_INTO_CARRELLOCONTIENEOFFERTA_QUERY = "INSERT INTO CarrelloContieneOfferta (idCarrello, idOfferta) VALUES (?, ?)";
     private static final String DELETE_FROM_CARRELLOCONTIENEOFFERTA_QUERY = "DELETE FROM CarrelloContieneOfferta WHERE idCarrello = ? and idOfferta = ?";
     private static final String DELETE_OFFERTE_FROM_CARRELLO_QUERY = "DELETE FROM CarrelloContieneOfferta WHERE idCarrello = ?";
 
-    private static final String SELECT_TOTALE_BY_ID_CARRELLO_QUERY = "SELECT SUM(Offerta.prezzo) as prezzo FROM CarrelloContieneOfferta " +
-            "JOIN Offerta ON CarrelloContieneOfferta.idOfferta = Offerta.idOfferta" +
-            "WHERE CarrelloContieneOfferta.idCarrello = ?;";
+    private static final String SELECT_TOTALE_BY_ID_CARRELLO_QUERY = "SELECT SUM(Offerta.prezzo) as prezzo FROM CarrelloContieneOfferta JOIN Offerta ON CarrelloContieneOfferta.idOfferta = Offerta.idOfferta WHERE CarrelloContieneOfferta.idCarrello = ?;";
 
     private static final String UPDATE_TOTALE_CARRELLO_QUERY = "UPDATE Carrello SET totale = ? WHERE idCarrello = ?";
 
@@ -42,9 +40,11 @@ public class CarrelloDAO {
     public void doSave(Carrello carrello) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement statement = con.prepareStatement(INSERT_CARRELLO_QUERY);
-            statement.setInt(1, carrello.getIdCarrello());
-            statement.setInt(2, carrello.getIdUtente());
-            statement.setDouble(3, carrello.getTotale());
+            statement.setInt(1, carrello.getIdUtente());
+            statement.setDouble(2, carrello.getTotale());
+            if(statement.executeUpdate()!=1){
+                throw new RuntimeException("Errore durante l'inserimento del carrello");
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -64,8 +64,12 @@ public class CarrelloDAO {
             statement.setInt(1, idCarrello);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                int idUtente = resultSet.getInt("idUtente");
-                return new Carrello(idCarrello, idUtente);
+                Carrello carrello =new Carrello();
+                carrello.setIdCarrello(resultSet.getInt(1));
+                carrello.setIdUtente(resultSet.getInt(2));
+                carrello.setTotale(resultSet.getDouble(3));
+                return carrello;
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -88,15 +92,18 @@ public class CarrelloDAO {
             statement.setInt(1, idUtente);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                int idCarrello = resultSet.getInt("idCarrello");
-                // Crea un oggetto Carrello con l'ID del carrello e l'ID dell'utente
-                return new Carrello(idCarrello, idUtente);
+                    Carrello carrello = new Carrello();
+                    carrello.setIdCarrello(resultSet.getInt(1));
+                    carrello.setIdUtente(resultSet.getInt(2));
+                    carrello.setTotale(resultSet.getInt(3));
+                    return carrello;
+                }
+            } catch(SQLException e){
+                e.printStackTrace();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
+            return null;
         }
-        return null;
-    }
+
 
     /**
      * Il metodo permette di ottenere tutti gli oggetti Carrello
@@ -112,7 +119,8 @@ public class CarrelloDAO {
             while (resultSet.next()) {
                 int idCarrello = resultSet.getInt("idCarrello");
                 int idUtente = resultSet.getInt("idUtente");
-                carrelli.add(new Carrello(idCarrello, idUtente));
+                double totale = resultSet.getDouble("totale");
+                carrelli.add(new Carrello(idCarrello, idUtente,totale));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -150,9 +158,14 @@ public class CarrelloDAO {
             statement.setInt(1, idCarrello);
             statement.setInt(2, offerta.getIdOfferta());
             statement.executeUpdate();
+            double totale = calcolaTotale(idCarrello);
+            statement = con.prepareStatement(UPDATE_TOTALE_CARRELLO_QUERY);
+            statement.setDouble(1,totale);
+            statement.setInt(2, idCarrello);
+            statement.executeUpdate();
             Carrello carrello = new Carrello();
             carrello.setIdCarrello(idCarrello);
-            carrello.setTotale(calcolaTotale(idCarrello));
+            carrello.setTotale(totale);
             doUpdate(idCarrello,carrello);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -170,9 +183,14 @@ public class CarrelloDAO {
             statement.setInt(1, idCarrello);
             statement.setInt(2, offerta.getIdOfferta());
             statement.executeUpdate();
+            double totale = calcolaTotale(idCarrello);
+            statement = con.prepareStatement(UPDATE_TOTALE_CARRELLO_QUERY);
+            statement.setDouble(1,totale);
+            statement.setInt(2, idCarrello);
+            statement.executeUpdate();
             Carrello carrello = new Carrello();
             carrello.setIdCarrello(idCarrello);
-            carrello.setTotale(calcolaTotale(idCarrello));
+            carrello.setTotale(totale);
             doUpdate(idCarrello,carrello);
         } catch (SQLException e) {
             e.printStackTrace();

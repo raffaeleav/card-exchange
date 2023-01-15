@@ -1,5 +1,6 @@
 package acquisto.controller;
 
+import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,7 +19,7 @@ import storage.FacadeDAO;
  * funzione di acquisto
  * @author Salvatore Sautariello
  */
-@WebServlet("/aggiungiOffertaInCarrello")
+@WebServlet(name = "aggiungiOffertaInCarrello", value = "/aggiungiOffertaInCarrello")
 public class AggiungiOffertaInCarrelloServlet extends HttpServlet {
 
     /**
@@ -28,31 +29,27 @@ public class AggiungiOffertaInCarrelloServlet extends HttpServlet {
      * @param response oggetto che modella una risposta HTTP
      * */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws IOException {
-
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+        String offertas = request.getParameter("offerta");
+        if(request.getSession().getAttribute("Utente") == null){
+            request.getRequestDispatcher("/WEB-INF/results/login.jsp").forward(request, response);
+            return;
+        }
 
         // Recupera l'id dell'utente corrente dalla sessione
         Utente user = (Utente) request.getSession().getAttribute("Utente");
         int idUtente = user.getIdUtente();
 
         // Recupera l'id dell'offerta da aggiungere al carrello dalla request
-        int idOfferta = Integer.parseInt(request.getParameter("idOfferta"));
+        int idOfferta = Integer.parseInt(offertas);
 
         FacadeDAO facadeDAO = new FacadeDAO();
-        // Recupera il carrello dell'utente corrente dal database
-        Carrello carrello = (Carrello) facadeDAO.doRetrieveByIdUtente(Carrello.class,idUtente);
-
-        // Se il carrello non esiste, lo crea nel database utilizzando il metodo
-        // doSave del DAO CarrelloDAO
-        if (carrello == null) {
-            carrello = new Carrello(0, idUtente);
-            facadeDAO.doSave(Carrello.class,carrello);
-        }
-
-
         // Recupera l'offerta da aggiungere al carrello dal database
         Offerta offerta = (Offerta) facadeDAO.doRetrieveById(Offerta.class, idOfferta);
+        // Recupera il carrello dell'utente corrente dal database
+        Carrello carrello = (Carrello) facadeDAO.doRetrieveByIdUtente(Carrello.class,idUtente);
+        carrello.setTotale(carrello.getTotale()+offerta.getPrezzo());
 
         // Aggiunge l'offerta al carrello dell'utente
         facadeDAO.addOffertaInCarrello(Carrello.class,offerta, carrello.getIdCarrello());
@@ -61,7 +58,8 @@ public class AggiungiOffertaInCarrelloServlet extends HttpServlet {
         facadeDAO.doUpdate(Carrello.class,carrello.getIdCarrello(),carrello);
 
         // Reindirizza l'utente alla pagina del carrello
-        response.sendRedirect("/WEB-INF/results/carrello.jsp"); //provvisorio
+        request.getRequestDispatcher("/WEB-INF/results/carrello.jsp").forward(
+                request, response);
 
     }
 

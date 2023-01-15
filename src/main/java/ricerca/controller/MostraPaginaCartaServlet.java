@@ -1,6 +1,6 @@
 package ricerca.controller;
 
-import acquisto.Offerta;
+import acquisto.*;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

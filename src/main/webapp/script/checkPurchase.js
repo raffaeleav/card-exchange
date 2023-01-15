@@ -25,7 +25,6 @@ function checkPurchasingParams(nome, cognome, indirizzo) {
         }
         });
 
-
      // Return the result as an object
     return {
         isNomeValid,
@@ -34,35 +33,44 @@ function checkPurchasingParams(nome, cognome, indirizzo) {
     };
 }
 
+
+
 function check(){
     // Get the values of the input fields
-    const nome = document.getElementById('nome').value;
-    const cognome = document.getElementById('cognome').value;
-    const indirizzoCompleto= document.getElementById('indirizzo').value.trim()+" "+document.getElementById('numeroCivico').trim()+" "+document.getElementById('cap').trim()+" "+document.getElementById('citta').trim()+" "+document.getElementById('provincia').trim();
+    let nome = document.forms["cart-form"]["name"].value;
+    let cognome = document.forms["cart-form"]["cognome"].value;
+    let indirizzoCompleto= document.forms["cart-form"]["indirizzo"].value.trim()+" "+document.forms["cart-form"]["numeroCivico"].trim()+" "+document.forms["cart-form"]["cap"].trim()+" "+document.forms["cart-form"]["citta"].trim()+" "+document.forms["cart-form"]["provincia"].trim();
 
+    alert(nome,cognome,indirizzoCompleto);
     // Check the integrity of the registration parameters
-    const result = checkRegistrationParams(nome,cognome,indirizzoCompleto);
+    let result = checkPurchasingParams(nome,cognome,indirizzoCompleto);
 
     // If one of the parameters is invalid, show an error message and clear the input fields
     if (!result.isNomeValid) {
         alert('Errore Nome. Per favore controlla la correttezza.');
         alert('Sono permessi solo caratteri alfabetici, spazi e apostrofi')
-        document.getElementById('nome').value = '';
+        document.forms["cart-form"]["name"].value = '';
         return false;
     }
     else if(!result.isCognomeValid) {
         alert('Errore Cognome. Per favore controlla la correttezza.');
         alert('Sono permessi solo caratteri alfabetici, spazi e apostrofi')
-        document.getElementById('cognome').value = '';
+        document.forms["cart-form"]["cognome"].value = '';
         return false;
     }
-    else if(!result.isAddressValid){
+    else if(!result.isIndirizzoValid){
         alert('Errore Indirizzo. Per favore controlla che sia un indirizzo esistente.');
         alert('Controlla che i campi indirizzo, numero civico, cap, città, provincia siano tutti corretti. ')
-        document.getElementById('indirizzoCompleto').value = '';
+         document.forms["cart-form"]["indirizzo"].value=" ";
+         document.forms["cart-form"]["numeroCivico"].value=" ";
+         document.forms["cart-form"]["cap"].value="";
+         document.forms["cart-form"]["citta"].value="";
+         document.forms["cart-form"]["provincia"].value="";
+
         return false;
     }
-        return true;
+    else{return true;}
+
 }
 
 

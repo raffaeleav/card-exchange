@@ -36,7 +36,7 @@ public class CreazioneDiscussioneServlet extends HttpServlet {
         String title = request.getParameter("topic-title");
 
         if(user == null){
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/results/discussione-senza-login.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/error/discussione-senza-login.jsp");
             requestDispatcher.forward(request, response);
         }
 

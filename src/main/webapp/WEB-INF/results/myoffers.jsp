@@ -15,13 +15,14 @@
     <%@include file="/header.jsp"%>
     <div id="content">
               <div id="grid-container">
-                <h1>Le mie offerte</h1>
+
                 <%
                   FacadeDAO facadeDAO = new FacadeDAO();
                   Utente utente = (Utente) session.getAttribute("Utente");
                   List<Offerta> offerte = (ArrayList<Offerta>) facadeDAO.doRetrieveAllByIdUtente(Offerta.class, utente.getIdUtente());
-
+if (!offerte.isEmpty()){
                 %>
+                <h1>Le mie offerte</h1>
                       <table>
                         <tr>
                           <th>Offerta #</th>
@@ -49,7 +50,16 @@
                           </td>
                         </tr>
                         <%
+                            }
+                    } else{
+                        %>
+                        <form action="mostraPaginaVenditaServlet" method="get">
+
+                          <input type="submit" value="Non hai pubblicato alcuna offerta, clicca qui per farlo ora">
+                        </form>
+                        <%
                           }
+
                         %>
                       </table>
 

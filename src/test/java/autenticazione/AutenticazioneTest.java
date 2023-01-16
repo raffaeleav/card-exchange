@@ -2,7 +2,7 @@ package autenticazione;
 
 import org.junit.jupiter.api.Test;
 import registrazione.Utente;
-import storage.FacadeDAO;
+import storage.service.FacadeDAO;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;

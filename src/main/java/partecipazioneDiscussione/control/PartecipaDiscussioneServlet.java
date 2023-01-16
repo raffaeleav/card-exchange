@@ -34,7 +34,7 @@ public class PartecipaDiscussioneServlet extends HttpServlet {
         Utente user = (Utente) session.getAttribute("Utente");
 
         if(user == null)
-            address = "/WEB-INF/results/discussione-senza-login.jsp";
+            address = "/WEB-INF/error/discussione-senza-login.jsp";
 
         else {
             address = "/WEB-INF/results/discussione.jsp";

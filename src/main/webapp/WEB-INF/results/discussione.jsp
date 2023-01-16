@@ -21,18 +21,15 @@
 
     <%
         FacadeDAO facadeDAO = new FacadeDAO();
-        List<Discussione> topics = (List<Discussione>) facadeDAO.doRetrieveAll(Discussione.class);
-        int topicId = 0;
-        String topicTitle = null;
+        String id = (String) request.getAttribute("topic-id-servlet");
+        int topicId = Integer.parseInt(id);
 
-        for(Discussione topic : topics)
-            if(topic.getTitolo().equals(request.getParameter("topic-title")) ) {
-                topicId = topic.getIdDiscussione();
-                topicTitle = topic.getTitolo();
-            }
+        Discussione discussione = (Discussione) facadeDAO.doRetrieveById(Discussione.class, topicId);
+        String topicTitle = discussione.getTitolo();
 
         List<Messaggio> messages = facadeDAO.doRetrieveMessageListByTopicId(Discussione.class, topicId);
 
+        synchronized (session){
         Utente user = (Utente) session.getAttribute("Utente");
     %>
 
@@ -49,7 +46,8 @@
                 <label for="message-text-body">Corpo:</label>
                 <input id="message-text-body" name="message-text-body" type="text">
 
-                <input type="hidden" id="topic-title" value="<%=topicTitle%>">
+                <input type="hidden" name="topic-id" value="<%=topicId%>">
+                <input type="hidden" name="topic-title" value="<%=topicTitle%>">
                 <input id="message-button" type="submit" value="Invia">
             </form>
         </div>
@@ -91,7 +89,10 @@
                         }
                     %>
                 </li>
-                <%}%>
+                <%
+                        }
+                    }
+                %>
             </ul>
         </div>
     </div>

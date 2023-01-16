@@ -1,5 +1,6 @@
 package partecipazioneDiscussione.control;
 
+
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -29,19 +30,26 @@ public class PartecipaDiscussioneServlet extends HttpServlet {
      * */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String topicTitle = request.getParameter("topic-title"), address;
+        String id = request.getParameter("topic-id-join");
+        int topicId = Integer.parseInt(id);
+        String address;
         HttpSession session = request.getSession();
-        Utente user = (Utente) session.getAttribute("Utente");
 
-        if(user == null)
-            address = "/WEB-INF/error/discussione-senza-login.jsp";
+        synchronized (session) {
+            Utente user = (Utente) session.getAttribute("Utente");
 
-        else {
-            address = "/WEB-INF/results/discussione.jsp";
-            request.setAttribute("topic-title", topicTitle);
+            if (user == null)
+                address = "/WEB-INF/error/discussione-senza-login.jsp";
+
+            else {
+                address = "/WEB-INF/results/discussione.jsp";
+                request.setAttribute("topic-id-servlet", topicId);
+            }
         }
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(address);
         requestDispatcher.forward(request,response);
+
+        //response.sendRedirect(address);
     }
 }

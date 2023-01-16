@@ -34,9 +34,9 @@ public class InviaMessaggioServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         Utente user = (Utente) session.getAttribute("Utente");
-        int userId = user.getIdUtente(), topicId = Integer.parseInt(request.getParameter("topicId"));
+        int userId = user.getIdUtente(), topicId = Integer.parseInt(request.getParameter("topic-id"));
         String body = request.getParameter("message-text-body"), object = request.getParameter("message-text-object");
-        String topicTitle = request.getParameter("topicId");
+        String topicTitle = request.getParameter("topic-title");
 
         FacadeDAO facadeDAO = new FacadeDAO();
         Messaggio messaggio = new Messaggio(object, body, userId, topicId);

@@ -2,7 +2,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 <%@ page import="registrazione.Utente" %>
-<%@ page import="storage.service.FacadeDAO" %>
 <%--
   Created by IntelliJ IDEA.
   User: Raffaele Aviello
@@ -18,7 +17,10 @@
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css"/>
     </head>
 
-    <%List<Discussione> topics = (ArrayList<Discussione>) request.getAttribute("topics-list");%>
+    <%
+        List<Discussione> topics = (ArrayList<Discussione>) request.getAttribute("topics-list");
+    %>
+
     <body>
         <%@include file="../../header.jsp"%>
 
@@ -41,8 +43,9 @@
                             <%=topic.getTitolo()%>
                         <br><br>
 
-                        <form action="partecipa-discussione-servlet" method="get">
-                            <input type="hidden" id="topic-title" value="<%=topic.getTitolo()%>">
+                        <form id="join-topic-form" action="partecipa-discussione-servlet" method="get">
+                            <input type="hidden" name="topic-id-join"
+                                   value="<%=topic.getIdDiscussione()%>">
                             <input type="submit" id="join-topic" value="Partecipa alla discussione">
                         </form>
 
@@ -50,8 +53,9 @@
                             Utente user = (Utente) session.getAttribute("Utente");
                             if(user != null && (topic.getIdUtente() == user.getIdUtente() || user.getIdUtente() == 1) ){
                         %>
-                        <form action="elimina-discussione-servlet" method="get">
-                            <input type="hidden" id="topic-id" value="<%=topic.getIdDiscussione()%>">
+                        <form id="delete-topic-form" action="elimina-discussione-servlet" method="get">
+                            <input type="hidden" name="topic-id-delete"
+                                   value="<%=topic.getIdDiscussione()%>" >
                             <input type="submit" id="delete-topic" value="Elimina discussione">
                         </form>
                         <%

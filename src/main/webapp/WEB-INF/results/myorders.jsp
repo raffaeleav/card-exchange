@@ -59,8 +59,7 @@
                                     <td><%= ordine.getData() %></td>
                                     <td> <%= ordine.getIndirizzo() %></td>
                                     <td><%= ordine.getTotale() %></td>
-                                    <td><form action="MostraPaginaRecensione" method="get">
-                                        <input type="hidden" name="idOrdine" value="<%=ordine.getIdOrdine()%>">
+                                    <td><form method="post"action="MostraPaginaRecensione?idOrdine=<%=ordine.getIdOrdine()%>" >
                                         <input type="submit" value="Invia Recensione">
                                     </form></td>
                                     <%

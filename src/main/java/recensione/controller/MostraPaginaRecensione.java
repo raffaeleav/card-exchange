@@ -28,11 +28,11 @@ public class MostraPaginaRecensione extends HttpServlet {
      * @param resp : oggetto di risposta HTTP
      */
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session=req.getSession();
         Utente utente= (Utente) session.getAttribute("Utente");
-        //int idOrdine=(int)req.getAttribute("idOrdine");
-        int idOrdine= 1;//  da cambiare, serve parametro passato tramite button nella pagina my orders  int idOrdine=(int)req.getAttribute("idOrdine");
+        String order= req.getParameter("idOrdine");
+        int idOrdine=Integer.parseInt(order);
         int idUtente= utente.getIdUtente();
         req.setAttribute("idOrdine",idOrdine);
         req.setAttribute("idUtente",idUtente);

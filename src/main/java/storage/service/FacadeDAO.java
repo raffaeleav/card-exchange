@@ -346,9 +346,9 @@ public class FacadeDAO {
     }
 
     public List<?> doRetrieveAllByIdUtente(Class<?> entityClass, int idUtente)  {
-            /*if (entityClass.getName().equals("acquisto.Offerta")) {
+            if (entityClass.getName().equals("acquisto.Offerta")) {
                 return new OffertaDAO().getOfferteByIdUtente(idUtente);
-            }*/
+            }
             if (entityClass.getName().equals("acquisto.Ordine")) {
                 return new OrdineDAO().getOrdiniByIdUtente(idUtente);
             }

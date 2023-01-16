@@ -39,6 +39,7 @@
     <div id="content">
         <div id="add-message">
             <form id="message-form" action="invia-messaggio-servlet" method="get">
+                <p> Invia un messaggio: </p>
 
                 <label for="message-text-object">Oggetto:</label>
                 <input id="message-text-object" name="message-text-object" type="text">
@@ -69,8 +70,8 @@
                         if( user != null && (user.getIdUtente() == message.getIdUtente() || user.getIdUtente() == 1) ){
                     %>
                         <form action="modifica-messaggio-servlet" method="get">
-                            <input type="hidden" id="topic-title-modify" value="<%=topicTitle%>">
-                            <input type="hidden" id="message-id-modify" value="<%=message.getIdMessaggio()%>">
+                            <input type="hidden" name="topic-id-modify" value="<%=topicId%>">
+                            <input type="hidden" name="message-id-modify" value="<%=message.getIdMessaggio()%>">
 
                             <label for="modify-message-text">Corpo del messaggio:</label>
                             <input type="text" id="modify-message-text">
@@ -79,8 +80,8 @@
                         </form>
 
                         <form action="elimina-messaggio-servlet" method="get">
-                            <input type="hidden" id="topic-title-delete" value="<%=topicTitle%>">
-                            <input type="hidden" id="message-id" value="<%=message.getIdMessaggio()%>">
+                            <input type="hidden" name="topic-id-delete" value="<%=topicId%>">
+                            <input type="hidden" name="message-id-delete" value="<%=message.getIdMessaggio()%>">
 
                             <input type="submit" id="delete-message-button" value="Elimina messaggio">
                         </form>

@@ -29,21 +29,16 @@ public class PartecipaDiscussioneServlet extends HttpServlet {
      * */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String id = request.getParameter("topic-id-join");
-        int topicId = Integer.parseInt(id);
-        String address;
+        String topicid = request.getParameter("topic-id"), address;
         HttpSession session = request.getSession();
+        Utente user = (Utente) session.getAttribute("Utente");
 
-        synchronized (session) {
-            Utente user = (Utente) session.getAttribute("Utente");
+        if(user == null)
+            address = "/WEB-INF/results/discussione-senza-login.jsp";
 
-            if (user == null)
-                address = "/WEB-INF/error/discussione-senza-login.jsp";
-
-            else {
-                address = "/WEB-INF/results/discussione.jsp";
-                request.setAttribute("topic-id-servlet", topicId);
-            }
+        else {
+            address = "/WEB-INF/results/discussione.jsp";
+            request.setAttribute("topic-id", topicid);
         }
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(address);

@@ -12,6 +12,7 @@ import registrazione.Utente;
 import storage.service.FacadeDAO;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * La classe permette la creazione di una discussione tramite
@@ -43,12 +44,15 @@ public class CreazioneDiscussioneServlet extends HttpServlet {
         FacadeDAO facadeDAO = new FacadeDAO();
 
         Discussione topic = new Discussione();
+        List<Discussione> topics = (List<Discussione>) facadeDAO.doRetrieveAll(Discussione.class);
+        int topicId = topics.size() + 1;
+
         topic.setIdUtente(user.getIdUtente());
         topic.setTitolo(title);
 
         facadeDAO.doSave(Discussione.class, topic);
 
-        request.setAttribute("topic-title", title);
+        request.setAttribute("topic-id", topicId);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/results/discussione.jsp");
         requestDispatcher.forward(request, response);

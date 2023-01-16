@@ -21,7 +21,7 @@
 
     <%
         FacadeDAO facadeDAO = new FacadeDAO();
-        String id = (String) request.getAttribute("topic-id-servlet");
+        String id = (String) request.getAttribute("topic-id");
         int topicId = Integer.parseInt(id);
 
         Discussione discussione = (Discussione) facadeDAO.doRetrieveById(Discussione.class, topicId);

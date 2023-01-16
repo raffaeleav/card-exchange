@@ -79,11 +79,12 @@ public class CheckoutServlet extends HttpServlet {
                         return;
                 }
 
-                // Calcola il totale del carrello
+                // Cerca il totale del carrello
                 String totales = request.getParameter("totale");
                 Double totale = Double.parseDouble(totales);
 
                 if (totale == 0) {
+                        request.getSession().setAttribute("EmptyCartMessages", " Aggiungi qualche offerta al tuo carrello!");
                         request.getRequestDispatcher("/WEB-INF/results/carrello.jsp").forward(
                                 request, response);
                 } else {

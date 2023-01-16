@@ -13,12 +13,20 @@
         //visualizza l'alert di checkout effettuato con successo nel caso venga visualizzata tramite redirect dalla servlet checkout
         // Recupera il messaggio di successo dalla sessione
         var emptyCartMessage = '<%= session.getAttribute("ErrorParams") %>';
+        var emptyC = '<%=session.getAttribute("EmptyCartMessages")%>';
         // Se il messaggio  è stato impostato, visualizza un alert con il messaggio
         if (emptyCartMessage!="null") {
             alert(emptyCartMessage);
 
             // Rimuovi il messaggio dalla sessione
             '<% session.removeAttribute("EmptyCartMessage");%>';
+        }
+
+        if(emptyC!="null"){
+            alert(emptyC);
+
+            // Rimuovi il messaggio dalla sessione
+            '<% session.removeAttribute("EmptyC");%>';
         }
     </script>
     <title>Carrello | CardeXchange</title>

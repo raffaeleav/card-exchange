@@ -16,7 +16,6 @@
     <head>
         <title>Card eXchange</title>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css"/>
-        <script src="${pageContext.request.contextPath}/script/search-validation.js"></script>
         <script src="${pageContext.request.contextPath}/script/topic-validation.js"></script>
     </head>
 
@@ -70,8 +69,8 @@
                     <%
                         if( user != null && (user.getIdUtente() == message.getIdUtente() || user.getIdUtente() == 1) ){
                     %>
-                        <form id="modify-message-form" action="modifica-messaggio-servlet" method="get"
-                              onsubmit="return messageValidation()">
+                        <form id="modify-message-form" action="modifica-messaggio-servlet"
+                              onsubmit="return messageValidation()" method="get">
                             <input type="hidden" name="topic-id-modify" value="<%=topicId%>">
                             <input type="hidden" name="message-id-modify" value="<%=message.getIdMessaggio()%>">
 

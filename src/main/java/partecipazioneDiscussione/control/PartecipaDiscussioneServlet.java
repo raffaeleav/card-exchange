@@ -29,7 +29,7 @@ public class PartecipaDiscussioneServlet extends HttpServlet {
      * */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String topicid = request.getParameter("topic-id"), address;
+        String topicId = request.getParameter("topic-id"), address;
         HttpSession session = request.getSession();
         Utente user = (Utente) session.getAttribute("Utente");
 
@@ -38,7 +38,7 @@ public class PartecipaDiscussioneServlet extends HttpServlet {
 
         else {
             address = "/WEB-INF/results/discussione.jsp";
-            request.setAttribute("topic-id", topicid);
+            request.setAttribute("topic-id", topicId);
         }
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(address);

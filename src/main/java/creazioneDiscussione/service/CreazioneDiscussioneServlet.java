@@ -42,17 +42,16 @@ public class CreazioneDiscussioneServlet extends HttpServlet {
         }
 
         FacadeDAO facadeDAO = new FacadeDAO();
+        List<Discussione> topics = (List<Discussione>) facadeDAO.doRetrieveAll(Discussione.class);
+        int topicid = topics.size() + 1;
 
         Discussione topic = new Discussione();
-        List<Discussione> topics = (List<Discussione>) facadeDAO.doRetrieveAll(Discussione.class);
-        int topicId = topics.size() + 1;
-
         topic.setIdUtente(user.getIdUtente());
         topic.setTitolo(title);
 
         facadeDAO.doSave(Discussione.class, topic);
 
-        request.setAttribute("topic-id", topicId);
+        request.setAttribute("topic-id", topicid);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/results/discussione.jsp");
         requestDispatcher.forward(request, response);

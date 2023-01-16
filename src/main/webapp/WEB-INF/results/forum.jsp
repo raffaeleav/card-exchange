@@ -14,6 +14,7 @@
 <html>
     <head>
         <title>Card eXchange</title>
+        <script src="${pageContext.request.contextPath}/script/topic-validation.js"></script>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css"/>
     </head>
 
@@ -23,7 +24,8 @@
 
         <div id="content">
             <div id="create-topic">
-                <form id="topic-form" action="creazione-discussione-servlet" method="get">
+                <form id="topic-form" name="topic-form" action="creazione-discussione-servlet" method="get"
+                      onsubmit="return topicValidation()">
                     <label>Crea una discussione:</label>
 
                     <input id="topic-text" name="topic-text" type="text">

@@ -33,7 +33,7 @@ public class CreazioneDiscussioneServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession httpSession = request.getSession();
         Utente user = (Utente) httpSession.getAttribute("Utente");
-        String title = request.getParameter("topic-title");
+        String title = request.getParameter("topic-text");
 
         if(user == null){
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/error/discussione-senza-login.jsp");

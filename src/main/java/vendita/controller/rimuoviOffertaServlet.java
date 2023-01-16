@@ -13,8 +13,19 @@ import jakarta.servlet.http.HttpServletResponse;
 import acquisto.Offerta;
 import storage.service.FacadeDAO;
 
+/**
+ * La classe permette di rimuovere un'offerta precedentemente messa in vendita
+ * @author Salvatore Sautariello
+ */
 @WebServlet(name = "rimuovi-offerta", value = "/rimuovi-offerta")
 public class rimuoviOffertaServlet extends HttpServlet {
+
+    /**
+     * Il metodo permette di gestire la richiesta del client,dove il server
+     * rimanda alla pagina di vendita tramite parametro RequestDispatcher .
+     * @param request : oggetto di richiesta HTTP
+     * @param response : oggetto di risposta HTTP
+     */
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

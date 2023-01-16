@@ -45,14 +45,11 @@ public class CheckoutServlet extends HttpServlet {
         protected void doGet(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException {
 
-
                 // Recupera l'id dell'utente corrente dalla sessione
                 Utente user = (Utente) request.getSession().getAttribute("Utente");
                 int idUtente = user.getIdUtente();
                 FacadeDAO facadeDAO = new FacadeDAO();
                 List<Offerta> offertaList= (List <Offerta>)facadeDAO.doRetrieveAllByIdUtenteCarrello(Offerta.class,idUtente);
-
-
 
                 //List<Offerta> offertaList = (List<Offerta>) facadeDAO.doRetrieveAllByIdUtenteCarrello(Offerta.class, idUtente);
 

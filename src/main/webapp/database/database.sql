@@ -113,6 +113,6 @@ create table OrdineComprendeOfferta(
                                        idOrdine int not null,
                                        idOfferta int not null,
                                        primary key(idOrdine,idOfferta),
-                                       foreign key(idOrdine) references Ordine(idOrdine),
-                                       foreign key(idOfferta) references Offerta(idOfferta)
+                                       foreign key(idOrdine) references Ordine(idOrdine)ON UPDATE CASCADE ON DELETE CASCADE,
+                                       foreign key(idOfferta) references Offerta(idOfferta)ON UPDATE CASCADE ON DELETE CASCADE
 );

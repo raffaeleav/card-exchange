@@ -41,10 +41,12 @@
                           <td><%= carta.getNome() %></td>
                           <td><%= offerta.getCondizione() %></td>
                           <td><%= offerta.getPrezzo() %></td>
-                          <td><form action="rimuovi-offerta" method="get">
-                            <input type="hidden" name="idOfferta" value="<%=offerta.getIdOfferta()%>">
-                            <input type="submit" value="Rimuovi offerta">
-                          </form></td>
+                          <td>
+                            <form action="rimuovi-offerta" method="get">
+                              <input type="hidden" name="idOfferta" value="<%=offerta.getIdOfferta()%>">
+                              <input type="submit" value="Rimuovi offerta">
+                            </form>
+                          </td>
                         </tr>
                         <%
                           }

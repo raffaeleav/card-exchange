@@ -18,7 +18,8 @@ public class rimuoviOffertaServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        int idOfferta = Integer.parseInt(request.getParameter("idOfferta"));
+        String idOffertas = request.getParameter("idOfferta");
+        int idOfferta = Integer.parseInt(idOffertas);
 
         FacadeDAO facadeDAO = new FacadeDAO();
         facadeDAO.doDelete(Offerta.class, idOfferta);

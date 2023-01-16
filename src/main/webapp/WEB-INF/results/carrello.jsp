@@ -42,7 +42,7 @@
                 // Recupera l'id dell'utente dalla sessione
                 Utente user = (Utente) request.getSession().getAttribute("Utente");
 
-                // Recupera il carrello dalla request
+                // Recupera il carrello dell'utente
                 Carrello carrello = (Carrello) facadeDAO.doRetrieveByIdUtente(Carrello.class,user.getIdUtente());
                 request.setAttribute("Carrello",carrello);
                 int idUtente = user.getIdUtente();

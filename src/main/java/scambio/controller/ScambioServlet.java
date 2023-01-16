@@ -111,7 +111,7 @@ public class ScambioServlet extends HttpServlet {
      */
     private boolean isNumeric(String str) {
         // Regex presente nel TS
-        String regex = "^(\\d*\\.)?\\d+$";
+        String regex = "^\\+?(0|[1-9]\\d*)$";
 
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(str);

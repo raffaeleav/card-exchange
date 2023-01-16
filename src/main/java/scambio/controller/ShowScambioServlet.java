@@ -29,15 +29,22 @@ public class ShowScambioServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String offertaRichiesta = request.getParameter("offerta");
+
         // TODO controllo se utente è null (utente non loggato)
         if(request.getSession().getAttribute("Utente") == null){
             request.getRequestDispatcher("/WEB-INF/results/login.jsp").forward(
                     request, response);
             return;
         }
-        Utente utente = (Utente) request.getSession().getAttribute("Utente");
 
+        Utente utente = (Utente) request.getSession().getAttribute("Utente");
+        if(request.getParameter("offerta") == null || request.getParameter("offerta").isBlank()){
+            request.getRequestDispatcher("/WEB-INF/error/somethingWentWrong.jsp").forward(
+                    request, response);
+            return;
+        }
+
+        String offertaRichiesta = request.getParameter("offerta");
         FacadeDAO DAO = new FacadeDAO();
 
         //Lista delle offerte dell'utente richiedente

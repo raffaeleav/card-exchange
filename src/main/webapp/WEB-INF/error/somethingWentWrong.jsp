@@ -29,7 +29,8 @@
 <div class="container">
 
     <span style="font-size: 32px; color: black;">
-    <a href="${pageContext.request.contextPath}/index.jsp" style="text-decoration:none;"><i class="fa-solid fa-house"></i></a>
+        Errore
+    <a href="${pageContext.request.contextPath}/index.jsp" style="text-decoration:none;"><i class="fa-thin fa-face-sad-sweat"></i></a>
     </span>
 
 </div>

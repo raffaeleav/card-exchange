@@ -1,6 +1,5 @@
 package partecipazioneDiscussione.control;
 
-
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -49,7 +48,5 @@ public class PartecipaDiscussioneServlet extends HttpServlet {
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(address);
         requestDispatcher.forward(request,response);
-
-        //response.sendRedirect(address);
     }
 }

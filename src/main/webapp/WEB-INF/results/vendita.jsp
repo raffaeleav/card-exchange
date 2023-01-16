@@ -16,7 +16,7 @@
                           <form id="search-form-selling" name="search-form-selling" action="search-servlet-selling"
                                 onsubmit="return searchValidationSelling()" method="get">
                               <label >Nome:</label>
-                              <input type="search-text-selling" id="search-text-selling" name="search-text-selling">
+                              <input type="search-text-selling" id="search-text-selling" name="search-text-selling" required>
                               <label for="categoria">Categoria:</label>
                               <select id="categoria" >
                                   <option value="Pokemon">Pokemon</option>

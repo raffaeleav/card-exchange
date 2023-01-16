@@ -22,7 +22,7 @@
                 <!-- Carte in vendita -->
                 <li title="Carte in vendita"> <a href=""> <i class="fa-solid fa-list fa-lg"></i> </a> </li>
                 <!-- Vendi carta -->
-                <li title="Vendi carta"> <a href=""> <i class="fa-solid fa-money-bill fa-lg"></i> </a> </li>
+                <li title="Vendi carta"> <a href="mostraPaginaVenditaServlet"> <i class="fa-solid fa-money-bill fa-lg"></i> </a> </li>
                 <!-- Ordini effettuati -->
                 <li title="Ordini effettuati"> <a href="MostraOrdini"> <i class="fa-solid fa-receipt fa-lg"></i> </a> </li>
                 <!-- Forum -->

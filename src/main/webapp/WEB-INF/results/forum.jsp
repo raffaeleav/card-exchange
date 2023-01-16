@@ -43,8 +43,7 @@
                             <%=topic.getTitolo()%>
                         <br><br>
 
-                        <form id="join-topic-form" action="partecipa-discussione-servlet" method="get"
-                              onsubmit="return topicValidation()">
+                        <form id="join-topic-form" action="partecipa-discussione-servlet" method="get">
                             <input type="hidden" name="topic-id" value="<%=topic.getIdDiscussione()%>">
                             <input type="submit" id="join-topic" value="Partecipa alla discussione">
                         </form>

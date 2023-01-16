@@ -1,6 +1,5 @@
-package chat.controller;
+package storage.controller;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -9,23 +8,23 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
+
 /**
- * La classe permette l'indirizzamento verso la pagina di chat.
+ * La classe permette l'indirizzamento verso la pagina di compilazione
+ * form per creare una nuova carta sul dataBase.
  * @author Francesco Di Domenico
  */
+@WebServlet("/MostraPaginaAggiuntaCarta")
+public class MostraPaginaAggiungiCarta extends HttpServlet {
 
-@WebServlet("/MostraPaginaChat")
-public class MostraPaginaChat extends HttpServlet {
     /**
      * Il metodo permette di gestire la richiesta del client,dove il server
-     * rimanda ad un'altra
-     * pagina a fine tramite parametro RequestDispatcher .
+     * rimanda alla pagina di aggiunta carta tramite  parametro RequestDispatcher .
      * @param req : oggetto di richiesta HTTP
      * @param resp : oggetto di risposta HTTP
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher= req.getRequestDispatcher("chat.jsp");
-        dispatcher.forward(req,resp);
+        req.getRequestDispatcher("/WEB-INF/results/adminAggiuntaCarta.jsp").forward(req,resp);
     }
 }

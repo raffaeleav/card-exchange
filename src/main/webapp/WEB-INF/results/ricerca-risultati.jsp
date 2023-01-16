@@ -25,9 +25,10 @@
                 <ul>
                     <%for(Carta card : cards){%>
                         <li>
-                            <br><br>
+                            <p>
                                 <%=card.getNome()%>
-                            <br><br>
+                            </p>
+
                             <img src="<%=card.getImmagine()%>">
 
                             <form id="offer-form" action="mostra-pagina-carta-servlet" method="get">

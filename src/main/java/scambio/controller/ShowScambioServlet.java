@@ -6,12 +6,9 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import registrazione.Utente;
-import storage.CartaDAO;
-import storage.FacadeDAO;
-import storage.OffertaDAO;
+import storage.service.FacadeDAO;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -46,13 +43,7 @@ public class ShowScambioServlet extends HttpServlet {
         //Lista delle offerte dell'utente richiedente
         List <Offerta> offerte = null;
 
-        try {
-            offerte = (List<Offerta>) DAO.doRetrieveAllByIdUtente(Offerta.class, utente.getIdUtente());
-        }
-
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
+        offerte = (List<Offerta>) DAO.doRetrieveAllByIdUtente(Offerta.class, utente.getIdUtente());
 
 
         // Offerta selezionata allo scambio

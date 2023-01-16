@@ -8,12 +8,11 @@ insert into Discussione values(default, "2", "Grazie di aver...");
 insert into Messaggio values(default, "Benvenuti!", "Vi do il benvenuto sul forum di Card eXchange!", 1, 1);
 insert into Messaggio values(default, "Card eXchange!", "Sentitevi liberi di contattare il nostro supporto per qualsiasi problema.", 1, 1);
 
-insert into Ordine values(default,'2017-06-15','via roma 15',1,55.20);
-
-INSERT INTO Offerta (condizione, prezzo, idUtente, idCarta) VALUES ('Nuova', 5, 1, 4);
 
 
-INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Pessime","10.66","2","349");
+
+
+INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Pessime","10.66","2","5");
 INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Usata","120.94","3","183");
 INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Usata","14.01","2","109");
 INSERT INTO Offerta (condizione,prezzo,idUtente,idCarta) VALUES ("Buona","62.05","2","329");

@@ -9,8 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import registrazione.Utente;
-import storage.DiscussioneDAO;
-import storage.FacadeDAO;
+import storage.service.FacadeDAO;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package autenticazione.controller;
+package autenticazione.service;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

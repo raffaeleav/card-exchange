@@ -14,10 +14,16 @@ public class Carrello {
      * @param idCarrello id del carrello
      * @param idUtente id dell' utente della sessione corrente
      * */
-    public Carrello(int idCarrello, int idUtente) {
+    public Carrello(int idCarrello, int idUtente,double totale) {
         this.idCarrello = idCarrello;
         this.idUtente = idUtente;
-        this.totale = 0;
+        this.totale = totale;
+    }
+
+    //Costruttore per registrazione
+    public Carrello(int idUtente,double totale) {
+        this.idUtente = idUtente;
+        this.totale = totale;
     }
     public Carrello() {
 

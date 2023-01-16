@@ -44,7 +44,7 @@ CREATE TABLE Messaggio (
 
 CREATE table Ordine(
                        idOrdine int not null AUTO_INCREMENT,
-                       dataset date not null,
+                       dataset text not null,
                        indirizzo text not null,
                        idUtente int not null,
                        totale double not null,
@@ -52,7 +52,6 @@ CREATE table Ordine(
                        PRIMARY KEY(idOrdine),
                        FOREIGN KEY (idUtente)  references Utente(idUtente) ON UPDATE CASCADE ON DELETE CASCADE
 );
-insert into Ordine values(default,'2017-06-15','via roma 15',1,55.20);
 
 CREATE TABLE Offerta (
                          idOfferta int not null primary key auto_increment,
@@ -69,6 +68,7 @@ CREATE TABLE Offerta (
 CREATE table Carrello(
                          idCarrello int not null AUTO_INCREMENT,
                          idUtente int not null,
+                         totale double not null,
 
                          PRIMARY KEY(idCarrello),
                          FOREIGN KEY (idUtente)  references Utente(idUtente) ON UPDATE CASCADE ON DELETE CASCADE
@@ -113,6 +113,6 @@ create table OrdineComprendeOfferta(
                                        idOrdine int not null,
                                        idOfferta int not null,
                                        primary key(idOrdine,idOfferta),
-                                       foreign key(idOrdine) references Ordine(idOrdine),
-                                       foreign key(idOfferta) references Offerta(idOfferta)
+                                       foreign key(idOrdine) references Ordine(idOrdine)ON UPDATE CASCADE ON DELETE CASCADE,
+                                       foreign key(idOfferta) references Offerta(idOfferta)ON UPDATE CASCADE ON DELETE CASCADE
 );

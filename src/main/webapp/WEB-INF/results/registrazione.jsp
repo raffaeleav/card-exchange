@@ -45,8 +45,6 @@
 
 
 <!-- Add an event listener to the form that calls the checkRegistrationParams() function when the form is submitted -->
-
-
 </body>
 </html>
 

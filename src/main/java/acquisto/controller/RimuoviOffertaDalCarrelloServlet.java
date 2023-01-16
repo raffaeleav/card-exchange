@@ -10,7 +10,7 @@ import java.io.IOException;
 import acquisto.Carrello;
 import acquisto.Offerta;
 import registrazione.Utente;
-import storage.FacadeDAO;
+import storage.service.FacadeDAO;
 
 /**
  * La classe permette la rimozione di un'offerta dal carrello tramite
@@ -34,7 +34,8 @@ public class RimuoviOffertaDalCarrelloServlet extends HttpServlet {
         int idUtente = user.getIdUtente();
 
         // Recupera l'id dell'offerta da aggiungere al carrello dalla request
-        int idOfferta = Integer.parseInt(request.getParameter("idOfferta"));
+        String offertas = request.getParameter("offerta");
+        int idOfferta = Integer.parseInt(offertas);
 
         FacadeDAO facadeDAO = new FacadeDAO();
         // Recupera il carrello dell'utente corrente dal database

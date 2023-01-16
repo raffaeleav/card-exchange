@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import recensione.Recensione;
-import storage.FacadeDAO;
+import storage.service.FacadeDAO;
 
 import java.io.IOException;
 
@@ -21,26 +21,27 @@ import java.io.IOException;
 
 @WebServlet("/AggiungiRecensione")//aggiunta prodotto al DB
 public class AggiungiRecensione extends HttpServlet {
-
+    /**
+     * Il metodo permette di gestire la richiesta del client,dove il server
+     * salva i parametri immessi nel form della pagina di recensione,prende idOrdine ed idUtente
+     * e grazie alla classe facadeDAO aggiunge la recensione al database e rimanda ad un'altra
+     * pagina a fine compilazione tramite parametro resp.
+     * @param req : oggetto di richiesta HTTP
+     * @param resp : oggetto di risposta HTTP
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        /**
-         * Il metodo permette di gestire la richiesta del client,dove il server
-         * salva i parametri immessi nel form della pagina di recensione e grazie
-         * alla classe recensioneDAO aggiunge la recensione al database e rimanda ad un'altra
-         * pagina a fine compilazione tramite parametro resp.
-         * @param req : oggetto di richiesta HTTP
-         * @param resp : oggetto di risposta HTTP
-         */
+
+
         FacadeDAO facadeDAO=new FacadeDAO();
         String testo=req.getParameter("text");
         String strValutazione=req.getParameter("rate");
-        //int idUtente=req.getParameter("idUtente"); ancora da settare
-        //int idOrdine=req.getParameter("idOrdine");ancora da settare
+        int idUtente= Integer.parseInt(req.getParameter("idUtente"));
+        int idOrdine= Integer.parseInt(req.getParameter("idOrdine"));
         int  valutazione=Integer.parseInt(strValutazione);
-        Recensione r=new Recensione(valutazione,testo,2,1);// N.B idutente e idOrdine da cambiare
+        Recensione r=new Recensione(valutazione,testo,idUtente,idOrdine);
         facadeDAO.doSave(Recensione.class,r);
-        resp.sendRedirect("index.jsp"); //rimanda alla homepage (provvisorio)
+        resp.sendRedirect("index.jsp");
     }
 
 }

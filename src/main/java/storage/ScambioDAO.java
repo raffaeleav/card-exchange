@@ -14,7 +14,7 @@ public class ScambioDAO {
      * @param idRichiestaScambio - ID della richiesta di scambio da eliminare
      */
     public void doDelete(int idRichiestaScambio) {
-        try(Connection con=ConPool.getConnection()){
+        try(Connection con= ConPool.getConnection()){
             PreparedStatement ps= con.prepareStatement("DELETE FROM RichiestaDiScambio WHERE idRichiestaScambio=?");
             ps.setInt(1,idRichiestaScambio);
             if(ps.executeUpdate()!=1){
@@ -205,7 +205,7 @@ public class ScambioDAO {
 
     }
 
-    void doUpdate (int idScambio,Scambio richiestaDiScambio){
+    public void  doUpdate (int idScambio,Scambio richiestaDiScambio){
         try (Connection con = ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("UPDATE richiestaDiScambio set IdUtenteMittente=?,IdUtenteDestinatario=?,IdOffertaMittente=?, " +
                     "IdOffertaDestinatario=?, conguaglio=? where idRichiestaDiScambio=?");

@@ -188,9 +188,9 @@ body {
     object-fit: cover;
     border-radius: 10px;
     border-top: none;
-    border-right: 4px solid #0a0a0a;
+    border-right: 4px solid darkgrey;
     border-left: none;
-    border-bottom: 4px solid #0a0a0a;
+    border-bottom: 4px solid darkgrey;
 }
 
 /* forum */
@@ -299,3 +299,92 @@ p{
     border-bottom: 4px solid #7a7878;
     border-radius: 10px;
 }
+
+/* homepage */
+
+#card-statistics, #home-offers {
+    margin: 20px;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    list-style-type: none;
+    background-color: #FFD100;
+    justify-content: center;
+    border-top: none;
+    border-right: 4px solid #75630f;
+    border-left: none;
+    border-bottom: 4px solid #75630f;
+    border-radius: 10px;
+}
+
+#card-img, #card-info{
+    margin: 20px;
+    padding: 14px 14px;
+    width: fit-content;
+    font-size: medium;
+    text-align: left;
+    color: black;
+    background-color: #d6d6d6;
+    border-top: none;
+    border-right: 4px solid #7a7878;
+    border-left: none;
+    border-bottom: 4px solid #7a7878;
+    border-radius: 10px;
+}
+
+#card-img img {
+    margin: 5px;
+    height: auto;
+    width: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    border-top: none;
+    border-right: 4px solid darkgrey;
+    border-left: none;
+    border-bottom: 4px solid darkgrey;
+}
+
+#card-info p {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#card-info #offer-form {
+    display: flex;
+    justify-content: center;
+}
+
+#home-offers-table {
+    margin: 20px;
+    padding: 14px;
+    width: 100%;
+    font-size: medium;
+    text-align: center;
+    color: black;
+    background-color: #d6d6d6;
+    border-top: none;
+    border-right: 4px solid #7a7878;
+    border-left: none;
+    border-bottom: 4px solid #7a7878;
+    border-radius: 10px;
+}
+
+#home-offers-table td {
+    padding: 14px 14px;
+    border-bottom: 3px solid #1a1a1a;
+    border-radius: 5px;
+}
+
+#home-offers-table th{
+    text-decoration: none;
+    color: white;
+    background-color: #1A1A1A;
+    border-radius: 5px;
+    border-top: none;
+    border-right: 4px solid #7a7878;
+    border-left: none;
+    border-bottom: 4px solid #7a7878;
+    border-radius: 10px;
+}
+

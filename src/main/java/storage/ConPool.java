@@ -16,7 +16,7 @@ public class ConPool {
             p.setUrl("jdbc:mysql://localhost:3306/CardExchange?serverTimezone=" + TimeZone.getDefault().getID());
             p.setDriverClassName("com.mysql.jdbc.Driver");
             p.setUsername("root");
-            p.setPassword("michelemenzione");
+            p.setPassword("root");
             p.setMaxActive(100);
             p.setInitialSize(10);
             p.setMinIdle(10);

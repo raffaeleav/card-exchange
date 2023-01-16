@@ -1,5 +1,5 @@
 package acquisto;
-import java.util.Date;
+import java.sql.Date;
 
 
 /**
@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class Ordine {
     private int idOrdine;
-    private Date data;
+    private String data;
     private String indirizzo;
     private int idUtente;
     private double totale;
@@ -21,12 +21,24 @@ public class Ordine {
      * @param idUtente id dell'Utente che ha effettuato dell'ordine;
      * @param totale  totale dell'ordine;
      * */
-    public Ordine(int idOrdine, Date data, String indirizzo, int idUtente,  double totale) {
+    public Ordine(int idOrdine, String data, String indirizzo, int idUtente,  double totale) {
         this.idOrdine = idOrdine;
         this.data = data;
         this.indirizzo = indirizzo;
         this.idUtente = idUtente;
         this.totale = totale;
+    }
+
+    public Ordine(String data, String indirizzo, int idUtente,  double totale) {
+
+        this.data = data;
+        this.indirizzo = indirizzo;
+        this.idUtente = idUtente;
+        this.totale = totale;
+    }
+
+    public Ordine() {
+
     }
 
     public int getIdOrdine() {
@@ -37,11 +49,11 @@ public class Ordine {
         this.idOrdine = idOrdine;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setString(String data) {
         this.data = data;
     }
 

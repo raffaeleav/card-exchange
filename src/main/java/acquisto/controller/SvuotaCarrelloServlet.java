@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import registrazione.Utente;
-import storage.FacadeDAO;
+import storage.service.FacadeDAO;
 
 /**
  * La classe permette di svuotare il carrello dalle sue offerte tramite

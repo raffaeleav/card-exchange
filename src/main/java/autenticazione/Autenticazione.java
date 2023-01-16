@@ -1,8 +1,7 @@
 package autenticazione;
 
 import registrazione.Utente;
-import storage.FacadeDAO;
-import storage.UtenteDAO;
+import storage.service.FacadeDAO;
 
 /**
  * La classe permette la verifica dell'operazione di login

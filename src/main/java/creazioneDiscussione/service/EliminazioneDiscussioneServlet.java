@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import storage.DiscussioneDAO;
-import storage.FacadeDAO;
+import storage.service.FacadeDAO;
 
 import java.io.IOException;
 import java.util.List;

@@ -12,7 +12,7 @@ import java.util.List;
 public class RecensioneDAO {
     //Metodo che permette di restituire tutte le recensioni presenti nel DB
     public List<Recensione> doRetrieveAll(){
-        try (Connection con=ConPool.getConnection()){
+        try (Connection con= ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("SELECT * FROM Recensione");
             List<Recensione> recensioni=new ArrayList<>();
             ResultSet rs=ps.executeQuery();

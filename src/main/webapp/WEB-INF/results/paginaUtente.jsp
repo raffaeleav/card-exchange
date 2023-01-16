@@ -13,6 +13,7 @@
     <script src="https://kit.fontawesome.com/f52bb1298e.js" crossorigin="anonymous"></script>
 </head>
 <body>
+<%@include file="../../header.jsp"%>
 <% Utente utente = (Utente) session.getAttribute("Utente");%>
 <div class="utentePanel">
     <h2 class="titolo">User panel</h2><hr> <!--Dati dell utente-->
@@ -31,7 +32,6 @@
         <input type="password" name="cambiaPass" id="cambiaPass" value="<%=utente.getPassword()%>" placeholder="modifica password" required="required"> <br>
         <input type="text" name="cambiaEmail" id="cambiaEmail" value="<%=utente.getEmail()%>" placeholder="modifica email" required="required"> <br>
         <button class="submit" type="submit">Modifica<i class="fa-solid fa-wrench"></i></button>
-        <h6 style="color: red">N.B le modifiche apportate ai tuoi dati saranno visibili al prossimo accesso.</h6>
     </form><%}%>
     <%if(utente.getIdUtente()==1){%> <!-- Nel pannello compare un href al pannello admin se l utente che accede è un admin-->
     <form id="adminPanel"  method="post" action="MostraPannelloAdmin?Utente=<%=utente%>" ><button class="btn" type="submit">Pannello Admin</button></form><%}%>
@@ -43,6 +43,6 @@
         <button class="submitExit" type="submit" value="Elimina account">Elimina Account <i class="fa-solid fa-trash"></i></button><br>
     </form><%}%>
 </div>
-
+<%@include file="../../footer.jsp"%>
 </body>
 </html>

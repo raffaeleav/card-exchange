@@ -17,9 +17,6 @@ public class ShowRegistrazioneServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/WEB-INF/results/registrazione.jsp").forward(
                 request, response);
-
-
-
     }
 
     @Override

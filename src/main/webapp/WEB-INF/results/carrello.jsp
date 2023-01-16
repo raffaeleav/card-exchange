@@ -42,7 +42,7 @@
                 // Recupera l'id dell'utente dalla sessione
                 Utente user = (Utente) request.getSession().getAttribute("Utente");
 
-                // Recupera il carrello dalla request
+                // Recupera il carrello dell'utente
                 Carrello carrello = (Carrello) facadeDAO.doRetrieveByIdUtente(Carrello.class,user.getIdUtente());
                 request.setAttribute("Carrello",carrello);
                 int idUtente = user.getIdUtente();
@@ -81,56 +81,53 @@
 
     <div class ="form">
         <h2>Dati per il pagamento</h2>
-        <form action="checkout" method="get" id="cart-form" name="cart-form">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required>
-            <br>
-            <label for="cognome">Cognome:</label>
-            <input type="text" id="cognome" name="cognome" required>
-            <br>
-            <label for="indirizzo">Indirizzo:</label><input type="text" id="indirizzo" name="indirizzo" required>
-            <br>
-            <label for="numeroCivico">Numero civico:</label>
-            <input type="text" id="numeroCivico" name="numeroCivico" required>
-            <br>
-            <label for="cap">CAP:</label>
-            <input type="text" id="cap" name="cap" required>
-            <br>
-            <label for="citta">Città:</label>
-            <input type="text" id="citta" name="citta" required>
-            <br>
-            <label for="provincia">Provincia:</label>
-            <input type="text" id="provincia" name="provincia" required>
-            <br>
-            <label for="tipoSpedizione">Tipo di spedizione:</label>
-            <select id="tipoSpedizione" name="tipoSpedizione" required>
-                <option value="standard">Standard</option>
-                <option value="express">Express</option>
-            </select>
-            <br>
-            <label for="metodoPagamento">Metodo di pagamento:</label>
-            <select id="metodoPagamento" name="metodoPagamento" required>
-                <option value="cartaCredito">Carta di credito</option>
-                <option value="paypal">PayPal</option>
-            </select>
-            <br>
-                <%
-                        //calcola il totale del carrello
-                        //carrello.setTotale(facadeDAO.calculateTotaleInCarrello(Carrello.class, carrello.getIdCarrello()));
+                <form action="checkout" method="get" id="cart-form" name="cart-form">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                    <br>
+                    <label for="cognome">Cognome:</label>
+                    <input type="text" id="cognome" name="cognome" required>
+                    <br>
+                    <label for="indirizzo">Indirizzo:</label>
+                    <input type="text" id="indirizzo" name="indirizzo" required>
+                    <br>
+                    <label for="numeroCivico">Numero civico:</label>
+                    <input type="text" id="numeroCivico" name="numeroCivico" required>
+                    <br>
+                    <label for="cap">CAP:</label>
+                    <input type="number" id="cap" name="cap" required>
+                    <br>
+                    <label for="citta">Città:</label>
+                    <input type="text" id="citta" name="citta" required>
+                    <br>
+                    <label for="provincia">Provincia:</label>
+                    <input type="text" id="provincia" name="provincia" required>
+                    <br>
+                    <label for="tipoSpedizione">Tipo di spedizione:</label>
+                    <select id="tipoSpedizione" name="tipoSpedizione" required>
+                        <option value="standard">Standard</option>
+                        <option value="express">Express</option>
+                    </select>
+                    <br>
+                    <label for="metodoPagamento">Metodo di pagamento:</label>
+                    <select id="metodoPagamento" name="metodoPagamento" required>
+                        <option value="cartaCredito">Carta di credito</option>
+                        <option value="paypal">PayPal</option>
+                    </select>
+                    <br>
 
-                    %>
+
+            <!-- Visualizza il totale del carrello -->
+                    <p>Totale: <%= carrello.getTotale() %> € </p>
+
+
+
+
+                    <input type="hidden" name="offerte" value ="<%= offerte%>">
+                    <input type="hidden" name="totale" value="<%= carrello.getTotale() %>">
+                    <input type="submit" value="Concludi il checkout">
+                </form>
     </div>
-
-    <!-- Visualizza il totale del carrello -->
-    <p>Totale: <%= carrello.getTotale() %> € </p>
-
-
-
-
-        <input type="hidden" name="offerte" value ="<%= offerte%>">
-        <input type="hidden" name="totale" value="<%= carrello.getTotale() %>">
-        <input type="submit" value="Concludi il checkout">
-
 
     <input onclick="location.href='index.jsp';" type="submit" value="Torna indietro e continua con lo shopping">
 

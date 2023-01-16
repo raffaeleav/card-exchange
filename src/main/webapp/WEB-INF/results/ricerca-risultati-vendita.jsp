@@ -36,7 +36,8 @@
                       <option value="Poor (PO)">Poor (PO)</option>
                     </select>
                     <label for="prezzo">Prezzo:</label>
-                    <input type="number" id="prezzo" name="prezzo" min="0.1">
+                    <input type="number" id="prezzo" name="prezzo" required value ="0.01" oninput="this.value =
+ !!this.value && Math.abs(this.value) >= 0.01 ? Math.abs(this.value) : null">
                     <input type="hidden" name="id-carta" value="<%=card.getIdCarta()%>">
                     <input type="submit" value="Pubblica">
               </form>

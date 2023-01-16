@@ -44,7 +44,10 @@
                 </form>
                 <form method="post" action="AdminRecensioniServlet?idUtente=<%=listutenti.getIdUtente()%>">
                     <input type="submit" value="Recensioni utente">
-                </form> <%}%>
+                </form>
+                <form method="post" action="AdminOfferteServlet?idUtente=<%=listutenti.getIdUtente()%>">
+                    <input type="submit" value="Offerte utente" disabled>
+                </form><%}%>
             </li>
 
             <%}%> </ul>

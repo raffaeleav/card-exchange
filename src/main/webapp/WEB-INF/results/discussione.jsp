@@ -47,7 +47,6 @@
                 <input id="message-text-body" name="message-text-body" type="text">
 
                 <input type="hidden" name="topic-id" value="<%=topicId%>">
-                <input type="hidden" name="topic-title" value="<%=topicTitle%>">
                 <input id="message-button" type="submit" value="Invia">
             </form>
         </div>

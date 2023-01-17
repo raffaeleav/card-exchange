@@ -9,6 +9,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ *
+ *
+ * Classe CartaDAO implementa i metodi per l'interazione con il database per quanto riguarda le carte
+ * @author Francesco Di Domenico
+ */
 public class CartaDAO {
 
     /**

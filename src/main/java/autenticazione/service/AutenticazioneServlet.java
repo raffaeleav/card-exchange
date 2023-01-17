@@ -1,4 +1,4 @@
-package autenticazione.service;
+package autenticazione.controller;
 
 import acquisto.Carrello;
 import autenticazione.Autenticazione;
@@ -6,6 +6,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import registrazione.Utente;
+import storage.CarrelloDAO;
 import storage.service.FacadeDAO;
 
 import java.io.IOException;
@@ -39,18 +40,13 @@ public class AutenticazioneServlet extends HttpServlet {
         String username = request.getParameter("email");
         String pass = request.getParameter("password");
 
-        FacadeDAO facadeDAO = new FacadeDAO();
-        Utente validate = Autenticazione.verifyLogin(username, pass);
+        Autenticazione a = new Autenticazione(new FacadeDAO());
+
+        Utente validate  = a.verifyLogin(username, pass);
 
 
         if(validate != null) {
             request.getSession().setAttribute("Utente", validate);
-            Carrello carrello = (Carrello) facadeDAO.doRetrieveByIdUtente(Carrello.class, validate.getIdUtente());
-            if(carrello==null) {
-                carrello=new Carrello(validate.getIdUtente(),0 );
-                facadeDAO.doSave(Carrello.class,carrello);
-            }
-            request.getSession().setAttribute("Carrello",carrello);
             request.getRequestDispatcher("index.jsp").forward(
                     request, response);
         }else {

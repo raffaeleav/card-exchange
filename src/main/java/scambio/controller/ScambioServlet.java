@@ -46,6 +46,7 @@ public class ScambioServlet extends HttpServlet {
         // Controlli input
         if(request.getParameter("idOffertaMittente").isBlank() || request.getParameter("idOffertaDestinatario").isBlank()
         || !this.isNumeric(request.getParameter("conguaglio"))){
+
             request.getRequestDispatcher("/WEB-INF/error/somethingWentWrong.jsp").forward(
                     request, response);
             return;
@@ -111,7 +112,7 @@ public class ScambioServlet extends HttpServlet {
      */
     private boolean isNumeric(String str) {
         // Regex presente nel TS
-        String regex = "^(\\d*\\.)?\\d+$";
+        String regex = "^\\+?(0|[1-9]\\d*)$";
 
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(str);

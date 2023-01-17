@@ -9,14 +9,19 @@ import storage.service.FacadeDAO;
  * @author Michele Menzione
  */
 public class Autenticazione {
+    private FacadeDAO facadeDAO;
+    public Autenticazione(FacadeDAO facadeDAO) {
+        this.facadeDAO = facadeDAO;
+
+    }
+
     /**
      * Il metodo permette di verificare se l'utente è registrato al sito.
      * In caso positivo restituisce tutte le sue informazioni
      * @param pass, oggetto che identifica una credenziale di accesso
      * @param email, oggetto che identifica una credenziale di accesso
      * */
-    public static Utente verifyLogin(String email, String pass){
-        FacadeDAO facadeDAO = new FacadeDAO();
+    public Utente verifyLogin(String email, String pass){
         return facadeDAO.getUtenteByEmailPassword(Utente.class,email, pass);
     }
 }

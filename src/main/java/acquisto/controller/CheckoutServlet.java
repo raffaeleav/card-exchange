@@ -124,7 +124,12 @@ public class CheckoutServlet extends HttpServlet {
                 }
 
         }
-
+        /**
+         *Metodo che verifica se la stringa passata come parametro contiene solo caratteri alfabetici, spazi e apostrofi
+         *@param str La stringa da verificare
+         *@return x true se la stringa contiene solo caratteri alfabetici, spazi e apostrofi, false altrimenti
+         *
+         */
 
         public boolean isAlphabet(String str) {
 
@@ -135,6 +140,15 @@ public class CheckoutServlet extends HttpServlet {
                 boolean x =matcher.matches();
                 return x;
         }
+
+
+        /**
+         *
+        * Questo metodo utilizza l'API di OpenStreetMap Nominatim per controllare l'esistenza di un indirizzo specificato.
+        * @param url1 l'URL della richiesta all'API di Nominatim, che include l'indirizzo da verificare.
+        * @return true se l'indirizzo esiste, false altrimenti.
+         *
+         */
 
 
         public boolean checkAddress(String url1) throws IOException {

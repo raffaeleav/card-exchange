@@ -302,7 +302,7 @@ p{
 
 /* homepage */
 
-#card-statistics, #home-offers {
+#card-statistics, #home-offers{
     margin: 20px;
     padding: 0;
     display: flex;
@@ -440,4 +440,67 @@ p{
 
 .submitExit i {
     padding: 5px;
+}
+
+/* pagina offerte */
+
+#myoffers {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px;
+    padding: 0;
+    overflow: hidden;
+    list-style-type: none;
+    background-color: #FFD100;
+    border-top: none;
+    border-right: 4px solid #75630f;
+    border-left: none;
+    border-bottom: 4px solid #75630f;
+    border-radius: 10px;
+}
+
+#myoffers-table {
+    margin: 20px;
+    padding: 14px;
+    font-size: medium;
+    text-align: center;
+    color: black;
+    background-color: #d6d6d6;
+    border-top: none;
+    border-right: 4px solid #7a7878;
+    border-left: none;
+    border-bottom: 4px solid #7a7878;
+    border-radius: 10px;
+}
+
+#myoffers-table td{
+    padding: 14px 14px;
+    border-bottom: 3px solid #1a1a1a;
+    border-radius: 5px;
+}
+
+#myoffers-table th{
+    text-decoration: none;
+    color: white;
+    background-color: #1A1A1A;
+    border-radius: 5px;
+    border-top: none;
+    border-right: 4px solid #7a7878;
+    border-left: none;
+    border-bottom: 4px solid #7a7878;
+    border-radius: 10px;
+}
+
+#myoffers p {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 0;
+}
+
+#myoffers form {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
 }

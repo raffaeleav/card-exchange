@@ -13,14 +13,16 @@ import java.io.IOException;
  */
 @WebServlet(name = "ShowRegistrazioneServlet", value = "/ShowRegistrazioneServlet")
 public class ShowRegistrazioneServlet extends HttpServlet {
+
+    /**
+     * Il metodo permette di gestire la richiesta del client, permettendo di
+     * visualizzare la pagina di registrazione
+     * @param request : oggetto di richiesta HTTP
+     * @param response : oggetto di risposta HTTP
+     * */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("/WEB-INF/results/registrazione.jsp").forward(
                 request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

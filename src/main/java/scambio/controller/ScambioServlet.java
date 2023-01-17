@@ -46,6 +46,7 @@ public class ScambioServlet extends HttpServlet {
         // Controlli input
         if(request.getParameter("idOffertaMittente").isBlank() || request.getParameter("idOffertaDestinatario").isBlank()
         || !this.isNumeric(request.getParameter("conguaglio"))){
+
             request.getRequestDispatcher("/WEB-INF/error/somethingWentWrong.jsp").forward(
                     request, response);
             return;

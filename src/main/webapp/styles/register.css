@@ -1,16 +1,20 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+body {
+    display: flex;
+    justify-content: center;
+}
 
 .register-page {
     display: flex;
     margin: auto;
-    width: 70%;
+    width: 50%;
     padding: 10px
 }
 .form {
     position: relative ;
 
     z-index: 12;
-    background: #ffd043;
+    background: #FFD100;
     width: 1000px;
     margin: 0;
     padding: 20px;

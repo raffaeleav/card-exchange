@@ -24,10 +24,6 @@
       <p>Carte </p>
       <button class="submit" type="submit" value="gestisci" >Gestisci <i class="fa-solid fa-wrench"></i></button>
     </form>
-    <form method="post" action="AdminOfferteServlet">
-      <p>Offerte </p>
-      <button class="submit" type="submit" value="gestisci"disabled>Gestisci <i class="fa-solid fa-wrench"></i></button> <br>
-    </form>
     <form method="post" action="AdminUtentiServlet">
       <p>Utenti </p>
       <button class="submit" type="submit" value="gestisci">Gestisci<i class="fa-solid fa-wrench"></i></button><br>

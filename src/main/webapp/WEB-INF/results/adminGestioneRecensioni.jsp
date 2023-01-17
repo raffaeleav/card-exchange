@@ -15,7 +15,7 @@
 <body>
 <%ArrayList<Recensione> recensioni = (ArrayList<Recensione>) request.getAttribute("listrecensioni");%>
 <div class="showRecensioni">
-  <h2 class="title">Recensioni nel database:</h2><hr>
+  <h2 class="title">Recensioni nel database dell utente selezionato:</h2><hr>
   <%for(Recensione listrecensioni:recensioni){%>
   <p>Dettagli recensione:</p>
   ID recensione:<%=listrecensioni.getIdRecensione()%><br>

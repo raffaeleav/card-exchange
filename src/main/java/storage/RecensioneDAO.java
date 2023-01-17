@@ -43,6 +43,8 @@ public class RecensioneDAO {
                 r.setIdRecensione(rs.getInt(1));
                 r.setValutazione(rs.getInt(2));
                 r.setTesto(rs.getString(3));
+                r.setIdUtente(rs.getInt(4));
+                r.setIdOrdine(rs.getInt(5));
                 recensioni.add(r);
             }
             con.close();

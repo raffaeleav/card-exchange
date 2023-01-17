@@ -30,23 +30,28 @@ public class ModificaCartaServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        File immaginePKM= new File("/imgs/cards/pokemon/pokemon.png");
-        File immagineYGO= new File("/imgs/cards/yugioh/yugioh.png");
-        File immagineMGC= new File("/imgs/cards/magic/magic.jpg");
+        String immaginePKM="https://i.ibb.co/6wb7vB2/immagine-2023-01-17-195211439.png";
+        String immagineYGO="https://i.ibb.co/QFBrnyw/immagine-2023-01-17-195606929.png";
+        String immagineMGC="https://i.ibb.co/f1p6ZvV/immagine-2023-01-17-195457719.png";
+
 
         int idCarta=Integer.parseInt(req.getParameter("idCarta"));
        String newNome=req.getParameter("cambiaNome");
        String newRarita=req.getParameter("cambiaRarita");
        String newCategoria=req.getParameter("cambiaCategoria");
         String immagine="";
+
         if(newCategoria.equalsIgnoreCase("Pokemon")){
-            immagine=immaginePKM.getPath();
+            immagine=immaginePKM;
         }
-        if(newCategoria.equalsIgnoreCase("Yu-Gi-Oh")){
-            immagine=immagineYGO.getPath();
-        }  if(newCategoria.equalsIgnoreCase("Magic")){
-            immagine=immagineMGC.getPath();
+        if(newCategoria.equalsIgnoreCase("Yu-Gi-Oh!")){
+            immagine=immagineYGO;
         }
+        if(newCategoria.equalsIgnoreCase("Magic:The Gathering")){
+            immagine=immagineMGC;
+        }
+
+
        Carta cartaModificata=new Carta(idCarta,newNome,newCategoria,newRarita,immagine);
        FacadeDAO facadeDAO=new FacadeDAO();
        facadeDAO.doUpdate(Carta.class,idCarta,cartaModificata);

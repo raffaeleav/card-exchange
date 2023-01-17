@@ -32,12 +32,24 @@
                 Rarità: <%=carta.getRarita()%><br>
                 Categoria: <%=carta.getCategoria()%>
                 <br><br>
-                <img src="${pageContext.request.contextPath}<%=carta.getImmagine()%>">
+                <img src="<%=carta.getImmagine()%>">
 
             <form id="updt" method="post" action="ModificaCartaServlet?idCarta=<%=carta.getIdCarta()%>">
                 <input type="text" name="cambiaNome"  value="<%=carta.getNome()%>" placeholder="modifica nome" required="required"> <br>
-                <input type="text" name="cambiaRarita"  value="<%=carta.getRarita()%>" placeholder="modifica rarità" required="required"> <br>
-                <input type="text" name="cambiaCategoria"  value="<%=carta.getCategoria()%>" placeholder="modifica categoria" required="required"> <br>
+                <select name="cambiaRarita">
+                    <option value="Comune">Comune</option>
+                    <option value="Non Comune">Non Comune</option>
+                    <option value="Rara">Rara</option>
+                    <option value="Foil">Foil</option>
+                    <option value="Promo">Promo</option>
+                    <option value="Crystal">Crystal</option>
+                    <option value="Shining">Shining</option>
+                </select><br>
+                <select id="categoria" name="cambiaCategoria">
+                    <option value="Pokemon">Pokemon</option>
+                    <option value="Yu-Gi-Oh!">Yu-Gi-Oh!</option>
+                    <option value="Magic:The Gathering">Magic: The Gathering</option>
+                </select><br>
                 <input type="hidden" name="immagine">
                 <input type="submit" value="Modifica">
             </form>

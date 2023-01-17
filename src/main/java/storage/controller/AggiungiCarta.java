@@ -30,21 +30,31 @@ public class AggiungiCarta extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         FacadeDAO facadeDAO=new FacadeDAO();
-        File immaginePKM= new File("/imgs/cards/pokemon/pokemon.png");
-        File immagineYGO= new File("/imgs/cards/yugioh/yugioh.png");
-        File immagineMGC= new File("/imgs/cards/magic/magic.jpg");
+
+        String immaginePKM="https://i.ibb.co/6wb7vB2/immagine-2023-01-17-195211439.png";
+        String immagineYGO="https://i.ibb.co/QFBrnyw/immagine-2023-01-17-195606929.png";
+        String immagineMGC="https://i.ibb.co/f1p6ZvV/immagine-2023-01-17-195457719.png";
         String nome=req.getParameter("nome");
         String rarita=req.getParameter("rarita");
         String categoria=req.getParameter("categoria");
         String immagine="";
         if(categoria.equalsIgnoreCase("Pokemon")){
-            immagine=immaginePKM.getPath();
+            immagine=immaginePKM;
         }
-        if(categoria.equalsIgnoreCase("Yu-Gi-Oh")){
-            immagine=immagineYGO.getPath();
-        }  if(categoria.equalsIgnoreCase("Magic")){
-            immagine=immagineMGC.getPath();
+        if(categoria.equalsIgnoreCase("Yu-Gi-Oh!")){
+            immagine=immagineYGO;
         }
+        if(categoria.equalsIgnoreCase("Magic:The Gathering")){
+            immagine=immagineMGC;
+        }
+
+
+
+
+
+
+
+
 
 
         Carta newCarta=new Carta(nome,categoria,rarita,immagine);

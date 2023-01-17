@@ -47,7 +47,7 @@ public class RicercaServlet extends HttpServlet {
         }
 
         if (matches.isEmpty()){
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/ricerca-senza-risultati.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/error/ricerca-senza-risultati.jsp");
             dispatcher.forward(request, response);
         }
 

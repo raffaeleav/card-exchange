@@ -17,6 +17,7 @@ import java.io.IOException;
  * funzione di modifca di un messaggio
  * @author Raffaele Aviello
  */
+
 @WebServlet("/modifica-messaggio-servlet")
 public class ModificaMessaggioServlet extends HttpServlet {
 
@@ -29,16 +30,16 @@ public class ModificaMessaggioServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int messageId = Integer.parseInt(request.getParameter("message-id-modify"));
-        String topicTitle = request.getParameter("topic-title-delete"),
+        String topicId = request.getParameter("topic-id-modify"),
                 body = request.getParameter("modify-message-text");
         FacadeDAO facadeDAO = new FacadeDAO();
 
         Messaggio message = (Messaggio) facadeDAO.doRetrieveById(Messaggio.class, messageId);
-        message.setOggetto(body);
+        message.setCorpo(body);
 
         facadeDAO.doUpdate(Messaggio.class, messageId, message);
 
-        request.setAttribute("topic-title", topicTitle);
+        request.setAttribute("topic-id", topicId);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/results/discussione.jsp");
         requestDispatcher.forward(request,response);
     }

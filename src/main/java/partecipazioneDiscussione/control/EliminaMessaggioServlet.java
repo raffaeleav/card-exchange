@@ -17,6 +17,7 @@ import java.io.IOException;
  * funzione di eliminazione di un messaggio
  * @author Raffaele Aviello
  */
+
 @WebServlet("/elimina-messaggio-servlet")
 public class EliminaMessaggioServlet extends HttpServlet {
 
@@ -28,13 +29,13 @@ public class EliminaMessaggioServlet extends HttpServlet {
      * */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int messageId = Integer.parseInt(request.getParameter("message-id"));
-        String topicTitle = request.getParameter("topic-title-delete");
+        int messageId = Integer.parseInt(request.getParameter("message-id-delete"));
+        String topicId = request.getParameter("topic-id-delete");
         FacadeDAO facadeDAO = new FacadeDAO();
 
         facadeDAO.doDelete(Messaggio.class, messageId);
 
-        request.setAttribute("topic-title", topicTitle);
+        request.setAttribute("topic-id", topicId);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/results/discussione.jsp");
         requestDispatcher.forward(request,response);
     }

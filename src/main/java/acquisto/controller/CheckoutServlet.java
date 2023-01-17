@@ -1,5 +1,7 @@
 package acquisto.controller;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -71,7 +73,7 @@ public class CheckoutServlet extends HttpServlet {
                 String indirizzoCompleto = URLEncoder.encode(indirizzoComplet, "UTF-8");
 
                 String url = "https://nominatim.openstreetmap.org/search?q=" + indirizzoCompleto + "&format=json";
-                if(!(this.isAlphabet(nome)&&this.isAlphabet(cognome))&&this.checkAddress(indirizzoCompleto,url)){
+                if (!this.isAlphabet(nome) || !this.isAlphabet(cognome) || !this.checkAddress(url)){
 
                         request.getSession().setAttribute("ErrorParams","Indirizzo non esistente o campi nome e cognome non alfabetici");
                         request.getRequestDispatcher("/WEB-INF/results/carrello.jsp").forward(
@@ -79,11 +81,12 @@ public class CheckoutServlet extends HttpServlet {
                         return;
                 }
 
-                // Calcola il totale del carrello
+                // Cerca il totale del carrello
                 String totales = request.getParameter("totale");
                 Double totale = Double.parseDouble(totales);
 
                 if (totale == 0) {
+                        request.getSession().setAttribute("EmptyCartMessages", " Aggiungi qualche offerta al tuo carrello!");
                         request.getRequestDispatcher("/WEB-INF/results/carrello.jsp").forward(
                                 request, response);
                 } else {
@@ -121,47 +124,49 @@ public class CheckoutServlet extends HttpServlet {
                 }
 
         }
-        private boolean isAlphabet(String str) {
 
-                String regex = "/^[a-zA-Z\s']+$/";
+
+        public boolean isAlphabet(String str) {
+
+                String regex = "^[a-zA-Z\s']+$";
 
                 Pattern pattern = Pattern.compile(regex);
-                Matcher matcher = pattern.matcher(str);
-                boolean x = matcher.matches();
-                return !x;
+                Matcher matcher = pattern.matcher(str.trim());
+                boolean x =matcher.matches();
+                return x;
         }
 
 
-        private boolean checkAddress(String indirizzoCompleto,String url) throws IOException {
-                CloseableHttpClient httpClient = HttpClients.createDefault();
-                HttpGet httpGet = new HttpGet(url);
-                CloseableHttpResponse response1 = httpClient.execute(httpGet);
+        public boolean checkAddress(String url1) throws IOException {
 
-                // Ottieni la risposta in formato JSON
-                JSONArray jsonArray = new JSONArray(EntityUtils.toString(response1.getEntity()));
+                        // Crea una nuova connessione all'URL dell'API di Nominatim
+                        URL url = new URL(url1);
+                        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                        conn.setRequestMethod("GET");
+                        conn.setRequestProperty("Accept", "application/json");
 
-                if (jsonArray.length() > 0) {
-                        // Prendi il primo risultato (più preciso)
-                        JSONObject jsonObject = jsonArray.getJSONObject(0);
-
-                        // Verifica se l'indirizzo è presente nella risposta
-                        if (jsonObject.has(indirizzoCompleto)) {
-                                JSONObject address = jsonObject.getJSONObject("address");
-                                String street = address.getString("road");
-                                String city = address.getString("city");
-
-                                //controlla se l'indirizzo è valido
-                                if(street != null && city != null) {
-                                        return true;
-                                } else {
-                                        return false;
-                                }
-                        } else {
-                                return false ;
+                        // Legge la risposta del server
+                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                        String output;
+                        StringBuilder response = new StringBuilder();
+                        while ((output = br.readLine()) != null) {
+                                response.append(output);
                         }
-                } else {
-                        return false;
-                }
+
+                        // Analizza la risposta JSON e ottiene i dati desiderati
+                        JSONArray jsonArray = new JSONArray(response.toString());
+                        if (jsonArray.length() > 0) {
+                                JSONObject jsonObject = jsonArray.getJSONObject(0);
+                                String lat = jsonObject.getString("lat");
+                                String lon = jsonObject.getString("lon");
+                                conn.disconnect();
+                                // indirizzo esiste
+                                return true;
+                        } else {
+                                conn.disconnect();
+                                // indirizzo non esiste
+                                return false;
+                        }
 
         }
 

@@ -12,6 +12,7 @@ import registrazione.Utente;
 import storage.service.FacadeDAO;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * La classe permette la creazione di una discussione tramite
@@ -33,22 +34,25 @@ public class CreazioneDiscussioneServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession httpSession = request.getSession();
         Utente user = (Utente) httpSession.getAttribute("Utente");
-        String title = request.getParameter("topic-title");
+        String title = request.getParameter("topic-text");
 
         if(user == null){
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/results/discussione-senza-login.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/error/discussione-senza-login.jsp");
             requestDispatcher.forward(request, response);
         }
 
         FacadeDAO facadeDAO = new FacadeDAO();
-
         Discussione topic = new Discussione();
         topic.setIdUtente(user.getIdUtente());
         topic.setTitolo(title);
 
         facadeDAO.doSave(Discussione.class, topic);
 
-        request.setAttribute("topic-title", title);
+        List<Discussione> topics = (List<Discussione>) facadeDAO.doRetrieveAll(Discussione.class);
+        int id = topics.get(topics.size() - 1).getIdDiscussione();
+        String topicId = String.valueOf(id);
+
+        request.setAttribute("topic-id", topicId);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/results/discussione.jsp");
         requestDispatcher.forward(request, response);

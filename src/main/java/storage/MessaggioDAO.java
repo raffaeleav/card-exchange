@@ -147,9 +147,9 @@ public class MessaggioDAO {
      * Il metodo permette di modificare un oggetto Messaggio
      * memorizzato nel database
      * @param messageId id dell' oggetto Messaggio che si vuole
-     * @param messagge oggetto che contiene i campi da modificare
+     * @param message oggetto che contiene i campi da modificare
      * */
-    public void doUpdate(int messageId, Messaggio messagge){
+    public void doUpdate(int messageId, Messaggio message){
         try {
             Connection connection = ConPool.getConnection();
             PreparedStatement preparedStatement =
@@ -160,8 +160,8 @@ public class MessaggioDAO {
 
             Messaggio oldMessage = (Messaggio) new FacadeDAO().doRetrieveById(Messaggio.class, messageId);
 
-            preparedStatement.setString(1, messagge.getOggetto());
-            preparedStatement.setString(2, messagge.getCorpo());
+            preparedStatement.setString(1, message.getOggetto());
+            preparedStatement.setString(2, message.getCorpo());
             preparedStatement.setInt(3, messageId);
             preparedStatement.setInt(4, oldMessage.getIdUtente());
             preparedStatement.setInt(5, oldMessage.getIdDiscussione());

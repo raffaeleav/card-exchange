@@ -77,7 +77,7 @@ public class CheckoutServletTest {
     @Test
     public void testIsAlphabet_ShouldReturnFalse_WhenStringContainsOnlySpaces() {
         // Given
-        String str = " ";
+        String str = "   ";
         when(matcher.matches()).thenReturn(false);
 
         // When

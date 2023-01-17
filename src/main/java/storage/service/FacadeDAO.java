@@ -236,6 +236,13 @@ public class FacadeDAO {
         }
     }
 
+    /**
+     *
+     *Il metodo permette di verificare l'esistenza di un utente nel database tramite email
+     *@param entityClass la classe dell'oggetto utente
+     *@param email l'email dell'utente da cercare nel database
+     *@return true se l'utente esiste, false altrimenti
+     */
     public boolean getUtenteByEmail(Class<?> entityClass, String email) {
         if (entityClass.getName().equals("registrazione.Utente"))
             return new UtenteDAO().getUtenteByEmail(email);
@@ -243,6 +250,14 @@ public class FacadeDAO {
         return false;
     }
 
+
+    /**
+     *Il metodo permette di recuperare un utente dal database attraverso il suo username.
+     *@param entityClass la classe dell'oggetto da recuperare
+     *@param username il nome utente dell'utente da recuperare
+     *@return true se l'utente esiste nel database, false altrimenti
+     *
+     **/
     public boolean getUtenteByUsername(Class<?> entityClass, String username) {
         if (entityClass.getName().equals("registrazione.Utente"))
             return new UtenteDAO().getUtenteByUsername(username);
@@ -250,6 +265,14 @@ public class FacadeDAO {
         return false;
     }
 
+    /**
+     *Il metodo permette di ottenere un oggetto Utente memorizzato nel database
+     *tramite email e password
+     *@param entityClass la classe dell' oggetto che si vuole recuperare
+     *@param email email dell'utente che si vuole recuperare
+     *@param password password dell'utente che si vuole recuperare
+     *@return un oggetto di tipo Utente che rappresenta l' istanza recuperata
+     **/
     public Utente getUtenteByEmailPassword(Class<?> entityClass, String email, String password) {
         if (entityClass.getName().equals("registrazione.Utente")) {
             return new UtenteDAO().getUtenteByEmailPassword(email, password);
@@ -286,31 +309,13 @@ public class FacadeDAO {
         }
         return null;
     }
-
-    public List<?> getAllScambiByIdOfferta(Class<?> entityClass, int idOfferta) {
-        if (entityClass.getName().equals("scambio.Scambio")) {
-            return new ScambioDAO().getAllScambiByIdOfferta(idOfferta);
-        }
-        return null;
-
-    }
-
-    public List<?> getAllScambiByIdMittente(Class<?> entityClass, int idUtenteMittente) {
-        if (entityClass.getName().equals("scambio.Scambio")) {
-            return new ScambioDAO().getAllScambiByIdMittente(idUtenteMittente);
-        }
-        return null;
-
-    }
-
-    public List<?> getAllScambiByIdDestinatario(Class<?> entityClass, int idUtenteDestinatario) {
-        if (entityClass.getName().equals("scambio.Scambio")) {
-            return new ScambioDAO().getAllScambiByIdDestinatario(idUtenteDestinatario);
-        }
-        return null;
-    }
-
-
+    /**
+     *Il metodo recupera un oggetto in base all' idUtente.
+     *Se la classe è "acquisto.Carrello", restituisce il carrello appartenente all'utente con l'id specificato.
+     *@param entityClass La classe dell'oggetto da recuperare.
+     *@param idUtente L'id dell'utente.
+     *@return L'oggetto recuperato.
+     */
     public Object doRetrieveByIdUtente(Class<?> entityClass, int idUtente) {
         if (entityClass.getName().equals("acquisto.Carrello")) {
             return new CarrelloDAO().getCarrelloByIdUtente(idUtente);
@@ -318,26 +323,41 @@ public class FacadeDAO {
         return null;
     }
 
+    /**
+     *Il metodo aggiunge un'offerta ad un carrello.
+     *Se la classe è "acquisto.Carrello", aggiunge l'offerta specificata al carrello con l'id specificato .
+     *@param entityClass La classe dell'oggetto da aggiungere
+     *@param entity L'oggetto offerta da aggiungere al carrello
+     *@param idCarrello L'id del carrello al quale aggiungere l'offerta
+     */
     public void addOffertaInCarrello(Class<?> entityClass, Object entity, int idCarrello) {
         if (entityClass.getName().equals("acquisto.Carrello")) {
             new CarrelloDAO().aggiungiOfferta((Offerta) entity, idCarrello);
         }
     }
 
+    /**
+     *
+     *Il metodo rimuove un'offerta da un carrello.
+     *Se la classe è "acquisto.Carrello", rimuove l'offerta specificata dal carrello con l'id specificato .
+     *@param entityClass La classe dell'oggetto da rimuovere"
+     *@param entity L'oggetto offerta da rimuovere dal carrello
+     *@param idCarrello L'id del carrello dal quale rimuovere l'offerta
+     *
+     */
     public void removeOffertaFromCarrello(Class<?> entityClass, Object entity, int idCarrello) {
         if (entityClass.getName().equals("acquisto.Carrello")) {
             new CarrelloDAO().rimuoviOfferta((Offerta) entity, idCarrello);
         }
     }
 
-    public double calculateTotaleInCarrello(Class<?> entityClass, int idCarrello) {
-        double totale = 0.00;
-        if (entityClass.getName().equals("acquisto.Carrello")) {
-            return totale = new CarrelloDAO().calcolaTotale(idCarrello);
-        }
-        return totale;
-    }
-
+    /**
+     *Il metodo svuota un carrello.
+     *Se la classe è "acquisto.Carrello", svuota il carrello con l'id specificato
+     *@param entityClass La classe dell'oggetto da svuotare
+     *@param entity L'oggetto carrello da svuotare
+     *@param idCarrello L'id del carrello da svuotare
+     */
     public void svuotaCarrello(Class<?> entityClass, Object entity, int idCarrello) {
         if (entityClass.getName().equals("acquisto.Carrello")) {
             new CarrelloDAO().svuotaCarrello(idCarrello);
@@ -345,25 +365,31 @@ public class FacadeDAO {
         }
     }
 
+
+    /**
+
+     *Il metodo ecupera tutti gli oggetti di una determinata classe e appartenenti a un determinato utente.
+     *@param entityClass La classe degli oggetti da recuperare
+     *@param idUtente L'id dell'utente
+     *@return La lista degli oggetti recuperati
+     */
     public List<?> doRetrieveAllByIdUtente(Class<?> entityClass, int idUtente)  {
-            if (entityClass.getName().equals("acquisto.Offerta")) {
-                return new OffertaDAO().getOfferteByIdUtente(idUtente);
-            }
-            if (entityClass.getName().equals("acquisto.Ordine")) {
-                return new OrdineDAO().getOrdiniByIdUtente(idUtente);
-            }
-
-        return null;
-    }
-
-    public List<?> doRetrieveAllByIdOrdine(Class<?> entityClass, int idOrdine) throws SQLException {
         if (entityClass.getName().equals("acquisto.Offerta")) {
-            return new OffertaDAO().getOfferteByIdOrdine(idOrdine);
+            return new OffertaDAO().getOfferteByIdUtente(idUtente);
+        }
+        if (entityClass.getName().equals("acquisto.Ordine")) {
+            return new OrdineDAO().getOrdiniByIdUtente(idUtente);
         }
 
         return null;
     }
-
+    /**
+     *
+     *Il metodo recupera tutti gli oggetti di una determinata classe e associati a una determinata carta di credito.
+     *@param entityClass La classe degli oggetti da recuperare
+     *@param idCarta L'id della carta di credito
+     *@return La lista degli oggetti recuperati
+     */
     public List<?> doRetrieveAllByIdCarta(Class<?> entityClass, int idCarta) {
         if (entityClass.getName().equals("acquisto.Offerta")) {
             return new OffertaDAO().getOfferteByIdCarta(idCarta);
@@ -390,6 +416,15 @@ public class FacadeDAO {
         } else return null;
     }
 
+    /**
+
+     *Il metodo recupera tutti gli oggetti di una determinata classe e associati a un determinato utente e carrello.
+     *Se la classe è "acquisto.Offerta", restituisce tutte le offerte associate all'utente con l'id specificato e al carrello di quest'ultimo usando un oggetto OffertaDAO.
+     *@param entityClass La classe degli oggetti da recuperare, deve essere "acquisto.Offerta"
+     *@param idUtente L'id dell'utente
+     *@return La lista degli oggetti recuperati, o null se la classe non è "acquisto.Offerta"
+     *
+     * */
     public List<?> doRetrieveAllByIdUtenteCarrello(Class<?> entityClass, int idUtente) {
         switch (entityClass.getName()) {
             case "acquisto.Offerta":
@@ -401,6 +436,16 @@ public class FacadeDAO {
         }
     }
 
+
+    /**
+     *Il metodo aggiunge una lista di offerte ad un ordine.
+     *Aggiunge le offerte specificate all'ordine con l'id specificato.
+     *@param entityClass La classe dell'oggetto al quale aggiungere le offerte
+     *@param offers La lista di offerte da aggiungere all'ordine
+     *@param idOrdine L'id dell'ordine al quale aggiungere le offerte
+     *
+     * */
+
     public void addOfferteToOrdine(Class<?> entityClass, List<Offerta> offers, int idOrdine) {
         switch (entityClass.getName()) {
             case "acquisto.Ordine":
@@ -411,6 +456,18 @@ public class FacadeDAO {
         }
     }
 
+
+    /**
+
+     *Il metodo recupera un ordine in base all'id dell'utente, alla data e al totale.
+     *Restituisce l'ordine associato all'utente con l'id specificato, alla data specificata e al totale specificato .
+     *@param entityClass La classe dell'oggetto da recuperare
+     *@param idUtente L'id dell'utente
+     *@param data La data dell'ordine
+     *@param totale Il totale dell'ordine
+     *@return L'ordine recuperato
+     *
+     **/
     public Ordine doRetrieveByIdUtenteDataTotale(Class<?> entityClass, int idUtente,String data,Double totale) throws SQLException {
         switch (entityClass.getName()) {
             case "acquisto.Ordine":

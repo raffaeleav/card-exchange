@@ -10,18 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-
- Classe Data Access Object per la gestione delle richieste di scambio nel database.
- @author Michele Menzione
- @version 1.0
- **/
+ * Classe Data Access Object per la gestione delle richieste di scambio nel database.
+ * @author Michele Menzione
+ * @version 1.0
+ */
 
 public class ScambioDAO {
+
     /**
      * Rimuove una richiesta di scambio dal database.
      * @param idRichiestaScambio ID della richiesta di scambio da eliminare
-     *
-     *
      */
     public void doDelete(int idRichiestaScambio) {
         try(Connection con= ConPool.getConnection()){
@@ -37,11 +35,8 @@ public class ScambioDAO {
     }
 
     /**
-     * /**
      * Memorizza una richiesta di scambio nel database.
      * @param richiestaDiScambio La richiesta di scambio da memorizzare
-     *
-     *
      */
     public void doSave(Scambio richiestaDiScambio){
         try (Connection con=ConPool.getConnection()){
@@ -65,7 +60,6 @@ public class ScambioDAO {
 
 
     /**
-     * /**
      * Recupera tutte le richieste di scambio per una determinata offerta
      * @param idOfferta ID dell'offerta per cui recuperare le richieste di scambio
      * @return Una lista di richieste di scambio per l'offerta specificata
@@ -135,12 +129,10 @@ public class ScambioDAO {
     }
 
     /**
-     * /**
-     *
      * Recupera tutte le richieste di scambio inviate a un determinato utente destinatario.
      * @param idUtenteDestinatario ID dell'utente destinatario per cui recuperare le richieste di scambio
      * @return Una lista di richieste di scambio inviate all'utente destinatario specificato
-     * */
+     */
     public List<Scambio> getAllScambiByIdDestinatario(int idUtenteDestinatario){
         try(Connection con = ConPool.getConnection()){
 
@@ -172,9 +164,8 @@ public class ScambioDAO {
     }
 
     /**
-
-     Recupera tutte le richieste di scambio presenti nel database
-     @return Una lista di tutte le richieste di scambio presenti nel database
+     * Recupera tutte le richieste di scambio presenti nel database
+     * @return Una lista di tutte le richieste di scambio presenti nel database
      */
     public List<Scambio> doRetrieveAll(){
         try(Connection con = ConPool.getConnection()){
@@ -200,7 +191,7 @@ public class ScambioDAO {
     }
 
     /**
-     * /*
+     *
      * Il metodo doRetrieveById recupera una richiesta di scambio specifica dal database utilizzando l'ID della richiesta di scambio.
      * @param IdRichiestaScambio - l'ID della richiesta di scambio da recuperare
      * @return l'oggetto Scambio corrispondente alla richiesta di scambio recuperata dal database
@@ -235,7 +226,7 @@ public class ScambioDAO {
 
 
     /**
-     * /*
+     *
      * Il metodo doUpdate consente di aggiornare i valori di una richiesta di scambio esistente nel database.
      * @param idScambio - l'ID della richiesta di scambio da aggiornare
      * @param richiestaDiScambio - l'oggetto Scambio con i nuovi valori da inserire nel database

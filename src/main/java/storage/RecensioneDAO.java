@@ -9,8 +9,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * La classe permette le operazioni riguardanti gli oggetti Recensione
+ * in relazione al DBMS MySQL
+ * @author Francesco Di Domenico
+ */
 public class RecensioneDAO {
-    //Metodo che permette di restituire tutte le recensioni presenti nel DB
+
+
+    /**
+     * Il metodo permette di ottenere tutti gli oggetti Recensione
+     * memorizzati nel database
+     * @return una lista di tutti gli oggetti recensioni all interno del database.
+     * @author Francesco Di Domenico
+     */
     public List<Recensione> doRetrieveAll(){
         try (Connection con= ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("SELECT * FROM Recensione");
@@ -31,7 +44,13 @@ public class RecensioneDAO {
         }
     }
 
-    //Metodo che permette di restituire tutte le recensioni presenti nel DB fatte da un utente.
+
+    /**
+     * Il metodo permette di ottenere oggetti Recensione
+     * memorizzati nel database
+     * @return una lista degli oggetti recensioni all interno del database filtrati per id utente.
+     *@author Francesco Di Domenico
+     */
     public List<Recensione> getRecensioneByIdUtente(int idUtente){
         try (Connection con=ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("SELECT * FROM Recensione where idUtente=?");
@@ -54,7 +73,12 @@ public class RecensioneDAO {
         }
     }
 
-
+    /**
+     * Il metodo permette di modificare una recensione all'interno del database
+     * @param idRecensione id della recensione
+     * @param r oggetto recensione
+     * @author Francesco Di Domenico
+     */
         public void doUpdate(int idRecensione,Recensione r){
         try(Connection con=ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("UPDATE Recensione set valutazione=?,testo=? where idRecensione=?;");
@@ -66,7 +90,12 @@ public class RecensioneDAO {
             throw new RuntimeException(e);
         }
     }
-    //Metodo che permette di eliminare nel DB una recensione tramite id
+
+    /**
+     *  Metodo che permette di eliminare nel DB una recensione tramite id
+     * @author Francesco Di Domenico
+     */
+
     public void doDelete(int idRecensione){
         try (Connection con=ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("DELETE FROM Recensione where idRecensione=?");
@@ -78,7 +107,14 @@ public class RecensioneDAO {
             throw new RuntimeException(e);
         }
     }
-    //Metodo che permette di trovare e restituire una recensione nel DB  tramite id
+
+    /**
+     * Metodo che permette di trovare e restituire una recensione nel DB  tramite id
+     * @param idRecensione id della recensione da ricercare nel database
+     * @return oggetto Recensione
+     * @author Francesco Di Domenico
+     */
+
     public Recensione doRetrieveById(int idRecensione) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT*FROM Recensione WHERE idRecensione=?");
@@ -97,7 +133,13 @@ public class RecensioneDAO {
             throw new RuntimeException(e);
         }
     }
-    //Metodo che permette inserire una recensione nel DB
+
+    /**
+     * Metodo che permette inserire una recensione nel DB
+     * @param r nuovo oggetto recensione
+     * @author Francesco Di Domenico
+     */
+
     public void doSave(Recensione r){
         try (Connection con=ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("INSERT into Recensione(valutazione,testo,idUtente,idOrdine)VALUES(?,?,?,?);");

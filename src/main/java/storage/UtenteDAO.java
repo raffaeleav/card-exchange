@@ -9,8 +9,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * La classe permette le operazioni riguardanti gli oggetti Utente
+ * in relazione al DBMS MySQL
+ * @author Francesco Di Domenico
+ */
+
 public class UtenteDAO {
-    //Metodo che permette di trovare e restituire dal DB tutti gli utenti presenti
+
+    /**
+     * Il metodo permette di ottenere tutti gli oggetti Utente
+     * memorizzati nel database
+     * @return Una lista di oggetti Utente che contiene tutte
+     * le istanze di oggetti Utente nel database
+     */
     public List<Utente> doRetrieveAll(){
         try(Connection con = ConPool.getConnection()){
             PreparedStatement ps = con.prepareStatement("SELECT * FROM Utente");
@@ -35,10 +47,10 @@ public class UtenteDAO {
     }
 
     /**
+     * Serve per controllo lato server: VERIFICA se esiste già un utente all interno del db con stessa email
      * @param email - stringa dell'email
-     * @return
+     * @return restituisce true se l' utente e' registrato, false viceversa
      */
-    //Serve per controllo lato server: VERIFICA se esiste già un utente all interno del db con stessa email.
     public boolean getUtenteByEmail(String email) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM Utente WHERE email=? ");
@@ -49,7 +61,12 @@ public class UtenteDAO {
             throw new RuntimeException(e);
         }
     }
-    //Metodo che permette di trovare un utente nel DB tramite email e password
+
+    /**
+     * Metodo che permette di trovare un utente nel DB tramite email e password
+     * @param email - stringa dell'email
+     * @return restituisce l' Utente trovato
+     */
     public Utente getUtenteByEmailPassword(String email,String password){
         try (Connection con=ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("SELECT * FROM Utente where email=? AND passwordhash=?");
@@ -74,7 +91,15 @@ public class UtenteDAO {
         }
 
     }
-    //Metodo che permette di trovare un utente nel DB tramite id  e lo restituisce
+
+    /**
+     * Il metodo permette di ottenere un oggetto Utente con l'id
+     * specificato
+     * @param idUtente id dell' oggetto Carta che si vuole
+     *                      reperire dal database
+     * @return un oggetto Carta il cui id coincide con quello specificato
+     *                      come parametro
+     */
     public Utente doRetrieveById(int idUtente){
         try (Connection con=ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("SELECT * FROM Utente WHERE idUtente=?");
@@ -96,7 +121,12 @@ public class UtenteDAO {
             throw new RuntimeException(e);
         }
     }
-    //Metodo che permette di eliminare un utente dal DB tramite id
+
+    /**
+     * Metodo che permette di eliminare un utente dal DB tramite id
+     * @param idUtente id dell' oggetto Utente che si vuole
+     *                      reperire dal database
+     */
     public void doDelete(int idUtente) {
         try(Connection con=ConPool.getConnection()){
             PreparedStatement ps= con.prepareStatement("DELETE FROM Utente WHERE idUtente=?");
@@ -111,9 +141,9 @@ public class UtenteDAO {
     }
 
     /**
+     * Metodo che permette di inserire un utente nel DB (registrazione)
      * @param user - L'utente che verrà memorizzato all'interno del DB
      */
-    //Metodo che permette di inserire un utente nel DB (registrazione)
     public void doSave(Utente user){
         try (Connection con=ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("INSERT into Utente(username,passwordhash,nome,cognome,email) VALUES (?,?,?,?,?);");
@@ -130,7 +160,12 @@ public class UtenteDAO {
             throw new RuntimeException(e);
         }
     }
-    //Metodo che permette di modificare i dati di un utente
+
+    /**
+     * Metodo che permette di modificare i dati di un utente
+     * @param idUtente id dell' utente
+     * @param utente l' utente che verrà memorizzato all'interno del DB
+     */
     public void doUpdate(int idUtente,Utente utente){
         try(Connection con=ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("UPDATE Utente set username=?,passwordhash=?,nome=?,cognome=?,email=? where idUtente=?;");
@@ -149,11 +184,11 @@ public class UtenteDAO {
     }
 
     /**
+     * Metodo che permette di sapere se un utente è presente nel DB tramite username
      * @param username - Oggetto da ricercare all'interno del DB
      * @return - true se esiste un oggetto uguale nel DB
      * @return - false se non esiste un oggetto uguale nel DB
      */
-    //Metodo che permette di sapere se un utente è presente nel DB tramite username
     public boolean getUtenteByUsername(String username) {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM Utente WHERE username=? ");

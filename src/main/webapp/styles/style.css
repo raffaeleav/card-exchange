@@ -195,7 +195,7 @@ body {
 
 /* forum */
 
-#create-topic {
+#create-topic, #add-message {
     margin: 20px;
     background-color: #FFD100;
     border-top: none;
@@ -206,7 +206,7 @@ body {
     border-radius: 10px;
 }
 
-#topic-form {
+#topic-form, #message-form {
     margin: 10px;
     padding: 10px;
     background-color: #d6d6d6;
@@ -217,7 +217,7 @@ body {
     border-radius: 10px;
 }
 
-#topic-text{
+#topic-text, #message-text-object, #message-text-body, #modify-message-text{
     border-radius: 5px;
     border-top: none;
     border-right: 4px solid #7a7878;
@@ -278,7 +278,7 @@ input[type=submit]:active{
 
 /* content */
 
-#content-text{
+#content-text {
     margin: 20px;
     padding: 10px;
     border-radius: 10px;
@@ -355,7 +355,7 @@ p{
     justify-content: center;
 }
 
-#home-offers-table {
+#home-offers-table, #tabellaOfferte {
     margin: 20px;
     padding: 14px;
     width: 100%;
@@ -370,13 +370,13 @@ p{
     border-radius: 10px;
 }
 
-#home-offers-table td {
+#home-offers-table td, #tabellaOfferte td {
     padding: 14px 14px;
     border-bottom: 3px solid #1a1a1a;
     border-radius: 5px;
 }
 
-#home-offers-table th{
+#home-offers-table th, #tabellaOfferte th{
     text-decoration: none;
     color: white;
     background-color: #1A1A1A;
@@ -388,4 +388,4 @@ p{
     border-radius: 10px;
 }
 
-/* discussione */
+

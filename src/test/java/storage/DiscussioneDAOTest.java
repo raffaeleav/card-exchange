@@ -17,7 +17,7 @@ class DiscussioneDAOTest {
 
         int sizeAfter = topicDAO.doRetrieveAll().size();
 
-        Assertions.assertEquals(sizeBefore - 1, sizeAfter, "Test fallito.");
+        Assertions.assertEquals(sizeBefore - 1, sizeAfter);
     }
 
     @Test
@@ -30,7 +30,7 @@ class DiscussioneDAOTest {
 
         int sizeAfter = topicDAO.doRetrieveAll().size();
 
-        Assertions.assertEquals(sizeBefore - 1, sizeAfter, "Test fallito.");
+        Assertions.assertEquals(sizeBefore - 1, sizeAfter);
     }
 
     @Test
@@ -46,7 +46,7 @@ class DiscussioneDAOTest {
 
         int sizeAfter = topicDAO.doRetrieveAll().size();
 
-        Assertions.assertEquals(sizeBefore - 1, sizeAfter, "Test fallito.");
+        Assertions.assertEquals(sizeBefore - 1, sizeAfter);
     }
 
     @Test
@@ -59,7 +59,7 @@ class DiscussioneDAOTest {
 
         int sizeAfter = topicDAO.doRetrieveAll().size();
 
-        Assertions.assertEquals(sizeBefore - 1, sizeAfter, "Test fallito.");
+        Assertions.assertEquals(sizeBefore - 1, sizeAfter);
     }
 
 }

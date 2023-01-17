@@ -7,37 +7,48 @@
 }
 .form {
     position: relative ;
-    z-index: 1;
+    z-index: 12;
     background: #ffd043;
-    width: 20%;
+    width: 1000px;
     margin: 0;
-    padding: 100px;
+    padding: 20px;
     text-align: left;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 
 }
 .form input {
-    font-family: "Roboto", sans-serif;
     outline: 0;
     background: #ffffff;
-    width: 100%;
-    border: 0;
+    width: 30%;
     margin: 0 0 15px;
     padding: 15px;
     box-sizing: border-box;
     font-size: 12px;
+    border-radius: 5px;
+    border-top: none;
+    border-right: 4px solid #7a7878;
+    border-left: none;
+    border-bottom: 4px solid #7a7878;
 }
 .form button {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: #202020;
-    width: 50%;
+    width: 20%;
     border: 0;
     padding: 15px;
     color: #FFFFFF;
     font-size: 14px;
+    cursor: pointer;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    border-top: none;
+    border-right: 3px solid #7a7878;
+    border-left: none;
+    border-bottom: 3px solid #7a7878;
     cursor: pointer;
 }
 .form button:hover,.form button:active,.form button:focus {
@@ -100,10 +111,17 @@ body {
     color: red;
     font-size: 18px
 }
+label{
+    font-size: 12px;
+    padding: 0;
+    margin: 10px;
+}
 
 .img{
+    overflow: hidden ;
     position: absolute ;
-    width: 63%;
+    width: 600px;
+    top: 0;
     right: 0;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;

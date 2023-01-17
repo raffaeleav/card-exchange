@@ -9,9 +9,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+
+ Classe Data Access Object per la gestione delle richieste di scambio nel database.
+ @author Michele Menzione
+ @version 1.0
+ **/
+
 public class ScambioDAO {
     /**
-     * @param idRichiestaScambio - ID della richiesta di scambio da eliminare
+     * Rimuove una richiesta di scambio dal database.
+     * @param idRichiestaScambio ID della richiesta di scambio da eliminare
+     *
+     *
      */
     public void doDelete(int idRichiestaScambio) {
         try(Connection con= ConPool.getConnection()){
@@ -27,7 +37,11 @@ public class ScambioDAO {
     }
 
     /**
-     * @param richiestaDiScambio - Lo scambio che verrà memorizzato all'interno del DB
+     * /**
+     * Memorizza una richiesta di scambio nel database.
+     * @param richiestaDiScambio La richiesta di scambio da memorizzare
+     *
+     *
      */
     public void doSave(Scambio richiestaDiScambio){
         try (Connection con=ConPool.getConnection()){
@@ -51,10 +65,11 @@ public class ScambioDAO {
 
 
     /**
-     * @param idOfferta - id dell'offerta messa in vendita
-     * @return una lista con tutte le proposte di scambio ricevute per l'offerta
+     * /**
+     * Recupera tutte le richieste di scambio per una determinata offerta
+     * @param idOfferta ID dell'offerta per cui recuperare le richieste di scambio
+     * @return Una lista di richieste di scambio per l'offerta specificata
      */
-    // Permette di recuperare tutte le richieste di scambio per una determinata offerta
     public List<Scambio> getAllScambiByIdOfferta(int idOfferta){
         try(Connection con = ConPool.getConnection()){
 
@@ -89,7 +104,6 @@ public class ScambioDAO {
      * @param idUtenteMittente - ID dell'utente che ha inviato le richieste di scambio
      * @return Tutte le richieste di scambio effettuate
      */
-    // Permette di recuperare tutte le richieste scambio effettuate da un utente
     public List<Scambio> getAllScambiByIdMittente(int idUtenteMittente){
         try(Connection con = ConPool.getConnection()){
 
@@ -121,10 +135,12 @@ public class ScambioDAO {
     }
 
     /**
-     * @param idUtenteDestinatario - ID dell'utente Destinatario
-     * @return tutte le richieste di scambio ricevute
-     */
-    // Permette di recuperare tutte le richieste scambio ricevute da un utente
+     * /**
+     *
+     * Recupera tutte le richieste di scambio inviate a un determinato utente destinatario.
+     * @param idUtenteDestinatario ID dell'utente destinatario per cui recuperare le richieste di scambio
+     * @return Una lista di richieste di scambio inviate all'utente destinatario specificato
+     * */
     public List<Scambio> getAllScambiByIdDestinatario(int idUtenteDestinatario){
         try(Connection con = ConPool.getConnection()){
 
@@ -155,6 +171,11 @@ public class ScambioDAO {
         }
     }
 
+    /**
+
+     Recupera tutte le richieste di scambio presenti nel database
+     @return Una lista di tutte le richieste di scambio presenti nel database
+     */
     public List<Scambio> doRetrieveAll(){
         try(Connection con = ConPool.getConnection()){
             List<Scambio> scambioList = new ArrayList<>();
@@ -178,6 +199,13 @@ public class ScambioDAO {
 
     }
 
+    /**
+     * /*
+     * Il metodo doRetrieveById recupera una richiesta di scambio specifica dal database utilizzando l'ID della richiesta di scambio.
+     * @param IdRichiestaScambio - l'ID della richiesta di scambio da recuperare
+     * @return l'oggetto Scambio corrispondente alla richiesta di scambio recuperata dal database
+     *
+     */
     public Scambio doRetrieveById(int IdRichiestaScambio){
         try(Connection con = ConPool.getConnection()){
 
@@ -205,6 +233,14 @@ public class ScambioDAO {
 
     }
 
+
+    /**
+     * /*
+     * Il metodo doUpdate consente di aggiornare i valori di una richiesta di scambio esistente nel database.
+     * @param idScambio - l'ID della richiesta di scambio da aggiornare
+     * @param richiestaDiScambio - l'oggetto Scambio con i nuovi valori da inserire nel database
+     *
+     */
     public void  doUpdate (int idScambio,Scambio richiestaDiScambio){
         try (Connection con = ConPool.getConnection()){
             PreparedStatement ps=con.prepareStatement("UPDATE richiestaDiScambio set IdUtenteMittente=?,IdUtenteDestinatario=?,IdOffertaMittente=?, " +

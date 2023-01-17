@@ -22,7 +22,7 @@ public class OffertaDAO {
     private static final String INSERT_OFFERTA_QUERY = "INSERT INTO Offerta(condizione, prezzo, idUtente, idCarta) VALUES (?, ?, ?, ?)";
     private static final String SELECT_OFFERTA_BY_ID_QUERY = "SELECT * FROM Offerta WHERE idOfferta = ?";
     private static final String SELECT_OFFERTE_BY_ID_ORDINE_QUERY = "SELECT o.* FROM Offerta o JOIN ordinecomprendeofferta oco ON o.idOfferta = oco.idOfferta WHERE oco.idOrdine = ?";
-      static final String SELECT_OFFERTE_BY_ID_UTENTE =
+    public static String SELECT_OFFERTE_BY_ID_UTENTE =
             "SELECT * FROM Offerta  WHERE idUtente=?";
     private static final String SELECT_OFFERTE_BY_ID_UTENTE_CARRELLO_QUERY =
             "SELECT * FROM Offerta o JOIN carrellocontieneofferta cco ON o.idOfferta = cco.idOfferta JOIN Carrello c ON cco.idCarrello = c.idCarrello WHERE c.idUtente = ?";
@@ -128,7 +128,7 @@ public class OffertaDAO {
                 offerte.add(offerta);
             }
         } catch (SQLException e) {
-            new RuntimeException(e);
+            throw new RuntimeException(e);
         }
         return offerte;
     }

@@ -18,7 +18,7 @@
 
         <% Utente utente = (Utente) session.getAttribute("Utente");%>
         <div class="utentePanel">
-            <p class="titolo">User panel</p> <!--Dati dell utente-->
+            <p class="titolo"><%=utente.getIdUtente()%></p> <!--Dati dell utente-->
             <table class="attUtente">
                 <tr><td>Nome: <%=utente.getNome()%></td></tr>
                 <tr><td>Cognome: <%=utente.getCognome()%></td></tr>

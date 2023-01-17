@@ -2,11 +2,13 @@
 
 .register-page {
     display: flex;
-    width: 100%;
     margin: auto;
+    width: 70%;
+    padding: 10px
 }
 .form {
     position: relative ;
+
     z-index: 12;
     background: #ffd043;
     width: 1000px;
@@ -16,12 +18,15 @@
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     border-radius: 10px;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    border-top: none;
+    border-right: 4px solid #75630f;
+    border-left: none;
+    border-bottom: 4px solid #75630f;
 
 }
 .form input {
     outline: 0;
-    background: #ffffff;
+    background: #FFFFFF;
     width: 30%;
     margin: 0 0 15px;
     padding: 15px;
@@ -112,7 +117,7 @@ body {
     font-size: 18px
 }
 label{
-    font-size: 12px;
+    font-size: 14px;
     padding: 0;
     margin: 10px;
 }

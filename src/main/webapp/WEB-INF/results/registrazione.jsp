@@ -17,16 +17,15 @@
 <script src="${pageContext.request.contextPath}/script/checkRegister.js"></script>
 <!-- Add the function to a script tag in the HTML file -->
 <!-- Add an HTML form to the page -->
-<<div class="register-page">
-    <p>Registrazione</p>
+<div class="register-page">
     <div class="form">
         <form onsubmit="return check()" action="registrazione" method="post" id="registration-form">
             <!-- Add input fields for the username, email, and password parameters -->
-            <label for="username">Username</label><input type="text" id="username" name="username"><br>
-            <label for="email">Email</label><input type="text" id="email" name="email"><br>
-            <label for="nome">Nome</label><input type="text" id="nome" name="nome"><br>
-            <label for="cognome">Cognome</label><input type="text" id="cognome" name="cognome"><br>
-            <label for="password">Password</label><input type="password" id="password" name="password"><br>
+            <input  placeholder="Username" type="text" id="username" name="username"><br>
+            <input placeholder="Email" type="text" id="email" name="email"><br>
+            <input placeholder="Nome" type="text" id="nome" name="nome"><br>
+            <input placeholder="Cognome" type="text" id="cognome" name="cognome"><br>
+            <input placeholder="Password" type="password" id="password" name="password"><br>
 
             <!-- Add a submit button to the form -->
             <button>Invia</button>

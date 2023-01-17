@@ -388,4 +388,56 @@ p{
     border-radius: 10px;
 }
 
+/* pagina utente */
 
+.titolo {
+    text-align: center;
+}
+
+.utentePanel {
+    text-align: center;
+    padding: 60px;
+    margin: auto;
+    max-width: max-content;
+    padding: 10px;
+    background:#FFD100;
+    border-top: none;
+    border-right: 4px solid #75630f;
+    border-left: none;
+    border-bottom: 4px solid #75630f;
+    border-radius: 10px;
+}
+
+.utentePanel form{
+    margin: 0;
+}
+
+.submit, .submitExit, .btn{
+    margin: 10px;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    border-top: none;
+    border-right: 3px solid #7a7878;
+    border-left: none;
+    border-bottom: 3px solid #7a7878;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: black;
+}
+
+.submit:hover{
+    background-color: black;
+}
+
+.submitExit:hover{
+    background-color: black;
+}
+
+.submitExit i {
+    padding: 5px;
+}

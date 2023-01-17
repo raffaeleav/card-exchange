@@ -52,7 +52,7 @@
 
                 // Recupera il carrello dell'utente
                 Carrello carrello = (Carrello) facadeDAO.doRetrieveByIdUtente(Carrello.class,user.getIdUtente());
-                request.setAttribute("Carrello",carrello);
+                request.getSession().setAttribute("Carrello",carrello);
                 int idUtente = user.getIdUtente();
 
                 // Recupera le offerte del carrello

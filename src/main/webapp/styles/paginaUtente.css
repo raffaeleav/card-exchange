@@ -7,6 +7,7 @@
 .titolo{
     text-align: center;
 }
+
 body{
     background: #202020; /* fallback for old browsers */
     font-family: "Roboto", sans-serif;
@@ -29,15 +30,16 @@ button{
     border-radius: 7px;
     text-align: center;
 }
+
 .btn{
     border-color: #e49314;
     color: #FFFFFF;
     background-color: #292929;
 }
+
 .btn:hover{
     color: #e79213;
 }
-
 
 .submit{
     margin: 10px;

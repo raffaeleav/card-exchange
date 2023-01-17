@@ -16,23 +16,20 @@
     <head>
         <title>Card eXchange</title>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css"/>
-        <script src="${pageContext.request.contextPath}/script/search-validation.js"></script>
+        <script src="${pageContext.request.contextPath}/script/topic-validation.js"></script>
     </head>
 
     <%
         FacadeDAO facadeDAO = new FacadeDAO();
-        List<Discussione> topics = (List<Discussione>) facadeDAO.doRetrieveAll(Discussione.class);
-        int topicId = 0;
-        String topicTitle = null;
+        String id = (String) request.getAttribute("topic-id");
+        int topicId = Integer.parseInt(id);
 
-        for(Discussione topic : topics)
-            if(topic.getTitolo().equals(request.getParameter("topic-title")) ) {
-                topicId = topic.getIdDiscussione();
-                topicTitle = topic.getTitolo();
-            }
+        Discussione discussione = (Discussione) facadeDAO.doRetrieveById(Discussione.class, topicId);
+        String topicTitle = discussione.getTitolo();
 
         List<Messaggio> messages = facadeDAO.doRetrieveMessageListByTopicId(Discussione.class, topicId);
 
+        synchronized (session){
         Utente user = (Utente) session.getAttribute("Utente");
     %>
 
@@ -42,6 +39,7 @@
     <div id="content">
         <div id="add-message">
             <form id="message-form" action="invia-messaggio-servlet" method="get">
+                <p> Invia un messaggio: </p>
 
                 <label for="message-text-object">Oggetto:</label>
                 <input id="message-text-object" name="message-text-object" type="text">
@@ -49,7 +47,7 @@
                 <label for="message-text-body">Corpo:</label>
                 <input id="message-text-body" name="message-text-body" type="text">
 
-                <input type="hidden" id="topic-title" value="<%=topicTitle%>">
+                <input type="hidden" name="topic-id" value="<%=topicId%>">
                 <input id="message-button" type="submit" value="Invia">
             </form>
         </div>
@@ -71,19 +69,20 @@
                     <%
                         if( user != null && (user.getIdUtente() == message.getIdUtente() || user.getIdUtente() == 1) ){
                     %>
-                        <form action="modifica-messaggio-servlet" method="get">
-                            <input type="hidden" id="topic-title-modify" value="<%=topicTitle%>">
-                            <input type="hidden" id="message-id-modify" value="<%=message.getIdMessaggio()%>">
+                        <form id="modify-message-form" action="modifica-messaggio-servlet"
+                              onsubmit="return messageValidation()" method="get">
+                            <input type="hidden" name="topic-id-modify" value="<%=topicId%>">
+                            <input type="hidden" name="message-id-modify" value="<%=message.getIdMessaggio()%>">
 
                             <label for="modify-message-text">Corpo del messaggio:</label>
-                            <input type="text" id="modify-message-text">
+                            <input type="text" id="modify-message-text" name="modify-message-text">
 
                             <input type="submit" id="modify-message-button" value="Modifica messaggio">
                         </form>
 
                         <form action="elimina-messaggio-servlet" method="get">
-                            <input type="hidden" id="topic-title-delete" value="<%=topicTitle%>">
-                            <input type="hidden" id="message-id" value="<%=message.getIdMessaggio()%>">
+                            <input type="hidden" name="topic-id-delete" value="<%=topicId%>">
+                            <input type="hidden" name="message-id-delete" value="<%=message.getIdMessaggio()%>">
 
                             <input type="submit" id="delete-message-button" value="Elimina messaggio">
                         </form>
@@ -91,7 +90,10 @@
                         }
                     %>
                 </li>
-                <%}%>
+                <%
+                        }
+                    }
+                %>
             </ul>
         </div>
     </div>

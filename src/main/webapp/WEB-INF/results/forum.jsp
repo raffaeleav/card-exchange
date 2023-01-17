@@ -2,7 +2,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
 <%@ page import="registrazione.Utente" %>
-<%@ page import="storage.service.FacadeDAO" %>
 <%--
   Created by IntelliJ IDEA.
   User: Raffaele Aviello
@@ -14,16 +13,21 @@
 <html>
     <head>
         <title>Card eXchange</title>
+        <script src="${pageContext.request.contextPath}/script/topic-validation.js"></script>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css"/>
     </head>
 
-    <%List<Discussione> topics = (ArrayList<Discussione>) request.getAttribute("topics-list");%>
+    <%
+        List<Discussione> topics = (ArrayList<Discussione>) request.getAttribute("topics-list");
+    %>
+
     <body>
         <%@include file="../../header.jsp"%>
 
         <div id="content">
             <div id="create-topic">
-                <form id="topic-form" action="creazione-discussione-servlet" method="get">
+                <form id="topic-form" name="topic-form" action="creazione-discussione-servlet" method="get"
+                      onsubmit="return topicValidation()">
                     <label>Crea una discussione:</label>
 
                     <input id="topic-text" name="topic-text" type="text">
@@ -39,8 +43,8 @@
                             <%=topic.getTitolo()%>
                         <br><br>
 
-                        <form action="partecipa-discussione-servlet" method="get">
-                            <input type="hidden" id="topic-title" value="<%=topic.getTitolo()%>">
+                        <form id="join-topic-form" action="partecipa-discussione-servlet" method="get">
+                            <input type="hidden" name="topic-id" value="<%=topic.getIdDiscussione()%>">
                             <input type="submit" id="join-topic" value="Partecipa alla discussione">
                         </form>
 
@@ -48,8 +52,9 @@
                             Utente user = (Utente) session.getAttribute("Utente");
                             if(user != null && (topic.getIdUtente() == user.getIdUtente() || user.getIdUtente() == 1) ){
                         %>
-                        <form action="elimina-discussione-servlet" method="get">
-                            <input type="hidden" id="topic-id" value="<%=topic.getIdDiscussione()%>">
+                        <form id="delete-topic-form" action="elimina-discussione-servlet" method="get">
+                            <input type="hidden" name="topic-id-delete"
+                                   value="<%=topic.getIdDiscussione()%>" >
                             <input type="submit" id="delete-topic" value="Elimina discussione">
                         </form>
                         <%

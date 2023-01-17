@@ -31,9 +31,10 @@ public class EliminazioneDiscussioneServlet extends HttpServlet {
      * */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int topicId = Integer.parseInt(request.getParameter("topic-id"));
+        String id = request.getParameter("topic-id-delete");
+        int topicId = Integer.parseInt(id);
         FacadeDAO facadeDAO = new FacadeDAO();
-        facadeDAO.doDelete(DiscussioneDAO.class, topicId);
+        facadeDAO.doDelete(Discussione.class, topicId);
 
         List<Discussione> topics = (List<Discussione>) facadeDAO.doRetrieveAll(Discussione.class);
         request.setAttribute("topics-list", topics);

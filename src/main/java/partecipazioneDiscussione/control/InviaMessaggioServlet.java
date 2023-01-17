@@ -34,16 +34,16 @@ public class InviaMessaggioServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         Utente user = (Utente) session.getAttribute("Utente");
-        int userId = user.getIdUtente(), topicId = Integer.parseInt(request.getParameter("topicId"));
+        int userId = user.getIdUtente();
         String body = request.getParameter("message-text-body"), object = request.getParameter("message-text-object");
-        String topicTitle = request.getParameter("topicId");
+        String topicId = request.getParameter("topic-id");
 
         FacadeDAO facadeDAO = new FacadeDAO();
-        Messaggio messaggio = new Messaggio(object, body, userId, topicId);
+        Messaggio messaggio = new Messaggio(object, body, userId, Integer.parseInt(topicId));
 
         facadeDAO.doSave(Messaggio.class, messaggio);
 
-        request.setAttribute("topic-title", topicTitle);
+        request.setAttribute("topic-id", topicId);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/results/discussione.jsp");
         requestDispatcher.forward(request,response);
     }

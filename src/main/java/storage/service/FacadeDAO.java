@@ -257,7 +257,7 @@ public class FacadeDAO {
      *@param username il nome utente dell'utente da recuperare
      *@return true se l'utente esiste nel database, false altrimenti
      *
-     **/
+     */
     public boolean getUtenteByUsername(Class<?> entityClass, String username) {
         if (entityClass.getName().equals("registrazione.Utente"))
             return new UtenteDAO().getUtenteByUsername(username);
@@ -272,7 +272,7 @@ public class FacadeDAO {
      *@param email email dell'utente che si vuole recuperare
      *@param password password dell'utente che si vuole recuperare
      *@return un oggetto di tipo Utente che rappresenta l' istanza recuperata
-     **/
+     */
     public Utente getUtenteByEmailPassword(Class<?> entityClass, String email, String password) {
         if (entityClass.getName().equals("registrazione.Utente")) {
             return new UtenteDAO().getUtenteByEmailPassword(email, password);
@@ -367,7 +367,6 @@ public class FacadeDAO {
 
 
     /**
-
      *Il metodo ecupera tutti gli oggetti di una determinata classe e appartenenti a un determinato utente.
      *@param entityClass La classe degli oggetti da recuperare
      *@param idUtente L'id dell'utente
@@ -443,9 +442,7 @@ public class FacadeDAO {
      *@param entityClass La classe dell'oggetto al quale aggiungere le offerte
      *@param offers La lista di offerte da aggiungere all'ordine
      *@param idOrdine L'id dell'ordine al quale aggiungere le offerte
-     *
      * */
-
     public void addOfferteToOrdine(Class<?> entityClass, List<Offerta> offers, int idOrdine) {
         switch (entityClass.getName()) {
             case "acquisto.Ordine":

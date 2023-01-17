@@ -9,7 +9,7 @@ import storage.service.FacadeDAO;
  * @author Michele Menzione
  */
 public class Autenticazione {
-    private FacadeDAO facadeDAO;
+    private final FacadeDAO facadeDAO;
     public Autenticazione(FacadeDAO facadeDAO) {
         this.facadeDAO = facadeDAO;
 

@@ -39,8 +39,8 @@
             </p>
             <% }%>
         </form>
+        <img class="img" src="${pageContext.request.contextPath}/imgs/pages/registerImg.png" alt="">
     </div>
-    <img class="img" src="${pageContext.request.contextPath}/imgs/pages/registerImg.png" alt="">
 </div>
 
 

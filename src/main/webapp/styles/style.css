@@ -195,7 +195,7 @@ body {
 
 /* forum */
 
-#create-topic {
+#create-topic, #add-message {
     margin: 20px;
     background-color: #FFD100;
     border-top: none;
@@ -206,7 +206,7 @@ body {
     border-radius: 10px;
 }
 
-#topic-form {
+#topic-form, #message-form {
     margin: 10px;
     padding: 10px;
     background-color: #d6d6d6;
@@ -217,7 +217,7 @@ body {
     border-radius: 10px;
 }
 
-#topic-text{
+#topic-text, #message-text-object, #message-text-body, #modify-message-text{
     border-radius: 5px;
     border-top: none;
     border-right: 4px solid #7a7878;
@@ -278,7 +278,7 @@ input[type=submit]:active{
 
 /* content */
 
-#content-text{
+#content-text {
     margin: 20px;
     padding: 10px;
     border-radius: 10px;
@@ -388,4 +388,4 @@ p{
     border-radius: 10px;
 }
 
-/* discussione */
+

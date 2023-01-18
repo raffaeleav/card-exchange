@@ -4,7 +4,7 @@
 
     <script type="text/javascript" src="src=${pageContext.request.contextPath}/script/search-validation-selling.js"></script>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css"/>
-  <title>Vendita | CardeXchange</title>
+  <title>Vendita</title>
 </head>
     <body>
         <%@include file="../../header.jsp"%>

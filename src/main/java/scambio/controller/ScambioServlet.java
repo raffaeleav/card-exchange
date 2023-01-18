@@ -89,11 +89,11 @@ public class ScambioServlet extends HttpServlet {
             GMailer gMailer = new GMailer();
             gMailer.sendMail(destinatario.getEmail(),"Richiesta Di Scambio - Ricevuta","Hai ricevuto una richiesta di scambio di carte da parte dell'utente " + mittente.getEmail() + ".\n" +
                     "La sua carta "+cartaUtenteDestinatario.getNome() + " per la tua carta" +
-                    " " +cartaUtenteMittente.getNome()+ ".\n Visualizza il sito per 'Accettare' o 'Rifiutare' alla richiesta.");
+                    " " +cartaUtenteMittente.getNome()+ "con un conguaglio di "+ conguaglio+"€" +".\n Scrivigli un'email per ulteriori informazioni");
 
             gMailer.sendMail(mittente.getEmail(),"Richiesta Di Scambio - Inviata","Hai effettuato con successo una richiesta di scambio"+ ".\n" +
                     "La tua carta "+cartaUtenteMittente.getNome() + " per la sua carta" +
-                    " " +cartaUtenteDestinatario.getNome()+ ".\n Visualizza il sito per verificare lo stato della richiesta.");
+                    " " +cartaUtenteDestinatario.getNome()+ ".\n");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

@@ -1,8 +1,9 @@
 /* Imposta il font e i colori di base */
 body {
-    font-family: 'Helvetica Neue', sans-serif;
+    font-family: "Verdana", sans-serif;
     color: #333;
     background-color: #333533;
+
 }
 
 /* Formatta i titoli */
@@ -28,31 +29,41 @@ p {
 
 /* Formatta i pulsanti */
 button, input[type="submit"] {
-    background-color: #FFD100;
+    display: inline-block;
+    text-align: left;
+    width: auto;
+    margin: 10px;
+    background-color: white;
     border: none;
-    color: #202020;
+    color: white;
     cursor: pointer;
-    font-size: 16px;
-    padding: 10px 20px;
+    font-size: 14px;
 }
 
 button:hover, input[type="submit"]:hover {
     background-color: #fafafa;
 }
+.form{
+    justify-content: center;
+}
 
 /* Formatta gli elementi di input */
 input[type="text"] {
+    margin: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
-    padding: 10px;
-    width: 100%;
+    padding: 5px;
+    width: 200px;
 }
 
 /* Formatta le tabelle */
 table {
     border-collapse: collapse;
     width: 100%;
+}
+td{
+    color: white ;
 }
 
 /* Formatta le celle delle tabelle */
@@ -66,6 +77,12 @@ td, th {
 th {
     background-color: #eee;
     font-weight: 600;
+}
+
+label{
+    display: inline-block;
+    width: 140px;
+    text-align: right;
 }
 
 /* Formatta i link */
@@ -104,4 +121,55 @@ ul, ol {
 li {
     margin: 0 0 10px 0;
     padding: 0;
+}
+
+#cart-form{
+    width: 94%;
+    padding: 30px;
+    text-align: left;
+    background-color: #FFD100;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.totale{
+    padding: 20px;
+    width: 90%;
+    margin: 20px;
+    text-align: left;
+    font-size: 30px;
+    font-weight: bold ;
+
+}
+#cart-item{
+    margin: 0px;
+    padding: 14px;
+    font-size: medium;
+    text-align: center;
+    color: black;
+    background-color: #d6d6d6;
+    border-top: none;
+    border-right: 4px solid #7a7878;
+    border-left: none;
+    border-bottom: 4px solid #7a7878;
+    border-radius: 10px;
+}
+
+#cart-item td{
+    color: #1A1A1A;
+    font-weight: bold ;
+    padding: 14px 14px;
+    border-right: 1px solid #1a1a1a;
+    border-bottom: 3px solid #1a1a1a;
+    border-radius: 5px;
+}
+#cart-item th{
+    text-decoration: none;
+    color: white;
+    background-color: #1A1A1A;
+    border-top: none;
+    border-right: 0px solid #7a7878;
+    border-left: none;
+    border-bottom: 4px solid #7a7878;
+
 }

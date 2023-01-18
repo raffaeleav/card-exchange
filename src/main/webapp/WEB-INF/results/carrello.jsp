@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/carrello.css" />
     <script src="${pageContext.request.contextPath}/script/checkPurchase.js"></script>
     <script type="text/javascript">
         //visualizza l'alert di checkout effettuato con successo nel caso venga visualizzata tramite redirect dalla servlet checkout
@@ -38,11 +38,12 @@
 <div class="cart-page">
     <h1>Carrello</h1>
     <div class="offers">
-        <table>
+        <table id="cart-item">
             <tr>
                 <th>Nome offerta</th>
                 <th>IdCarta</th>
                 <th>Prezzo</th>
+                <th></th>
             </tr>
 
             <%
@@ -126,7 +127,8 @@
 
 
             <!-- Visualizza il totale del carrello -->
-                    <p>Totale: <%= carrello.getTotale() %> € </p>
+                    <div class="totale-containter"><p class="totale">Totale: <%= carrello.getTotale() %> € </p></div>
+
 
 
 

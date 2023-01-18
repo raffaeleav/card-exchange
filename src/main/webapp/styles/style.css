@@ -535,3 +535,21 @@ p{
 #search-form-selling #search-button:active{
     background-color: black;
 }
+
+/* ricerca risultati vendita*/
+
+#condizione {
+    border-radius: 5px;
+    border-top: none;
+    border-right: 4px solid #7a7878;
+    border-left: none;
+    border-bottom: 4px solid #7a7878;
+}
+
+input[type=number] {
+    border-radius: 5px;
+    border-top: none;
+    border-right: 4px solid #7a7878;
+    border-left: none;
+    border-bottom: 4px solid #7a7878;
+}

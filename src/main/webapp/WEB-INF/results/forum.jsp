@@ -30,7 +30,7 @@
                       onsubmit="return topicValidation()">
                     <label>Crea una discussione:</label>
 
-                    <input id="topic-text" name="topic-text" type="text">
+                    <input id="topic-text" name="topic-text" type="text" required>
                     <input id="topic-button" type="submit" value="Crea">
                 </form>
             </div>

@@ -35,7 +35,7 @@
                 <li id="search-bar">
                     <form id="search-form" name="search-form" action="search-servlet"
                           onsubmit="return searchValidation()" method="get">
-                        <input id="search-text" name="search-text" type="text">
+                        <input id="search-text" name="search-text" type="text" required>
                         <button id="search-button" type="submit">
                             <i class="fas fa-search fa-lg"></i>
                         </button>

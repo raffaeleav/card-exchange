@@ -75,7 +75,7 @@
                             <input type="hidden" name="message-id-modify" value="<%=message.getIdMessaggio()%>">
 
                             <label for="modify-message-text">Corpo del messaggio:</label>
-                            <input type="text" id="modify-message-text" name="modify-message-text">
+                            <input type="text" id="modify-message-text" name="modify-message-text" required>
 
                             <input type="submit" id="modify-message-button" value="Modifica messaggio">
                         </form>

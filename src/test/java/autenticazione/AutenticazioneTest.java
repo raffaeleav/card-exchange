@@ -12,14 +12,16 @@ class AutenticazioneTest {
 
     @Test
     void verifyLoginFalse(){
+        // Parametri in input
         String Email = "ciao@gmail.it";
         String pass = "Pass";
 
+        // Mock del database
         FacadeDAO mockFacade = mock(FacadeDAO.class);
         Autenticazione autenticazione = new Autenticazione(mockFacade);
 
 
-
+        // Utente non presente nel database
         when(mockFacade.getUtenteByEmailPassword(Utente.class,Email,pass)).thenReturn(null);
 
         assertNull(autenticazione.verifyLogin(Email,pass));
@@ -28,20 +30,24 @@ class AutenticazioneTest {
 
     @Test
     void verifyLoginTrue(){
+        // Parametri in input
         String email = "Email@gmail.com";
         String pass = "Pass";
 
+        // Utente presente all'interno nel db
         Utente utente = new Utente();
-        utente.setUsername(email);
+        utente.setEmail(email);
         utente.setPassword(pass);
 
 
         FacadeDAO mockFacade = mock(FacadeDAO.class);
         Autenticazione autenticazione = new Autenticazione(mockFacade);
 
+        // Utente presente nel db
         when(mockFacade.getUtenteByEmailPassword(Utente.class,email,pass)).thenReturn(utente);
 
-        assertNotNull(autenticazione.verifyLogin(email,pass));
+        assertEquals(email,autenticazione.verifyLogin(email,pass).getEmail());
+        assertEquals(pass,autenticazione.verifyLogin(email,pass).getPassword());
 
     }
   

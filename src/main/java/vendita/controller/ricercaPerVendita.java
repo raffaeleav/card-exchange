@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import acquisto.Carta;
 import storage.service.FacadeDAO;
@@ -32,7 +33,8 @@ public class ricercaPerVendita extends HttpServlet {
      * */
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String researchText = request.getParameter("search-text-selling");
+        String researchText = request.getParameter("search-text-selling"),
+                researchCategory = request.getParameter("categoria");
 
         FacadeDAO facadeDAO = new FacadeDAO();
         List<Carta> cardsList = (List<Carta>) facadeDAO.doRetrieveAll(Carta.class);
@@ -41,8 +43,10 @@ public class ricercaPerVendita extends HttpServlet {
         for (Carta card: cardsList){
             String formattedCardName = card.getNome().toLowerCase().trim();
             String formattedResearchText = researchText.toLowerCase().trim();
+            String formattedCategoryCard = card.getCategoria().toLowerCase().trim();
+            String formattedCategoryInput = researchCategory.toLowerCase().trim().substring(0,3);
 
-            if(formattedCardName.contains(formattedResearchText))
+            if(formattedCardName.contains(formattedResearchText) && formattedCategoryCard.contains(formattedCategoryInput))
                 matches.add(card);
         }
 

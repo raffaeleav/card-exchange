@@ -7,7 +7,6 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/carrello.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/styles/style.css"/>
   <title>I Miei Ordini</title>
 </head>
@@ -30,14 +29,12 @@
 <%@include file="/header.jsp"%>
 <div id="content">
     <div id="grid-container">
+        <div id="myorders">
+            <p>Ordini effettuati:</p>
 
-            <h1>I Miei Ordini</h1>
-    <li>
-        <ul>
-            <table>
+            <table id="home-offers-table">
                     <thead>
                                 <tr>
-                                    <th>Ordine #</th>
                                     <th>Data: </th>
                                     <th>Indirizzo di spedizione:</th>
                                     <th>Totale</th>
@@ -55,7 +52,6 @@
 
 
                                 <tr>
-                                    <td><%= ordine.getIdOrdine() %></td>
                                     <td><%= ordine.getData() %></td>
                                     <td> <%= ordine.getIndirizzo() %></td>
                                     <td><%= ordine.getTotale() %></td>
@@ -69,9 +65,7 @@
                                 </tr>
                     </tbody>
             </table>
-
-    </ul>
-    </li>
+    </div>
     </div>
 </div>
 <%@include file="/footer.jsp"%>

@@ -442,9 +442,9 @@ p{
     padding: 5px;
 }
 
-/* pagina offerte */
+/* pagina offerte e ordini */
 
-#myoffers {
+#myoffers, #myorders {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -553,3 +553,14 @@ input[type=number] {
     border-left: none;
     border-bottom: 4px solid #7a7878;
 }
+
+/* offerte */
+
+#myorders p {
+    margin: 20px 20px 10px 20px;
+}
+
+#myorders #home-offers-table{
+    width: inherit;
+}
+

@@ -65,7 +65,7 @@ body {
     color: white;
 }
 
-#search-text{
+#search-text, #search-text-selling{
     border-radius: 5px;
     border-top: none;
     border-right: 4px solid #7a7878;
@@ -225,7 +225,7 @@ body {
     border-bottom: 4px solid #7a7878;
 }
 
-input[type=submit]{
+input[type=submit], #search-form-selling #search-button{
     padding: 10px;
     color: white;
     text-decoration: none;
@@ -503,4 +503,53 @@ p{
     margin: 20px;
     display: flex;
     justify-content: center;
+}
+
+/* vendita */
+
+#search-form-selling{
+    margin: 20px 10px 10px 10px;
+    padding: 20px;
+    background-color: #d6d6d6;
+    border-top: none;
+    border-right: 4px solid #7a7878;
+    border-left: none;
+    border-bottom: 4px solid #7a7878;
+    border-radius: 10px;
+}
+
+#search-form-selling #categoria {
+    margin-top: 20px;
+    width: 147px;
+    border-radius: 5px;
+    border-top: none;
+    border-right: 4px solid #7a7878;
+    border-left: none;
+    border-bottom: 4px solid #7a7878;
+}
+
+#search-form-selling #search-button:hover{
+    background-color: black;
+}
+
+#search-form-selling #search-button:active{
+    background-color: black;
+}
+
+/* ricerca risultati vendita*/
+
+#condizione {
+    border-radius: 5px;
+    border-top: none;
+    border-right: 4px solid #7a7878;
+    border-left: none;
+    border-bottom: 4px solid #7a7878;
+}
+
+input[type=number] {
+    border-radius: 5px;
+    border-top: none;
+    border-right: 4px solid #7a7878;
+    border-left: none;
+    border-bottom: 4px solid #7a7878;
 }

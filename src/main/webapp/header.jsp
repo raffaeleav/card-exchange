@@ -20,6 +20,8 @@
                 <!-- Utente -->
                 <li title="Area utente"> <a href="MostraPaginaLogin"> <i class="fa-solid fa-user fa-lg"></i> </a> </li>
                 <!-- Carte in vendita -->
+                <li title="Carte in vendita"> <a href="ShowScambioServlet?action=visualizza"><i class="fa-solid fa-handshake fa-lg"></i></a> </li>
+                <!--Scambi Ricevuti-->
                 <li title="Carte in vendita"> <a href="mostraPaginaOfferteServlet"> <i class="fa-solid fa-list fa-lg"></i> </a> </li>
                 <!-- Vendi carta -->
                 <li title="Vendi carta"> <a href="mostraPaginaVenditaServlet"> <i class="fa-solid fa-money-bill fa-lg"></i> </a> </li>

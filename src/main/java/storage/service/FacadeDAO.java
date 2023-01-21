@@ -473,4 +473,11 @@ public class FacadeDAO {
                 return null;
         }
     }
+
+    public List<?> getAllScambiByIdDestinatario(Class<?> entityClass, int idUtenteDestinatario){
+        if (entityClass.getName().equals("scambio.Scambio")) {
+            return new ScambioDAO().getAllScambiByIdDestinatario(idUtenteDestinatario);
+        }
+        return null;
+    }
 }

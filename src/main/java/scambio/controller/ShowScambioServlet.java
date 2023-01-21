@@ -36,6 +36,12 @@ public class ShowScambioServlet extends HttpServlet {
                     request, response);
             return;
         }
+        String action = request.getParameter("action");
+        if(action != null && request.getParameter("action").equals("visualizza")){
+            request.getRequestDispatcher("/WEB-INF/results/myScambi.jsp").forward(
+                    request, response);
+            return;
+        }
 
         Utente utente = (Utente) request.getSession().getAttribute("Utente");
         if(request.getParameter("offerta") == null || request.getParameter("offerta").isBlank()){

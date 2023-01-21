@@ -93,8 +93,8 @@ create table RichiestaDiScambio(
                                    primary key(idRichiestaScambio) ,
                                    foreign key (idUtenteMittente) references Utente(idUtente),
                                    foreign key (idUtenteDestinatario) references Utente(idUtente),
-                                   foreign key (idOffertaMittente) references Offerta(idOfferta),
-                                   foreign key (idOffertaDestinatario) references Offerta(idOfferta)
+                                   foreign key (idOffertaMittente) references Offerta(idOfferta) ON UPDATE CASCADE ON DELETE CASCADE,
+                                   foreign key (idOffertaDestinatario) references Offerta(idOfferta)ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 create table  Recensione(

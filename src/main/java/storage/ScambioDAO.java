@@ -79,12 +79,12 @@ public class ScambioDAO {
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
                 Scambio u = new Scambio();
-                u.setIdRichiestaScambio(rs.getInt(1));
-                u.setIdUtenteMittente(rs.getInt(2));
-                u.setIdUtenteDestinatario(rs.getInt(3));
-                u.setIdOffertaMittente(rs.getInt(4));
-                u.setIdUtenteDestinatario(rs.getInt(5));
-                u.setConguaglio(rs.getDouble(6));
+                u.setIdRichiestaScambio(rs.getInt("idRichiestaScambio"));
+                u.setIdUtenteMittente(rs.getInt("idUtenteMittente"));
+                u.setIdUtenteDestinatario(rs.getInt("idUtenteDestinatario"));
+                u.setIdOffertaMittente(rs.getInt("idOffertaMittente"));
+                u.setIdOffertaDestinatario(rs.getInt("idOffertaDestinatario"));
+                u.setConguaglio(rs.getDouble("conguaglio"));
                 scambio.add(u);
             }
             con.close();
@@ -113,12 +113,12 @@ public class ScambioDAO {
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
                 Scambio u = new Scambio();
-                u.setIdRichiestaScambio(rs.getInt(1));
-                u.setIdUtenteMittente(rs.getInt(2));
-                u.setIdUtenteDestinatario(rs.getInt(3));
-                u.setIdOffertaMittente(rs.getInt(4));
-                u.setIdUtenteDestinatario(rs.getInt(5));
-                u.setConguaglio(rs.getDouble(6));
+                u.setIdRichiestaScambio(rs.getInt("idRichiestaScambio"));
+                u.setIdUtenteMittente(rs.getInt("idUtenteMittente"));
+                u.setIdUtenteDestinatario(rs.getInt("idUtenteDestinatario"));
+                u.setIdOffertaMittente(rs.getInt("idOffertaMittente"));
+                u.setIdOffertaDestinatario(rs.getInt("idOffertaDestinatario"));
+                u.setConguaglio(rs.getDouble("conguaglio"));
                 scambio.add(u);
             }
             con.close();
@@ -148,12 +148,12 @@ public class ScambioDAO {
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
                 Scambio u = new Scambio();
-                u.setIdRichiestaScambio(rs.getInt(1));
-                u.setIdUtenteMittente(rs.getInt(2));
-                u.setIdUtenteDestinatario(rs.getInt(3));
-                u.setIdOffertaMittente(rs.getInt(4));
-                u.setIdUtenteDestinatario(rs.getInt(5));
-                u.setConguaglio(rs.getDouble(6));
+                u.setIdRichiestaScambio(rs.getInt("idRichiestaScambio"));
+                u.setIdUtenteMittente(rs.getInt("idUtenteMittente"));
+                u.setIdUtenteDestinatario(rs.getInt("idUtenteDestinatario"));
+                u.setIdOffertaMittente(rs.getInt("idOffertaMittente"));
+                u.setIdOffertaDestinatario(rs.getInt("idOffertaDestinatario"));
+                u.setConguaglio(rs.getDouble("conguaglio"));
                 scambio.add(u);
             }
             con.close();

@@ -41,8 +41,8 @@ public class GMailer {
     /**
      L'indirizzo email che verrà utilizzato come mittente per tutte le e-mail inviate utilizzando questa classe.
      */
-    private static final String TEST_EMAIL = "CardeXchange2023@gmail.com";
-
+    private static final String TEST_EMAIL = "CardeXchange20223@gmail.com";
+    private static final String PATH_JSON = "/Users/michelemenzione/Documents/IS/src/main/java/scambio/file.json";
     /**
      Il servizio Gmail utilizzato per inviare e-mail.
      */
@@ -73,7 +73,7 @@ public class GMailer {
     private static Credential getCredentials(final NetHttpTransport httpTransport, GsonFactory jsonFactory)
             throws IOException {
         // Da cambiare con la posizione del file secret.json
-        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(jsonFactory, new InputStreamReader(new FileInputStream("/Users/michelemenzione/Documents/IS/src/main/java/scambio/secretFile.json")));
+        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(jsonFactory, new InputStreamReader(new FileInputStream(PATH_JSON)));
 
         GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
                 httpTransport, jsonFactory, clientSecrets, Set.of(GMAIL_SEND))

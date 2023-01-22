@@ -13,7 +13,6 @@ import scambio.Scambio;
 import storage.service.FacadeDAO;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -41,11 +40,14 @@ public class ScambioServlet extends HttpServlet {
         else if(azione.equals("Accetta")){
             Scambio s = (Scambio) dao.doRetrieveById(Scambio.class, Integer.parseInt(idScambio));
             Offerta offertaDestinatario = (Offerta) dao.doRetrieveById(Offerta.class,s.getIdUtenteDestinatario());
+            Offerta offertaMittente = (Offerta) dao.doRetrieveById(Offerta.class,s.getIdOffertaMittente());
             Carta cartaUtenteMittente = (Carta) dao.doRetrieveById(Carta.class,offertaDestinatario.getIdCarta());
             Carta cartaUtenteDestinatario = (Carta) dao.doRetrieveById(Carta.class,offertaDestinatario.getIdCarta());
 
 
             dao.doDelete(Scambio.class, Integer.parseInt(idScambio));
+            dao.doDelete(Offerta.class, offertaDestinatario.getIdOfferta());
+            dao.doDelete(Offerta.class, offertaMittente.getIdOfferta());
 
             Utente mittente = (Utente) dao.doRetrieveById(Utente.class,s.getIdUtenteMittente());
 
@@ -139,8 +141,7 @@ public class ScambioServlet extends HttpServlet {
             GMailer gMailer = new GMailer();
             gMailer.sendMail(destinatario.getEmail(),"Richiesta Di Scambio - Ricevuta","Hai ricevuto una richiesta di scambio di carte da parte dell'utente " + mittente.getEmail() + ".\n" +
                     "La sua carta "+cartaUtenteDestinatario.getNome() + " per la tua carta" +
-                    " " +cartaUtenteMittente.getNome()+ "con un conguaglio di "+ conguaglio+"€" +".\n Scrivigli un'email per ulteriori informazioni");
-
+                    " " +cartaUtenteMittente.getNome()+ "con un conguaglio di "+ conguaglio+"€");
             gMailer.sendMail(mittente.getEmail(),"Richiesta Di Scambio - Inviata","Hai effettuato con successo una richiesta di scambio"+ ".\n" +
                     "La tua carta "+cartaUtenteMittente.getNome() + " per la sua carta" +
                     " " +cartaUtenteDestinatario.getNome()+ ".\n");

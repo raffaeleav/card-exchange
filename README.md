@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/raffaeleav/card-exchange/assets/114619463/1e07d729-f3a2-4689-a1fb-c1f817410835" width="512" heigth="120">
+  <img src="https://github.com/raffaeleav/card-exchange/assets/114619463/0e955bc1-673b-49be-aa26-eef3be846388" width="512" heigth="120">
 </p>
 
 <p align="center">

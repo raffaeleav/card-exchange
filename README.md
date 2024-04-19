@@ -14,3 +14,8 @@
 | Di Domenico Francesco | 0512105999 |
 | Menzione Michele | 0512109797 |
 | Sautariello Salvatore | 0512111150 |
+
+
+## Dipendenze 
+- [JDK 19](https://www.oracle.com/java/technologies/downloads/#java19 "JDK 19")
+- [Apache Tomcat 10](https://tomcat.apache.org/download-10.cgi)

@@ -8,12 +8,12 @@
 
 
 ## Autori
-|Nome|Matricola|
+| Nome | Profilo GitHub |
 |----|---------|
-| Aviello Raffaele | 0512110529 |
-| Di Domenico Francesco | 0512105999 |
-| Menzione Michele | 0512109797 |
-| Sautariello Salvatore | 0512111150 |
+| Aviello Raffaele | [raffaeleav](https://github.com/raffaeleav) |
+| Di Domenico Francesco | [FrancescoDD00](https://github.com/FrancescoDD00) |
+| Menzione Michele | [Michibit](https://github.com/Michibit) |
+| Sautariello Salvatore | [SSalvatore001](https://github.com/SSalvatore001) |
 
 
 ## Dipendenze 

@@ -10,6 +10,7 @@
 ## Table of Contents
 - [Autori](#Autori)
 - [About](#About)
+- [Funzionalità](#Funzionalità)
 - [Dipendenze](#Dipendenze)
 - [Built with](#Built-with)
 
@@ -27,7 +28,15 @@
   Card EXchange è una piattaforma e-commerce sviluppata come progetto per l'insegnamento di Ingegneria del Software, del corso di Laurea in Informatica dell'Università degli Studi di Salerno. 
   Questa web application è stata progettata e realizzata con l'obiettivo di approcciarsi praticamente allo sviluppo software in team, anche tramite strumenti di collaborazione aziendale come [Slack](https://slack.com/intl/it-it/?utm_source=rachelandreago) e
   [Trello](https://trello.com/it). Il progetto ha affrontato tutte le fasi dello sviluppo a cascata, dalla raccolta dei requisiti al testing.
-  La web application offre agli utenti la possibilità di esplorare una vasta gamma di carte da gioco collezionabili, aggiungerli al carrello, effettuare ordini, gestire il proprio account e parlare con gli altri utenti su un forum.
+  La web application offre agli utenti la possibilità di esplorare una vasta gamma di carte da gioco collezionabili, acquistarle, lasciare recensioni, scambiare carte con altri utenti e discutere su un forum.
+
+
+## Funzionalità
+1) Acquistare carte da gioco collezionabili
+2) Creare una discussione sul forum
+3) Partecipare a una discussione sul forum
+4) Lasciare una recensione di un prodotto acquistato
+5) Scambiare carte con altri utenti
 
 
 ## Dipendenze 

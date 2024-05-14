@@ -42,7 +42,7 @@
 ## Dipendenze 
 - [JDK 19](https://www.oracle.com/java/technologies/downloads/#java19 "JDK 19")
 - [Apache Tomcat 10](https://tomcat.apache.org/download-10.cgi)
-- [MySQL](https://www.mysql.com/products/community/)
+- [MySQL](https://dev.mysql.com/downloads/installer/)
 
 
 ## Built-with

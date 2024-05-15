@@ -43,6 +43,7 @@
 - [JDK 19](https://www.oracle.com/java/technologies/downloads/#java19 "JDK 19")
 - [Apache Tomcat 10](https://tomcat.apache.org/download-10.cgi)
 - [MySQL](https://dev.mysql.com/downloads/installer/)
+  - [Connector/J](https://dev.mysql.com/downloads/connector/j/)
 
 
 ## Built-with

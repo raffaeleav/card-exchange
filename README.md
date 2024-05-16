@@ -34,7 +34,7 @@
 
 ## Preview
 <p>
-  <img src="https://github.com/raffaeleav/card-exchange/assets/114619463/2ac03b41-3619-4c79-8635-e052fb3f71b6" width="400" heigth="400">
+  <img src="https://github.com/raffaeleav/card-exchange/assets/114619463/1536f969-824a-40e3-a4c7-e09a66f5c302" width="400" heigth="400">
 </p>
 
 

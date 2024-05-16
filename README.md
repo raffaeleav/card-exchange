@@ -10,6 +10,7 @@
 ## Table of Contents
 - [Autori](#Autori)
 - [About](#About)
+- [Preview](#Preview)
 - [Funzionalità](#Funzionalità)
 - [Dipendenze](#Dipendenze)
 - [Built with](#Built-with)
@@ -29,6 +30,12 @@
   Questa web application è stata progettata e realizzata con l'obiettivo di approcciarsi praticamente allo sviluppo software in team, anche tramite strumenti di collaborazione aziendale come [Slack](https://slack.com/intl/it-it/?utm_source=rachelandreago) e
   [Trello](https://trello.com/it). Il progetto ha affrontato tutte le fasi dello sviluppo a cascata, dalla raccolta dei requisiti al testing.
   La web application offre agli utenti la possibilità di esplorare una vasta gamma di carte da gioco collezionabili, acquistarle, lasciare recensioni, scambiare carte con altri utenti e discutere su un forum.
+
+
+## Preview
+<p>
+  <img src="https://github.com/raffaeleav/card-exchange/assets/114619463/2ac03b41-3619-4c79-8635-e052fb3f71b6" width="400" heigth="400">
+</p>
 
 
 ## Funzionalità

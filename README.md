@@ -55,7 +55,7 @@
 
 ## Built-with
 - [Java](https://www.oracle.com/java/technologies/downloads/#java19 "JDK 19") - per la realizzazione del backend e logiche di business della web app.
-- [HTML5](https://www.w3schools.com/html/default.asp) - per la realizzazione del frontend della web app.
+- [HTML](https://www.w3schools.com/html/default.asp) - per la realizzazione del frontend della web app.
 - [CSS](https://www.w3schools.com/css/) - per la formattazione e gestione del layout responsive della web app.
 - [JavaScript](https://www.w3schools.com/js/) - per la validazione dei form.
 - [AJAX](https://www.w3schools.com/js/js_ajax_intro.asp) - per effettuare chiamate asincrone rispetto alla ricerca dei prodotti.

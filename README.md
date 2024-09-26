@@ -3,21 +3,22 @@
 </p>
 
 <p align="center">
-  Una piattaforma e-commerce sviluppata come progetto per l'insegnamento di Ingegneria del Software, del corso di Laurea in Informatica dell'Università degli Studi di Salerno. 
+  An e-commerce platform developed as a project for the Ingegneria del Software (Software Engineering) course, part of the 
+  Computer Science Bachelor's Degree program at the University of Salerno
 </p>
 
 
 ## Table of Contents
-- [Autori](#Autori)
+- [Authors](#Authors)
 - [About](#About)
 - [Preview](#Preview)
-- [Funzionalità](#Funzionalità)
-- [Dipendenze](#Dipendenze)
+- [Features](#Features)
+- [Dependencies](#Dependencies)
 - [Built with](#Built-with)
 
 
-## Autori
-| Nome | Profilo GitHub |
+## Authors
+| Name | GitHub Profile |
 | ---- | --------- |
 | Aviello Raffaele | [raffaeleav](https://github.com/raffaeleav) |
 | Di Domenico Francesco | [FrancescoDD00](https://github.com/FrancescoDD00) |
@@ -26,9 +27,9 @@
 
 
 ## About 
-  Card EXchange è stata progettata e realizzata con l'obiettivo di approcciarsi praticamente allo sviluppo software in team, anche tramite strumenti di collaborazione aziendale come [Slack](https://slack.com/intl/it-it/?utm_source=rachelandreago) e
-  [Trello](https://trello.com/it). Il progetto ha affrontato tutte le fasi dello sviluppo a cascata, dalla raccolta dei requisiti al testing.
-  La web application offre agli utenti la possibilità di esplorare una vasta gamma di carte da gioco collezionabili, acquistarle, lasciare recensioni, scambiare carte con altri utenti e discutere su un forum.
+   Card EXchange was developed with the goal of appraoching software development as a team, with the aid of corporate collaboration tools such as [Slack](https://slack.com/intl/it-it/?utm_source=rachelandreago) and [Trello](https://trello.com/it).
+ The project covered all phases of waterfall development method, from requirements gathering to testing. The web application offers to users the ability to explore a wide range of collectible 
+ trading cards, purchase them, leave reviews, trade cards with other users, and participate in discussions on a forum.
 
 
 ## Preview
@@ -37,15 +38,15 @@
 </p>
 
 
-## Funzionalità
-1) Acquistare carte da gioco collezionabili
-2) Creare una discussione sul forum
-3) Partecipare a una discussione sul forum
-4) Lasciare una recensione di un prodotto acquistato
-5) Scambiare carte con altri utenti
+## Features
+1) Purchase collectible trading cards
+2) Create a discussion on the forum
+3) Participate in a discussion on the forum
+4) Leave a review of a purchased product
+5) Trade cards with other users
 
 
-## Dipendenze 
+## Dependencies 
 - [JDK 19](https://www.oracle.com/java/technologies/downloads/#java19 "JDK 19")
 - [Apache Tomcat 10](https://tomcat.apache.org/download-10.cgi)
 - [MySQL](https://dev.mysql.com/downloads/installer/)
@@ -53,10 +54,10 @@
 
 
 ## Built-with
-- [Java](https://www.oracle.com/java/technologies/downloads/#java19 "JDK 19") - per la realizzazione del backend e logiche di business della web app.
-- [HTML](https://www.w3schools.com/html/default.asp) - per la realizzazione del frontend della web app.
-- [CSS](https://www.w3schools.com/css/) - per la formattazione e gestione del layout responsive della web app.
-- [JavaScript](https://www.w3schools.com/js/) - per la validazione dei form.
-- [AJAX](https://www.w3schools.com/js/js_ajax_intro.asp) - per effettuare chiamate asincrone rispetto alla ricerca dei prodotti.
-- [SQL](https://www.w3schools.com/sql/) - per realizzare lo schema fisico della base di dati.
-- [Maven](https://maven.apache.org/) - per la gestione delle dipendenze.
+- [Java](https://www.oracle.com/java/technologies/downloads/#java19 "JDK 19") - used for the backend implementation and business logic of the web app
+- [HTML](https://www.w3schools.com/html/default.asp) - used for the frontend development of the web app
+- [CSS](https://www.w3schools.com/css/) - used for formatting and managing the responsive layout of the web app
+- [JavaScript](https://www.w3schools.com/js/) - used for form validation
+- [AJAX](https://www.w3schools.com/js/js_ajax_intro.asp) - used for making asynchronous calls during product searches
+- [SQL](https://www.w3schools.com/sql/) - used for implementing the physical schema of the database
+- [Maven](https://maven.apache.org/) - used for for dependency management

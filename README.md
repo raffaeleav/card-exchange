@@ -10,7 +10,7 @@
 
 ## Table of Contents
 - [Authors](#Authors)
-- [About](#About)
+- [Overview](#Overview)
 - [Preview](#Preview)
 - [Features](#Features)
 - [Dependencies](#Dependencies)
@@ -26,7 +26,7 @@
 | Sautariello Salvatore | [SSalvatore001](https://github.com/SSalvatore001) |
 
 
-## About 
+## Overview 
    Card EXchange was developed with the goal of appraoching software development as a team, with the aid of corporate collaboration tools such as [Slack](https://slack.com/intl/it-it/?utm_source=rachelandreago) and [Trello](https://trello.com/it).
  The project covered all phases of waterfall development method, from requirements gathering to testing. The web application offers to users the ability to explore a wide range of collectible 
  trading cards, purchase them, leave reviews, trade cards with other users, and participate in discussions on a forum.

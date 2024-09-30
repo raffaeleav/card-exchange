@@ -18,7 +18,7 @@
 
 
 ## Authors
-| Name | GitHub Profile |
+| Name | GitHub profile |
 | ---- | --------- |
 | Aviello Raffaele | [raffaeleav](https://github.com/raffaeleav) |
 | Di Domenico Francesco | [FrancescoDD00](https://github.com/FrancescoDD00) |

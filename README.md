@@ -13,6 +13,7 @@
 - [Overview](#Overview)
 - [Preview](#Preview)
 - [Features](#Features)
+- [How to replicate](#How-to-replicate)
 - [Dependencies](#Dependencies)
 - [Built with](#Built-with)
 
@@ -44,6 +45,42 @@
 3) Participate in a discussion on the forum
 4) Leave a review of a purchased product
 5) Trade cards with other users
+
+
+## How to replicate
+1) Clone the repository
+```bash
+git clone https://github.com/raffaeleav/card-exchange.git
+```
+2) Switch to the project directory
+```bash
+cd card-exchange
+```
+3) Execute the database script (be sure to change the mysql server credentials in storage.ConPool)
+```bash
+sudo mysql -u root -p < ./src/main/webapp/database/database.sql
+```
+4) Populate the database
+```bash
+sudo mysql -u root -p < ./src/main/webapp/database/popola-db.sql
+sudo mysql -u root -p < ./src/main/webapp/database/popola-db-card.sql
+```
+4) Build the project
+```bash
+mvn install
+```
+5) Copy the .war file to the webapps directory of your Tomcat server
+```bash
+sudo cp target/ProgettoIS-1.0-SNAPSHOT.war /opt/tomcat/apache-tomcat-10.1.30/webapps
+```
+6) Start the Tomcat server (assuming you have created a tomcat systemd service)
+```bash
+sudo systemctl start tomcat
+```
+7) Open the browser and access the webapp running at localhost
+```bash
+xdg-open 'http://localhost/popshop-retry-1.0-SNAPSHOT'
+```
 
 
 ## Dependencies 

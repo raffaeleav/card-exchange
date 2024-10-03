@@ -13,8 +13,8 @@
 - [Overview](#Overview)
 - [Preview](#Preview)
 - [Features](#Features)
-- [How to replicate](#How-to-replicate)
 - [Dependencies](#Dependencies)
+- [How to replicate](#How-to-replicate)
 - [Built with](#Built-with)
 
 
@@ -45,6 +45,14 @@
 3) Participate in a discussion on the forum
 4) Leave a review of a purchased product
 5) Trade cards with other users
+
+
+## Dependencies 
+- [JDK 19](https://www.oracle.com/java/technologies/downloads/#java19 "JDK 19")
+- [Apache Tomcat 10](https://tomcat.apache.org/download-10.cgi)
+- [MySQL](https://dev.mysql.com/downloads/installer/)
+  - [Connector/J](https://dev.mysql.com/downloads/connector/j/)
+- [Maven](https://maven.apache.org/)
 
 
 ## How to replicate
@@ -81,14 +89,6 @@ sudo systemctl start tomcat
 ```bash
 xdg-open 'http://localhost/popshop-retry-1.0-SNAPSHOT'
 ```
-
-
-## Dependencies 
-- [JDK 19](https://www.oracle.com/java/technologies/downloads/#java19 "JDK 19")
-- [Apache Tomcat 10](https://tomcat.apache.org/download-10.cgi)
-- [MySQL](https://dev.mysql.com/downloads/installer/)
-  - [Connector/J](https://dev.mysql.com/downloads/connector/j/)
-- [Maven](https://maven.apache.org/)
 
 
 ## Built-with

@@ -13,7 +13,7 @@
 - [Overview](#Overview)
 - [Preview](#Preview)
 - [Features](#Features)
-- [Dependencies](#Dependencies)
+- [Requirements](#Requirements)
 - [How to replicate](#How-to-replicate)
 - [Built with](#Built-with)
 
@@ -47,7 +47,7 @@
 5) Trade cards with other users
 
 
-## Dependencies 
+## Requirements 
 - [JDK 19](https://www.oracle.com/java/technologies/downloads/#java19 "JDK 19")
 - [Apache Tomcat 10](https://tomcat.apache.org/download-10.cgi)
 - [MySQL](https://dev.mysql.com/downloads/installer/)

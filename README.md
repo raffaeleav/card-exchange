@@ -16,7 +16,6 @@
 - [Features](#Features)
 - [Requirements](#Requirements)
 - [How to replicate](#How-to-replicate)
-- [Built with](#Built-with)
 
 
 ## Authors
@@ -90,13 +89,3 @@ sudo systemctl start tomcat
 ```bash
 xdg-open 'http://localhost/popshop-retry-1.0-SNAPSHOT'
 ```
-
-
-## Built-with
-- [Java](https://www.oracle.com/java/technologies/downloads/#java19 "JDK 19") - used for the backend implementation and business logic of the web app
-- [HTML](https://www.w3schools.com/html/default.asp) - used for the frontend development of the web app
-- [CSS](https://www.w3schools.com/css/) - used for formatting and managing the responsive layout of the web app
-- [JavaScript](https://www.w3schools.com/js/) - used for form validation
-- [AJAX](https://www.w3schools.com/js/js_ajax_intro.asp) - used for making asynchronous calls during product searches
-- [SQL](https://www.w3schools.com/sql/) - used for implementing the physical schema of the database
-- [Maven](https://maven.apache.org/) - used for for dependency management
